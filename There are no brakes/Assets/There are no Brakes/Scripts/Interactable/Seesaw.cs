@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -20,13 +20,26 @@ public class Seesaw : MonoBehaviour {
 
     
     void OnCollisionEnter(Collision touchItem) {
+        //print(touchItem.gameObject.name + " enter");
         if (touchItem.gameObject.name == "Plane" || touchItem.gameObject.transform.position.y < this.transform.position.y) return;
+        bool flag = false;
+        for (int i = 0; i < count; i++) {
+            if (touchList[i].gameObject.name == touchItem.gameObject.name) {
+                flag = true;
+            }
+        }
 
-        if (!touchList.Contains(touchItem)) {
+            if (!flag) {
             touchList.Add(touchItem);
             count++;
         }
-        
+
+        string touch = "";
+        for (int i = 0; i < count; i++)
+        {
+            touch += touchList[i].gameObject.name + ", ";
+        }
+        print(touch);
 
         for (int i = 0; i < count; i++) {
             Collision other = touchList[i];
@@ -44,18 +57,20 @@ public class Seesaw : MonoBehaviour {
 
         }
 
-        string touch = "";
-        for (int i = 0; i < count; i++)
-        {
-            touch += touchList[i].gameObject.name + ", ";
-        }
-        print(touch);
+        
         
     }
 
     void OnCollisionExit(Collision other)
     {
-        touchList.Remove(other);
-        count--;
+        for (int i = 0; i < count; i++)
+        {
+            if (touchList[i].gameObject.name == other.gameObject.name)
+            {
+                touchList.RemoveAt(i);
+                count--;
+                break;
+            }
+        }
     }
 }
