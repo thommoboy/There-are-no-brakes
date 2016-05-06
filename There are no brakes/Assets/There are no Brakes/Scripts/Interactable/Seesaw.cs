@@ -21,7 +21,7 @@ public class Seesaw : MonoBehaviour {
     
     void OnCollisionEnter(Collision touchItem) {
         //print(touchItem.gameObject.name + " enter");
-        if (touchItem.gameObject.name == "Plane" || touchItem.gameObject.transform.position.y < this.transform.position.y) return;
+        
         bool flag = false;
         for (int i = 0; i < count; i++) {
             if (touchList[i].gameObject.name == touchItem.gameObject.name) {
@@ -29,10 +29,12 @@ public class Seesaw : MonoBehaviour {
             }
         }
 
-            if (!flag) {
+        if (!flag) {
             touchList.Add(touchItem);
             count++;
         }
+
+        if (touchItem.gameObject.name == "Plane" || touchItem.gameObject.transform.position.y < this.transform.position.y) return;
 
         string touch = "";
         for (int i = 0; i < count; i++)
@@ -50,7 +52,7 @@ public class Seesaw : MonoBehaviour {
             if (otherX * touchItemX < 0) { onSameSide = false; }
             if (onSameSide) continue;
             
-            other.collider.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * bounceForce );
+            other.collider.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * bounceForce * (Mathf.Abs(otherX) / (this.transform.localScale.x/3)));
             //string force = (Vector3.up * bounceForce * (Mathf.Abs(otherX) / this.transform.localScale.x) * (Mathf.Abs(touchItemX) / this.transform.localScale.x)).ToString();
             //print("give force");
             //print(force);
