@@ -53,7 +53,9 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Pulley.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Pulley_Trigger.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Winch.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Seesaw.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PlayerController.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Player\PlayerControl.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
