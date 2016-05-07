@@ -49,6 +49,8 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraMultitarget.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\Demo\CharacterMovement.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Anchor.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Anchor.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Anchor_Trigger.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_InteractableObject.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Pulley.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Pulley_Trigger.cs" />
