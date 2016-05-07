@@ -45,15 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\QuickRopes\Source\QuickRopes\Editor\QuickRopeEditor.cs" />
-     <Compile Include="Assets\QuickRopes\Source\QuickRopes\Helper Classes\Editor\ColliderSettingsDrawer.cs" />
-     <Compile Include="Assets\QuickRopes\Source\QuickRopes\Helper Classes\Editor\RigidbodySettingsDrawer.cs" />
-     <Compile Include="Assets\QuickRopes\Source\Utilities\Editor\EditorX.cs" />
-     <Compile Include="Assets\QuickRopes\Source\Utilities\Editor\RopeRendererEditor.cs" />
-     <Compile Include="Assets\QuickRopes\Source\Utilities\Editor\SplineEditor.cs" />
      <Compile Include="Assets\There are no Brakes\Editor\CameraMultitargetEditor.cs" />
      <Compile Include="Assets\There are no Brakes\Editor\Import.cs" />
-     <None Include="Assets\QuickRopes\Readme.txt" />
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
