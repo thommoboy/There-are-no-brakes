@@ -15,16 +15,22 @@ public class Seesaw : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    
+		/*try balance seesaw, faild
+		 * if (touchList.Count == 0) {
+			if (GameObject.Find ("Seesaw_Left").transform.position.y!= GameObject.Find ("Seesaw_Right").transform.position.y) {
+				this.gameObject.GetComponent<Rigidbody> ().AddForce (Vector3.up * 50);
+			}
+		}
+		*/
 	}
 
     
     void OnCollisionEnter(Collision touchItem) {
         //print(touchItem.gameObject.name + " enter");
-        
+		if (touchItem.gameObject.name == "Plane" || touchItem.gameObject.name == "Cone") return;
         bool flag = false;
         for (int i = 0; i < count; i++) {
-            if (touchList[i].gameObject.name == touchItem.gameObject.name) {
+			if (touchList[i].gameObject.name == touchItem.gameObject.name) {
                 flag = true;
             }
         }
@@ -34,7 +40,7 @@ public class Seesaw : MonoBehaviour {
             count++;
         }
 
-        if (touchItem.gameObject.name == "Plane" || touchItem.gameObject.transform.position.y < this.transform.position.y) return;
+        if (touchItem.gameObject.transform.position.y < this.transform.position.y) return;
 
         string touch = "";
         for (int i = 0; i < count; i++)
@@ -51,11 +57,11 @@ public class Seesaw : MonoBehaviour {
             float touchItemX = touchItem.gameObject.transform.position.x - this.gameObject.transform.position.x;
             if (otherX * touchItemX < 0) { onSameSide = false; }
             if (onSameSide) continue;
-            
-            other.collider.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * bounceForce * (Mathf.Abs(otherX) / (this.transform.localScale.x/3)));
-            //string force = (Vector3.up * bounceForce * (Mathf.Abs(otherX) / this.transform.localScale.x) * (Mathf.Abs(touchItemX) / this.transform.localScale.x)).ToString();
-            //print("give force");
-            //print(force);
+
+            other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * bounceForce * (Mathf.Abs(otherX) / (this.transform.localScale.x/3)));
+            string force = (Vector3.up * bounceForce * (Mathf.Abs(otherX) / this.transform.localScale.x) * (Mathf.Abs(touchItemX) / this.transform.localScale.x)).ToString();
+			print("add force to " + other.collider.gameObject.name);
+            print(force);
 
         }
 
