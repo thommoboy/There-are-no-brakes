@@ -45,27 +45,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CharacterControllerScript.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraMultiTargetObjective.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraMultitarget.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\Demo\CharacterMovement.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Anchor.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Ballcontrol.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\BreakWall.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Anchor.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Anchor_Trigger.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_BallControl.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_BreakWall.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_InteractableObject.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Pulley.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Pulley_Trigger.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_SeeSaw.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Winch.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Seesaw.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Player\HUD.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_ClickPlay.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_MusicVolumeScript.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_OnClick.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_OnMouseExit.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_OnMouseOver.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Player\Obsolete\PlayerControl.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_Controller.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_GHandle.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_GHook.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_GShot.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_HUD.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PlayerController.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Player\PlayerControl.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Unity3D/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
