@@ -56,11 +56,11 @@ public class IN_Anchor : MonoBehaviour
 
 				//Left Platform
 				Vector3 platpos2 = IN_P_PlatformLeft.transform.localPosition;
-				platpos2.y += 1.5f;
+				platpos2.x += 1.5f;
 				IN_P_PlatformLeft.transform.localPosition = Vector3.Lerp(IN_P_PlatformLeft.transform.localPosition, IN_P_Origin_Left, Time.deltaTime);
 
 				Vector3 temppos2 = IN_P_PulleyLeft.transform.localPosition;
-				temppos2.y += 1;
+				temppos2.x += 1;
 				IN_P_PulleyLeft.transform.localPosition = Vector3.Lerp(IN_P_PulleyLeft.transform.localPosition, temppos2, Time.deltaTime);
 				//}
 			}
@@ -71,7 +71,7 @@ public class IN_Anchor : MonoBehaviour
 	{
 		if (IN_P_PulleyRight.transform.localScale.y > 0 || IN_P_PulleyLeft.transform.localScale.y > 0)
 		{
-			if (IN_P_PulleyRight.transform.localPosition.y >= 2) {
+			if (IN_P_PulleyRight.transform.localPosition.x >= 2) {
 
 			}
 			else
@@ -98,11 +98,11 @@ public class IN_Anchor : MonoBehaviour
 
 				//Left Platform
 				Vector3 platpos2 = IN_P_PlatformLeft.transform.localPosition;
-				platpos2.y -= 1.5f;
+				platpos2.x -= 1.5f;
 				IN_P_PlatformLeft.transform.localPosition = Vector3.Lerp(IN_P_PlatformLeft.transform.localPosition, platpos2, Time.deltaTime);
 
 				Vector3 temppos2 = IN_P_PulleyLeft.transform.localPosition;
-				temppos2.y -= 1;
+				temppos2.x -= 1;
 				IN_P_PulleyLeft.transform.localPosition = Vector3.Lerp(IN_P_PulleyLeft.transform.localPosition, temppos2, Time.deltaTime);
 			}
 		}
@@ -112,7 +112,7 @@ public class IN_Anchor : MonoBehaviour
 	{
 		if (IN_P_PulleyRight.transform.localScale.y > 0 || IN_P_PulleyLeft.transform.localScale.y > 0)
 		{
-			if (IN_P_PulleyLeft.transform.localPosition.y >= 8) {
+			if (IN_P_PulleyLeft.transform.localPosition.x >= 10) {
 
 			}
 			else
@@ -140,11 +140,11 @@ public class IN_Anchor : MonoBehaviour
 
 				//Left Platform
 				Vector3 platpos2 = IN_P_PlatformLeft.transform.localPosition;
-				platpos2.y += 1.5f;
+				platpos2.x += 1.5f;
 				IN_P_PlatformLeft.transform.localPosition = Vector3.Lerp(IN_P_PlatformLeft.transform.localPosition, platpos2, Time.deltaTime);
 
 				Vector3 temppos2 = IN_P_PulleyLeft.transform.localPosition;
-				temppos2.y += 1;
+				temppos2.x += 1;
 				IN_P_PulleyLeft.transform.localPosition = Vector3.Lerp(IN_P_PulleyLeft.transform.localPosition, temppos2, Time.deltaTime);
 			}
 		}

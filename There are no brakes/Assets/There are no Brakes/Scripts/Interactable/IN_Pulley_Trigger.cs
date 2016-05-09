@@ -19,9 +19,11 @@ public class IN_Pulley_Trigger : MonoBehaviour
 
 	void OnTriggerExit(Collider other)
 	{
+		/*
 		if(IN_P_Platform == Platform.Left)
 			IN_P.Origin = true;
 		if(IN_P_Platform == Platform.Right)
 			IN_P.Origin = true;
+		*/
 	}
 }
