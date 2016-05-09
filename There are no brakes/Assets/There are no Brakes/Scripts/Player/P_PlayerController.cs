@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class P_PlayerController : MonoBehaviour
+public class PlayerHub : MonoBehaviour
 {
 	public Transform Player1;
 	public Transform Player2;

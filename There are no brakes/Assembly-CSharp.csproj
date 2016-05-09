@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CharacterControllerScript.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraMultiTargetObjective.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraMultitarget.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\Demo\CharacterMovement.cs" />
@@ -60,6 +61,9 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Seesaw.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\HUD.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_Controller.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_GHandle.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_GHook.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_GShot.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PlayerController.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\PlayerControl.cs" />
  <Reference Include="UnityEngine.UI">
