@@ -12,17 +12,17 @@ public class IN_BreakWall : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space)) {
+		/*if (Input.GetKeyDown(KeyCode.Space)) {
 			GameObject.Instantiate (remains, transform.position, transform.rotation);
 			Destroy (this.gameObject);
-		}
+		}*/
 	}
 
 
 
 	void OnCollisionEnter(Collision other){
 		if (other.gameObject.name != "Plane") {
-			GameObject.Instantiate(remains, this.transform.position, this.transform.rotation);
+			GameObject wall = GameObject.Instantiate(remains, this.transform.position, this.transform.rotation) as GameObject;
 			other.gameObject.GetComponent<Rigidbody> ().AddForce (Vector3.forward * 200);
 			Destroy (this.gameObject);
 
@@ -32,10 +32,13 @@ public class IN_BreakWall : MonoBehaviour
 			direction = getBasicDirectionUnit (direction);
 			print(direction);
 
-			GameObject.Instantiate (sphereCollider, other.transform.position + direction * (other.gameObject.transform.localScale.x*(float)0.8)
-				, other.transform.rotation);
-			
-			print ("succses");
+			GameObject wallSphereCollider = GameObject.Instantiate (sphereCollider, other.transform.position + direction * (other.gameObject.transform.localScale.x*(float)0.8)
+				, other.transform.rotation) as GameObject;
+
+			Destroy (wall, (float)4);
+			Destroy (wallSphereCollider, (float)4);
+
+			//print ("succses");
 
 		}
 	}
