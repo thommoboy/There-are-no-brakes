@@ -14,6 +14,7 @@ public class IN_Anchor : MonoBehaviour
 	public Vector3 IN_P_Origin_Right = new Vector3();
 
 	public bool Origin = false;
+	public float Distance = 10;
 
 	public void Start()
 	{
@@ -112,7 +113,7 @@ public class IN_Anchor : MonoBehaviour
 	{
 		if (IN_P_PulleyRight.transform.localScale.y > 0 || IN_P_PulleyLeft.transform.localScale.y > 0)
 		{
-			if (IN_P_PulleyLeft.transform.localPosition.x >= 10) {
+			if (IN_P_PulleyLeft.transform.localPosition.x >= Distance) {
 
 			}
 			else

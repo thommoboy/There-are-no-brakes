@@ -19,6 +19,7 @@ public class IN_Anchor_Trigger : MonoBehaviour
 
 	void OnTriggerStay(Collider other)
 	{
+		Debug.Log ("Entered");
 		/*
 		if(IN_P_Platform == Platform.Left)
 			IN_P.LeftPlatformDown();
