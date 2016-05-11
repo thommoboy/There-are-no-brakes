@@ -5,6 +5,7 @@ public class IN_BreakWall : MonoBehaviour
 {
 	public GameObject remains;
 	public GameObject sphereCollider;
+
 	// Use this for initialization
 	void Start () {
 	
