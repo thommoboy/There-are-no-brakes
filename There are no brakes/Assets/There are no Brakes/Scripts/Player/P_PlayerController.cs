@@ -19,8 +19,8 @@ public class PlayerHub : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		P1CC = Player1.GetComponent<CharacterController> ();
-		P2CC = Player2.GetComponent<CharacterController> ();
+		P1CC = Player1.GetComponent<CharacterController>();
+		P2CC = Player2.GetComponent<CharacterController>();
 	}
 	
 	// Update is called once per frame

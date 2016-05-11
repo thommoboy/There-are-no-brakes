@@ -69,6 +69,7 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_GHook.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_GShot.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_HUD.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PickUp.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PlayerController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Unity3D/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
