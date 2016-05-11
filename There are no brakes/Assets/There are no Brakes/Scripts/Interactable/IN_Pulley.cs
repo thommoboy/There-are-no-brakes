@@ -12,6 +12,10 @@ public class IN_Pulley : MonoBehaviour
 
 	public Vector3 IN_P_Origin_Left = new Vector3();
 	public Vector3 IN_P_Origin_Right = new Vector3();
+	
+	public GameObject IN_P_GateLeft;
+	public GameObject IN_P_GateRight;
+	public int RotationRate = 25;
 
 	public bool Origin = false;
 
@@ -65,6 +69,22 @@ public class IN_Pulley : MonoBehaviour
 				//}
 			}
 		}
+		
+		
+		//stop gates rotating too far
+		Debug.Log(IN_P_GateRight.transform.rotation.z);
+		if(IN_P_GateLeft.transform.rotation.z < 0){
+			IN_P_GateLeft.transform.Rotate(0, 0, Time.deltaTime*-RotationRate);
+		}
+		if(IN_P_GateLeft.transform.rotation.z > 0.7f){
+			IN_P_GateLeft.transform.Rotate(0, 0, Time.deltaTime*RotationRate);
+		}
+		if(IN_P_GateRight.transform.rotation.z < 0){
+			IN_P_GateRight.transform.Rotate(0, 0, Time.deltaTime*-RotationRate);
+		}
+		if(IN_P_GateRight.transform.rotation.z > 0.7f){
+			IN_P_GateRight.transform.Rotate(0, 0, Time.deltaTime*RotationRate);
+		}
 	}
 
 	public void LeftPlatformDown()
@@ -95,6 +115,7 @@ public class IN_Pulley : MonoBehaviour
 				Vector3 platpos = IN_P_PlatformRight.transform.localPosition;
 				platpos.y += 1.5f;
 				IN_P_PlatformRight.transform.localPosition = Vector3.Lerp(IN_P_PlatformRight.transform.localPosition, platpos, Time.deltaTime);
+				
 
 				//Left Platform
 				Vector3 platpos2 = IN_P_PlatformLeft.transform.localPosition;
@@ -104,6 +125,14 @@ public class IN_Pulley : MonoBehaviour
 				Vector3 temppos2 = IN_P_PulleyLeft.transform.localPosition;
 				temppos2.y -= 1;
 				IN_P_PulleyLeft.transform.localPosition = Vector3.Lerp(IN_P_PulleyLeft.transform.localPosition, temppos2, Time.deltaTime);
+				
+				//if gates exist rotate them
+				if(IN_P_GateLeft != null){
+					IN_P_GateLeft.transform.Rotate(0, 0, Time.deltaTime*RotationRate);
+				}
+				if(IN_P_GateRight != null){
+					IN_P_GateRight.transform.Rotate(0, 0, Time.deltaTime*-RotationRate);
+				}
 			}
 		}
 	}
@@ -146,10 +175,21 @@ public class IN_Pulley : MonoBehaviour
 				Vector3 temppos2 = IN_P_PulleyLeft.transform.localPosition;
 				temppos2.y += 1;
 				IN_P_PulleyLeft.transform.localPosition = Vector3.Lerp(IN_P_PulleyLeft.transform.localPosition, temppos2, Time.deltaTime);
+				
+				//if gates exist rotate them
+				if(IN_P_GateLeft != null){
+					IN_P_GateLeft.transform.Rotate(0, 0, Time.deltaTime*-RotationRate);
+				}
+				if(IN_P_GateRight != null){
+					IN_P_GateRight.transform.Rotate(0, 0, Time.deltaTime*RotationRate);
+				}
+
 			}
 		}
 	}
 }
+	
+
 
 /*
 	void Update()
