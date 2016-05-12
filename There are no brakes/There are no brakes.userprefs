@@ -1,10 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_TriggerGate.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\There are no Brakes\Scripts\Camera\Demo\CharacterMovement.cs">
     <Files>
-      <File FileName="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_Button.cs" Line="6" Column="2" />
-      <File FileName="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_Elevator.cs" Line="8" Column="2" />
-      <File FileName="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_TriggerGate.cs" Line="5" Column="2" />
+      <File FileName="Assets\There are no Brakes\Scripts\Camera\Demo\CharacterMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets\There are no Brakes\Scripts\Player\P_Controller.cs" Line="1" Column="1" />
+      <File FileName="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_Button.cs" Line="1" Column="1" />
+      <File FileName="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_Elevator.cs" Line="1" Column="1" />
+      <File FileName="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_TriggerGate.cs" Line="1" Column="1" />
+      <File FileName="Assets\There are no Brakes\Scripts\Player\P_GHandle.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

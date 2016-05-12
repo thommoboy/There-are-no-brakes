@@ -28,18 +28,10 @@ public class P_GHandle : MonoBehaviour {
 //	}
 
 	void OnTriggerEnter (Collider other){
-		if (other.gameObject.tag == "player" && handleInAir == false) {
-
+		if (other.gameObject.tag == "Player" && handleInAir == false) {
+			//Debug.Log ("itsa hit!");
 			grabHinge = gameObject.AddComponent <CharacterJoint> ();
 			grabHinge.connectedBody = other.GetComponent<Rigidbody>();
-
-//			JointLimits limits = grabHinge.limits;
-//			limits.min = -180;
-//			limits.bounciness = 0;
-//			limits.bounceMinVelocity = 0;
-//			limits.max = 180;
-//			grabHinge.limits = limits;
-//			grabHinge.useLimits = true;
 			//This stops the hook once it collides with something, and creates a HingeJoint to the object it collided with.
 		}
 	}
