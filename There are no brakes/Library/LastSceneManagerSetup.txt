@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/There are no Brakes/Scenes/mainMenu.unity
+- path: Assets/There are no Brakes/Scenes/Updated/Demo Prototype.unity
   isLoaded: 1
   isActive: 1
