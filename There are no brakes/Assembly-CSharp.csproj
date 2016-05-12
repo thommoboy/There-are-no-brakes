@@ -50,6 +50,7 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\Demo\CharacterMovement.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_Button.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_Elevator.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_TriggerGate.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Anchor.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Anchor_Dropped.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Anchor_Trigger.cs" />

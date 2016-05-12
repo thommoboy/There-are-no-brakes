@@ -6,6 +6,8 @@ public class I_Button : MonoBehaviour
 	public bool InTrigger = false;
 	public bool Destroyed = false;
 	public GameObject Wall;
+	public GameObject Gate;
+	public float StopHeight = -2;
 
 	void Update()
 	{
@@ -18,6 +20,16 @@ public class I_Button : MonoBehaviour
 					DestroyImmediate (Wall);
 					Destroyed = true;
 				}
+			}
+		}
+
+		if(Destroyed)
+		{
+			if(Gate.transform.localPosition.y >= StopHeight)
+			{
+				Vector3 platpos = Gate.transform.localPosition;
+				platpos.y -= 1.5f;
+				Gate.transform.localPosition = Vector3.Lerp (Gate.transform.localPosition, platpos, Time.deltaTime);
 			}
 		}
 	}
