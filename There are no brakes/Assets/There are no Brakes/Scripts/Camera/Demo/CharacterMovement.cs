@@ -11,7 +11,7 @@ public class CharacterMovement : MonoBehaviour {
 	/// movement force for the object, more force will move it faster.
 	/// Remember to tweak this depending of the mass of your rigid body.
 	/// </summary>
-	public float movementForce; 
+	public float movementForce = 10; 
 	
 	
 	private float horizontal;
