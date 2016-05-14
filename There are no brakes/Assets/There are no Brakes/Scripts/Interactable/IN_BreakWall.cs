@@ -22,9 +22,10 @@ public class IN_BreakWall : MonoBehaviour
 
 
 	void OnCollisionEnter(Collision other){
-		if (other.gameObject.name != "Plane") {
+		if (other.gameObject.tag == "Player") {
 			GameObject wall = GameObject.Instantiate(remains, this.transform.position, this.transform.rotation) as GameObject;
-			other.gameObject.GetComponent<Rigidbody> ().AddForce (Vector3.forward * 200);
+			wall.transform.localScale =new Vector3(this.transform.localScale.x / (float)4.5, this.transform.localScale.y / (float)3.5, this.transform.localScale.z);
+			//other.gameObject.GetComponent<Rigidbody> ().AddForce (Vector3.forward * 200);
 			Destroy (this.gameObject);
 
 			Rigidbody rigid = other.gameObject.GetComponent<Rigidbody> ();

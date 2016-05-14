@@ -5,7 +5,7 @@ public class IN_WallPiece : MonoBehaviour {
 	float myTime;
 	// Use this for initialization
 	void Start () {
-		
+		myTime = Time.time;
 	}
 	
 	// Update is called once per frame
