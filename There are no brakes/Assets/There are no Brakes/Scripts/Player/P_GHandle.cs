@@ -14,7 +14,7 @@ public class P_GHandle : MonoBehaviour {
 	void Update () {
 		handleInAir = GameObject.Find ("GrapplingHook(Clone)").GetComponent<P_GHook> ().inAir;
 		//Debug.Log (handleInAir);
-		if (Input.GetButton ("Fire2")) {
+		if (Input.GetKeyDown(KeyCode.Space)) {
 			Destroy (GameObject.Find("GrapplingHook(Clone)"));
 		}
 	}

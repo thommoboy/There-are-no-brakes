@@ -5,8 +5,8 @@ using System.Collections;
 /// This is a basic controller for a WASD control scheme 
 /// </summary>
 [RequireComponent (typeof(Rigidbody))]
-public class CharacterMovement : MonoBehaviour {
-	
+public class CharacterMovement : MonoBehaviour
+{
 	/// <summary>
 	/// movement force for the object, more force will move it faster.
 	/// Remember to tweak this depending of the mass of your rigid body.
@@ -14,47 +14,76 @@ public class CharacterMovement : MonoBehaviour {
 	public float movementForce = 0.5f; 
 
 	public float jumpForce = 10;
-	
-	// Use this for initialization
-	void Start () {
-	}
-	
+
+	public GameObject Player1;
+	public GameObject Player2;
 	
 	void FixedUpdate()
 	{
-		float horizontal = Input.GetAxis("Horizontal");
-		float vertical = Input.GetAxis ("Vertical");
-		if (horizontal < 0){
-			transform.rotation = Quaternion.Euler (0, 270, 0);
-		}
-		if (horizontal > 0){
-			transform.rotation = Quaternion.Euler (0, 90, 0);
+		if(Player1)
+		{
+			//Player 1:
+			float horizontal = Input.GetAxis ("P1_Horizontal");
+			float vertical = Input.GetAxis ("P1_Vertical");
+			if (horizontal < 0) {
+				Player1.transform.rotation = Quaternion.Euler (0, 270, 0);
+			}
+			if (horizontal > 0) {
+				Player1.transform.rotation = Quaternion.Euler (0, 90, 0);
+			}
+
+			Player1.GetComponent<Rigidbody> ().velocity = new Vector3 (Player1.GetComponent<Rigidbody> ().velocity.x, Player1.GetComponent<Rigidbody> ().velocity.y, horizontal * movementForce);
+			//WE move the rigid body depending of the input.
+			//		if (vertical < 0)
+			//		{
+			//			GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().rotation * Vector3.back * movementForce);
+			//		}
+			//		
+			//		if (vertical > 0)
+			//		{
+			//			GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().rotation * Vector3.forward * movementForce);
+			//		}
+
+			//Cast a ray beneath the player and check that the distance from the player to the ground is less than 1, if so you can jump!!
+			RaycastHit hit;
+			Ray downRay = new Ray (Player1.transform.position, -Vector3.up);
+			Physics.Raycast (downRay, out hit);
+
+			if(Input.GetButton ("P1_Jump") && hit.distance < 1.1)
+				Player1.GetComponent<Rigidbody> ().velocity = new Vector3 (Player1.GetComponent<Rigidbody> ().velocity.x, jumpForce, Player1.GetComponent<Rigidbody> ().velocity.z);
 		}
 
-		GetComponent<Rigidbody> ().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, GetComponent<Rigidbody>().velocity.y, horizontal * movementForce);
-		//WE move the rigid body depending of the input.
-//		if (vertical < 0)
-//		{
-//			GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().rotation * Vector3.back * movementForce);
-//		}
-//		
-//		if (vertical > 0)
-//		{
-//			GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().rotation * Vector3.forward * movementForce);
-//		}
+		if(Player2)
+		{
+			//Player 1:
+			float horizontal = Input.GetAxis ("P2_Horizontal");
+			float vertical = Input.GetAxis ("P2_Vertical");
+			if (horizontal < 0) {
+				Player2.transform.rotation = Quaternion.Euler (0, 270, 0);
+			}
+			if (horizontal > 0) {
+				Player2.transform.rotation = Quaternion.Euler (0, 90, 0);
+			}
 
-		//Cast a ray beneath the player and check that the distance from the player to the ground is less than 1, if so you can jump!!
-		RaycastHit hit;
-		Ray downRay = new Ray (transform.position, -Vector3.up);
-		Physics.Raycast (downRay, out hit);
-		//Debug.Log (hit.distance);
+			Player2.GetComponent<Rigidbody> ().velocity = new Vector3 (Player2.GetComponent<Rigidbody> ().velocity.x, Player2.GetComponent<Rigidbody> ().velocity.y, horizontal * movementForce);
+			//WE move the rigid body depending of the input.
+			//		if (vertical < 0)
+			//		{
+			//			GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().rotation * Vector3.back * movementForce);
+			//		}
+			//		
+			//		if (vertical > 0)
+			//		{
+			//			GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().rotation * Vector3.forward * movementForce);
+			//		}
 
-		if (Input.GetButton ("Jump") && hit.distance < 1.1) {
-			GetComponent<Rigidbody> ().velocity = new Vector3 (GetComponent<Rigidbody>().velocity.x, jumpForce, GetComponent<Rigidbody>().velocity.z);
+			//Cast a ray beneath the player and check that the distance from the player to the ground is less than 1, if so you can jump!!
+			RaycastHit hit;
+			Ray downRay = new Ray (Player2.transform.position, -Vector3.up);
+			Physics.Raycast (downRay, out hit);
+
+			if(Input.GetButton ("P2_Jump") && hit.distance < 1.1)
+				Player2.GetComponent<Rigidbody> ().velocity = new Vector3 (Player2.GetComponent<Rigidbody> ().velocity.x, jumpForce, Player2.GetComponent<Rigidbody> ().velocity.z);
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
 	}
 }
