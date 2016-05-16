@@ -72,18 +72,18 @@ public class IN_Pulley : MonoBehaviour
 		
 		
 		//stop gates rotating too far
-		Debug.Log(IN_P_GateRight.transform.rotation.z);
+		Debug.Log(IN_P_GateLeft.transform.rotation.z);
 		if(IN_P_GateLeft.transform.rotation.z < 0){
-			IN_P_GateLeft.transform.Rotate(0, 0, Time.deltaTime*-RotationRate);
-		}
-		if(IN_P_GateLeft.transform.rotation.z > 0.7f){
 			IN_P_GateLeft.transform.Rotate(0, 0, Time.deltaTime*RotationRate);
 		}
-		if(IN_P_GateRight.transform.rotation.z < 0){
-			IN_P_GateRight.transform.Rotate(0, 0, Time.deltaTime*-RotationRate);
+		if(IN_P_GateLeft.transform.rotation.z > 0.5f){
+			IN_P_GateLeft.transform.Rotate(0, 0, Time.deltaTime*-RotationRate);
 		}
-		if(IN_P_GateRight.transform.rotation.z > 0.7f){
+		if(IN_P_GateRight.transform.rotation.z < 0){
 			IN_P_GateRight.transform.Rotate(0, 0, Time.deltaTime*RotationRate);
+		}
+		if(IN_P_GateRight.transform.rotation.z > 0.5f){
+			IN_P_GateRight.transform.Rotate(0, 0, Time.deltaTime*-RotationRate);
 		}
 	}
 
