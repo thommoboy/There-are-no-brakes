@@ -3,7 +3,7 @@ using System.Collections;
 
 public class IN_Anchor_Dropped : MonoBehaviour{
 	private float anchorHeight;
-	public int dropDistance = 40;
+	public int dropDistance = 35;
 
 	public void Start(){
 		anchorHeight = GameObject.Find("Anchor").transform.position.y;

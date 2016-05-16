@@ -6,8 +6,8 @@ public class P_HUD : MonoBehaviour {
 	private Vector2 size = new Vector2(375,60);
 	public Vector2 pos1;
 	private Vector2 pos2 = new Vector2(0,0);
-	private float barDisplay1 = 0.015f; //whole game
-	private float barDisplay2 = 0.9f; //current level
+	public float barDisplay1 = 0.015f; //whole game
+	public float barDisplay2 = 0.9f; //current level
 	private float bar1distance = 0; //whole game
 	private float bar2distance = 0; //current level
 	public Texture2D emptyTex;
@@ -20,16 +20,25 @@ public class P_HUD : MonoBehaviour {
 	public int MaxGameDistance = 10000; //distance in meters
 	private bool GameOver = false;
 	public int PercentageRecoverOnLevelComplete = 15;
+	private float traindefaultpos;
+	private float clouddefaultpos;
+	public float maxpos = 16;
+	private float trainmaxpos;
+	private float cloudmaxpos;
 	
 	void Start(){
 		pos2 = new Vector2(Screen.width - (size.x + pos1.x),pos1.y);
-		MaxLevelTime = (int)(MaxLevelTime * (1/barDisplay2));//corrects starting with bar not full/empty
+		MaxLevelTime = (int)(MaxLevelTime * (1/barDisplay2));//corrects for starting with bar not full
+		traindefaultpos = GameObject.Find("HUDtrainIcon").transform.position.z;
+		clouddefaultpos = GameObject.Find("HUDcloudIcon").transform.position.z;
+		trainmaxpos = traindefaultpos - maxpos;
+		cloudmaxpos = clouddefaultpos + maxpos;
 	}
 	
 	void OnGUI() {
 		if(GameOver){
 			GUI.Box(new Rect(Screen.width/2-75,50,250,40), "GAME OVER");			
-		} else {
+		}/* else { //render HUD as GUI objects
 			//left HUD bar
 			//draw the background:
 			GUI.BeginGroup(new Rect(pos1.x, pos1.y, size.x, size.y), HUDGUIStyle);
@@ -67,7 +76,7 @@ public class P_HUD : MonoBehaviour {
 			//render icons
 			GUI.Box(new Rect(pos1.x + size.x*barDisplay1 - 50,pos1.y-4, 100, 68), cloudIcon, HUDGUIStyle);
 			GUI.Box(new Rect(pos2.x + size.x*barDisplay2 - 50,pos2.y, 100, 68), trainIcon, HUDGUIStyle);
-		}
+		}*/
 	}
 	 
 	void FixedUpdate() {
@@ -80,8 +89,8 @@ public class P_HUD : MonoBehaviour {
 		bar2distance = (int)((1-barDisplay2)*MaxLevelDistance);
 		
 		//trigger game over if either bar empties
-		if(barDisplay1 <= 0){GameOver = true;GameLost();}
-		if(barDisplay2 <= 0){GameOver = true;GameLost();}
+		if(barDisplay1 >= 1){GameOver = true;barDisplay1 = 1;GameLost();}
+		if(barDisplay2 <= 0){GameOver = true;barDisplay2 = 0;GameLost();}
 		
 		//recover distance on level completion
 		if(barDisplay2 < recoveredDistance){
@@ -90,6 +99,13 @@ public class P_HUD : MonoBehaviour {
 			recoveredDistance = 0;
 			recovering = false;
 		}
+		
+		
+		//render HUD as 3D Mesh objects
+		float cloudpos = barDisplay1 * maxpos + clouddefaultpos;
+		GameObject.Find("HUDcloudIcon").transform.position = new Vector3(2.9f,33.6f,cloudpos);
+		float trainpos = barDisplay2 * maxpos + traindefaultpos - maxpos;
+		GameObject.Find("HUDtrainIcon").transform.position = new Vector3(24.13f,44,trainpos);
 	}
 	
 	public void GameLost(){
