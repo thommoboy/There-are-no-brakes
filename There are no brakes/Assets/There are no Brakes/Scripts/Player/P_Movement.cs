@@ -11,15 +11,18 @@ public class P_Movement : MonoBehaviour
 	/// movement force for the object, more force will move it faster.
 	/// Remember to tweak this depending of the mass of your rigid body.
 	/// </summary>
-	public float movementForce = 0.5f; 
-
+	public float movementForce = 0.5f;
+//	public float grappleDistance = 5.0f;
+//	public float grappleHook = 5.0f;
 	public float jumpForce = 10;
 	public float g = -9.81f;
+	public GameObject [] grapplePoints;
 	public GameObject Player1;
 	public GameObject Player2;
 
 	void Start(){
-		Physics.gravity = new Vector3(0, g, 0);	
+		Physics.gravity = new Vector3(0, g, 0);
+//		grapplePoints = GameObject.FindGameObjectsWithTag("gp");
 	}
 
 	void FixedUpdate()
@@ -89,5 +92,9 @@ public class P_Movement : MonoBehaviour
 			if(Input.GetButton ("P2_Jump") && hit.distance < 1.1)
 				Player2.GetComponent<Rigidbody> ().velocity = new Vector3 (Player2.GetComponent<Rigidbody> ().velocity.x, jumpForce, Player2.GetComponent<Rigidbody> ().velocity.z);
 		}
+//		//if distance between player and grappling hook < some value, create a hinge
+//		foreach(GameObject gPoint in grapplePoints){
+//			if(Vector3.Distance(Player1.transform.position, gPoint) > grappleDistance){}
+//		}
 	}
 }
