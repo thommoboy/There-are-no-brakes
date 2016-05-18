@@ -47,9 +47,6 @@
   <ItemGroup>
      <Compile Include="Assets\There are no Brakes\Editor\CameraMultitargetEditor.cs" />
      <Compile Include="Assets\There are no Brakes\Editor\Import.cs" />
- <Reference Include="Assembly-UnityScript">
- <HintPath>C:/Users/Pierce/Documents/GitHub/There-are-no-brakes/There are no brakes/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
- </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
@@ -84,6 +81,8 @@
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{C79836F9-12A6-B5BB-1BB2-BBD6C321DBD0}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript.unityproj">
+      <Project>{A5D29527-CDBE-E14C-EE29-E59E218B658A}</Project>      <Name>Assembly-UnityScript</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

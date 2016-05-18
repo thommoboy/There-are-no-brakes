@@ -47,7 +47,6 @@
   <ItemGroup>
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraMultiTargetObjective.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraMultitarget.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Camera\Demo\CharacterMovement.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_Button.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_ChestTrigger.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_Elevator.cs" />
@@ -70,13 +69,12 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_OnMouseExit.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_OnMouseOver.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\Obsolete\PlayerControl.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_Controller.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_GHandle.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_GHook.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_GShot.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_HUD.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_Movement.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PickUp.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PlayerController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
