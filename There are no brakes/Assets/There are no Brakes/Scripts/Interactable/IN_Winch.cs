@@ -16,6 +16,7 @@ public class IN_Winch : IN_InteractableObject{
 	}
 
 	public GameObject target;
+	public GameObject rope;
 	public bool gate = false;
 	private bool intrigger = false;
 	void OnTriggerStay(Collider other) {
@@ -44,25 +45,37 @@ public class IN_Winch : IN_InteractableObject{
 	public float movespeed = 1.5f;
 	private bool up = true;
 	void WindWinch(){
-		playsoundeffect();
 		if(gate){
 			if(target.transform.rotation.z < 0.5f){
+				playsoundeffect();
+				Vector3 ropelength = rope.transform.localScale;
 				target.transform.Rotate(0, 0, Time.deltaTime*25);
+				ropelength.y -= movespeed/12.25f;
+				rope.transform.localScale = Vector3.Lerp(rope.transform.localScale, ropelength, Time.deltaTime);
+				rope.transform.Rotate(Time.deltaTime*4, 0, 0);
+			} else {
+				GetComponent<AudioSource>().Stop();
+				playingsound = false;
 			}
 		} else {
+			playsoundeffect();
 			Vector3 platpos = target.transform.localPosition;
+			Vector3 ropelength = rope.transform.localScale;
 			if(up){
 				platpos.y += movespeed;
+				ropelength.y -= movespeed/1.65f;
 				if(target.transform.position.y > maxheight){
 				 up = false;
 				}
 			} else {
 				platpos.y -= movespeed;
+				ropelength.y += movespeed/1.65f;
 				if(target.transform.position.y < targetminheight){
 				 up = true;
 				}
 			}
 			target.transform.localPosition = Vector3.Lerp(target.transform.localPosition, platpos, Time.deltaTime);
+			rope.transform.localScale = Vector3.Lerp(rope.transform.localScale, ropelength, Time.deltaTime);
 		}
 	}
 	
