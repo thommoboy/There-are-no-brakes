@@ -25,8 +25,7 @@ public class I_Button : MonoBehaviour
 
 		if(Destroyed)
 		{
-			if(Gate.transform.rotation.z < 0.5f)
-			{
+			if(Gate.transform.rotation.z < 0.5f){
 				Gate.transform.Rotate(0, 0, Time.deltaTime*25);
 			}
 		}
@@ -37,6 +36,15 @@ public class I_Button : MonoBehaviour
 		if(other.tag == "Player")
 		{
 			InTrigger = true;
+		}
+	}
+
+	void OnTriggerStay(Collider other)
+	{
+		if(other.tag == "Weight"){
+			if(Gate.transform.rotation.z < 0.5f){
+				Gate.transform.Rotate(0, 0, Time.deltaTime*25);
+			}
 		}
 	}
 

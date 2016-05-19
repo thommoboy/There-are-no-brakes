@@ -1,2 +1,3 @@
-There are no brakes/Library/
-There are no brakes/Temp/
+There are no brakes/Library/*
+There are no brakes/Temp/*
+*.info
