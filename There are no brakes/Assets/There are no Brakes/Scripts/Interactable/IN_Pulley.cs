@@ -14,7 +14,7 @@ public class IN_Pulley : MonoBehaviour
 	public Vector3 IN_P_Origin_Right = new Vector3();
 	
 	public GameObject IN_P_GateLeft;
-	//public GameObject IN_P_GateRight;
+	/*public GameObject IN_P_GateRight;*/
 	public int RotationRate = 25;
 	
 	public GameObject IN_P_RopeLeft;
