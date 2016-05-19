@@ -14,8 +14,15 @@ public class IN_Pulley : MonoBehaviour
 	public Vector3 IN_P_Origin_Right = new Vector3();
 	
 	public GameObject IN_P_GateLeft;
-	public GameObject IN_P_GateRight;
+	//public GameObject IN_P_GateRight;
 	public int RotationRate = 25;
+	
+	public GameObject IN_P_RopeLeft;
+	public GameObject IN_P_RopeRight;
+	private float minrightrope;
+	private float maxrightrope;
+	private float minleftrope;
+	private float maxleftrope;
 
 	public bool Origin = false;
 
@@ -23,8 +30,12 @@ public class IN_Pulley : MonoBehaviour
 	{
 		IN_P_Origin_Left = IN_P_PlatformLeft.transform.localPosition;
 		IN_P_Origin_Right = IN_P_PlatformRight.transform.localPosition;
+		maxrightrope = IN_P_RopeRight.transform.localScale.y;
+		minrightrope = maxrightrope * 0.8f;
+		minleftrope = IN_P_RopeLeft.transform.localScale.y;
+		maxleftrope = maxrightrope * 1.1f;
 	}
-
+	
 	public void Update()
 	{
 
@@ -78,13 +89,13 @@ public class IN_Pulley : MonoBehaviour
 		}
 		if(IN_P_GateLeft.transform.rotation.z > 0.5f){
 			IN_P_GateLeft.transform.Rotate(0, 0, Time.deltaTime*-RotationRate);
-		}
+		}/*
 		if(IN_P_GateRight.transform.rotation.z < 0){
 			IN_P_GateRight.transform.Rotate(0, 0, Time.deltaTime*RotationRate);
 		}
 		if(IN_P_GateRight.transform.rotation.z > 0.5f){
 			IN_P_GateRight.transform.Rotate(0, 0, Time.deltaTime*-RotationRate);
-		}
+		}*/
 	}
 
 	public void LeftPlatformDown()
@@ -96,25 +107,29 @@ public class IN_Pulley : MonoBehaviour
 			}
 			else
 			{
-				/*
+				
 				//Right Rope
-				Vector3 tempscale = IN_P_PulleyRight.transform.localScale;
-				tempscale.y -= 1;
-				IN_P_PulleyRight.transform.localScale = tempscale;
+				Vector3 tempscale = IN_P_RopeRight.transform.localScale;
+				tempscale.y -= 0.7f;
+				if(minrightrope < IN_P_RopeRight.transform.localScale.y){
+					IN_P_RopeRight.transform.localScale = Vector3.Lerp(IN_P_RopeRight.transform.localScale, tempscale, Time.deltaTime);
+				}
 
 				//Left Rope
-				Vector3 tempscale2 = IN_P_PulleyLeft.transform.localScale;
-				tempscale2.y += 1;
-				IN_P_PulleyLeft.transform.localScale = tempscale2;
-				*/
+				if(maxleftrope > IN_P_RopeLeft.transform.localScale.y){
+					IN_P_RopeLeft.transform.localScale = new Vector3(IN_P_RopeLeft.transform.localScale.x, IN_P_RopeLeft.transform.localScale.y + 0.3f*Time.deltaTime, IN_P_RopeLeft.transform.localScale.z);
+				}
+				
+				//Right Platform
 				Vector3 temppos = IN_P_PulleyRight.transform.localPosition;
 				temppos.y += 1;
 				IN_P_PulleyRight.transform.localPosition = Vector3.Lerp(IN_P_PulleyRight.transform.localPosition, temppos, Time.deltaTime);
 
-				//Right Platform
 				Vector3 platpos = IN_P_PlatformRight.transform.localPosition;
 				platpos.y += 1.5f;
 				IN_P_PlatformRight.transform.localPosition = Vector3.Lerp(IN_P_PlatformRight.transform.localPosition, platpos, Time.deltaTime);
+				
+				GameObject.Find("weight").transform.localPosition = new Vector3(GameObject.Find("weight").transform.localPosition.x, GameObject.Find("weight").transform.localPosition.y + 0.02f, GameObject.Find("weight").transform.localPosition.z);
 				
 
 				//Left Platform
@@ -126,13 +141,19 @@ public class IN_Pulley : MonoBehaviour
 				temppos2.y -= 1;
 				IN_P_PulleyLeft.transform.localPosition = Vector3.Lerp(IN_P_PulleyLeft.transform.localPosition, temppos2, Time.deltaTime);
 				
-				//if gates exist rotate them
-				if(IN_P_GateLeft != null){
-					IN_P_GateLeft.transform.Rotate(0, 0, Time.deltaTime*RotationRate);
+				//rotate gates
+				IN_P_GateLeft.transform.Rotate(0, 0, Time.deltaTime*RotationRate);
+				//IN_P_GateRight.transform.Rotate(0, 0, Time.deltaTime*-RotationRate);
+				
+				//move rope attached to gate
+				Vector3 ropelength = GameObject.Find("adjustablerope5").transform.localScale;
+				ropelength.y -= 0.2f;
+				if(GameObject.Find("adjustablerope5").transform.localScale.y > 0.2f){
+					GameObject.Find("adjustablerope5").transform.localScale = Vector3.Lerp(GameObject.Find("adjustablerope5").transform.localScale, ropelength, Time.deltaTime);
+					GameObject.Find("adjustablerope5").transform.Rotate(Time.deltaTime*5, 0, 0);
 				}
-				if(IN_P_GateRight != null){
-					IN_P_GateRight.transform.Rotate(0, 0, Time.deltaTime*-RotationRate);
-				}
+				Debug.Log(GameObject.Find("adjustablerope5").transform.localScale);
+				Debug.Log(GameObject.Find("adjustablerope5").transform.rotation);
 			}
 		}
 	}
@@ -146,18 +167,18 @@ public class IN_Pulley : MonoBehaviour
 			}
 			else
 			{
-				/*
-				//Left Rope
-				Vector3 tempscale2 = IN_P_PulleyLeft.transform.localScale;
-				tempscale2.y -= 1;
-				IN_P_PulleyLeft.transform.localScale = tempscale2;
-
 				//Right Rope
-				Vector3 tempscale = IN_P_PulleyRight.transform.localScale;
-				tempscale.y += 1;
-				IN_P_PulleyRight.transform.localScale = tempscale;
-				*/
+				Vector3 tempscale = IN_P_RopeRight.transform.localScale;
+				tempscale.y += 0.7f;
+				if(maxrightrope > IN_P_RopeRight.transform.localScale.y){
+					IN_P_RopeRight.transform.localScale = Vector3.Lerp(IN_P_RopeRight.transform.localScale, tempscale, Time.deltaTime);
+				}
 
+				//Left Rope
+				if(minleftrope < IN_P_RopeLeft.transform.localScale.y){
+					IN_P_RopeLeft.transform.localScale = new Vector3(IN_P_RopeLeft.transform.localScale.x, IN_P_RopeLeft.transform.localScale.y - 0.3f*Time.deltaTime, IN_P_RopeLeft.transform.localScale.z);
+				}
+				
 				//Right Platform
 				Vector3 temppos = IN_P_PulleyRight.transform.localPosition;
 				temppos.y -= 1;
@@ -176,14 +197,9 @@ public class IN_Pulley : MonoBehaviour
 				temppos2.y += 1;
 				IN_P_PulleyLeft.transform.localPosition = Vector3.Lerp(IN_P_PulleyLeft.transform.localPosition, temppos2, Time.deltaTime);
 				
-				//if gates exist rotate them
-				if(IN_P_GateLeft != null){
-					IN_P_GateLeft.transform.Rotate(0, 0, Time.deltaTime*-RotationRate);
-				}
-				if(IN_P_GateRight != null){
-					IN_P_GateRight.transform.Rotate(0, 0, Time.deltaTime*RotationRate);
-				}
-
+				//rotate gates
+				IN_P_GateLeft.transform.Rotate(0, 0, Time.deltaTime*-RotationRate);
+				//IN_P_GateRight.transform.Rotate(0, 0, Time.deltaTime*RotationRate);
 			}
 		}
 	}
