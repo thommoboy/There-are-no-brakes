@@ -22,7 +22,7 @@ public class IN_BreakWall : MonoBehaviour
 
 
 	void OnCollisionEnter(Collision other){
-		if (other.gameObject.tag == "Player") {
+		if (other.gameObject.tag == "Weight") {
 			GameObject wall = GameObject.Instantiate(remains, this.transform.position, this.transform.rotation) as GameObject;
 			wall.transform.localScale =new Vector3(this.transform.localScale.x / (float)4.5, this.transform.localScale.y / (float)3.5, this.transform.localScale.z);
 			//other.gameObject.GetComponent<Rigidbody> ().AddForce (Vector3.forward * 200);
@@ -34,7 +34,7 @@ public class IN_BreakWall : MonoBehaviour
 			direction = getBasicDirectionUnit (direction);
 			print(direction);
 
-			GameObject wallSphereCollider = GameObject.Instantiate (sphereCollider, other.transform.position + direction * (other.gameObject.transform.localScale.x*(float)0.8)
+			GameObject wallSphereCollider = GameObject.Instantiate (sphereCollider, other.transform.position + direction * (other.gameObject.transform.localScale.x*(float)2.8)
 				, other.transform.rotation) as GameObject;
 
 			Destroy (wall, (float)4);

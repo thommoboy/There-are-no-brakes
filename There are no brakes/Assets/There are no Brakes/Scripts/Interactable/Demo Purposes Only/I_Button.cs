@@ -25,11 +25,9 @@ public class I_Button : MonoBehaviour
 
 		if(Destroyed)
 		{
-			if(Gate.transform.localPosition.y >= StopHeight)
+			if(Gate.transform.rotation.z < 0.5f)
 			{
-				Vector3 platpos = Gate.transform.localPosition;
-				platpos.y -= 1.5f;
-				Gate.transform.localPosition = Vector3.Lerp (Gate.transform.localPosition, platpos, Time.deltaTime);
+				Gate.transform.Rotate(0, 0, Time.deltaTime*25);
 			}
 		}
 	}
