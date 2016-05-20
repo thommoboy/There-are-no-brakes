@@ -25,15 +25,16 @@ public class IN_Pulley : MonoBehaviour
 	private float maxleftrope;
 
 	public bool Origin = false;
+	
 
 	public void Start()
 	{
 		IN_P_Origin_Left = IN_P_PlatformLeft.transform.localPosition;
 		IN_P_Origin_Right = IN_P_PlatformRight.transform.localPosition;
 		maxrightrope = IN_P_RopeRight.transform.localScale.y;
-		minrightrope = maxrightrope * 0.8f;
+		minrightrope = maxrightrope * 0.5f;
 		minleftrope = IN_P_RopeLeft.transform.localScale.y;
-		maxleftrope = maxrightrope * 1.1f;
+		maxleftrope = maxrightrope * 1.2f;
 	}
 	
 	public void Update()
@@ -110,14 +111,14 @@ public class IN_Pulley : MonoBehaviour
 				
 				//Right Rope
 				Vector3 tempscale = IN_P_RopeRight.transform.localScale;
-				tempscale.y -= 0.7f;
+				tempscale.y -= 0.2f;
 				if(minrightrope < IN_P_RopeRight.transform.localScale.y){
 					IN_P_RopeRight.transform.localScale = Vector3.Lerp(IN_P_RopeRight.transform.localScale, tempscale, Time.deltaTime);
 				}
 
 				//Left Rope
 				if(maxleftrope > IN_P_RopeLeft.transform.localScale.y){
-					IN_P_RopeLeft.transform.localScale = new Vector3(IN_P_RopeLeft.transform.localScale.x, IN_P_RopeLeft.transform.localScale.y + 0.3f*Time.deltaTime, IN_P_RopeLeft.transform.localScale.z);
+					IN_P_RopeLeft.transform.localScale = new Vector3(IN_P_RopeLeft.transform.localScale.x, IN_P_RopeLeft.transform.localScale.y + 0.1f*Time.deltaTime, IN_P_RopeLeft.transform.localScale.z);
 				}
 				
 				//Right Platform
@@ -147,13 +148,11 @@ public class IN_Pulley : MonoBehaviour
 				
 				//move rope attached to gate
 				Vector3 ropelength = GameObject.Find("adjustablerope5").transform.localScale;
-				ropelength.y -= 0.2f;
-				if(GameObject.Find("adjustablerope5").transform.localScale.y > 0.2f){
+				ropelength.y -= 0.3f;
+				if(GameObject.Find("adjustablerope5").transform.localScale.y > 0.3f){
 					GameObject.Find("adjustablerope5").transform.localScale = Vector3.Lerp(GameObject.Find("adjustablerope5").transform.localScale, ropelength, Time.deltaTime);
-					GameObject.Find("adjustablerope5").transform.Rotate(Time.deltaTime*5, 0, 0);
+					GameObject.Find("adjustablerope5").transform.Rotate(Time.deltaTime*7, 0, 0);
 				}
-				Debug.Log(GameObject.Find("adjustablerope5").transform.localScale);
-				Debug.Log(GameObject.Find("adjustablerope5").transform.rotation);
 			}
 		}
 	}
@@ -169,14 +168,14 @@ public class IN_Pulley : MonoBehaviour
 			{
 				//Right Rope
 				Vector3 tempscale = IN_P_RopeRight.transform.localScale;
-				tempscale.y += 0.7f;
+				tempscale.y += 0.2f;
 				if(maxrightrope > IN_P_RopeRight.transform.localScale.y){
 					IN_P_RopeRight.transform.localScale = Vector3.Lerp(IN_P_RopeRight.transform.localScale, tempscale, Time.deltaTime);
 				}
 
 				//Left Rope
 				if(minleftrope < IN_P_RopeLeft.transform.localScale.y){
-					IN_P_RopeLeft.transform.localScale = new Vector3(IN_P_RopeLeft.transform.localScale.x, IN_P_RopeLeft.transform.localScale.y - 0.3f*Time.deltaTime, IN_P_RopeLeft.transform.localScale.z);
+					IN_P_RopeLeft.transform.localScale = new Vector3(IN_P_RopeLeft.transform.localScale.x, IN_P_RopeLeft.transform.localScale.y - 0.1f*Time.deltaTime, IN_P_RopeLeft.transform.localScale.z);
 				}
 				
 				//Right Platform
@@ -200,6 +199,14 @@ public class IN_Pulley : MonoBehaviour
 				//rotate gates
 				IN_P_GateLeft.transform.Rotate(0, 0, Time.deltaTime*-RotationRate);
 				//IN_P_GateRight.transform.Rotate(0, 0, Time.deltaTime*RotationRate);
+				
+				//move rope attached to gate
+				Vector3 ropelength = GameObject.Find("adjustablerope5").transform.localScale;
+				ropelength.y += 0.3f;
+				if(GameObject.Find("adjustablerope5").transform.localScale.y < 1){
+					GameObject.Find("adjustablerope5").transform.localScale = Vector3.Lerp(GameObject.Find("adjustablerope5").transform.localScale, ropelength, Time.deltaTime);
+					GameObject.Find("adjustablerope5").transform.Rotate(-Time.deltaTime*7, 0, 0);
+				}
 			}
 		}
 	}

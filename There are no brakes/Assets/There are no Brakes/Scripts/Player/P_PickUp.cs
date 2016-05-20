@@ -35,12 +35,24 @@ public class P_PickUp : MonoBehaviour {
 				} else {
 					carriedObject.transform.position = new Vector3 (this.transform.position.x, this.transform.position.y + 2.3f, this.transform.position.z-1.2f);
 				}
+				if(Input.GetKey(KeyCode.UpArrow)){
+					ThrowAway();
+				}
+				if(GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().BeingCarried1){
+					DropPlayer();
+				}
 			}
 			if(this.name == "Player2"){
 				if(GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().FacingRight2){
 					carriedObject.transform.position = new Vector3 (this.transform.position.x, this.transform.position.y + 2.3f, this.transform.position.z+1.2f);
 				} else {
 					carriedObject.transform.position = new Vector3 (this.transform.position.x, this.transform.position.y + 2.3f, this.transform.position.z-1.2f);
+				}
+				if(Input.GetKey(KeyCode.W)){
+					ThrowAway();
+				}
+				if(GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().BeingCarried2){
+					DropPlayer();
 				}
 			}
 			if(this.name == "Player3"){
@@ -49,10 +61,12 @@ public class P_PickUp : MonoBehaviour {
 				} else {
 					carriedObject.transform.position = new Vector3 (this.transform.position.x, this.transform.position.y + 2.3f, this.transform.position.z-1.2f);
 				}
-			}
-			
-			if(Input.GetKey(KeyCode.E)){
-				ThrowAway();
+				if(Input.GetKey(KeyCode.I)){
+					ThrowAway();
+				}
+				if(GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().BeingCarried3){
+					DropPlayer();
+				}
 			}
 		}
 	}
@@ -107,6 +121,13 @@ public class P_PickUp : MonoBehaviour {
 				HeldObject.GetComponent<Rigidbody>().velocity = new Vector3(0,ThrowHeight, -ThrowLength);
 			}
 		}
+		//can pick up things now
+		Carrying = false;
+	}
+	
+	void DropPlayer(){
+		//disconnect other player
+		HeldObject.transform.parent = null;
 		//can pick up things now
 		Carrying = false;
 	}
