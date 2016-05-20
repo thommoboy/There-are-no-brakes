@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class IN_SeeSaw : MonoBehaviour {
     public string playerTag = "player";
     public float bounceForce = 100;
+    public string[] useable_items_tag;
     List<Collision> touchList;
     int count;
     // Use this for initialization
@@ -24,10 +25,20 @@ public class IN_SeeSaw : MonoBehaviour {
 		*/
 	}
 
-    
+    bool checkUseable(string itemTag) {
+        for (int i = 0; i < useable_items_tag.Length; i++) {
+            if (useable_items_tag[i] == itemTag) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     void OnCollisionEnter(Collision touchItem) {
         //print(touchItem.gameObject.name + " enter");
-		if (touchItem.gameObject.name == "Plane" || touchItem.gameObject.name == "Cone") return;
+        //if (touchItem.gameObject.name == "Plane" || touchItem.gameObject.name == "Cone") return;
+        if (!checkUseable(touchItem.gameObject.tag)) return;
+
         bool flag = false;
         for (int i = 0; i < count; i++) {
 			if (touchList[i].gameObject.name == touchItem.gameObject.name) {
@@ -47,21 +58,22 @@ public class IN_SeeSaw : MonoBehaviour {
         {
             touch += touchList[i].gameObject.name + ", ";
         }
-        print(touch);
+        //print(touch);
 
         for (int i = 0; i < count; i++) {
             Collision other = touchList[i];
             if (touchItem.gameObject.transform.position.y < other.gameObject.transform.position.y) continue;
             bool onSameSide = true;
-            float otherX = other.gameObject.transform.position.x - this.gameObject.transform.position.x;
-            float touchItemX = touchItem.gameObject.transform.position.x - this.gameObject.transform.position.x;
+            float otherX = other.gameObject.transform.position.z - this.gameObject.transform.position.z;
+            float touchItemX = touchItem.gameObject.transform.position.z - this.gameObject.transform.position.z;
             if (otherX * touchItemX < 0) { onSameSide = false; }
             if (onSameSide) continue;
 
             other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * bounceForce * (Mathf.Abs(otherX) / (this.transform.localScale.x/3)));
             string force = (Vector3.up * bounceForce * (Mathf.Abs(otherX) / this.transform.localScale.x) * (Mathf.Abs(touchItemX) / this.transform.localScale.x)).ToString();
-			print("add force to " + other.collider.gameObject.name);
-            print(force);
+
+			//print("add force to " + other.collider.gameObject.name);
+           // print(force);
 
         }
 
