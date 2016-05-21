@@ -7,22 +7,26 @@ public class P_PickUp : MonoBehaviour {
 	private GameObject carriedObject;
 		 
 	void OnTriggerStay(Collider other){
-		if(other.tag == "Player" && other.name != this.name){
-			if(!Carrying){
-				if(this.name == "Player1"){
-					if(Input.GetKey(KeyCode.DownArrow)){
-						PickUp(other.gameObject);
+		if (other.tag == "Player" && other.name != this.name) {
+			if (!Carrying) {
+				if (this.name == "Player1") {
+					if (Input.GetKey (KeyCode.DownArrow)) {
+						PickUp (other.gameObject);
 					}
 				}
-				if(this.name == "Player2"){
-					if(Input.GetKey(KeyCode.S)){
-						PickUp(other.gameObject);
+				if (this.name == "Player2") {
+					if (Input.GetKey (KeyCode.S)) {
+						PickUp (other.gameObject);
+					}
+				}
+				if (this.name == "Player3") {
+					if (Input.GetKey (KeyCode.K)) {
+						PickUp (other.gameObject);
 					}
 				}
 			}
 		}
 	}
-
 	void FixedUpdate(){
 		if (Carrying) {
 			if(this.name == "Player1"){

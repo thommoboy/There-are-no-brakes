@@ -21,6 +21,10 @@ public class P_Movement : MonoBehaviour
 	public GameObject Player2;
 	public GameObject Player3;
 
+	public GameObject Player1Anim;
+	public GameObject Player2Anim;
+	public GameObject Player3Anim;
+
 	public bool BeingCarried1 = false;
 	public bool BeingCarried2 = false;
 	public bool BeingCarried3 = false;
@@ -47,6 +51,8 @@ public class P_Movement : MonoBehaviour
 			if (hit.distance < 1.1) {
 				BeingCarried1 = false;
 			}
+			else
+				Player1Anim.GetComponent<Animator> ().Play ("Idle");
 
 			if (Input.GetButton ("P1_Jump") && hit.distance < 1.1) {
 				if(GameObject.Find("Player1").GetComponent<P_PickUp>().Carrying == false){
@@ -55,15 +61,30 @@ public class P_Movement : MonoBehaviour
 			}
 
 			if(!BeingCarried1){
+			
+
+					
+
 			//Player 1:
 			float horizontal = Input.GetAxis ("P1_Horizontal");
 			//float vertical = Input.GetAxis ("P1_Vertical");
+				if (!Input.GetKey (KeyCode.LeftArrow) && !Input.GetKey (KeyCode.RightArrow)) {
+					Player1Anim.GetComponent<Animator> ().Play ("Idle");
+					GameObject.FindGameObjectWithTag ("AudioManager").GetComponent<M_AudioManager> ().SoundFXOutput.Stop();
+				}
+				
 			if (horizontal < 0) {
 				Player1.transform.rotation = Quaternion.Euler (0, 270, 0);
+					GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
+
+					Player1Anim.GetComponent<Animator>().Play("Walk");
 				FacingRight1 = false;
 			}
 			if (horizontal > 0) {
 				Player1.transform.rotation = Quaternion.Euler (0, 90, 0);
+					GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
+					//Player1Anim.GetComponent<Animation> ().Play ("Walk");
+					Player1Anim.GetComponent<Animator>().Play("Walk");
 				FacingRight1 = true;
 			}
 
@@ -91,6 +112,8 @@ public class P_Movement : MonoBehaviour
 			if (hit.distance < 1.1) {
 				BeingCarried2 = false;
 			}
+			else
+				Player2Anim.GetComponent<Animator> ().Play ("Idle");
 
 			if (Input.GetButton ("P2_Jump") && hit.distance < 1.1) {
 				if(GameObject.Find("Player2").GetComponent<P_PickUp>().Carrying == false){
@@ -102,12 +125,18 @@ public class P_Movement : MonoBehaviour
 			//Player 2:
 			float horizontal = Input.GetAxis ("P2_Horizontal");
 			//float vertical = Input.GetAxis ("P2_Vertical");
+
+				if(!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+					Player2Anim.GetComponent<Animator> ().Play ("Idle");
+				
 			if (horizontal < 0) {
 				Player2.transform.rotation = Quaternion.Euler (0, 270, 0);
+					Player2Anim.GetComponent<Animator>().Play("Walk");
 				FacingRight2 = false;
 			}
 			if (horizontal > 0) {
 				Player2.transform.rotation = Quaternion.Euler (0, 90, 0);
+					Player2Anim.GetComponent<Animator>().Play("Walk");
 				FacingRight2 = true;
 			}
 
@@ -136,6 +165,8 @@ public class P_Movement : MonoBehaviour
 			if (hit3.distance < 1.1) {
 				BeingCarried3 = false;
 			}
+				else
+					Player3Anim.GetComponent<Animator> ().Play ("Idle");
 
 			if (Input.GetButton ("P3_Jump") && hit3.distance < 1.1) {
 				if(GameObject.Find("Player3").GetComponent<P_PickUp>().Carrying == false){
@@ -147,12 +178,18 @@ public class P_Movement : MonoBehaviour
 			//Player 3:
 			float horizontal = Input.GetAxis ("P3_Horizontal");
 			//float vertical = Input.GetAxis ("P3_Vertical");
+
+					if(!Input.GetKey(KeyCode.J) && !Input.GetKey(KeyCode.L))
+						Player3Anim.GetComponent<Animator> ().Play ("Idle");
+					
 			if (horizontal < 0) {
 				Player3.transform.rotation = Quaternion.Euler (0, 270, 0);
+						Player3Anim.GetComponent<Animator>().Play("Walk");
 				FacingRight3 = false;
 			}
 			if (horizontal > 0) {
 				Player3.transform.rotation = Quaternion.Euler (0, 90, 0);
+						Player3Anim.GetComponent<Animator>().Play("Walk");
 				FacingRight3 = true;
 			}
 

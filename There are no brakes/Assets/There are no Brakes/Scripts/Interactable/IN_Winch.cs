@@ -22,10 +22,12 @@ public class IN_Winch : IN_InteractableObject{
 	void OnTriggerStay(Collider other) {
 		if(other.tag == "Player"){
 			intrigger = true;
-			if(Input.GetKey(KeyCode.S)){
-				WindWinch();
-			} else if(Input.GetKey(KeyCode.DownArrow)) {
-				WindWinch();
+			if (Input.GetKey (KeyCode.S)) {
+				WindWinch ();
+			} else if (Input.GetKey (KeyCode.DownArrow)) {
+				WindWinch ();
+			} else if (Input.GetKey(KeyCode.K)) {
+				WindWinch ();
 			} else {
 				GetComponent<AudioSource>().Stop();
 				playingsound = false;
