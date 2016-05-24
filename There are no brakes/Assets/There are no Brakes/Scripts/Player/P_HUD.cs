@@ -98,8 +98,14 @@ public class P_HUD : MonoBehaviour {
 	private float recoveredDistance;
 	public void LevelCompleted(){
 		Debug.Log("LEVEL COMPLETED");
-		Application.LoadLevel (0);
+		StartCoroutine(loadnextlevel(20));
 		recoveredDistance = barDisplay2 + (((float)PercentageRecoverOnLevelComplete)/100);
 		recovering = true;
+	}
+	
+	IEnumerator loadnextlevel(float time){
+		yield return new WaitForSeconds(time);
+	 
+		Application.LoadLevel (0);
 	}
 }

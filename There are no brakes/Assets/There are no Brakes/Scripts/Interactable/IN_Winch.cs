@@ -19,16 +19,28 @@ public class IN_Winch : IN_InteractableObject{
 	public GameObject rope;
 	public bool gate = false;
 	private bool intrigger = false;
+	private bool winding = false;
 	void OnTriggerStay(Collider other) {
 		if(other.tag == "Player"){
 			intrigger = true;
-			if (Input.GetKey (KeyCode.S)) {
-				WindWinch ();
-			} else if (Input.GetKey (KeyCode.DownArrow)) {
-				WindWinch ();
-			} else if (Input.GetKey(KeyCode.K)) {
-				WindWinch ();
-			} else {
+			winding = true;
+			if (other.name == "Player1"){
+				if (Input.GetKey (KeyCode.DownArrow)) {
+					WindWinch ();
+				}
+			}
+			if (other.name == "Player2"){
+				if (Input.GetKey (KeyCode.S)) {
+					WindWinch ();
+				}
+			}
+			if (other.name == "Player3"){
+				if (Input.GetKey (KeyCode.K)) {
+					WindWinch ();
+				}
+			}
+			
+			if (!Input.GetKey (KeyCode.DownArrow) && !Input.GetKey (KeyCode.S) && !Input.GetKey (KeyCode.K)) {
 				GetComponent<AudioSource>().Stop();
 				playingsound = false;
 			}
