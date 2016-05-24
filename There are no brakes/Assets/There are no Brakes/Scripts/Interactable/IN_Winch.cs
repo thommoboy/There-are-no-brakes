@@ -19,11 +19,9 @@ public class IN_Winch : IN_InteractableObject{
 	public GameObject rope;
 	public bool gate = false;
 	private bool intrigger = false;
-	private bool winding = false;
 	void OnTriggerStay(Collider other) {
 		if(other.tag == "Player"){
 			intrigger = true;
-			winding = true;
 			if (other.name == "Player1"){
 				if (Input.GetKey (KeyCode.DownArrow)) {
 					WindWinch ();
