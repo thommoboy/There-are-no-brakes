@@ -59,6 +59,7 @@ public class IN_Winch : IN_InteractableObject{
 	void WindWinch(){
 		if(gate){
 			if(target.transform.rotation.z < 0.5f){
+				this.transform.GetChild(3).Rotate(0, 0, -Time.deltaTime*150);
 				playsoundeffect();
 				Vector3 ropelength = rope.transform.localScale;
 				target.transform.Rotate(0, 0, Time.deltaTime*25);
@@ -74,12 +75,14 @@ public class IN_Winch : IN_InteractableObject{
 			Vector3 platpos = target.transform.localPosition;
 			Vector3 ropelength = rope.transform.localScale;
 			if(up){
+				this.transform.GetChild(3).Rotate(0, 0, -Time.deltaTime*150);
 				platpos.y += movespeed;
 				ropelength.y -= movespeed/1.65f;
 				if(target.transform.position.y > maxheight){
 				 up = false;
 				}
 			} else {
+				this.transform.GetChild(3).Rotate(0, 0, Time.deltaTime*150);
 				platpos.y -= movespeed;
 				ropelength.y += movespeed/1.65f;
 				if(target.transform.position.y < targetminheight){
