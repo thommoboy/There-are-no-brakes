@@ -1,0 +1,395 @@
+fileFormatVersion: 2
+guid: 48e17cc33cc594548b8cffd948ff1aed
+timeCreated: 1464312212
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: B_Body_Flap
+    100002: B_Body_Flap_2
+    100004: //RootNode
+    100006: Character_Geo
+    100008: Character_L_Leg
+    100010: Character_L_Leg_2
+    100012: Character_R_Leg
+    100014: Character_R_Leg_2
+    100016: F_Body_Flap
+    100018: F_Body_Flap_2
+    100020: F_Geo_Deformer_1
+    100022: F_Geo_Deformer_2
+    100024: F_Geo_Deformer_3
+    100026: F_Geo_Deformer_4
+    100028: F_Geo_Deformer_5
+    100030: Face_Flap
+    100032: Face_Flap_1
+    100034: Face_Flap_2
+    100036: Head_Control
+    100038: Head_Flap_1
+    100040: Head_Joint
+    100042: Hip_Control
+    100044: Hip_Joint
+    100046: joint13
+    100048: joint21
+    100050: L_Arm_Joint_1
+    100052: L_Arm_Joint_2
+    100054: L_Arm_Joint_3
+    100056: L_Arm_Joint_4
+    100058: L_Arm_Joint_5
+    100060: L_Arm_Joint_6
+    100062: L_Body_Flap
+    100064: L_Body_Flap_2
+    100066: L_Clavacle_Joint
+    100068: L_Geo_Deformer_1
+    100070: L_Geo_Deformer_2
+    100072: L_Geo_Deformer_3
+    100074: L_Geo_Deformer_4
+    100076: L_Geo_Deformer_5
+    100078: L_Leg_1
+    100080: L_Leg_2
+    100082: L_Leg_3
+    100084: L_Leg_Control
+    100086: L_Leg_Hip_Joint
+    100088: Neck_Joint
+    100090: R_Arm_Joint_1
+    100092: R_Arm_Joint_2
+    100094: R_Arm_Joint_3
+    100096: R_Arm_Joint_4
+    100098: R_Arm_Joint_5
+    100100: R_Arm_Joint_6
+    100102: R_Body_Flap
+    100104: R_Body_Flap_2
+    100106: R_Clavacle_Joint
+    100108: R_Geo_Deformer_1
+    100110: R_Geo_Deformer_2
+    100112: R_Geo_Deformer_3
+    100114: R_Geo_Deformer_4
+    100116: R_Geo_Deformer_5
+    100118: R_Leg_1
+    100120: R_Leg_2
+    100122: R_Leg_3
+    100124: R_Leg_Control
+    100126: R_Leg_Hip_Joint
+    100128: Shoulder_Joint
+    100130: Spine_Joint_1
+    100132: Spine_Joint_2
+    100134: Spine_Joint_3
+    100136: Spine_Joint_4
+    100138: transform1
+    100140: transform2
+    400000: B_Body_Flap
+    400002: B_Body_Flap_2
+    400004: //RootNode
+    400006: Character_Geo
+    400008: Character_L_Leg
+    400010: Character_L_Leg_2
+    400012: Character_R_Leg
+    400014: Character_R_Leg_2
+    400016: F_Body_Flap
+    400018: F_Body_Flap_2
+    400020: F_Geo_Deformer_1
+    400022: F_Geo_Deformer_2
+    400024: F_Geo_Deformer_3
+    400026: F_Geo_Deformer_4
+    400028: F_Geo_Deformer_5
+    400030: Face_Flap
+    400032: Face_Flap_1
+    400034: Face_Flap_2
+    400036: Head_Control
+    400038: Head_Flap_1
+    400040: Head_Joint
+    400042: Hip_Control
+    400044: Hip_Joint
+    400046: joint13
+    400048: joint21
+    400050: L_Arm_Joint_1
+    400052: L_Arm_Joint_2
+    400054: L_Arm_Joint_3
+    400056: L_Arm_Joint_4
+    400058: L_Arm_Joint_5
+    400060: L_Arm_Joint_6
+    400062: L_Body_Flap
+    400064: L_Body_Flap_2
+    400066: L_Clavacle_Joint
+    400068: L_Geo_Deformer_1
+    400070: L_Geo_Deformer_2
+    400072: L_Geo_Deformer_3
+    400074: L_Geo_Deformer_4
+    400076: L_Geo_Deformer_5
+    400078: L_Leg_1
+    400080: L_Leg_2
+    400082: L_Leg_3
+    400084: L_Leg_Control
+    400086: L_Leg_Hip_Joint
+    400088: Neck_Joint
+    400090: R_Arm_Joint_1
+    400092: R_Arm_Joint_2
+    400094: R_Arm_Joint_3
+    400096: R_Arm_Joint_4
+    400098: R_Arm_Joint_5
+    400100: R_Arm_Joint_6
+    400102: R_Body_Flap
+    400104: R_Body_Flap_2
+    400106: R_Clavacle_Joint
+    400108: R_Geo_Deformer_1
+    400110: R_Geo_Deformer_2
+    400112: R_Geo_Deformer_3
+    400114: R_Geo_Deformer_4
+    400116: R_Geo_Deformer_5
+    400118: R_Leg_1
+    400120: R_Leg_2
+    400122: R_Leg_3
+    400124: R_Leg_Control
+    400126: R_Leg_Hip_Joint
+    400128: Shoulder_Joint
+    400130: Spine_Joint_1
+    400132: Spine_Joint_2
+    400134: Spine_Joint_3
+    400136: Spine_Joint_4
+    400138: transform1
+    400140: transform2
+    4300000: Character_Geo
+    4300002: Character_L_Leg
+    4300004: Character_L_Leg_2
+    4300006: Character_R_Leg
+    4300008: Character_R_Leg_2
+    7400000: Walk
+    9500000: //RootNode
+    13700000: Character_Geo
+    13700002: Character_L_Leg
+    13700004: Character_L_Leg_2
+    13700006: Character_R_Leg
+    13700008: Character_R_Leg_2
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_Geo
+        weight: 1
+      - path: Character_Geo/Character_L_Leg
+        weight: 1
+      - path: Character_Geo/Character_L_Leg/Character_L_Leg_2
+        weight: 1
+      - path: Character_Geo/Character_R_Leg
+        weight: 1
+      - path: Character_Geo/Character_R_Leg/Character_R_Leg_2
+        weight: 1
+      - path: Hip_Control
+        weight: 1
+      - path: Hip_Control/Head_Control
+        weight: 1
+      - path: Hip_Control/Head_Control/Face_Flap
+        weight: 1
+      - path: Hip_Control/Head_Control/Face_Flap/Face_Flap_1
+        weight: 1
+      - path: Hip_Control/Head_Control/Face_Flap/Face_Flap_1/Face_Flap_2
+        weight: 1
+      - path: Hip_Control/Hip_Joint
+        weight: 1
+      - path: Hip_Control/Hip_Joint/B_Body_Flap
+        weight: 1
+      - path: Hip_Control/Hip_Joint/B_Body_Flap/B_Body_Flap_2
+        weight: 1
+      - path: Hip_Control/Hip_Joint/F_Body_Flap
+        weight: 1
+      - path: Hip_Control/Hip_Joint/F_Body_Flap/F_Body_Flap_2
+        weight: 1
+      - path: Hip_Control/Hip_Joint/joint21
+        weight: 1
+      - path: Hip_Control/Hip_Joint/L_Body_Flap
+        weight: 1
+      - path: Hip_Control/Hip_Joint/L_Body_Flap/L_Body_Flap_2
+        weight: 1
+      - path: Hip_Control/Hip_Joint/L_Leg_Hip_Joint
+        weight: 1
+      - path: Hip_Control/Hip_Joint/R_Body_Flap
+        weight: 1
+      - path: Hip_Control/Hip_Joint/R_Body_Flap/R_Body_Flap_2
+        weight: 1
+      - path: Hip_Control/Hip_Joint/R_Leg_Hip_Joint
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/F_Geo_Deformer_5
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/L_Geo_Deformer_5
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/R_Geo_Deformer_5
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/F_Geo_Deformer_4
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/L_Geo_Deformer_4
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/R_Geo_Deformer_4
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/F_Geo_Deformer_3
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/L_Geo_Deformer_3
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/R_Geo_Deformer_3
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/F_Geo_Deformer_2
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/L_Geo_Deformer_2
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/R_Geo_Deformer_2
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint/F_Geo_Deformer_1
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint/L_Geo_Deformer_1
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint/Neck_Joint
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint/Neck_Joint/Head_Joint
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint/Neck_Joint/Head_Joint/Head_Flap_1
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint/Neck_Joint/Head_Joint/Head_Flap_1/joint13
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint/Neck_Joint/L_Clavacle_Joint
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint/Neck_Joint/R_Clavacle_Joint
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint/R_Geo_Deformer_1
+        weight: 1
+      - path: Hip_Control/L_Arm_Joint_1
+        weight: 1
+      - path: Hip_Control/L_Arm_Joint_1/L_Arm_Joint_2
+        weight: 1
+      - path: Hip_Control/L_Arm_Joint_1/L_Arm_Joint_2/L_Arm_Joint_3
+        weight: 1
+      - path: Hip_Control/L_Arm_Joint_1/L_Arm_Joint_2/L_Arm_Joint_3/L_Arm_Joint_4
+        weight: 1
+      - path: Hip_Control/L_Arm_Joint_1/L_Arm_Joint_2/L_Arm_Joint_3/L_Arm_Joint_4/L_Arm_Joint_5
+        weight: 1
+      - path: Hip_Control/L_Arm_Joint_1/L_Arm_Joint_2/L_Arm_Joint_3/L_Arm_Joint_4/L_Arm_Joint_5/L_Arm_Joint_6
+        weight: 1
+      - path: Hip_Control/R_Arm_Joint_1
+        weight: 1
+      - path: Hip_Control/R_Arm_Joint_1/R_Arm_Joint_2
+        weight: 1
+      - path: Hip_Control/R_Arm_Joint_1/R_Arm_Joint_2/R_Arm_Joint_3
+        weight: 1
+      - path: Hip_Control/R_Arm_Joint_1/R_Arm_Joint_2/R_Arm_Joint_3/R_Arm_Joint_4
+        weight: 1
+      - path: Hip_Control/R_Arm_Joint_1/R_Arm_Joint_2/R_Arm_Joint_3/R_Arm_Joint_4/R_Arm_Joint_5
+        weight: 1
+      - path: Hip_Control/R_Arm_Joint_1/R_Arm_Joint_2/R_Arm_Joint_3/R_Arm_Joint_4/R_Arm_Joint_5/R_Arm_Joint_6
+        weight: 1
+      - path: L_Leg_Control
+        weight: 1
+      - path: L_Leg_Control/transform1
+        weight: 1
+      - path: L_Leg_Control/transform1/L_Leg_1
+        weight: 1
+      - path: L_Leg_Control/transform1/L_Leg_1/L_Leg_2
+        weight: 1
+      - path: L_Leg_Control/transform1/L_Leg_1/L_Leg_2/L_Leg_3
+        weight: 1
+      - path: R_Leg_Control
+        weight: 1
+      - path: R_Leg_Control/transform2
+        weight: 1
+      - path: R_Leg_Control/transform2/R_Leg_1
+        weight: 1
+      - path: R_Leg_Control/transform2/R_Leg_1/R_Leg_2
+        weight: 1
+      - path: R_Leg_Control/transform2/R_Leg_1/R_Leg_2/R_Leg_3
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 10
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
