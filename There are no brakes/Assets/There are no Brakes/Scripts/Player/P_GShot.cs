@@ -3,13 +3,14 @@ using UnityEngine;
 using System.Collections;
 
 public class P_GShot : MonoBehaviour {
-//	public GameObject shot;
-//	public Transform shotSpawn;
-//	public float fireRate = 1.0f;
-//	private float nextFire = 0.0f;
+	//	public GameObject shot;
+	//	public Transform shotSpawn;
+	//	public float fireRate = 1.0f;
+	//	private float nextFire = 0.0f;
 
 	public float grappleDistance = 10.0f;
-	public float springStrength = 60;
+	private float springStrength = 300;
+	private float springMaxDistance = 2;
 
 	public Shader shader;
 	public Texture texture;
@@ -31,8 +32,8 @@ public class P_GShot : MonoBehaviour {
 	public GameObject Player1;
 	public GameObject Player2;
 
-//	public Transform P1_Point;
-//	public Transform P2_Point;
+	//	public Transform P1_Point;
+	//	public Transform P2_Point;
 
 	void Start(){
 		grapplePoints = GameObject.FindGameObjectsWithTag("gp");
@@ -55,12 +56,15 @@ public class P_GShot : MonoBehaviour {
 					grabJoint = Player1.AddComponent <SpringJoint>();
 					grabJoint.connectedBody = gPoint.GetComponent<Rigidbody> ();
 					grabJoint.autoConfigureConnectedAnchor = false;
-					grabJoint.connectedAnchor = new Vector3 (0, -0.5f, 0);
+					grabJoint.connectedAnchor = new Vector3 (-0.5f, 0, 0);
 					grabJoint.spring = springStrength;
+					grabJoint.enableCollision = true;
+					grabJoint.maxDistance = springMaxDistance;
+					grabJoint.tolerance = 1;
 					rope1 = Player1.AddComponent<LineRenderer> ();
 					rope1.material = new Material(shader);
 					rope1.material.mainTexture = texture;
-					rope1.SetWidth (0.5f, 0.5f);
+					rope1.SetWidth (0.25f, 0.25f);
 					//rope1.material.color = color;
 				}
 			}
@@ -89,15 +93,18 @@ public class P_GShot : MonoBehaviour {
 				if (Vector3.Distance (Player2.transform.position, gPoint.transform.position) < grappleDistance) {
 					hook2Active = true;
 					currentGPoint2 = gPoint;
-					grabJoint = Player2.AddComponent <SpringJoint> ();
+					grabJoint = Player2.AddComponent <SpringJoint>();
 					grabJoint.connectedBody = gPoint.GetComponent<Rigidbody> ();
 					grabJoint.autoConfigureConnectedAnchor = false;
-					grabJoint.connectedAnchor = new Vector3 (0, -0.5f, 0);
+					grabJoint.connectedAnchor = new Vector3 (-0.5f, 0, 0);
 					grabJoint.spring = springStrength;
+					grabJoint.enableCollision = true;
+					grabJoint.maxDistance = springMaxDistance;
+					grabJoint.tolerance = 1;
 					rope2 = Player2.AddComponent<LineRenderer> ();
 					rope2.material = new Material(shader);
 					rope2.material.mainTexture = texture;
-					rope2.SetWidth (0.5f, 0.5f);
+					rope2.SetWidth (0.25f, 0.25f);
 				}
 			}
 		} else if (Input.GetKeyDown (KeyCode.S) && hook2Active == true) {
