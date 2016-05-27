@@ -7,6 +7,7 @@ public class CameraMultitarget : MonoBehaviour {
 	/// <summary>
 	/// The target objects.
 	/// </summary>
+	/// 
 	public List<GameObject> targetObjects = new List<GameObject>();
 
 	public Vector3 orbitRotation;
@@ -62,10 +63,17 @@ public class CameraMultitarget : MonoBehaviour {
 		
 	private Vector3 cameraDirection;
 	private Bounds currentBounds;
+
+	public Vector3 origin;
+	public Quaternion originalRot;
+
 	#endregion
 	
 	// Use this for initialization
 	void Start () {
+		origin = transform.position;
+		originalRot = transform.rotation;
+
 		camPosition = transform.position;
 	
 		// places the camera at the initial position, relative to the look at vector.
@@ -142,19 +150,25 @@ public class CameraMultitarget : MonoBehaviour {
 		float distance = boundsSizeSphere / (Mathf.Sin(fov * Mathf.Deg2Rad/2));
 		
 		// we get the distance at which we need to position our camera.
-		distance = Mathf.Max( minDistanceToTarget, Mathf.Min(distance, maxDistanceToTarget));
-		
-		// we interpolate to the new desired positions.	
-		Vector3 currentCameraDirection = Quaternion.Euler(orbitRotation) * cameraDirection;
-		currentLookAt = Vector3.Lerp(currentLookAt, lookAt, targetInterpolationSpeed * Time.fixedDeltaTime);
-		posAt = Vector3.Lerp(posAt,currentLookAt +( currentCameraDirection * distance), positionInterpolationSpeed * Time.fixedDeltaTime);
+		if (!Input.GetKey(KeyCode.Space)) {
+			distance = Mathf.Max (minDistanceToTarget, Mathf.Min (distance, maxDistanceToTarget));
+			
+			// we interpolate to the new desired positions.	
+			Vector3 currentCameraDirection = Quaternion.Euler (orbitRotation) * cameraDirection;
+			currentLookAt = Vector3.Lerp (currentLookAt, lookAt, targetInterpolationSpeed * Time.fixedDeltaTime);
+			posAt = Vector3.Lerp (posAt, currentLookAt + (currentCameraDirection * distance), positionInterpolationSpeed * Time.fixedDeltaTime);
 
-		if (c.orthographic)
-		{
-			c.orthographicSize = boundsSizeSphere + (screenSafeArea/orthographicSafeAreaMulti);
+			if (c.orthographic) {
+				c.orthographicSize = boundsSizeSphere + (screenSafeArea / orthographicSafeAreaMulti);
+			}
+
+			c.transform.position = Vector3.Lerp (new Vector3(c.transform.position.x, c.transform.position.y - 0.2f, c.transform.position.z), posAt, 0.1f);
+
+			//c.transform.LookAt (currentLookAt);
+		} else {
+			//Debug.Log ("Zoom Out");
+			c.transform.position = Vector3.Lerp (c.transform.position, origin, 0.05f);
+			//c.transform.rotation = Quaternion.Lerp (c.transform.rotation, originalRot, 0.05f);
 		}
-
-		c.transform.position = Vector3.Lerp(c.transform.position , posAt, 0.1f);			
-		c.transform.LookAt(currentLookAt);
 	}
 }

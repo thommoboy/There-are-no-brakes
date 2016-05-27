@@ -10,7 +10,7 @@ public class P_GShot : MonoBehaviour {
 
 	public float grappleDistance = 10.0f;
 	private float springStrength = 300;
-	private float springMaxDistance = 2;
+	public float springMaxDistance = 2;
 
 	public Shader shader;
 	public Texture texture;

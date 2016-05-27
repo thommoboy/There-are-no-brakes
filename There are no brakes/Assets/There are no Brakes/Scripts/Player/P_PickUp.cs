@@ -32,7 +32,7 @@ public class P_PickUp : MonoBehaviour {
 			}
 		}
 	}
-	void FixedUpdate(){
+	void Update(){
 		if (Carrying) {
 			if(ThisPlayer.name == "Player1"){
 				if(GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().FacingRight1){
@@ -41,6 +41,7 @@ public class P_PickUp : MonoBehaviour {
 					carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z-1.2f);
 				}
 				if(Input.GetKeyDown(KeyCode.DownArrow)){
+					
 					ThrowAway();
 				}
 				if(GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().BeingCarried1){
@@ -102,6 +103,7 @@ public class P_PickUp : MonoBehaviour {
 
 
 	void ThrowAway(){
+		//Debug.Log ("Thrown");
 		//disconnect other player
 		HeldObject.transform.parent = null;
 		//launch other player (ideallly would just take jump speed/height from player controller
@@ -135,6 +137,7 @@ public class P_PickUp : MonoBehaviour {
 	void DropPlayer(){
 		//disconnect other player
 		HeldObject.transform.parent = null;
+		HeldObject.GetComponent<Rigidbody>().useGravity = true;
 		//can pick up things now
 		Carrying = false;
 	}
