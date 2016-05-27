@@ -13,7 +13,21 @@ public class M_3DMenuButton : MonoBehaviour {
 	private Vector3 menu_ori_position;
 	bool right_menu = false;
 	float menuMoveSpeed  = 20;
+	public bool started = false;
     // Use this for initialization
+
+	void removeAllUI(){
+		for (int i = 0; i < MenuList.Length; i++) {
+			if (MenuList [i].transform.position.y < 600) {
+				MenuMoveStatu [i] = 2;
+				break;
+			}
+		}
+		GameObject menuButtons = GameObject.Find ("MainMenuButtons");
+		menuButtons.transform.position = menuButtons.transform.position + Vector3.left * menuMoveSpeed/2;
+
+	}
+
     void Start () {
 		//init menu movement statu and button size statu
 		//0: stay
@@ -51,6 +65,9 @@ public class M_3DMenuButton : MonoBehaviour {
 				}
 			}
 
+		}
+		if (started) {
+			removeAllUI ();
 		}
 		updateButton ();
 		updateMenu ();
@@ -92,6 +109,9 @@ public class M_3DMenuButton : MonoBehaviour {
 		if (buttonName == "MenuButton_Credits") {
 			updateMenuStatu (2);
 		}
+		if (buttonName == "new_game") {
+			updateMenuStatu (3);
+		}
 		if (buttonName == "MenuButton_Exit") {
 			Application.Quit ();
 		}
@@ -122,6 +142,8 @@ public class M_3DMenuButton : MonoBehaviour {
 	void updateButton(){
 		for (int i = 0; i < MenuButtonList.Length; i++)
 		{
+			if (MenuButtonList [i].name == "new_game")
+				continue;
 			if (sizeStatu[i] == 1)
 			{
 				if (MenuButtonList[i].transform.localScale.x < button_ori_scale.x * 1.3)
@@ -142,9 +164,11 @@ public class M_3DMenuButton : MonoBehaviour {
 	}
 
     void ButtonOnSelected(GameObject button) {
+
         for (int i = 0; i < MenuButtonList.Length; i++)
         {
             if (MenuButtonList[i] == button) {
+				//button_ori_scale = button.transform.localScale;
                 focusedButtonIndex = i;
                 sizeStatu[i] = 1;
             }

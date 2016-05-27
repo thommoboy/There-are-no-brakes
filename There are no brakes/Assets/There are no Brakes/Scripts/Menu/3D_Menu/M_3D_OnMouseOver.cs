@@ -20,8 +20,11 @@ public class M_3D_OnMouseOver : MonoBehaviour {
 			hitThing = hit.collider.gameObject;
 			if (hitThing == this.gameObject) {
 				transform.localScale = ori_Scale * 1.3f;
+				if (tag == "MenuButton")
+					return;
 				if (Input.GetKeyDown (KeyCode.Mouse0)) {
-					ClickAsync (1);
+					//ClickAsync (1);
+					StartCoroutine(delayExecute(1));
 				}
 			} else {
 				transform.localScale = ori_Scale;
@@ -43,4 +46,17 @@ public class M_3D_OnMouseOver : MonoBehaviour {
 		}
 
 	}
+
+	IEnumerator delayExecute(int level){
+		//print (Time.time);
+		GameObject.Find ("MenuButtonManager").GetComponent<M_3DMenuButton> ().started = true;
+		yield return new WaitForSeconds (1);
+		GameObject.Find("Paper_box").GetComponent<M_MenuPaperBox>().animator.enabled = true;
+		yield return new WaitForSeconds (3);
+		ClickAsync (level);
+		//print (Time.time);
+	}
+
+
+
 }
