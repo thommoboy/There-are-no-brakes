@@ -25,20 +25,26 @@ public class IN_BreakWall : MonoBehaviour
 		if (other.gameObject.tag == "Weight") {
 			GameObject wall = GameObject.Instantiate(remains, this.transform.position, this.transform.rotation) as GameObject;
 			wall.transform.localScale =new Vector3(this.transform.localScale.x / (float)4.5, this.transform.localScale.y / (float)3.5, this.transform.localScale.z);
-			//other.gameObject.GetComponent<Rigidbody> ().AddForce (Vector3.forward * 200);
+			other.gameObject.GetComponent<Rigidbody> ().AddForce (Vector3.forward * 200);
 			Destroy (this.gameObject);
-
+			other.gameObject.GetComponent<Rigidbody> ().mass = 1000;
+			/*
 			Rigidbody rigid = other.gameObject.GetComponent<Rigidbody> ();
 			Vector3 direction = rigid.velocity;
+			//print(direction);
+			//direction = getBasicDirectionUnit (direction);
 			print(direction);
-			direction = getBasicDirectionUnit (direction);
-			print(direction);
+			direction.z = Mathf.Abs (direction.z);
+			print (other.gameObject.name);
 
-			GameObject wallSphereCollider = GameObject.Instantiate (sphereCollider, other.transform.position + direction * (other.gameObject.transform.localScale.x*(float)2.8)
+			GameObject wallSphereCollider = GameObject.Instantiate (sphereCollider, other.transform.position + direction * (float)7
 				, other.transform.rotation) as GameObject;
+			*/
+			//float size = 3f;
+			//wallSphereCollider.transform.localScale.Set (wallSphereCollider.transform.localScale.x*size, wallSphereCollider.transform.localScale.y*size, wallSphereCollider.transform.localScale.z);
 
 			Destroy (wall, (float)4);
-			Destroy (wallSphereCollider, (float)4);
+			//Destroy (wallSphereCollider, (float)4);
 
 			//print ("succses");
 

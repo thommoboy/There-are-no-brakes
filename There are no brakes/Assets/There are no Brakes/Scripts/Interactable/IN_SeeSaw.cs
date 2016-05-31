@@ -50,7 +50,8 @@ public class IN_SeeSaw : MonoBehaviour {
             touchList.Add(touchItem);
             count++;
         }
-
+		if (touchItem.gameObject.GetComponent<Rigidbody> ().velocity.y > 0)
+			return;
         if (touchItem.gameObject.transform.position.y < this.transform.position.y) return;
 
         string touch = "";
