@@ -1,9 +1,4 @@
-﻿/***********************
- * M_OnMouseExit.cs
- * Originally Written by 
- * Modified By:
- ***********************/
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class M_OnMouseExit : MonoBehaviour {

@@ -1,9 +1,4 @@
-﻿/***********************
- * M_3D_OnMouseOver.cs
- * Originally Written by 
- * Modified By:
- ***********************/
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 public class M_3D_OnMouseOver : MonoBehaviour {
@@ -53,7 +48,8 @@ public class M_3D_OnMouseOver : MonoBehaviour {
 	}
 
 	IEnumerator delayExecute(int level){
-		//print (Time.time);
+        //print (Time.time);
+        GameObject.Find("Main Camera").GetComponent<M_MoveForward>().startMove(3);
 		GameObject.Find ("MenuButtonManager").GetComponent<M_3DMenuButton> ().started = true;
 		yield return new WaitForSeconds (1);
 		GameObject.Find("Paper_box").GetComponent<M_MenuPaperBox>().animator.enabled = true;

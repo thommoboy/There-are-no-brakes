@@ -1,9 +1,4 @@
-﻿/***********************
- * M_MenuPaperBox.cs
- * Originally Written by 
- * Modified By:
- ***********************/
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class M_MenuPaperBox : MonoBehaviour {

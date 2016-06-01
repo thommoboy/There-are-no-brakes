@@ -1,9 +1,4 @@
-﻿/***********************
- * M_ClickPlay.cs
- * Originally Written by 
- * Modified By:
- ***********************/
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
