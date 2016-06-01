@@ -1,6 +1,6 @@
 ﻿/***********************
  * IN_Winch.cs
- * Originally Written by 
+ * Originally Written by Nathan Brown
  * Modified By:
  ***********************/
 using UnityEngine;

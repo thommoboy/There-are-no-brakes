@@ -1,6 +1,6 @@
 ﻿/***********************
  * IN_Anchor_Dropped.cs
- * Originally Written by 
+ * Originally Written by Nathan Brown
  * Modified By:
  ***********************/
 using UnityEngine;

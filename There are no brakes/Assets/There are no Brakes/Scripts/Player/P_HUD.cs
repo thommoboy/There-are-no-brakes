@@ -1,6 +1,6 @@
 ﻿/***********************
  * P_HUD.cs
- * Originally Written by 
+ * Originally Written by Nathan Brown
  * Modified By:
  ***********************/
 using UnityEngine;

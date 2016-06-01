@@ -1,7 +1,9 @@
 ﻿/***********************
  * IN_Anchor_Trigger.cs
  * Originally Written by Pierce Thompson
- * Modified By:
+ * Modified By: Nathan Brown
+ * Modifications:
+	Nathan Brown: implementation of anchor 'gates' and interaction with movable ropes
  ***********************/
 using UnityEngine;
 using System.Collections;

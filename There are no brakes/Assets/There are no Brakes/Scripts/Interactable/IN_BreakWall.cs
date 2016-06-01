@@ -1,7 +1,9 @@
 ﻿/***********************
  * IN_BreakWall.cs
- * Originally Written by 
- * Modified By:
+ * Originally Written by Feng
+ * Modified By: Nathan Brown
+ * Modificaions:
+	Nathan Brown: interaction with heavy weight object
  ***********************/
 using UnityEngine;
 using System.Collections;

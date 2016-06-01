@@ -1,7 +1,10 @@
 /***********************
  * P_Movement.cs
- * Originally Written by 
- * Modified By:
+ * Originally Written by Josh
+ * Modified By: Pierce Thompson, Nathan Brown
+ * Modifcations:
+	Nathan Brown: incorporation of player interaction
+	Pierce Thompson: incorporation of animations, sound effects and refactoring
  ***********************/
 using UnityEngine;
 using System.Collections;

@@ -1,7 +1,9 @@
 ﻿/***********************
  * IN_Anchor.cs
  * Originally Written by Pierce Thompson
- * Modified By:
+ * Modified By: Nathan Brown
+ * Modifications:
+	Nathan Brown: interaction with anchor 'gates'
  ***********************/
 using UnityEngine;
 using System.Collections;
