@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/***********************
+ * IN_BallControl.cs
+ * Originally Written by 
+ * Modified By:
+ ***********************/
+using UnityEngine;
 using System.Collections;
 
 public class IN_BallControl : MonoBehaviour {

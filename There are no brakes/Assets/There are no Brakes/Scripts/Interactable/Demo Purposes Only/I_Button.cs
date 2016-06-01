@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/***********************
+ * IN_Anchor_Trigger.cs
+ * Originally Written by Pierce Thompson
+ * Modified By:
+ ***********************/
+using UnityEngine;
 using System.Collections;
 
 public class I_Button : MonoBehaviour

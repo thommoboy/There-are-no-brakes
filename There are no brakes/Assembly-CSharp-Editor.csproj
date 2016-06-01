@@ -48,6 +48,7 @@
      <Compile Include="Assets\There are no Brakes\Editor\CameraMultitargetEditor.cs" />
      <Compile Include="Assets\There are no Brakes\Editor\Import.cs" />
      <None Include="Assets\There are no Brakes\Shaders\3DTextShader.shader" />
+     <None Include="Assets\There are no Brakes\Animations\Animation Keyframes.txt" />
  <Reference Include="Assembly-UnityScript">
  <HintPath>C:/Users/Pierce/Documents/GitHub/There-are-no-brakes/There are no brakes/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
  </Reference>

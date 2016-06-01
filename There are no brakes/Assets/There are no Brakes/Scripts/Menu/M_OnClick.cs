@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/***********************
+ * M_OnClick.cs
+ * Originally Written by 
+ * Modified By:
+ ***********************/
+using UnityEngine;
 using System.Collections;
 
 public class M_OnClick : MonoBehaviour {

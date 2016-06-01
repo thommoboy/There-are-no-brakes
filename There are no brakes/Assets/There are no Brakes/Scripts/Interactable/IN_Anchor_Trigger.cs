@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/***********************
+ * IN_Anchor_Trigger.cs
+ * Originally Written by Pierce Thompson
+ * Modified By:
+ ***********************/
+
+using UnityEngine;
 using System.Collections;
 
 public class IN_Anchor_Trigger : MonoBehaviour
@@ -10,6 +16,8 @@ public class IN_Anchor_Trigger : MonoBehaviour
 	public Platform IN_P_Platform;
 
 	public bool Blocked = false;
+
+	public M_AudioManager AudioManager;
 
 	public void Update()
 	{
@@ -33,6 +41,7 @@ public class IN_Anchor_Trigger : MonoBehaviour
 	void OnTriggerExit(Collider other)
 	{
 		Blocked = false;
+		AudioManager.PlayAudio ("Anchor"); //Play the associated AudioClip
 		/*
 		if(IN_P_Platform == Platform.Left)
 			IN_P.Origin = true;

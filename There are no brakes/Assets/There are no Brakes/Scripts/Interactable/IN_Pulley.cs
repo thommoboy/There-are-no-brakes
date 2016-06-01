@@ -1,9 +1,16 @@
-﻿using UnityEngine;
+﻿/***********************
+ * IN_Anchor_Trigger.cs
+ * Originally Written by Pierce Thompson
+ * Modified By:
+ ***********************/
+using UnityEngine;
 using System.Collections;
 
 public class IN_Pulley : MonoBehaviour
 {
-	//Hold the Objects
+	/// <summary>
+	/// Hold the Objects
+	/// </summary>
 	public GameObject IN_P_PulleyLeft;
 	public GameObject IN_P_PulleyRight;
 
@@ -25,8 +32,10 @@ public class IN_Pulley : MonoBehaviour
 	private float maxleftrope;
 
 	public bool Origin = false;
-	
 
+	/// <summary>
+	/// Set the required variables to their respective values.
+	/// </summary>
 	public void Start()
 	{
 		IN_P_Origin_Left = IN_P_PlatformLeft.transform.localPosition;
@@ -39,7 +48,9 @@ public class IN_Pulley : MonoBehaviour
 	
 	public void Update()
 	{
-
+		/// <summary>
+		/// Reset the platform if required
+		/// </summary>
 		if(IN_P_PlatformLeft.transform.localPosition == IN_P_Origin_Left && IN_P_PlatformRight.transform.localPosition == IN_P_Origin_Right)
 			Origin = false;
 
@@ -47,56 +58,41 @@ public class IN_Pulley : MonoBehaviour
 		{
 			if(IN_P_PulleyRight.transform.localScale.y > 0 || IN_P_PulleyLeft.transform.localScale.y > 0)
 			{
-				//if (IN_P_PulleyRight.transform.localPosition.y != 2)
-				//{
-					/*
-				//Left Rope
-					Vector3 tempscale2 = IN_P_PulleyLeft.transform.localScale;
-					tempscale2.y -= 1;
-					IN_P_PulleyLeft.transform.localScale = tempscale2;
+				/// <summary>
+				/// Adjust the platforms height via a Vector3 Interpolation
+				/// </summary>
 
-					//Right Rope
-					Vector3 tempscale = IN_P_PulleyRight.transform.localScale;
-					tempscale.y += 1;
-					IN_P_PulleyRight.transform.localScale = tempscale;
-					*/
+				/// <summary>
+				/// Adjust the right platform
+				/// </summary>
+				Vector3 platpos = IN_P_PlatformRight.transform.localPosition;
+				platpos.y -= 1.5f;
+				IN_P_PlatformRight.transform.localPosition = Vector3.Lerp(IN_P_PlatformRight.transform.localPosition, IN_P_Origin_Right, Time.deltaTime);
 
-					//Right Platform
-					Vector3 platpos = IN_P_PlatformRight.transform.localPosition;
-					platpos.y -= 1.5f;
-					IN_P_PlatformRight.transform.localPosition = Vector3.Lerp(IN_P_PlatformRight.transform.localPosition, IN_P_Origin_Right, Time.deltaTime);
+				Vector3 temppos = IN_P_PulleyRight.transform.localPosition;
+				temppos.y -= 1;
+				IN_P_PulleyRight.transform.localPosition = Vector3.Lerp(IN_P_PulleyRight.transform.localPosition, temppos, Time.deltaTime);
 
-					Vector3 temppos = IN_P_PulleyRight.transform.localPosition;
-					temppos.y -= 1;
-					IN_P_PulleyRight.transform.localPosition = Vector3.Lerp(IN_P_PulleyRight.transform.localPosition, temppos, Time.deltaTime);
+				/// <summary>
+				/// Adjust the left platform
+				/// </summary>
+				Vector3 platpos2 = IN_P_PlatformLeft.transform.localPosition;
+				platpos2.y += 1.5f;
+				IN_P_PlatformLeft.transform.localPosition = Vector3.Lerp(IN_P_PlatformLeft.transform.localPosition, IN_P_Origin_Left, Time.deltaTime);
 
-					//Left Platform
-					Vector3 platpos2 = IN_P_PlatformLeft.transform.localPosition;
-					platpos2.y += 1.5f;
-					IN_P_PlatformLeft.transform.localPosition = Vector3.Lerp(IN_P_PlatformLeft.transform.localPosition, IN_P_Origin_Left, Time.deltaTime);
-
-					Vector3 temppos2 = IN_P_PulleyLeft.transform.localPosition;
-					temppos2.y += 1;
-					IN_P_PulleyLeft.transform.localPosition = Vector3.Lerp(IN_P_PulleyLeft.transform.localPosition, temppos2, Time.deltaTime);
-				//}
+				Vector3 temppos2 = IN_P_PulleyLeft.transform.localPosition;
+				temppos2.y += 1;
+				IN_P_PulleyLeft.transform.localPosition = Vector3.Lerp(IN_P_PulleyLeft.transform.localPosition, temppos2, Time.deltaTime);
 			}
 		}
 		
-		
-		//stop gates rotating too far
-		//Debug.Log(IN_P_GateLeft.transform.rotation.z);
-		if(IN_P_GateLeft.transform.rotation.z < 0){
+		/// <summary>
+		/// Stop gates rotating too far
+		/// </summary>
+		if(IN_P_GateLeft.transform.rotation.z < 0)
 			IN_P_GateLeft.transform.Rotate(0, 0, Time.deltaTime*RotationRate);
-		}
-		if(IN_P_GateLeft.transform.rotation.z > 0.5f){
+		if(IN_P_GateLeft.transform.rotation.z > 0.5f)
 			IN_P_GateLeft.transform.Rotate(0, 0, Time.deltaTime*-RotationRate);
-		}/*
-		if(IN_P_GateRight.transform.rotation.z < 0){
-			IN_P_GateRight.transform.Rotate(0, 0, Time.deltaTime*RotationRate);
-		}
-		if(IN_P_GateRight.transform.rotation.z > 0.5f){
-			IN_P_GateRight.transform.Rotate(0, 0, Time.deltaTime*-RotationRate);
-		}*/
 	}
 
 	public void LeftPlatformDown()
@@ -108,20 +104,25 @@ public class IN_Pulley : MonoBehaviour
 			}
 			else
 			{
-				
-				//Right Rope
+				/// <summary>
+				/// Right rope
+				/// </summary>
 				Vector3 tempscale = IN_P_RopeRight.transform.localScale;
 				tempscale.y -= 0.2f;
 				if(minrightrope < IN_P_RopeRight.transform.localScale.y){
 					IN_P_RopeRight.transform.localScale = Vector3.Lerp(IN_P_RopeRight.transform.localScale, tempscale, Time.deltaTime);
 				}
 
-				//Left Rope
+				/// <summary>
+				/// Left rope
+				/// </summary>
 				if(maxleftrope > IN_P_RopeLeft.transform.localScale.y){
 					IN_P_RopeLeft.transform.localScale = new Vector3(IN_P_RopeLeft.transform.localScale.x, IN_P_RopeLeft.transform.localScale.y + 0.1f*Time.deltaTime, IN_P_RopeLeft.transform.localScale.z);
 				}
 				
-				//Right Platform
+				/// <summary>
+				/// Right platform
+				/// </summary>
 				Vector3 temppos = IN_P_PulleyRight.transform.localPosition;
 				temppos.y += 1;
 				IN_P_PulleyRight.transform.localPosition = Vector3.Lerp(IN_P_PulleyRight.transform.localPosition, temppos, Time.deltaTime);
@@ -133,7 +134,9 @@ public class IN_Pulley : MonoBehaviour
 				GameObject.Find("weight").transform.localPosition = new Vector3(GameObject.Find("weight").transform.localPosition.x, GameObject.Find("weight").transform.localPosition.y + 0.02f, GameObject.Find("weight").transform.localPosition.z);
 				
 
-				//Left Platform
+				/// <summary>
+				/// Left Platform
+				/// </summary>
 				Vector3 platpos2 = IN_P_PlatformLeft.transform.localPosition;
 				platpos2.y -= 1.5f;
 				IN_P_PlatformLeft.transform.localPosition = Vector3.Lerp(IN_P_PlatformLeft.transform.localPosition, platpos2, Time.deltaTime);
@@ -211,123 +214,3 @@ public class IN_Pulley : MonoBehaviour
 		}
 	}
 }
-	
-
-
-/*
-	void Update()
-	{
-		if(IN_P_PulleyRight.transform.localScale.y > 0 || IN_P_PulleyLeft.transform.localScale.y > 0)
-		{
-			if(IN_P_PulleyRight.transform.localScale.y == 1)
-			{
-				if(Input.GetKeyDown(KeyCode.DownArrow))
-				{
-					//Right Rope
-					Vector3 tempscale = IN_P_PulleyRight.transform.localScale;
-					tempscale.y += 1;
-					IN_P_PulleyRight.transform.localScale = tempscale;
-
-					Vector3 temppos = IN_P_PulleyRight.transform.localPosition;
-					temppos.y -= 1;
-					IN_P_PulleyRight.transform.localPosition = temppos;
-
-					//Right Platform
-					Vector3 platpos = IN_P_PlatformRight.transform.localPosition;
-					platpos.y -= 1.5f;
-					IN_P_PlatformRight.transform.localPosition = platpos;
-				}
-			}
-			else
-			{
-				if(Input.GetKeyDown(KeyCode.UpArrow))
-				{
-					//Right Rope
-					Vector3 tempscale = IN_P_PulleyRight.transform.localScale;
-					tempscale.y -= 1;
-					IN_P_PulleyRight.transform.localScale = tempscale;
-
-					Vector3 temppos = IN_P_PulleyRight.transform.localPosition;
-					temppos.y += 1;
-					IN_P_PulleyRight.transform.localPosition = temppos;
-
-					//Right Platform
-					Vector3 platpos = IN_P_PlatformRight.transform.localPosition;
-					platpos.y += 1.5f;
-					IN_P_PlatformRight.transform.localPosition = platpos;
-
-					//Left Platform
-					Vector3 platpos2 = IN_P_PlatformLeft.transform.localPosition;
-					platpos2.y -= 1.5f;
-					IN_P_PlatformLeft.transform.localPosition = platpos2;
-
-					//Left Rope
-					Vector3 tempscale2 = IN_P_PulleyLeft.transform.localScale;
-					tempscale2.y += 1;
-					IN_P_PulleyLeft.transform.localScale = tempscale2;
-
-					Vector3 temppos2 = IN_P_PulleyLeft.transform.localPosition;
-					temppos2.y -= 1;
-					IN_P_PulleyLeft.transform.localPosition = temppos2;
-				}
-
-				if(Input.GetKeyDown(KeyCode.DownArrow))
-				{
-					//Right Rope
-					Vector3 tempscale = IN_P_PulleyRight.transform.localScale;
-					tempscale.y += 1;
-					IN_P_PulleyRight.transform.localScale = tempscale;
-
-					Vector3 temppos = IN_P_PulleyRight.transform.localPosition;
-					temppos.y -= 1;
-					IN_P_PulleyRight.transform.localPosition = temppos;
-
-					//Right Platform
-					Vector3 platpos = IN_P_PlatformRight.transform.localPosition;
-					platpos.y -= 1.5f;
-					IN_P_PlatformRight.transform.localPosition = platpos;
-
-					//Left Platform
-					Vector3 platpos2 = IN_P_PlatformLeft.transform.localPosition;
-					platpos2.y += 1.5f;
-					IN_P_PlatformLeft.transform.localPosition = platpos2;
-
-					//Left Rope
-					Vector3 tempscale2 = IN_P_PulleyLeft.transform.localScale;
-					tempscale2.y -= 1;
-					IN_P_PulleyLeft.transform.localScale = tempscale2;
-
-					Vector3 temppos2 = IN_P_PulleyLeft.transform.localPosition;
-					temppos2.y += 1;
-					IN_P_PulleyLeft.transform.localPosition = temppos2;
-				}
-			}
-		}
-	}
-	*/
-
-/*
-	 * Possible Solution:
-	 * 
-	 *   function OnTriggerStay(other:Collider){
-             
-             if(other.gameObject.tag == "platform"){
-             transform.parent = other.transform;
- 
-		      }
-		     }
-		 
-		 function OnTriggerExit(other:Collider){
-		     if(other.gameObject.tag == "platform"){
-             transform.parent = null;
-             
-         }
-     }
-	 * 
-	 * 
-	 * or set the position relative to the platform:
-	 * 
-	 *  transform.position = other.transform.position;
- 		transform.rotation = other.transform.rotation;
-	 *
-	 */

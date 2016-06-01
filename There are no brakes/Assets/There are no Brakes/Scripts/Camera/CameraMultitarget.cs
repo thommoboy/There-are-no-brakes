@@ -1,3 +1,10 @@
+/***********************
+ * Multiple Target Tracking and Framing Camera
+ * CameraMultitarget.cs
+ * Originally Written by Rainbirth SLU
+ * Modified By:
+ * Pierce Thompson
+ ***********************/
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;

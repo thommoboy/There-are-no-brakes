@@ -80,6 +80,7 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_Movement.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PickUp.cs" />
      <None Include="Assets\There are no Brakes\Shaders\3DTextShader.shader" />
+     <None Include="Assets\There are no Brakes\Animations\Animation Keyframes.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

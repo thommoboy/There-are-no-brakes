@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/***********************
+ * P_HUD.cs
+ * Originally Written by 
+ * Modified By:
+ ***********************/
+using UnityEngine;
 using System.Collections;
  
 public class P_HUD : MonoBehaviour {

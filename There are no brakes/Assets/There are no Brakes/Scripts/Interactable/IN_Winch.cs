@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/***********************
+ * IN_Winch.cs
+ * Originally Written by 
+ * Modified By:
+ ***********************/
+using UnityEngine;
 using System.Collections;
 
 public class IN_Winch : IN_InteractableObject{

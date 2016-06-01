@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/***********************
+ * M_MusicVolumeScript.cs
+ * Originally Written by Pierce Thompson
+ * Modified By:
+ ***********************/
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 

@@ -1,0 +1,19 @@
+Jump Up:
+Start Frame: 1
+End Frame: 7 (Mid Air)
+
+Jump/Fall Down:
+Start Frame: 8
+End Frame: 20
+
+Walk Cycle:
+Start Frame: 1
+End Frame: 24
+
+Idle:
+Start Frame: 0
+End Frane:40
+
+Pickup:
+Start Frame: 1
+End Frame: 25

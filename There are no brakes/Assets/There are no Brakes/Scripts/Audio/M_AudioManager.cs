@@ -1,8 +1,16 @@
-﻿using UnityEngine;
+﻿/***********************
+ * M_AudioManager.cs
+ * Originally Written by Pierce Thompson
+ * Modified By:
+ ***********************/
+using UnityEngine;
 using System.Collections;
 
 public class M_AudioManager : MonoBehaviour
 {
+	/// <summary>
+	/// Store all the possible sounds
+	/// </summary>
 	public AudioClip Step;
 	public AudioClip Jump;
 	public AudioClip Winch;
@@ -13,7 +21,9 @@ public class M_AudioManager : MonoBehaviour
 	public AudioClip GrappleAttach;
 
 	public AudioClip AmbientMusic;
-
+	/// <summary>
+	/// Grab the objects that will play certain effects
+	/// </summary>
 	public AudioSource SoundFXOutput;
 	public AudioSource MusicOutput;
 
@@ -21,12 +31,11 @@ public class M_AudioManager : MonoBehaviour
 	{
 		MusicOutput.PlayOneShot (AmbientMusic);
 	}
-	//Call this function to play audio clips from the audio source
-	/*
-	 * for example
-	 * AudioManager.PlayAudio("Step");
-	 * 
-	 */
+	/// <summary>
+	/// Call this function to play audio clips from the audio source
+	/// for example
+	/// AudioManager.PlayAudio("Step");
+	/// </summary>
 	public void PlayAudio(string Clip)
 	{
 		if (Clip == "Step") {
@@ -48,6 +57,6 @@ public class M_AudioManager : MonoBehaviour
 		else if (Clip == "GrappleShoot")
 			SoundFXOutput.PlayOneShot (GrappleAttach);
 		else
-			Debug.LogError ("You done fucked up son");
+			Debug.LogError ("Looks like you tried to play a sound that doesn't exist");
 	}
 }

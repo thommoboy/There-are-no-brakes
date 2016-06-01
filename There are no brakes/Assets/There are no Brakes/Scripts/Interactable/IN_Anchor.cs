@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/***********************
+ * IN_Anchor.cs
+ * Originally Written by Pierce Thompson
+ * Modified By:
+ ***********************/
+using UnityEngine;
 using System.Collections;
 
 public class IN_Anchor : MonoBehaviour

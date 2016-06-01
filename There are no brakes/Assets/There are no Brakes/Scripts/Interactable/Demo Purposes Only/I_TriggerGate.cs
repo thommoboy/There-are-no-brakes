@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/***********************
+ * IN_Anchor_Trigger.cs
+ * Originally Written by Pierce Thompson
+ * Modified By:
+ ***********************/
+using UnityEngine;
 using System.Collections;
 
 public class I_TriggerGate : MonoBehaviour
@@ -9,6 +14,9 @@ public class I_TriggerGate : MonoBehaviour
 
 	void Update ()
 	{
+		/// <summary>
+		/// If the gate has been Triggered then Interpolate it's position based on the local position.
+		/// </summary>
 		if(Triggered)
 		{
 			if (Gate.transform.localPosition.y >= StopHeight)
@@ -20,6 +28,9 @@ public class I_TriggerGate : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// If a player enteres the Trigger, set the boolean to be true.
+	/// </summary>
 	void OnTriggerEnter(Collider other)
 	{
 		if(other.tag == "Player")

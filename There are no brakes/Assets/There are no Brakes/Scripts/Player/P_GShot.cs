@@ -1,4 +1,9 @@
-﻿using UnityEditor;
+﻿/***********************
+ * P_GShot.cs
+ * Originally Written by 
+ * Modified By:
+ ***********************/
+using UnityEditor;
 using UnityEngine;
 using System.Collections;
 

@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/***********************
+ * M_3D_OnMouseOver.cs
+ * Originally Written by 
+ * Modified By:
+ ***********************/
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 public class M_3D_OnMouseOver : MonoBehaviour {
