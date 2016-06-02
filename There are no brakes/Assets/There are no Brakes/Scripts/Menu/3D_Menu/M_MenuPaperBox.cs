@@ -1,6 +1,6 @@
 ﻿/***********************
  * M_MenuPaperBox.cs
- * Originally Written by 
+ * Originally Written by Xinyu Feng
  * Modified By:
  ***********************/
 using UnityEngine;

@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/***********************
+ * M_MoveForward.cs
+ * Originally Written by Xinyu Feng
+ * Modified By:
+ ***********************/
+using UnityEngine;
 using System.Collections;
 
 public class M_MoveForward : MonoBehaviour {
