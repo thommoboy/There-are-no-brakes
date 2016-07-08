@@ -49,7 +49,7 @@ public class P_Movement : MonoBehaviour
 
 	void Start(){
 		Physics.gravity = new Vector3(0, g, 0);
-		var layerMask = ((1 << 11) | (1 << 12));
+		var layerMask = ((1 << 12) | (1 << 13));
 		//layerMask = ~(11 << LayerMask.NameToLayer ("Player")); // ignore collisions with layerX
 //		grapplePoints = GameObject.FindGameObjectsWithTag("gp");
 	}
@@ -64,6 +64,8 @@ public class P_Movement : MonoBehaviour
 			RaycastHit hit;
 			Ray downRay = new Ray (Player1.transform.position, -Vector3.up);
 			Physics.Raycast (downRay, out hit, Mathf.Infinity, layerMask);
+			//Debug.Log (hit.distance);
+			//Debug.Log(hit.transform.gameObject.layer);
 
 			if (hit.distance < 1.1) {
 				BeingCarried1 = false;
