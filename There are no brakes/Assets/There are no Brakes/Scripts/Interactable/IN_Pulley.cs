@@ -133,7 +133,7 @@ public class IN_Pulley : MonoBehaviour
 				platpos.y += 1.5f;
 				IN_P_PlatformRight.transform.localPosition = Vector3.Lerp(IN_P_PlatformRight.transform.localPosition, platpos, Time.deltaTime);
 				
-				GameObject.Find("weight").transform.localPosition = new Vector3(GameObject.Find("weight").transform.localPosition.x, GameObject.Find("weight").transform.localPosition.y + 0.02f, GameObject.Find("weight").transform.localPosition.z);
+				GameObject.Find("weight").transform.localPosition = new Vector3(GameObject.Find("weight").transform.localPosition.x, GameObject.Find("weight").transform.localPosition.y + 0.002f, GameObject.Find("weight").transform.localPosition.z);
 				
 
 				/// <summary>
