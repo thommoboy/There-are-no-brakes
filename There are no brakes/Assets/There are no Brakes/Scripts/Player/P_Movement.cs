@@ -37,6 +37,10 @@ public class P_Movement : MonoBehaviour
 	public bool BeingCarried2 = false;
 	public bool BeingCarried3 = false;
 
+	public bool P1Carrying = false;
+	public bool P2Carrying = false;
+	public bool P3Carrying = false;
+
 	public bool FacingRight1 = false;
 	public bool FacingRight2 = false;
 	public bool FacingRight3 = false;
@@ -74,17 +78,17 @@ public class P_Movement : MonoBehaviour
 				P1OnGround = false;
 				//Player1Anim.GetComponent<Animator> ().Play ("Idle");
 			}
-
-			if (Input.GetButton ("P1_Jump") && hit.distance < 1.1) {
-				Player1Anim.GetComponent<Animator> ().Play ("Jump");
-				if (GameObject.Find ("Player1").transform.GetChild (2).GetComponent<P_PickUp> ().Carrying == false) {
-					Player1.GetComponent<Rigidbody> ().velocity = new Vector3 (Player1.GetComponent<Rigidbody> ().velocity.x, jumpForce, Player1.GetComponent<Rigidbody> ().velocity.z);
-				}
-			} else {
-				
-			}
+			
 
 			if(!BeingCarried1){
+				if(!P1Carrying){
+					if (Input.GetButton ("P1_Jump") && hit.distance < 1.1) {
+						Player1Anim.GetComponent<Animator> ().Play ("Jump");
+						if (GameObject.Find ("Player1").transform.GetChild (2).GetComponent<P_PickUp> ().Carrying == false) {
+							Player1.GetComponent<Rigidbody> ().velocity = new Vector3 (Player1.GetComponent<Rigidbody> ().velocity.x, jumpForce, Player1.GetComponent<Rigidbody> ().velocity.z);
+						}
+					} 
+				}
 			
 
 					
@@ -142,15 +146,17 @@ public class P_Movement : MonoBehaviour
 
 			}
 
-			if (Input.GetButton ("P2_Jump") && hit.distance < 1.1) {
-				Player2Anim.GetComponent<Animator> ().Play ("Jump");
-				if (GameObject.Find ("Player2").transform.GetChild (2).GetComponent<P_PickUp> ().Carrying == false) {
-					Player2.GetComponent<Rigidbody> ().velocity = new Vector3 (Player2.GetComponent<Rigidbody> ().velocity.x, jumpForce, Player2.GetComponent<Rigidbody> ().velocity.z);
-					Player2Anim.GetComponent<Animator> ().Play ("Jump");
-				}
-			}
-
 			if (!BeingCarried2) {
+				if(!P2Carrying){
+					if (Input.GetButton ("P2_Jump") && hit.distance < 1.1) {
+						Player2Anim.GetComponent<Animator> ().Play ("Jump");
+						if (GameObject.Find ("Player2").transform.GetChild (2).GetComponent<P_PickUp> ().Carrying == false) {
+							Player2.GetComponent<Rigidbody> ().velocity = new Vector3 (Player2.GetComponent<Rigidbody> ().velocity.x, jumpForce, Player2.GetComponent<Rigidbody> ().velocity.z);
+							Player2Anim.GetComponent<Animator> ().Play ("Jump");
+						}
+					}
+				}
+
 				//Player 2:
 				float horizontal = Input.GetAxis ("P2_Horizontal");
 				//float vertical = Input.GetAxis ("P2_Vertical");
@@ -201,15 +207,18 @@ public class P_Movement : MonoBehaviour
 					P3OnGround = false;
 				}
 
-			if (Input.GetButton ("P3_Jump") && hit.distance < 1.1) {
-					Player3Anim.GetComponent<Animator> ().Play ("Jump");
-				if(GameObject.Find("Player3").transform.GetChild(2).GetComponent<P_PickUp>().Carrying == false){
-					Player3.GetComponent<Rigidbody> ().velocity = new Vector3 (Player3.GetComponent<Rigidbody> ().velocity.x, jumpForce, Player3.GetComponent<Rigidbody> ().velocity.z);
-						Player3Anim.GetComponent<Animator> ().Play ("Jump");
-					}
-			}
-
+				
 			if(!BeingCarried3){
+				if(!P3Carrying){
+					if (Input.GetButton ("P3_Jump") && hit.distance < 1.1) {
+						Player3Anim.GetComponent<Animator> ().Play ("Jump");
+						if(GameObject.Find("Player3").transform.GetChild(2).GetComponent<P_PickUp>().Carrying == false){
+							Player3.GetComponent<Rigidbody> ().velocity = new Vector3 (Player3.GetComponent<Rigidbody> ().velocity.x, jumpForce, Player3.GetComponent<Rigidbody> ().velocity.z);
+							Player3Anim.GetComponent<Animator> ().Play ("Jump");
+						}
+					}
+				}
+
 			//Player 3:
 			float horizontal = Input.GetAxis ("P3_Horizontal");
 			//float vertical = Input.GetAxis ("P3_Vertical");

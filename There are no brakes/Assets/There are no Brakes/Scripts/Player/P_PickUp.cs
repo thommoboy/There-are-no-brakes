@@ -11,6 +11,8 @@ public class P_PickUp : MonoBehaviour {
 	public float ThrowLength = 5f;
 	private GameObject carriedObject;
 	private GameObject ThisPlayer;
+	private float timeout = 0.5F;
+	private float nextInteract = 0.0F;
 	
 	void Start(){
 		ThisPlayer = this.transform.parent.gameObject;
@@ -52,11 +54,11 @@ public class P_PickUp : MonoBehaviour {
 					carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z-1.2f);
 				}
 				// throw carried object
-				if(Input.GetKeyDown(KeyCode.UpArrow)){
+				if(Input.GetKeyDown(KeyCode.UpArrow) && Time.time > nextInteract){
 					ThrowAway();
 				}
 				// drop carried object
-				if(Input.GetKeyDown(KeyCode.DownArrow)){
+				if(Input.GetKeyDown(KeyCode.DownArrow) && Time.time > nextInteract){
 					DropObject();
 				}
 				// stop player from carrying something if they get picked up
@@ -70,10 +72,10 @@ public class P_PickUp : MonoBehaviour {
 				} else {
 					carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z-1.2f);
 				}
-				if(Input.GetKeyDown(KeyCode.W)){
+				if(Input.GetKeyDown(KeyCode.W) && Time.time > nextInteract){
 					ThrowAway();
 				}
-				if(Input.GetKeyDown(KeyCode.S)){
+				if(Input.GetKeyDown(KeyCode.S) && Time.time > nextInteract){
 					DropObject();
 				}
 				if(GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().BeingCarried2){
@@ -86,14 +88,25 @@ public class P_PickUp : MonoBehaviour {
 				} else {
 					carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z-1.2f);
 				}
-				if(Input.GetKeyDown(KeyCode.I)){
+				if(Input.GetKeyDown(KeyCode.I) && Time.time > nextInteract){
 					ThrowAway();
 				}
-				if(Input.GetKeyDown(KeyCode.K)){
+				if(Input.GetKeyDown(KeyCode.K) && Time.time > nextInteract){
 					DropObject();
 				}
 				if(GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().BeingCarried3){
 					DropObject();
+				}
+			}
+		} else {
+			//timeout to stop player jumping right after throwing object
+			if(Time.time > nextInteract){
+				if (ThisPlayer.name == "Player1") {
+					GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().P1Carrying = false;
+				} else if (ThisPlayer.name == "Player2"){
+					GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().P2Carrying = false;
+				} else if (ThisPlayer.name== "Player3") {
+					GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().P3Carrying = false;
 				}
 			}
 		}
@@ -103,8 +116,17 @@ public class P_PickUp : MonoBehaviour {
 	public bool Carrying = false;
 	private GameObject HeldObject;
 	void PickUp(GameObject target){
+		//stop player dropping object soon as they pick it up
+		nextInteract = Time.time + timeout;
 		//cant pick up anymore things
 		Carrying = true;
+		if (ThisPlayer.name == "Player1") {
+			GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().P1Carrying = true;
+		} else if(ThisPlayer.name == "Player2"){
+			GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().P2Carrying = true;
+		} else if(ThisPlayer.name== "Player3") {
+			GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().P3Carrying = true;
+		}
 		//get other player
 		HeldObject = target;
 		//move carried object up
@@ -127,13 +149,9 @@ public class P_PickUp : MonoBehaviour {
 
 
 	void ThrowAway(){
-		//Debug.Log ("Thrown");
-		//disconnect carried object from parenting
-		HeldObject.transform.parent = null;
+		DropObject();
 		//launch object
 		HeldObject.transform.position = new Vector3(HeldObject.transform.position.x,HeldObject.transform.position.y+0.5f,HeldObject.transform.position.z);
-		// re-enable objects gravity
-		HeldObject.GetComponent<Rigidbody>().useGravity = true;
 		// defines which direction to throw object based on players direction
 		if(ThisPlayer.name == "Player1"){
 			if(GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().FacingRight1){
@@ -156,8 +174,6 @@ public class P_PickUp : MonoBehaviour {
 				HeldObject.GetComponent<Rigidbody>().velocity = new Vector3(0,ThrowHeight, -ThrowLength);
 			}
 		}
-		//can now pick up things again
-		Carrying = false;
 	}
 	
 	void DropObject(){
@@ -167,5 +183,7 @@ public class P_PickUp : MonoBehaviour {
 		HeldObject.GetComponent<Rigidbody>().useGravity = true;
 		//can now pick up things again
 		Carrying = false;
+		//stop player jumping right after they throw object
+		nextInteract = Time.time + timeout;
 	}
 }
