@@ -10,6 +10,7 @@ public class IN_Activation : MonoBehaviour{
 	public bool activated = false;
 	public bool lever = false;
 	public bool pressureplate = false;
+	public bool lantern = false;
 	private float timeout = 0.25F;
 	private float nextInteract = 0.0F;
 	
@@ -40,6 +41,26 @@ public class IN_Activation : MonoBehaviour{
 				}
 			}
 		}
+		if(lantern && !activated){
+			if(other.tag == "Player"){
+				intrigger = true;
+				if (other.name == "Player1"){
+					if (Input.GetKey (KeyCode.DownArrow)) {
+						changeState();
+					}
+				}
+				if (other.name == "Player2"){
+					if (Input.GetKey (KeyCode.S)) {
+						changeState();
+					}
+				}
+				if (other.name == "Player3"){
+					if (Input.GetKey (KeyCode.K)) {
+						changeState();
+					}
+				}
+			}
+		}
 		if(pressureplate){
 			if(other.tag == "Player" || other.tag == "Weight"){
 				activated = true;
@@ -63,7 +84,8 @@ public class IN_Activation : MonoBehaviour{
 	void changeState(){
 		activated = !activated;
 		nextInteract = Time.time + timeout;
-		this.transform.Rotate(0, 180, 0);
+		if(lever){this.transform.Rotate(0, 180, 0);}
+		if(lantern){intrigger = false;}
 	}
 	
 	
