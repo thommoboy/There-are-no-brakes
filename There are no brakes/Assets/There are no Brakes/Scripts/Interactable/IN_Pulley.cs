@@ -152,11 +152,13 @@ public class IN_Pulley : MonoBehaviour
 				//IN_P_GateRight.transform.Rotate(0, 0, Time.deltaTime*-RotationRate);
 				
 				//move rope attached to gate
-				Vector3 ropelength = GameObject.Find("adjustablerope5").transform.localScale;
-				ropelength.y -= 0.3f;
-				if(GameObject.Find("adjustablerope5").transform.localScale.y > 0.3f){
-					GameObject.Find("adjustablerope5").transform.localScale = Vector3.Lerp(GameObject.Find("adjustablerope5").transform.localScale, ropelength, Time.deltaTime);
-					GameObject.Find("adjustablerope5").transform.Rotate(Time.deltaTime*7, 0, 0);
+				if(GameObject.Find("adjustablerope5")) {
+					Vector3 ropelength = GameObject.Find("adjustablerope5").transform.localScale;
+					ropelength.y -= 0.3f;
+					if(GameObject.Find("adjustablerope5").transform.localScale.y > 0.3f){
+						GameObject.Find("adjustablerope5").transform.localScale = Vector3.Lerp(GameObject.Find("adjustablerope5").transform.localScale, ropelength, Time.deltaTime);
+						GameObject.Find("adjustablerope5").transform.Rotate(Time.deltaTime*7, 0, 0);
+					}
 				}
 			}
 		}

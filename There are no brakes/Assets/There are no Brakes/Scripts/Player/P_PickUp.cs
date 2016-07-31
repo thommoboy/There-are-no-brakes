@@ -11,11 +11,13 @@ public class P_PickUp : MonoBehaviour {
 	public float ThrowLength = 5f;
 	private GameObject carriedObject;
 	private GameObject ThisPlayer;
+	private GameObject PlayerController;
 	private float timeout = 0.5F;
 	private float nextInteract = 0.0F;
 	
 	void Start(){
 		ThisPlayer = this.transform.parent.gameObject;
+		PlayerController = GameObject.Find ("PlayerControllers");
 	}
 		 
 	void OnTriggerStay(Collider other){
@@ -23,19 +25,21 @@ public class P_PickUp : MonoBehaviour {
 		if (other.name != ThisPlayer.name) {
 			// if object is supposed to be 'pick-up-able'
 			if (other.tag == "Player" || other.tag == "Weight") {
-				// only looks for the interact key of the actual player (no pressing interact to make someone else interact)
+				// check that player isnt already carrying something 
 				if (!Carrying) {
-					if (ThisPlayer.name == "Player1") {
+					// check that player is on the ground
+					if (ThisPlayer.name == "Player1" && PlayerController.GetComponent<P_Movement> ().P1OnGround) {
+						// only looks for the interact key of the actual player (no pressing interact to make someone else interact)
 						if (Input.GetKeyDown(KeyCode.DownArrow)) {
 							PickUp (other.gameObject);
 						}
 					}
-					if (ThisPlayer.name == "Player2") {
+					if (ThisPlayer.name == "Player2" && PlayerController.GetComponent<P_Movement> ().P2OnGround) {
 						if (Input.GetKeyDown(KeyCode.S)) {
 							PickUp (other.gameObject);
 						}
 					}
-					if (ThisPlayer.name == "Player3") {
+					if (ThisPlayer.name == "Player3" && PlayerController.GetComponent<P_Movement> ().P3OnGround) {
 						if (Input.GetKeyDown(KeyCode.K)) {
 							PickUp (other.gameObject);
 						}
@@ -48,7 +52,7 @@ public class P_PickUp : MonoBehaviour {
 		if (Carrying) {
 			if(ThisPlayer.name == "Player1"){
 				// move carried object to either side if carrying player turns around
-				if(GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().FacingRight1){
+				if(PlayerController.GetComponent<P_Movement> ().FacingRight1){
 					carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z+1.2f);
 				} else {
 					carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z-1.2f);
@@ -61,13 +65,13 @@ public class P_PickUp : MonoBehaviour {
 				if(Input.GetKeyDown(KeyCode.DownArrow) && Time.time > nextInteract){
 					DropObject();
 				}
-				// stop player from carrying something if they get picked up
-				if(GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().BeingCarried1){
+				// stop player from carrying something if they get picked up or are in the air
+				if(PlayerController.GetComponent<P_Movement> ().BeingCarried1 || !PlayerController.GetComponent<P_Movement> ().P1OnGround){
 					DropObject();
 				}
 			}
 			if(ThisPlayer.name == "Player2"){
-				if(GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().FacingRight2){
+				if(PlayerController.GetComponent<P_Movement> ().FacingRight2){
 					carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z+1.2f);
 				} else {
 					carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z-1.2f);
@@ -78,12 +82,12 @@ public class P_PickUp : MonoBehaviour {
 				if(Input.GetKeyDown(KeyCode.S) && Time.time > nextInteract){
 					DropObject();
 				}
-				if(GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().BeingCarried2){
+				if(PlayerController.GetComponent<P_Movement> ().BeingCarried2 || !PlayerController.GetComponent<P_Movement> ().P2OnGround){
 					DropObject();
 				}
 			}
 			if(ThisPlayer.name == "Player3"){
-				if(GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().FacingRight3){
+				if(PlayerController.GetComponent<P_Movement> ().FacingRight3){
 					carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z+1.2f);
 				} else {
 					carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z-1.2f);
@@ -94,7 +98,7 @@ public class P_PickUp : MonoBehaviour {
 				if(Input.GetKeyDown(KeyCode.K) && Time.time > nextInteract){
 					DropObject();
 				}
-				if(GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().BeingCarried3){
+				if(PlayerController.GetComponent<P_Movement> ().BeingCarried3 || !PlayerController.GetComponent<P_Movement> ().P3OnGround){
 					DropObject();
 				}
 			}
@@ -102,11 +106,11 @@ public class P_PickUp : MonoBehaviour {
 			//timeout to stop player jumping right after throwing object
 			if(Time.time > nextInteract){
 				if (ThisPlayer.name == "Player1") {
-					GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().P1Carrying = false;
+					PlayerController.GetComponent<P_Movement> ().P1Carrying = false;
 				} else if (ThisPlayer.name == "Player2"){
-					GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().P2Carrying = false;
+					PlayerController.GetComponent<P_Movement> ().P2Carrying = false;
 				} else if (ThisPlayer.name== "Player3") {
-					GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().P3Carrying = false;
+					PlayerController.GetComponent<P_Movement> ().P3Carrying = false;
 				}
 			}
 		}
@@ -121,11 +125,11 @@ public class P_PickUp : MonoBehaviour {
 		//cant pick up anymore things
 		Carrying = true;
 		if (ThisPlayer.name == "Player1") {
-			GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().P1Carrying = true;
+			PlayerController.GetComponent<P_Movement> ().P1Carrying = true;
 		} else if(ThisPlayer.name == "Player2"){
-			GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().P2Carrying = true;
+			PlayerController.GetComponent<P_Movement> ().P2Carrying = true;
 		} else if(ThisPlayer.name== "Player3") {
-			GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().P3Carrying = true;
+			PlayerController.GetComponent<P_Movement> ().P3Carrying = true;
 		}
 		//get other player
 		HeldObject = target;
@@ -136,11 +140,11 @@ public class P_PickUp : MonoBehaviour {
 		carriedObject = target;
 		// let players know when they are being carried
 		if (target.name == "Player1") {
-			GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().BeingCarried1 = true;
+			PlayerController.GetComponent<P_Movement> ().BeingCarried1 = true;
 		} else if (target.name == "Player2") {
-			GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().BeingCarried2 = true;
+			PlayerController.GetComponent<P_Movement> ().BeingCarried2 = true;
 		} else if (target.name == "Player3") {
-			GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().BeingCarried3 = true;
+			PlayerController.GetComponent<P_Movement> ().BeingCarried3 = true;
 		}
 		//change carried objects 'parent' object so it moves relative to carrier
 		target.transform.parent = ThisPlayer.transform;
@@ -154,21 +158,21 @@ public class P_PickUp : MonoBehaviour {
 		HeldObject.transform.position = new Vector3(HeldObject.transform.position.x,HeldObject.transform.position.y+0.5f,HeldObject.transform.position.z);
 		// defines which direction to throw object based on players direction
 		if(ThisPlayer.name == "Player1"){
-			if(GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().FacingRight1){
+			if(PlayerController.GetComponent<P_Movement> ().FacingRight1){
 				HeldObject.GetComponent<Rigidbody>().velocity = new Vector3(0,ThrowHeight, ThrowLength);
 			} else {
 				HeldObject.GetComponent<Rigidbody>().velocity = new Vector3(0,ThrowHeight, -ThrowLength);
 			}
 		}
 		if(ThisPlayer.name == "Player2"){
-			if(GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().FacingRight2){
+			if(PlayerController.GetComponent<P_Movement> ().FacingRight2){
 				HeldObject.GetComponent<Rigidbody>().velocity = new Vector3(0,ThrowHeight, ThrowLength);
 			} else {
 				HeldObject.GetComponent<Rigidbody>().velocity = new Vector3(0,ThrowHeight, -ThrowLength);
 			}
 		}
 		if(ThisPlayer.name == "Player3"){
-			if(GameObject.Find ("PlayerControllers").GetComponent<P_Movement> ().FacingRight3){
+			if(PlayerController.GetComponent<P_Movement> ().FacingRight3){
 				HeldObject.GetComponent<Rigidbody>().velocity = new Vector3(0,ThrowHeight, ThrowLength);
 			} else {
 				HeldObject.GetComponent<Rigidbody>().velocity = new Vector3(0,ThrowHeight, -ThrowLength);

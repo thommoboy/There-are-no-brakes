@@ -81,7 +81,7 @@ public class P_Movement : MonoBehaviour
 			
 
 			if(!BeingCarried1){
-				if(!P1Carrying){
+				if(!P1Carrying && P1OnGround){
 					if (Input.GetButton ("P1_Jump") && hit.distance < 1.1) {
 						Player1Anim.GetComponent<Animator> ().Play ("Jump");
 						if (GameObject.Find ("Player1").transform.GetChild (2).GetComponent<P_PickUp> ().Carrying == false) {
@@ -147,7 +147,7 @@ public class P_Movement : MonoBehaviour
 			}
 
 			if (!BeingCarried2) {
-				if(!P2Carrying){
+				if(!P2Carrying && P2OnGround){
 					if (Input.GetButton ("P2_Jump") && hit.distance < 1.1) {
 						Player2Anim.GetComponent<Animator> ().Play ("Jump");
 						if (GameObject.Find ("Player2").transform.GetChild (2).GetComponent<P_PickUp> ().Carrying == false) {
@@ -209,7 +209,7 @@ public class P_Movement : MonoBehaviour
 
 				
 			if(!BeingCarried3){
-				if(!P3Carrying){
+				if(!P3Carrying && P3OnGround){
 					if (Input.GetButton ("P3_Jump") && hit.distance < 1.1) {
 						Player3Anim.GetComponent<Animator> ().Play ("Jump");
 						if(GameObject.Find("Player3").transform.GetChild(2).GetComponent<P_PickUp>().Carrying == false){
