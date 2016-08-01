@@ -1,0 +1,369 @@
+fileFormatVersion: 2
+guid: 426abf0c11a5c2944951adca11b04a23
+timeCreated: 1470047408
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Back_Beard
+    100002: Collabsible_Platform
+    100004: Front_Beard
+    100006: Hinge3
+    100008: Hinge_Left
+    100010: Hinge_Right
+    100012: Hinge_Right 1
+    100014: Hinge_Right 2
+    100016: Lever
+    100018: pCone1
+    100020: pCone1 1
+    100022: pCone1 10
+    100024: pCone1 11
+    100026: pCone1 12
+    100028: pCone1 13
+    100030: pCone1 14
+    100032: pCone1 15
+    100034: pCone1 16
+    100036: pCone1 17
+    100038: pCone1 2
+    100040: pCone1 3
+    100042: pCone1 4
+    100044: pCone1 5
+    100046: pCone1 6
+    100048: pCone1 7
+    100050: pCone1 8
+    100052: pCone1 9
+    100054: pCylinder30
+    100056: pCylinder31
+    100058: pCylinder32
+    100060: pCylinder33
+    100062: pCylinder34
+    100064: pCylinder35
+    100066: pCylinder36
+    100068: pCylinder37
+    100070: pCylinder38
+    100072: pCylinder39
+    100074: pCylinder40
+    100076: pCylinder41
+    100078: pCylinder42
+    100080: pCylinder43
+    100082: pCylinder44
+    100084: pCylinder46
+    100086: pCylinder47
+    100088: Platform
+    100090: Platform1
+    100092: Platform2
+    100094: Platform3
+    100096: Platform4
+    100098: Platform5
+    100100: Platform6
+    100102: Pressure_Plate
+    100104: Push_Pin_Trap
+    100106: Pyramid
+    100108: //RootNode
+    100110: Train_Carriage
+    100112: Wheels_Back_1
+    100114: Wheels_Back_2
+    100116: Wheels_Front_1
+    100118: Wheels_Front_2
+    400000: Back_Beard
+    400002: Collabsible_Platform
+    400004: Front_Beard
+    400006: Hinge3
+    400008: Hinge_Left
+    400010: Hinge_Right
+    400012: Hinge_Right 1
+    400014: Hinge_Right 2
+    400016: Lever
+    400018: pCone1
+    400020: pCone1 1
+    400022: pCone1 10
+    400024: pCone1 11
+    400026: pCone1 12
+    400028: pCone1 13
+    400030: pCone1 14
+    400032: pCone1 15
+    400034: pCone1 16
+    400036: pCone1 17
+    400038: pCone1 2
+    400040: pCone1 3
+    400042: pCone1 4
+    400044: pCone1 5
+    400046: pCone1 6
+    400048: pCone1 7
+    400050: pCone1 8
+    400052: pCone1 9
+    400054: pCylinder30
+    400056: pCylinder31
+    400058: pCylinder32
+    400060: pCylinder33
+    400062: pCylinder34
+    400064: pCylinder35
+    400066: pCylinder36
+    400068: pCylinder37
+    400070: pCylinder38
+    400072: pCylinder39
+    400074: pCylinder40
+    400076: pCylinder41
+    400078: pCylinder42
+    400080: pCylinder43
+    400082: pCylinder44
+    400084: pCylinder46
+    400086: pCylinder47
+    400088: Platform
+    400090: Platform1
+    400092: Platform2
+    400094: Platform3
+    400096: Platform4
+    400098: Platform5
+    400100: Platform6
+    400102: Pressure_Plate
+    400104: Push_Pin_Trap
+    400106: Pyramid
+    400108: //RootNode
+    400110: Train_Carriage
+    400112: Wheels_Back_1
+    400114: Wheels_Back_2
+    400116: Wheels_Front_1
+    400118: Wheels_Front_2
+    2300000: Back_Beard
+    2300002: Collabsible_Platform
+    2300004: Front_Beard
+    2300006: Hinge3
+    2300008: Hinge_Left
+    2300010: Hinge_Right
+    2300012: Hinge_Right 1
+    2300014: Hinge_Right 2
+    2300016: Lever
+    2300018: pCone1
+    2300020: pCone1 1
+    2300022: pCone1 10
+    2300024: pCone1 11
+    2300026: pCone1 12
+    2300028: pCone1 13
+    2300030: pCone1 14
+    2300032: pCone1 15
+    2300034: pCone1 16
+    2300036: pCone1 17
+    2300038: pCone1 2
+    2300040: pCone1 3
+    2300042: pCone1 4
+    2300044: pCone1 5
+    2300046: pCone1 6
+    2300048: pCone1 7
+    2300050: pCone1 8
+    2300052: pCone1 9
+    2300054: pCylinder30
+    2300056: pCylinder31
+    2300058: pCylinder32
+    2300060: pCylinder33
+    2300062: pCylinder34
+    2300064: pCylinder35
+    2300066: pCylinder36
+    2300068: pCylinder37
+    2300070: pCylinder38
+    2300072: pCylinder39
+    2300074: pCylinder40
+    2300076: pCylinder41
+    2300078: pCylinder42
+    2300080: pCylinder43
+    2300082: pCylinder44
+    2300084: pCylinder46
+    2300086: pCylinder47
+    2300088: Platform
+    2300090: Platform1
+    2300092: Platform2
+    2300094: Platform3
+    2300096: Platform4
+    2300098: Platform5
+    2300100: Platform6
+    2300102: Pressure_Plate
+    2300104: Push_Pin_Trap
+    2300106: Pyramid
+    2300108: Train_Carriage
+    2300110: Wheels_Back_1
+    2300112: Wheels_Back_2
+    2300114: Wheels_Front_1
+    2300116: Wheels_Front_2
+    3300000: Back_Beard
+    3300002: Collabsible_Platform
+    3300004: Front_Beard
+    3300006: Hinge3
+    3300008: Hinge_Left
+    3300010: Hinge_Right
+    3300012: Hinge_Right 1
+    3300014: Hinge_Right 2
+    3300016: Lever
+    3300018: pCone1
+    3300020: pCone1 1
+    3300022: pCone1 10
+    3300024: pCone1 11
+    3300026: pCone1 12
+    3300028: pCone1 13
+    3300030: pCone1 14
+    3300032: pCone1 15
+    3300034: pCone1 16
+    3300036: pCone1 17
+    3300038: pCone1 2
+    3300040: pCone1 3
+    3300042: pCone1 4
+    3300044: pCone1 5
+    3300046: pCone1 6
+    3300048: pCone1 7
+    3300050: pCone1 8
+    3300052: pCone1 9
+    3300054: pCylinder30
+    3300056: pCylinder31
+    3300058: pCylinder32
+    3300060: pCylinder33
+    3300062: pCylinder34
+    3300064: pCylinder35
+    3300066: pCylinder36
+    3300068: pCylinder37
+    3300070: pCylinder38
+    3300072: pCylinder39
+    3300074: pCylinder40
+    3300076: pCylinder41
+    3300078: pCylinder42
+    3300080: pCylinder43
+    3300082: pCylinder44
+    3300084: pCylinder46
+    3300086: pCylinder47
+    3300088: Platform
+    3300090: Platform1
+    3300092: Platform2
+    3300094: Platform3
+    3300096: Platform4
+    3300098: Platform5
+    3300100: Platform6
+    3300102: Pressure_Plate
+    3300104: Push_Pin_Trap
+    3300106: Pyramid
+    3300108: Train_Carriage
+    3300110: Wheels_Back_1
+    3300112: Wheels_Back_2
+    3300114: Wheels_Front_1
+    3300116: Wheels_Front_2
+    4300000: Train_Carriage
+    4300002: Wheels_Front_1
+    4300004: Wheels_Back_1
+    4300006: Wheels_Front_2
+    4300008: Wheels_Back_2
+    4300010: Pyramid
+    4300012: Front_Beard
+    4300014: Back_Beard
+    4300016: Collabsible_Platform
+    4300018: Hinge3
+    4300020: Hinge_Right
+    4300022: Hinge_Right
+    4300024: Hinge_Right
+    4300026: Hinge_Left
+    4300028: Platform
+    4300030: Push_Pin_Trap
+    4300032: pCone1
+    4300034: pCylinder44
+    4300036: pCone1
+    4300038: pCylinder43
+    4300040: pCone1
+    4300042: pCylinder36
+    4300044: pCone1
+    4300046: pCylinder42
+    4300048: pCone1
+    4300050: pCylinder30
+    4300052: pCone1
+    4300054: pCylinder31
+    4300056: pCone1
+    4300058: pCylinder34
+    4300060: pCone1
+    4300062: pCylinder41
+    4300064: pCone1
+    4300066: pCylinder47
+    4300068: pCone1
+    4300070: pCylinder46
+    4300072: pCone1
+    4300074: pCylinder33
+    4300076: pCone1
+    4300078: pCylinder35
+    4300080: pCone1
+    4300082: pCylinder39
+    4300084: pCone1
+    4300086: pCylinder40
+    4300088: pCone1
+    4300090: pCylinder32
+    4300092: pCone1
+    4300094: pCylinder38
+    4300096: pCone1
+    4300098: pCylinder37
+    4300100: pCone1
+    4300102: Lever
+    4300104: Pressure_Plate
+    4300106: Platform1
+    4300108: Platform2
+    4300110: Platform3
+    4300112: Platform4
+    4300114: Platform5
+    4300116: Platform6
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

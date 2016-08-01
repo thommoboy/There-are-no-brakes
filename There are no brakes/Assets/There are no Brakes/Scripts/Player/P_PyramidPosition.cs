@@ -10,9 +10,11 @@ public class P_PyramidPosition : MonoBehaviour {
 	// Direction from player to players camera eg if player moves along z axis it will be x+ or x-
 	public string Direction = "x+";
 	// HALF of pyramids actual width aka 'radius'
-	private int PyramidWidth = 52;
+	private float PyramidWidth = 32;
 	// Height of pyramid from base to point
-	private float PyramidHeight = 52;
+	private float PyramidHeight = 45;
+	// Width of platforms on pyramid
+	private float PlatformWidth = 6;
 	private float RelativeAdjust;
 	private Vector3 PlayerPos;
 	private float PosUpdate;
@@ -20,6 +22,8 @@ public class P_PyramidPosition : MonoBehaviour {
 	
 	void Start(){
 		RelativeAdjust = PyramidWidth / PyramidHeight;
+		PyramidWidth += PlatformWidth;
+		PyramidHeight += PlatformWidth/RelativeAdjust;
 	}
 	
 	void Update(){
