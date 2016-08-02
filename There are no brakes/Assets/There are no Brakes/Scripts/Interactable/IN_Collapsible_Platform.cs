@@ -11,8 +11,8 @@ public class IN_Collapsible_Platform : MonoBehaviour {
 	public bool ActiveOnStart = false;
 	private bool Activated = false;
 	private GameObject RotatePart;
-	private float RotateAngle = 0.4f;
-	private int RotateSpeed = 150;
+	private int RotateAngle = 305;
+	private float RotateSpeed = 3.5f;
 
 	void Start () {
 		RotatePart = this.transform.FindChild("RotatingSection").gameObject;
@@ -25,13 +25,9 @@ public class IN_Collapsible_Platform : MonoBehaviour {
 		}
 		
 		if(Activated){
-			if(RotatePart.transform.rotation.z < 0f){
-				RotatePart.transform.Rotate(0, 0, RotateSpeed*Time.deltaTime);
-			}
+			RotatePart.transform.localEulerAngles = Vector3.Lerp(RotatePart.transform.localEulerAngles, new Vector3(0, 0, 359), RotateSpeed*Time.deltaTime);
 		} else {
-			if(RotatePart.transform.rotation.z > -RotateAngle){
-				RotatePart.transform.Rotate(0, 0, -RotateSpeed*Time.deltaTime);
-			}
+			RotatePart.transform.localEulerAngles = Vector3.Lerp(RotatePart.transform.localEulerAngles, new Vector3(0, 0, RotateAngle), RotateSpeed*Time.deltaTime);
 		}
 	}		
 }

@@ -14,7 +14,7 @@ public class P_PyramidPosition : MonoBehaviour {
 	// Height of pyramid from base to point
 	private float PyramidHeight = 45;
 	// Width of platforms on pyramid
-	private float PlatformWidth = 6;
+	private float PlatformWidth = 5;
 	private float RelativeAdjust;
 	private Vector3 PlayerPos;
 	private float PosUpdate;
