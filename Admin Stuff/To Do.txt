@@ -1,1 +1,19 @@
-Google Calendar (planned down to hours in a day)
+Google Calendar (planned down to hours in a day 1 week in advance)
+GitHub Account for Tutors
+Weekly Progress Report Template
+
+Adding other faction player models
+Complete asset models in unity
+	Jenga blocks breakable wall
+	Object ""on rope"" falling into wall
+	Texture for remaining objects?
+		HUD side
+		Pulley Platform
+		Breakable Wall	
+		Grapple Points?
+		Seesaw?
+Misc:
+God rays?
+Train "wobble" for change in elevation etc
+
+Make The Ancients Carriage --> Polish --> Think about Industrialist Carriage
