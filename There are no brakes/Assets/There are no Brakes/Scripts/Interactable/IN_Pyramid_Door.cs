@@ -9,8 +9,10 @@ using System.Collections;
 public class IN_Pyramid_Door : MonoBehaviour {
 	private float timeout = 0.25F;
 	private float nextInteract = 0.0F;
+	private GameObject playercontroller;
 	
 	void Start(){
+		playercontroller = GameObject.Find("PlayerControllers");
 	}
 	
 	void Update(){	
@@ -50,18 +52,12 @@ public class IN_Pyramid_Door : MonoBehaviour {
 		nextInteract = Time.time + timeout;
 		if(other.GetComponent<P_PyramidPosition>().Direction == "x+"){
 			other.GetComponent<P_PyramidPosition>().Direction = "x-";
+			playercontroller.GetComponent<P_Movement>().P2Direction = "x-";
 		} else {
 			other.GetComponent<P_PyramidPosition>().Direction = "x+";
+			playercontroller.GetComponent<P_Movement>().P2Direction = "x+";
 		}
 		other.transform.position = new Vector3 (-other.transform.position.x,other.transform.position.y,other.transform.position.z);
-		/* camera move for testing until quad camera system implemented */
-		if(other.GetComponent<P_PyramidPosition>().Direction == "x-"){
-			GameObject.Find("Main Camera").transform.eulerAngles = new Vector3(1, 90, 0);
-		} else {
-			GameObject.Find("Main Camera").transform.eulerAngles = new Vector3(1, 270, 0);
-		}
-		Vector3 camerapos = GameObject.Find("Main Camera").transform.position;
-		GameObject.Find("Main Camera").transform.position = new Vector3 (-camerapos.x,camerapos.y,camerapos.z);
 	}
 	
 	void OnGUI(){
