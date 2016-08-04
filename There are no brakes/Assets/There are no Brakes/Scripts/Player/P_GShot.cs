@@ -26,16 +26,16 @@ public class P_GShot : MonoBehaviour {
 	private GameObject [] grapplePoints;
 
 	private GameObject currentGPoint1;
-	private GameObject currentGPoint2;
+	//private GameObject currentGPoint2;
 
 	private LineRenderer rope1;
-	private LineRenderer rope2;
+	//private LineRenderer rope2;
 
 	private bool hook1Active = false;
-	private bool hook2Active = false;
+	//private bool hook2Active = false;
 
 	public GameObject Player1;
-	public GameObject Player2;
+	//public GameObject Player2;
 
 	//	public Transform P1_Point;
 	//	public Transform P2_Point;
@@ -88,7 +88,7 @@ public class P_GShot : MonoBehaviour {
 		if (!Player1.GetComponent<SpringJoint> () && Player1.GetComponent<LineRenderer>()) {
 			Destroy (Player1.GetComponent<LineRenderer>());
 		}
-
+        /*
 		if (Input.GetKeyDown (KeyCode.S) && hook2Active == false) {
 			//nextFire = Time.time + fireRate;
 			//Instantiate (shot, P2_Point.position, P2_Point.rotation);
@@ -122,10 +122,11 @@ public class P_GShot : MonoBehaviour {
 			rope2.SetPosition (0, Player2.transform.position);
 			rope2.SetPosition (1, currentGPoint2.transform.position);
 		}
-
+        
 		//if the joint breaks, destory the visualisation of the joint
 		if (!Player1.GetComponent<SpringJoint> () && Player1.GetComponent<LineRenderer>()) {
 			Destroy (Player1.GetComponent<LineRenderer>());
 		}
-	}
+        */
+    }
 }
