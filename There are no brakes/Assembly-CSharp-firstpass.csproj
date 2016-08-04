@@ -6,10 +6,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{C79836F9-12A6-B5BB-1BB2-BBD6C321DBD0}</ProjectGuid>
+    <ProjectGuid>{605AE7C2-80CB-B770-6205-27D611C32240}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>Assets</BaseDirectory>
@@ -45,55 +45,44 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\There are no Brakes\Scripts\Audio\M_AudioManager.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraMultiTargetObjective.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraMultitarget.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraSimpleFollow.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_Button.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_ChestTrigger.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_Elevator.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_TriggerGate.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Activation.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Anchor.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Anchor_Dropped.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Anchor_Trigger.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_BallControl.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Beards_Dropped.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_BreakWall.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Collapsible_Platform.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Door.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_InteractableObject.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Pulley.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Pulley_Trigger.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Pyramid_Door.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Pyramid_Latch.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_RESPAWN.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Retractable_Spikes.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_SeeSaw.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_TextTrigger.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_WallPiece.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Winch.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_3DMenuButton.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_3D_OnMouseOver.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_MenuPaperBox.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_MoveForward.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_ClickPlay.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_DontDistroy.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_MusicVolumeScript.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_OnClick.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_OnMouseExit.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_OnMouseOver.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Player\Obsolete\PlayerControl.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_GHandle.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_GHook.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_GShot.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_HUD.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_Movement.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PickUp.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PyramidFakePlayer.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PyramidPosition.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_FakeDarkness.cs" />
-     <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_FakeDoor.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\Antialiasing.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\Bloom.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\BloomAndFlares.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\BloomOptimized.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\Blur.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\BlurOptimized.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\CameraMotionBlur.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\ColorCorrectionCurves.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\ColorCorrectionLookup.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\ColorCorrectionRamp.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\ContrastEnhance.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\ContrastStretch.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\CreaseShading.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\DepthOfField.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\DepthOfFieldDeprecated.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\EdgeDetection.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\Fisheye.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\GlobalFog.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\Grayscale.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\ImageEffectBase.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\ImageEffects.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\MotionBlur.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\NoiseAndGrain.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\NoiseAndScratches.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\PostEffectsBase.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\PostEffectsHelper.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\Quads.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\ScreenOverlay.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\ScreenSpaceAmbientObscurance.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\ScreenSpaceAmbientOcclusion.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\SepiaTone.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\SunShafts.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\TiltShift.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\Tonemapping.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\Triangles.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\Twirl.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\VignetteAndChromaticAberration.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\Vortex.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
@@ -180,10 +169,6 @@
  <Reference Include="UnityEngine.Networking">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{605AE7C2-80CB-B770-6205-27D611C32240}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

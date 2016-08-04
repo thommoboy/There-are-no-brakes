@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/There are no Brakes/Scenes/Pyramid Level.unity
+- path: Assets/There are no Brakes/Scenes/Industrial Level.unity
   isLoaded: 1
   isActive: 1
