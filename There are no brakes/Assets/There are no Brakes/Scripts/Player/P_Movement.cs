@@ -48,6 +48,11 @@ public class P_Movement : MonoBehaviour
 	public bool P1OnGround = true;
 	public bool P2OnGround = true;
 	public bool P3OnGround = true;
+	
+	//direction check for pyramid levels
+	public string P1Direction = "x+";
+	public string P2Direction = "x+";
+	public string P3Direction = "x+";
 
 	public int layerMask;
 
@@ -97,27 +102,49 @@ public class P_Movement : MonoBehaviour
 			float horizontal = Input.GetAxis ("P1_Horizontal");
 			//float vertical = Input.GetAxis ("P1_Vertical");
 				if (!Input.GetKey (KeyCode.LeftArrow) && !Input.GetKey (KeyCode.RightArrow)) {
-					if (hit.distance < 1.1) 
+					if (hit.distance < 1.1) {
 						Player1Anim.GetComponent<Animator> ().Play ("Idle");
-					GameObject.FindGameObjectWithTag ("AudioManager").GetComponent<M_AudioManager> ().SoundFXOutput.Stop();
+						GameObject.FindGameObjectWithTag ("AudioManager").GetComponent<M_AudioManager> ().SoundFXOutput.Stop();
+					}
 				}
+			
 				
-			if (horizontal < 0) {
-				Player1.transform.rotation = Quaternion.Euler (0, 270, 0);
-					GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
-					if (hit.distance < 1.1) 
-						Player1Anim.GetComponent<Animator>().Play("Walk");
-				FacingRight1 = false;
-			}
-			if (horizontal > 0) {
-				Player1.transform.rotation = Quaternion.Euler (0, 90, 0);
-					GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
-					if (hit.distance < 1.1) 
-						Player1Anim.GetComponent<Animator>().Play("Walk");
-				FacingRight1 = true;
-			}
+				//player1 only needs x+ and z-
+				if(P1Direction == "x+"){
+					if (horizontal < 0) {
+						Player1.transform.rotation = Quaternion.Euler (0, 270, 0);
+							GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
+							if (hit.distance < 1.1) 
+								Player1Anim.GetComponent<Animator>().Play("Walk");
+						FacingRight1 = false;
+					}
+					if (horizontal > 0) {
+						Player1.transform.rotation = Quaternion.Euler (0, 90, 0);
+							GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
+							if (hit.distance < 1.1) 
+								Player1Anim.GetComponent<Animator>().Play("Walk");
+						FacingRight1 = true;
+					}
+					Player1.GetComponent<Rigidbody> ().velocity = new Vector3 (Player1.GetComponent<Rigidbody> ().velocity.x, Player1.GetComponent<Rigidbody> ().velocity.y, horizontal * movementForce);
+				}
+				if(P1Direction == "z-"){
+					if (horizontal < 0) {
+						Player1.transform.rotation = Quaternion.Euler (0, 0, 0);
+							GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
+							if (hit.distance < 1.1) 
+								Player1Anim.GetComponent<Animator>().Play("Walk");
+						FacingRight1 = false;
+					}
+					if (horizontal > 0) {
+						Player1.transform.rotation = Quaternion.Euler (0, 180, 0);
+							GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
+							if (hit.distance < 1.1) 
+								Player1Anim.GetComponent<Animator>().Play("Walk");
+						FacingRight1 = true;
+					}
+					Player1.GetComponent<Rigidbody> ().velocity = new Vector3 (horizontal * movementForce, Player1.GetComponent<Rigidbody> ().velocity.y, Player1.GetComponent<Rigidbody> ().velocity.z);
+				}
 
-			Player1.GetComponent<Rigidbody> ().velocity = new Vector3 (Player1.GetComponent<Rigidbody> ().velocity.x, Player1.GetComponent<Rigidbody> ().velocity.y, horizontal * movementForce);
 			//WE move the rigid body depending of the input.
 			//		if (vertical < 0)
 			//		{
@@ -161,24 +188,44 @@ public class P_Movement : MonoBehaviour
 				float horizontal = Input.GetAxis ("P2_Horizontal");
 				//float vertical = Input.GetAxis ("P2_Vertical");
 
-				if (!Input.GetKey (KeyCode.A) && !Input.GetKey (KeyCode.D))
-				if (hit.distance < 1.1)
-					Player2Anim.GetComponent<Animator> ().Play ("Idle");
-				
-				if (horizontal < 0) {
-					Player2.transform.rotation = Quaternion.Euler (0, 270, 0);
-					if (hit.distance < 1.1)
-						Player2Anim.GetComponent<Animator> ().Play ("Walk");
-					FacingRight2 = false;
+				if (!Input.GetKey (KeyCode.A) && !Input.GetKey (KeyCode.D)){
+					if (hit.distance < 1.1){
+						Player2Anim.GetComponent<Animator> ().Play ("Idle");
+					}
 				}
-				if (horizontal > 0) {
-					Player2.transform.rotation = Quaternion.Euler (0, 90, 0);
-					if (hit.distance < 1.1)
-						Player2Anim.GetComponent<Animator> ().Play ("Walk");
-					FacingRight2 = true;
+					
+				//player 2 only needs x- and x+
+				if(P2Direction == "x-"){
+					if (horizontal < 0) {
+						Player2.transform.rotation = Quaternion.Euler (0, 90, 0);
+						if (hit.distance < 1.1)
+							Player2Anim.GetComponent<Animator> ().Play ("Walk");
+						FacingRight2 = false;
+					}
+					if (horizontal > 0) {
+						Player2.transform.rotation = Quaternion.Euler (0, 270, 0);
+						if (hit.distance < 1.1)
+							Player2Anim.GetComponent<Animator> ().Play ("Walk");
+						FacingRight2 = true;
+					}
+					Player2.GetComponent<Rigidbody> ().velocity = new Vector3 (Player2.GetComponent<Rigidbody> ().velocity.x, Player2.GetComponent<Rigidbody> ().velocity.y, -horizontal * movementForce);
+				}
+				if(P2Direction == "x+"){
+					if (horizontal < 0) {
+						Player2.transform.rotation = Quaternion.Euler (0, 270, 0);
+						if (hit.distance < 1.1)
+							Player2Anim.GetComponent<Animator> ().Play ("Walk");
+						FacingRight2 = false;
+					}
+					if (horizontal > 0) {
+						Player2.transform.rotation = Quaternion.Euler (0, 90, 0);
+						if (hit.distance < 1.1)
+							Player2Anim.GetComponent<Animator> ().Play ("Walk");
+						FacingRight2 = true;
+					}
+					Player2.GetComponent<Rigidbody> ().velocity = new Vector3 (Player2.GetComponent<Rigidbody> ().velocity.x, Player2.GetComponent<Rigidbody> ().velocity.y, horizontal * movementForce);
 				}
 
-				Player2.GetComponent<Rigidbody> ().velocity = new Vector3 (Player2.GetComponent<Rigidbody> ().velocity.x, Player2.GetComponent<Rigidbody> ().velocity.y, horizontal * movementForce);
 				//WE move the rigid body depending of the input.
 				//		if (vertical < 0)
 				//		{
@@ -223,24 +270,47 @@ public class P_Movement : MonoBehaviour
 			float horizontal = Input.GetAxis ("P3_Horizontal");
 			//float vertical = Input.GetAxis ("P3_Vertical");
 
-			if(!Input.GetKey(KeyCode.J) && !Input.GetKey(KeyCode.L))
-				if (hit.distance < 1.1)
+			if(!Input.GetKey(KeyCode.J) && !Input.GetKey(KeyCode.L)){
+				if (hit.distance < 1.1){
 					Player3Anim.GetComponent<Animator> ().Play ("Idle");
+				}
+			}
 				
-			if (horizontal < 0) {
-				Player3.transform.rotation = Quaternion.Euler (0, 270, 0);
-					if (hit.distance < 1.1)
-						Player3Anim.GetComponent<Animator>().Play("Walk");
-				FacingRight3 = false;
+				
+				
+			//player3 only needs x+ and z+
+			if(P3Direction == "x+"){
+				if (horizontal < 0) {
+					Player3.transform.rotation = Quaternion.Euler (0, 270, 0);
+						if (hit.distance < 1.1)
+							Player3Anim.GetComponent<Animator>().Play("Walk");
+					FacingRight3 = false;
+				}
+				if (horizontal > 0) {
+					Player3.transform.rotation = Quaternion.Euler (0, 90, 0);
+						if (hit.distance < 1.1)
+							Player3Anim.GetComponent<Animator>().Play("Walk");
+					FacingRight3 = true;
+				}
+				Player3.GetComponent<Rigidbody> ().velocity = new Vector3 (Player3.GetComponent<Rigidbody> ().velocity.x, Player3.GetComponent<Rigidbody> ().velocity.y, horizontal * movementForce);
 			}
-			if (horizontal > 0) {
-				Player3.transform.rotation = Quaternion.Euler (0, 90, 0);
-					if (hit.distance < 1.1)
-						Player3Anim.GetComponent<Animator>().Play("Walk");
-				FacingRight3 = true;
+			if(P3Direction == "z+"){
+				if (horizontal < 0) {
+					Player3.transform.rotation = Quaternion.Euler (0, 180, 0);
+						if (hit.distance < 1.1)
+							Player3Anim.GetComponent<Animator>().Play("Walk");
+					FacingRight3 = false;
+				}
+				if (horizontal > 0) {
+					Player3.transform.rotation = Quaternion.Euler (0, 0, 0);
+						if (hit.distance < 1.1)
+							Player3Anim.GetComponent<Animator>().Play("Walk");
+					FacingRight3 = true;
+				}
+				Player3.GetComponent<Rigidbody> ().velocity = new Vector3 (-horizontal * movementForce, Player3.GetComponent<Rigidbody> ().velocity.y, Player3.GetComponent<Rigidbody> ().velocity.x);
 			}
-
-			Player3.GetComponent<Rigidbody> ().velocity = new Vector3 (Player3.GetComponent<Rigidbody> ().velocity.x, Player3.GetComponent<Rigidbody> ().velocity.y, horizontal * movementForce);
+			
+			
 			//WE move the rigid body depending of the input.
 			//		if (vertical < 0)
 			//		{
