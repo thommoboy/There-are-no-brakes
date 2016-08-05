@@ -62,6 +62,7 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_BreakWall.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Collapsible_Platform.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Door.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_IndicatorLight.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_InteractableObject.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Pulley.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Pulley_Trigger.cs" />
@@ -71,6 +72,7 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Retractable_Spikes.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_SeeSaw.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_TextTrigger.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_VerticalSlider.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_WallPiece.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Winch.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_3DMenuButton.cs" />
@@ -92,6 +94,7 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PickUp.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PyramidFakePlayer.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PyramidPosition.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Scene\Industrial_HorizontalSlider.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_FakeDarkness.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_FakeDoor.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />

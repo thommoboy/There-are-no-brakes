@@ -74,9 +74,15 @@ public class P_PickUp : MonoBehaviour {
 				if(Input.GetKeyDown(KeyCode.DownArrow) && Time.time > nextInteract){
 					DropObject();
 				}
-				// stop player from carrying something if they get picked up or are in the air
-				if(PlayerController.GetComponent<P_Movement> ().BeingCarried1 || !PlayerController.GetComponent<P_Movement> ().P1OnGround){
+				// stop player from carrying something if they get picked up
+				if(PlayerController.GetComponent<P_Movement> ().BeingCarried1){
 					DropObject();
+				}
+				// stop player from carrying another player while in the air
+				if(!PlayerController.GetComponent<P_Movement> ().P1OnGround){
+					if(PlayerController.GetComponent<P_Movement> ().BeingCarried2 || PlayerController.GetComponent<P_Movement> ().BeingCarried3){
+						DropObject();
+					}
 				}
 			}
 			if(ThisPlayer.name == "Player2"){
@@ -100,8 +106,13 @@ public class P_PickUp : MonoBehaviour {
 				if(Input.GetKeyDown(KeyCode.S) && Time.time > nextInteract){
 					DropObject();
 				}
-				if(PlayerController.GetComponent<P_Movement> ().BeingCarried2 || !PlayerController.GetComponent<P_Movement> ().P2OnGround){
+				if(PlayerController.GetComponent<P_Movement> ().BeingCarried2){
 					DropObject();
+				}
+				if(!PlayerController.GetComponent<P_Movement> ().P2OnGround){
+					if(PlayerController.GetComponent<P_Movement> ().BeingCarried1 || PlayerController.GetComponent<P_Movement> ().BeingCarried3){
+						DropObject();
+					}
 				}
 			}
 			if(ThisPlayer.name == "Player3"){
@@ -125,8 +136,13 @@ public class P_PickUp : MonoBehaviour {
 				if(Input.GetKeyDown(KeyCode.K) && Time.time > nextInteract){
 					DropObject();
 				}
-				if(PlayerController.GetComponent<P_Movement> ().BeingCarried3 || !PlayerController.GetComponent<P_Movement> ().P3OnGround){
+				if(PlayerController.GetComponent<P_Movement> ().BeingCarried3){
 					DropObject();
+				}
+				if(!PlayerController.GetComponent<P_Movement> ().P3OnGround){
+					if(PlayerController.GetComponent<P_Movement> ().BeingCarried1 || PlayerController.GetComponent<P_Movement> ().BeingCarried2){
+						DropObject();
+					}
 				}
 			}
 		} else {
