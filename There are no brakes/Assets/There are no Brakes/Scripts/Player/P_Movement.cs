@@ -41,7 +41,9 @@ public class P_Movement : MonoBehaviour
 	public bool P2Carrying = false;
 	public bool P3Carrying = false;
 
-	public bool FacingRight1 = false;
+    public bool P2Uncontroled = false;
+
+    public bool FacingRight1 = false;
 	public bool FacingRight2 = false;
 	public bool FacingRight3 = false;
 
@@ -158,7 +160,7 @@ public class P_Movement : MonoBehaviour
 			}
 		}
 
-		if (Player2) {
+		if (Player2 && !P2Uncontroled) {
 			//Cast a ray beneath the player and check that the distance from the player to the ground is less than 1, if so you can jump!!
 			RaycastHit hit;
 			Ray downRay = new Ray (Player2.transform.position, -Vector3.up);
@@ -173,9 +175,9 @@ public class P_Movement : MonoBehaviour
 
 			}
 
-			if (!BeingCarried2) {
+            if (!BeingCarried2) {
 				if(!P2Carrying && P2OnGround){
-					if (Input.GetButton ("P2_Jump") && hit.distance < 1.1) {
+					if (Input.GetButton ("P2_Jump") && hit.distance < 1.1 ) {
 						Player2Anim.GetComponent<Animator> ().Play ("Jump");
 						if (GameObject.Find ("Player2").transform.GetChild (2).GetComponent<P_PickUp> ().Carrying == false) {
 							Player2.GetComponent<Rigidbody> ().velocity = new Vector3 (Player2.GetComponent<Rigidbody> ().velocity.x, jumpForce, Player2.GetComponent<Rigidbody> ().velocity.z);
