@@ -77,21 +77,11 @@ public class IN_Pyramid_Door : MonoBehaviour {
 		if(other.tag == "Player"){
 			intrigger = true;
             if (Time.time > nextInteract){
-				if (other.name == "Player1"){
-					if (Input.GetKey (KeyCode.DownArrow)) {
-						movePlayer(other);
-					}
-				}
-				if (other.name == "Ancient"){
+				if (other.name == "Player2"){
 					if (Input.GetKey (KeyCode.S)) {
 						movePlayer(other);
                     }
                 }
-				if (other.name == "Player3"){
-					if (Input.GetKey (KeyCode.K)) {
-						movePlayer(other);
-					}
-				}
 			}
 		}
 	}
