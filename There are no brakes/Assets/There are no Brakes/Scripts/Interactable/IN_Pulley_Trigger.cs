@@ -18,11 +18,17 @@ public class IN_Pulley_Trigger : MonoBehaviour
 	/// </summary>
 	void OnTriggerStay(Collider other)
 	{
-		if(IN_P_Platform == Platform.Left)
-			if(howMany > 1)
-				IN_P.LeftPlatformDown();
-		else if(IN_P_Platform == Platform.Right)
-			IN_P.RightPlatformDown();
+        if (IN_P_Platform == Platform.Left)
+            if (howMany > 1)
+            {
+               // IN_P.Origin = false;
+                IN_P.LeftPlatformDown();
+            }
+            else //if (IN_P_Platform == Platform.Right)
+            {
+                IN_P.RightPlatformDown();
+            }
+                
 	}
 
 	/// <summary>

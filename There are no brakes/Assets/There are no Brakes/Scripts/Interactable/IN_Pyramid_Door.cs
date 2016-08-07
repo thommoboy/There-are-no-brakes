@@ -35,6 +35,7 @@ public class IN_Pyramid_Door : MonoBehaviour {
 	void Update(){
         if (entering)
         {
+            Debug.Log("enter");
             //moving player
             GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
             Player.GetComponent<Animator>().Play("Walk");

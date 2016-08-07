@@ -50,6 +50,7 @@ public class IN_Pulley : MonoBehaviour
 	
 	public void Update()
 	{
+        //Debug.Log(IN_P_PlatformLeft.transform.localPosition.y);
 		/// <summary>
 		/// Reset the platform if required
 		/// </summary>
