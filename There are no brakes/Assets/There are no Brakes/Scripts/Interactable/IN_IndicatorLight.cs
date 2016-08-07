@@ -8,17 +8,13 @@ using System.Collections;
 
 public class IN_IndicatorLight : MonoBehaviour {
 	public GameObject Trigger;
-	public bool ActiveOnStart = false;
-	private bool Activated = false;
+	public bool Activated = false;
 
 	void Start () {
 	}
 	
 	void Update () {
 		Activated = Trigger.GetComponent<IN_Activation>().activated;
-		if(ActiveOnStart){
-			Activated = !Activated;
-		}
 		
 		if(Activated){
 			this.transform.eulerAngles = new Vector3(0,180,0);
