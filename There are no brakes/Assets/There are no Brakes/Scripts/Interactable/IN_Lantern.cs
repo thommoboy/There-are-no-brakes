@@ -21,6 +21,7 @@ public class IN_Lantern : MonoBehaviour{
 			intrigger = true;
 			if (Input.GetKey (KeyCode.K)) {
 				lantern.GetComponent<Light> ().enabled = true;
+				activated = true;
 			}
 		}
 	}

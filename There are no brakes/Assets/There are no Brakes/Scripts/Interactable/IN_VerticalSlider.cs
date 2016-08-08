@@ -17,6 +17,7 @@ public class IN_VerticalSlider : MonoBehaviour {
 	public GameObject Trigger1;
 	public GameObject Trigger2;
 	public GameObject Trigger3;
+	public GameObject Trigger4;
 	private bool moveUpCheck = false;
 	
 	void Start(){
@@ -34,6 +35,9 @@ public class IN_VerticalSlider : MonoBehaviour {
 			movingUp = !movingUp;
 		}
 		if(Trigger3.GetComponent<IN_Activation>().activated){
+			movingUp = !movingUp;
+		}
+		if(Trigger4.GetComponent<IN_Activation>().activated){
 			movingUp = !movingUp;
 		}
 		
