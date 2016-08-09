@@ -41,7 +41,15 @@ public class IN_Pyramid_Door : MonoBehaviour {
             Player.GetComponent<Animator>().Play("Walk");
             usingDoorPlayer.transform.localPosition = Vector3.MoveTowards(usingDoorPlayer.transform.localPosition,
                 new Vector3(destination_x, usingDoorPlayer.transform.localPosition.y, usingDoorPlayer.transform.localPosition.z), movingSpeed * Time.deltaTime);
-            moveDoor(-3.2f, 3.35f);
+            //open/close first door
+            if (Time.time >= firstDoorCloseTime)
+                moveDoor(-direction, door_left_pos_z, door_right_pos_z);
+            else
+                moveDoor(-direction, -3.2f, 3.35f);
+            //open second foor if time reached
+            if (Time.time >= secondDoorOpenTime)
+                moveDoor(direction, -3.2f, 3.35f);
+            //player reach desination
             if (Mathf.Abs(usingDoorPlayer.transform.position.x) >= Mathf.Abs(destination_x))
             {
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().SoundFXOutput.Stop();
@@ -53,24 +61,33 @@ public class IN_Pyramid_Door : MonoBehaviour {
             }
         }
         else {
-            //close door
-            moveDoor(door_left_pos_z, door_right_pos_z);
+            //close second door
+            moveDoor(direction, door_left_pos_z, door_right_pos_z);
+            //moveDoor(-direction, door_left_pos_z, door_right_pos_z);
         }
 	}
-
-    void moveDoor(float left_pos, float right_pos) {
+    public float firstDelayTime = 1.0f;
+    public float secondDelayTime = 1.5f;
+    private float firstDoorCloseTime;
+    private float secondDoorOpenTime;
+    void moveDoor(float door,float left_pos, float right_pos) {
         float door_speed = 1f;
         //moving door
         //to z- direction
-        Door_left_1.transform.localPosition = Vector3.MoveTowards(Door_left_1.transform.localPosition,
+        if (door == 1) {
+            Door_left_1.transform.localPosition = Vector3.MoveTowards(Door_left_1.transform.localPosition,
             new Vector3(Door_left_1.transform.localPosition.x, Door_left_1.transform.localPosition.y, left_pos), door_speed * Time.deltaTime);
-        Door_left_2.transform.localPosition = Vector3.MoveTowards(Door_left_2.transform.localPosition,
-            new Vector3(Door_left_2.transform.localPosition.x, Door_left_2.transform.localPosition.y, left_pos), door_speed * Time.deltaTime);
-        //to z+
-        Door_right_1.transform.localPosition = Vector3.MoveTowards(Door_right_1.transform.localPosition,
+            Door_right_1.transform.localPosition = Vector3.MoveTowards(Door_right_1.transform.localPosition,
             new Vector3(Door_right_1.transform.localPosition.x, Door_right_1.transform.localPosition.y, right_pos), door_speed * Time.deltaTime);
-        Door_right_2.transform.localPosition = Vector3.MoveTowards(Door_right_2.transform.localPosition,
-            new Vector3(Door_right_2.transform.localPosition.x, Door_right_2.transform.localPosition.y, right_pos), door_speed * Time.deltaTime);
+        }
+
+        if (door == -1) {
+            Door_left_2.transform.localPosition = Vector3.MoveTowards(Door_left_2.transform.localPosition,
+            new Vector3(Door_left_2.transform.localPosition.x, Door_left_2.transform.localPosition.y, left_pos), door_speed * Time.deltaTime);
+            Door_right_2.transform.localPosition = Vector3.MoveTowards(Door_right_2.transform.localPosition,
+                new Vector3(Door_right_2.transform.localPosition.x, Door_right_2.transform.localPosition.y, right_pos), door_speed * Time.deltaTime);
+
+        }
     }
 
 	private bool intrigger = false;
@@ -112,7 +129,8 @@ public class IN_Pyramid_Door : MonoBehaviour {
         usingDoorPlayer = other.gameObject;
         usingDoorPlayer.transform.Rotate(0,(direction*90),0);
         usingDoorPlayer.GetComponent<P_PyramidPosition>().usingdoor = true;
-        playerController.GetComponent<P_Movement>().P2Uncontroled = true;
+        firstDoorCloseTime = Time.time + firstDelayTime;
+        secondDoorOpenTime = Time.time + secondDelayTime;
     }
 	
     
