@@ -17,6 +17,7 @@ public class IN_Pyramid_Door : MonoBehaviour {
     private GameObject usingDoorPlayer;
     private float destination_x;
     private float direction;
+    private IN_TextTrigger_ConetentControl TextController;
 
     public GameObject Door_left_1;
     public GameObject Door_left_2;
@@ -25,14 +26,20 @@ public class IN_Pyramid_Door : MonoBehaviour {
     public GameObject playerController;
     private float door_left_pos_z;
     private float door_right_pos_z;
+	
     void Start(){
 		playercontroller = GameObject.Find("PlayerControllers");
         door_left_pos_z = Door_left_1.transform.localPosition.z;
         door_right_pos_z = Door_right_1.transform.localPosition.z;
-
+        TextController = GameObject.Find("TextObjects").GetComponent<IN_TextTrigger_ConetentControl>();
     }
 	
 	void Update(){
+		if(intrigger){
+			TextController.display = true;
+			TextController.content = "Press [Interact] to use";
+		}
+		
         if (entering)
         {
             Debug.Log("enter");
@@ -107,6 +114,7 @@ public class IN_Pyramid_Door : MonoBehaviour {
 	void OnTriggerExit(Collider other) {
 		if(other.tag == "Player"){
 			intrigger = false;
+			TextController.display = false;
 		}
 	}
 	
@@ -132,13 +140,4 @@ public class IN_Pyramid_Door : MonoBehaviour {
         firstDoorCloseTime = Time.time + firstDelayTime;
         secondDoorOpenTime = Time.time + secondDelayTime;
     }
-	
-    
-
-
-	void OnGUI(){
-		if(intrigger){
-			GUI.Label(new Rect (Screen.width/2 - 170, Screen.height/2 - 50, 500, 50), "Press [Interact] to use");
-		}
-	}
 }

@@ -12,13 +12,19 @@ public class IN_Pyramid_Latch : MonoBehaviour {
 	private float RotateSpeed = 3.5f;
 	private GameObject BackBeard;
 	private GameObject FrontBeard;
+    private IN_TextTrigger_ConetentControl TextController;
 	
 	void Start(){
 		FrontBeard = GameObject.Find("Front_Beard");
 		BackBeard = GameObject.Find("Back_Beard");
+        TextController = GameObject.Find("TextObjects").GetComponent<IN_TextTrigger_ConetentControl>();
 	}
 	
 	void Update(){
+		if(intrigger){
+			TextController.display = true;
+			TextController.content = "Press [Interact] to use";
+		}
 		if(Activated){
 			if(this.transform.parent.name == "Latch_Back"){
 				this.transform.parent.transform.localEulerAngles = Vector3.Lerp(this.transform.parent.transform.localEulerAngles, new Vector3(0, 270, 1), RotateSpeed*Time.deltaTime);
@@ -27,6 +33,7 @@ public class IN_Pyramid_Latch : MonoBehaviour {
 				this.transform.parent.transform.localEulerAngles = Vector3.Lerp(this.transform.parent.transform.localEulerAngles, new Vector3(0, 90, 1), RotateSpeed*Time.deltaTime);
 				FrontBeard.transform.position = new Vector3(FrontBeard.transform.position.x, FrontBeard.transform.position.y - (MoveSpeed*Time.deltaTime), FrontBeard.transform.position.z + (MoveSpeed/1.5f)*Time.deltaTime);
 			}
+			TextController.display = false;
 		}
 	}
 	
@@ -43,12 +50,6 @@ public class IN_Pyramid_Latch : MonoBehaviour {
 					Activated = true;
 				}
 			}
-		}
-	}
-	
-	void OnGUI(){
-		if(intrigger){
-			GUI.Label(new Rect (Screen.width/2 - 170, Screen.height/2 - 50, 500, 50), "Press [Interact] to use");
 		}
 	}
 }

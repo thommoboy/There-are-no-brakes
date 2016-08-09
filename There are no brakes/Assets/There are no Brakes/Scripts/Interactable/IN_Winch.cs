@@ -8,8 +8,18 @@ using System.Collections;
 
 public class IN_Winch : IN_InteractableObject{
 	private float targetminheight;
+    private IN_TextTrigger_ConetentControl TextController;
+	
 	void Start(){
 		targetminheight = target.transform.position.y;
+        TextController = GameObject.Find("TextObjects").GetComponent<IN_TextTrigger_ConetentControl>();
+	}
+	
+	void Update(){
+		if(intrigger){
+			TextController.display = true;
+			TextController.content = "Press [Interact] to use";
+		}
 	}
 	
 	private bool playingsound = false;
@@ -53,6 +63,7 @@ public class IN_Winch : IN_InteractableObject{
 	void OnTriggerExit(Collider other) {
 		if(other.tag == "Player"){
 			intrigger = false;
+			TextController.display = false;
 			GetComponent<AudioSource>().Stop();
 			playingsound = false;
 		}
@@ -96,13 +107,6 @@ public class IN_Winch : IN_InteractableObject{
 			}
 			target.transform.localPosition = Vector3.Lerp(target.transform.localPosition, platpos, Time.deltaTime);
 			rope.transform.localScale = Vector3.Lerp(rope.transform.localScale, ropelength, Time.deltaTime);
-		}
-	}
-	
-	
-	void OnGUI(){
-		if(intrigger){
-			GUI.Label(new Rect (Screen.width/2 - 170, Screen.height/2 - 50, 500, 50), "Press [Down] to use");
 		}
 	}
 }

@@ -25,8 +25,6 @@ public class IN_Group_Checkpoint : MonoBehaviour {
 		if(istriggered && !switched){
             TextController.display = true;
             TextController.content = message1;
-		} else {
-			TextController.display = false;
 		}
 	}
 		
@@ -39,6 +37,7 @@ public class IN_Group_Checkpoint : MonoBehaviour {
 		if(other.tag == "Player"){
 			playernum--;
 			istriggered = false;
+			TextController.display = false;
 		}
 	}
 	

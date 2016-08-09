@@ -10,9 +10,18 @@ using System.Collections;
 public class IN_Lantern : MonoBehaviour{
 	public bool activated = false;
 	public GameObject lantern;
+    private IN_TextTrigger_ConetentControl TextController;
 	
 	void Start(){
+        TextController = GameObject.Find("TextObjects").GetComponent<IN_TextTrigger_ConetentControl>();
 		lantern.GetComponent<Light>().enabled = false;
+	}
+	
+	void Update(){
+		if(intrigger && !activated){
+			TextController.display = true;
+			TextController.content = "Press [Interact] to use";
+		}
 	}
 	
 	private bool intrigger = false;
@@ -22,6 +31,7 @@ public class IN_Lantern : MonoBehaviour{
 			if (Input.GetKey (KeyCode.K)) {
 				lantern.GetComponent<Light> ().enabled = true;
 				activated = true;
+				TextController.display = false;
 			}
 		}
 	}
@@ -29,13 +39,7 @@ public class IN_Lantern : MonoBehaviour{
 	void OnTriggerExit(Collider other){
 		if (other.name == "Player3"){
 			intrigger = false;
-		}
-	}
-	
-	
-	void OnGUI(){
-		if(intrigger && !activated){
-			GUI.Label(new Rect (Screen.width/2 - 170, Screen.height/2 - 50, 500, 50), "Press [Interact] to use");
+			TextController.display = false;
 		}
 	}
 }
