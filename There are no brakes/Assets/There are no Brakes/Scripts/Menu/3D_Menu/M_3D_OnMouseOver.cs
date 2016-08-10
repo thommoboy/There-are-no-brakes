@@ -25,8 +25,8 @@ public class M_3D_OnMouseOver : MonoBehaviour {
 			hitThing = hit.collider.gameObject;
 			if (hitThing == this.gameObject) {
 				transform.localScale = ori_Scale * 1.3f;
-				if (tag == "MenuButton")
-					return;
+				//if (tag == "MenuButton")
+				//	return;
 				if (Input.GetKeyDown (KeyCode.Mouse0)) {
 					//ClickAsync (1);
 					StartCoroutine(delayExecute(1));

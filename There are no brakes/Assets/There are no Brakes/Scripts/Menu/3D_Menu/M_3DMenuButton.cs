@@ -82,21 +82,22 @@ public class M_3DMenuButton : MonoBehaviour {
 	void updateMenu(){
 		for (int i = 0; i < MenuList.Length; i++) {
 			if (MenuMoveStatu [i] == 1) {
-				MenuList[i].transform.position = MenuList[i].transform.position + Vector3.up * menuMoveSpeed ;
+                MenuList[i].transform.position = MenuList[i].transform.position + Vector3.up * menuMoveSpeed ;
 				if (MenuList [i].transform.position.y > 250) {
 					MenuMoveStatu [i] = 0;
 				}
 			}
 
 			if (MenuMoveStatu [i] == -1) {
-				MenuList[i].transform.position = MenuList[i].transform.position - Vector3.up * menuMoveSpeed;
+                MenuList[i].active = true;
+                MenuList[i].transform.position = MenuList[i].transform.position - Vector3.up * menuMoveSpeed;
 				if (MenuList [i].transform.position.y < 170) {
 					MenuMoveStatu [i] = 1;
 				}
 			}
 
 			if (MenuMoveStatu [i] == 2) {
-				MenuList[i].transform.position = MenuList[i].transform.position + Vector3.up * menuMoveSpeed;
+                MenuList[i].transform.position = MenuList[i].transform.position + Vector3.up * menuMoveSpeed;
 				if (MenuList [i].transform.position.y > 700) {
 					MenuMoveStatu [i] = 1;
 				}
@@ -106,7 +107,7 @@ public class M_3DMenuButton : MonoBehaviour {
 
 	void onClick(string buttonName){
 		if (buttonName == "MenuButton_Start") {
-			updateMenuStatu (0);
+			//updateMenuStatu (0);
 		}
 		if (buttonName == "MenuButton_Option") {
 			updateMenuStatu (1);
@@ -127,13 +128,18 @@ public class M_3DMenuButton : MonoBehaviour {
 			return;
 		}
 		MenuMoveStatu [menuIndex] = -1;
+        //让当前menu延迟下降
 		if (right_menu) {
 			MenuList [menuIndex].transform.position = MenuList [menuIndex].transform.position + Vector3.up * 450;
 		}
+
 		if (right_menu) {
 			for (int i = 0; i < MenuList.Length; i++) {
 				if (i == menuIndex)
-					continue;
+                {
+                    continue;
+                }
+					
 				if (MenuList [i].transform.position.y < 600) {
 					MenuMoveStatu [i] = 2;
 					break;
@@ -151,19 +157,19 @@ public class M_3DMenuButton : MonoBehaviour {
 				continue;
 			if (sizeStatu[i] == 1)
 			{
-				if (MenuButtonList[i].transform.localScale.x < button_ori_scale.x * 1.3)
+                if (MenuButtonList[i].transform.localScale.x < button_ori_scale.x * 1.3)
 				{
 					MenuButtonList[i].transform.localScale = MenuButtonList[i].transform.localScale * resizeSpeed;
 				}
-				else { sizeStatu[i] = 0; }
+				else { sizeStatu[i] = 0;  }
 			}
 
 			if (sizeStatu[i] == -1){
-				if (MenuButtonList[i].transform.localScale.x > button_ori_scale.x)
+                if (MenuButtonList[i].transform.localScale.x > button_ori_scale.x)
 				{
 					MenuButtonList[i].transform.localScale = MenuButtonList[i].transform.localScale * (1/resizeSpeed);
 				}
-				else { sizeStatu[i] = 0; }
+				else { sizeStatu[i] = 0;  }
 			}
 		}
 	}

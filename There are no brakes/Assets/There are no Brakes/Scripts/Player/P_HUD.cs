@@ -72,10 +72,11 @@ public class P_HUD : MonoBehaviour {
 		float trainpos = barDisplay2 * maxpos + traindefaultpos.z - maxpos;
 		GameObject.Find("HUDtrainIcon").transform.position = new Vector3(traindefaultpos.x,traindefaultpos.y,trainpos);
 	}
-	
+	public M_Pause pauseCompoment;
 	public void GameLost(){
-		Debug.Log("GAME OVER");
-	}
+        pauseCompoment.GameOver();
+        //Debug.Log("GAME OVER");
+    }
 	
 	private bool recovering = false;
 	private float recoveredDistance;
