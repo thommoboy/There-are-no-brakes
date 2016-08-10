@@ -49,21 +49,28 @@ public class P_PickUp : MonoBehaviour {
 		}
 	}
 	void Update(){
+		float carryHeight = 2.3f;
+		float carryDistance = 1.2f;
 		if (Carrying) {
+			//dont put boxes too high or too close
+			if(carriedObject.tag == "Weight"){
+				carryHeight = 1.1f;
+				carryDistance = 1.4f;
+			}
 			if(ThisPlayer.name == "Player1"){
 				// move carried object to either side if carrying player turns around, taking direction into account
 				if(PlayerController.GetComponent<P_Movement> ().P1Direction == "x+"){
 					if(PlayerController.GetComponent<P_Movement> ().FacingRight1){
-						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z+1.2f);
+						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + carryHeight, ThisPlayer.transform.position.z+carryDistance);
 					} else {
-						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z-1.2f);
+						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + carryHeight, ThisPlayer.transform.position.z-carryDistance);
 					}
 				}
 				if(PlayerController.GetComponent<P_Movement> ().P1Direction == "z-"){
 					if(PlayerController.GetComponent<P_Movement> ().FacingRight1){
-						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x+1.2f, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z);
+						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x+carryDistance, ThisPlayer.transform.position.y + carryHeight, ThisPlayer.transform.position.z);
 					} else {
-						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x-1.2f, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z);
+						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x-carryDistance, ThisPlayer.transform.position.y + carryHeight, ThisPlayer.transform.position.z);
 					}
 				}
 				// throw carried object
@@ -88,16 +95,16 @@ public class P_PickUp : MonoBehaviour {
 			if(ThisPlayer.name == "Player2"){
 				if(PlayerController.GetComponent<P_Movement> ().P2Direction == "x+"){
 					if(PlayerController.GetComponent<P_Movement> ().FacingRight2){
-						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z+1.2f);
+						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + carryHeight, ThisPlayer.transform.position.z+carryDistance);
 					} else {
-						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z-1.2f);
+						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + carryHeight, ThisPlayer.transform.position.z-carryDistance);
 					}
 				}
 				if(PlayerController.GetComponent<P_Movement> ().P2Direction == "x-"){
 					if(PlayerController.GetComponent<P_Movement> ().FacingRight2){
-						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z-1.2f);
+						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + carryHeight, ThisPlayer.transform.position.z-carryDistance);
 					} else {
-						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z+1.2f);
+						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + carryHeight, ThisPlayer.transform.position.z+carryDistance);
 					}
 				}
 				if(Input.GetKeyDown(KeyCode.W) && Time.time > nextInteract){
@@ -118,16 +125,16 @@ public class P_PickUp : MonoBehaviour {
 			if(ThisPlayer.name == "Player3"){
 				if(PlayerController.GetComponent<P_Movement> ().P3Direction == "x+"){
 					if(PlayerController.GetComponent<P_Movement> ().FacingRight3){
-						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z+1.2f);
+						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + carryHeight, ThisPlayer.transform.position.z+carryDistance);
 					} else {
-						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z-1.2f);
+						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + carryHeight, ThisPlayer.transform.position.z-carryDistance);
 					}
 				}
 				if(PlayerController.GetComponent<P_Movement> ().P3Direction == "z+"){
 					if(PlayerController.GetComponent<P_Movement> ().FacingRight3){
-						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x-1.2f, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z);
+						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x-carryDistance, ThisPlayer.transform.position.y + carryHeight, ThisPlayer.transform.position.z);
 					} else {
-						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x+1.2f, ThisPlayer.transform.position.y + 2.3f, ThisPlayer.transform.position.z);
+						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x+carryDistance, ThisPlayer.transform.position.y + carryHeight, ThisPlayer.transform.position.z);
 					}
 				}
 				if(Input.GetKeyDown(KeyCode.I) && Time.time > nextInteract){
@@ -196,9 +203,14 @@ public class P_PickUp : MonoBehaviour {
 
 
 	void ThrowAway(){
-		DropObject();
 		//launch object
+		DropObject();
+		//set launch position
 		HeldObject.transform.position = new Vector3(HeldObject.transform.position.x,HeldObject.transform.position.y+0.5f,HeldObject.transform.position.z);
+		//dont put boxes too high
+		if(HeldObject.tag == "Weight"){
+			HeldObject.transform.position = new Vector3(HeldObject.transform.position.x,HeldObject.transform.position.y-0.4f,HeldObject.transform.position.z);
+		}
 		// defines which direction to throw object based on players direction
 		if(ThisPlayer.name == "Player1"){
 			if(PlayerController.GetComponent<P_Movement> ().P1Direction == "x+"){

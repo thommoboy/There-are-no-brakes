@@ -11,13 +11,22 @@ public class IN_Activation : MonoBehaviour{
 	public bool lever = false;
 	public bool pressureplate = false;
 	public bool lantern = false;
+	private bool intrigger = false;
 	private float timeout = 0.25F;
 	private float nextInteract = 0.0F;
+    private IN_TextTrigger_ConetentControl TextController;
 	
 	void Start(){
+        TextController = GameObject.Find("TextObjects").GetComponent<IN_TextTrigger_ConetentControl>();
 	}
 	
-	private bool intrigger = false;
+	void Update(){
+		if(intrigger){
+			TextController.display = true;
+			TextController.content = "Press [Interact] to use";
+		}
+	}
+	
 	void OnTriggerStay(Collider other) {
 		if(lever){
 			if(other.tag == "Player"){
@@ -73,6 +82,7 @@ public class IN_Activation : MonoBehaviour{
 		if(other.tag == "Player" || other.tag == "Weight"){
 			if(lever){
 				intrigger = false;
+				TextController.display = false;
 			}
 			if(pressureplate){
 				activated = false;
@@ -85,13 +95,6 @@ public class IN_Activation : MonoBehaviour{
 		activated = !activated;
 		nextInteract = Time.time + timeout;
 		if(lever){this.transform.Rotate(0, 180, 0);}
-		if(lantern){intrigger = false;}
-	}
-	
-	
-	void OnGUI(){
-		if(intrigger){
-			GUI.Label(new Rect (Screen.width/2 - 170, Screen.height/2 - 50, 500, 50), "Press [Interact] to use");
-		}
+		if(lantern){intrigger = false;TextController.display = false;}
 	}
 }
