@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/***********************
+ * IN_IndicatorLight.cs
+ * Originally Written by Josh Garvey
+ * Modified By:
+ ***********************/
+ 
+using UnityEngine;
 using System.Collections;
 
 public class IN_ProximityLight : MonoBehaviour {

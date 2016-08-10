@@ -1,7 +1,7 @@
 ﻿/***********************
  * IN_IndicatorLight.cs
  * Originally Written by Nathan Brown
- * Modified By:
+ * Modified By: Josh Garvey --> Added lighing to indicators based on completion
  ***********************/
 using UnityEngine;
 using System.Collections;

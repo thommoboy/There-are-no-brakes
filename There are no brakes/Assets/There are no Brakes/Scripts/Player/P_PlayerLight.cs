@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/***********************
+ * IN_IndicatorLight.cs
+ * Originally Written by Josh Garvey
+ * Modified by:
+ ***********************/
+ 
+using UnityEngine;
 using System.Collections;
 
 public class P_PlayerLight : MonoBehaviour {
