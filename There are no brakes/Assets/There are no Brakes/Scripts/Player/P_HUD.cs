@@ -28,46 +28,24 @@ public class P_HUD : MonoBehaviour {
 	public float maxpos = 16;
 	private float trainmaxpos;
 	private float cloudmaxpos;
+	public bool firstLevel = false;
+	private int levelID = 0;
 	
 	void Start(){
+		if(firstLevel){
+			resetValues();
+			levelID = Application.loadedLevel;
+			saveLevelID(levelID);
+		} else {
+			barDisplay1 = remainingCloudTime();
+			barDisplay2 = remainingTrainTime();
+			levelID = loadLevelID();
+		}
 		pos2 = new Vector2(Screen.width - (size.x + pos1.x),pos1.y);
-		MaxLevelTime = (int)(MaxLevelTime * (1/barDisplay2));//corrects for starting with bar not full
 		traindefaultpos = GameObject.Find("HUDtrainIcon").transform.position;
 		clouddefaultpos = GameObject.Find("HUDcloudIcon").transform.position;
 		trainmaxpos = traindefaultpos.z - maxpos;
 		cloudmaxpos = clouddefaultpos.z + maxpos;
-	}
-	
-	void OnGUI() {
-		if(GameOver){
-			GUI.Box(new Rect(Screen.width/2-75,50,250,40), "GAME OVER");			
-		}/* else { //render HUD as GUI objects
-			//left HUD bar
-			//draw the background:
-			GUI.BeginGroup(new Rect(pos1.x, pos1.y, size.x, size.y), HUDGUIStyle);
-			GUI.Box(new Rect(0,0, size.x, size.y), fullTex, HUDGUIStyle);
-			 
-			//draw the filled-in part:
-			GUI.BeginGroup(new Rect(0,0, size.x * barDisplay1, size.y), HUDGUIStyle);
-			GUI.Box(new Rect(0,0, size.x, size.y), emptyTex, HUDGUIStyle);
-			GUI.EndGroup();
-			GUI.EndGroup();
-			
-			//right HUD bar
-			//draw the background:
-			GUI.BeginGroup(new Rect(pos2.x, pos2.y, size.x, size.y), HUDGUIStyle);
-			GUI.Box(new Rect(0,0, size.x, size.y), emptyTex, HUDGUIStyle);
-			 
-			//draw the filled-in part:
-			GUI.BeginGroup(new Rect(0,0, size.x * barDisplay2, size.y), HUDGUIStyle);
-			GUI.Box(new Rect(0,0, size.x, size.y), fullTex, HUDGUIStyle);
-			GUI.EndGroup();
-			GUI.EndGroup();
-			
-			//render icons
-			GUI.Box(new Rect(pos1.x + size.x*barDisplay1 - 50,pos1.y-4, 100, 68), cloudIcon, HUDGUIStyle);
-			GUI.Box(new Rect(pos2.x + size.x*barDisplay2 - 50,pos2.y, 100, 68), trainIcon, HUDGUIStyle);
-		}*/
 	}
 	 
 	void FixedUpdate() {
@@ -106,11 +84,43 @@ public class P_HUD : MonoBehaviour {
 		StartCoroutine(loadnextlevel(20));
 		recoveredDistance = barDisplay2 + (((float)PercentageRecoverOnLevelComplete)/100);
 		recovering = true;
+		saveRemainingCloudTime(barDisplay1);
+		saveRemainingTrainTime(barDisplay2);
 	}
 	
 	IEnumerator loadnextlevel(float time){
 		yield return new WaitForSeconds(time);
-	 
-		Application.LoadLevel (0);
+		levelID++;
+		saveLevelID(levelID);
+		Application.LoadLevel (levelID);
 	}
+	
+	public void resetValues(){
+		barDisplay1 = 0.015f;
+		barDisplay2 = 0.9f;
+		saveRemainingCloudTime(barDisplay1);
+		saveRemainingTrainTime(barDisplay2);
+	}
+	
+	
+	
+    float remainingTrainTime() {
+        return PlayerPrefs.GetFloat("RemainingTrainTime");
+    }
+    float remainingCloudTime() {
+        return PlayerPrefs.GetFloat("RemainingCloudTime");
+    }
+    int loadLevelID() {
+        return PlayerPrefs.GetInt("LevelID");
+    }
+	
+    void saveRemainingTrainTime(float value) {
+        PlayerPrefs.SetFloat("RemainingTrainTime", value);
+    }
+    void saveRemainingCloudTime(float value) {
+        PlayerPrefs.SetFloat("RemainingCloudTime", value);
+    }
+    void saveLevelID(float value) {
+        PlayerPrefs.SetFloat("LevelID", value);
+    }
 }
