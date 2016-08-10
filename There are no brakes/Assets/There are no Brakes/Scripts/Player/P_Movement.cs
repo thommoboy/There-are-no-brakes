@@ -1,10 +1,10 @@
 /***********************
  * P_Movement.cs
- * Originally Written by Josh
+ * Originally Written by Joshua Garvey
  * Modified By: Pierce Thompson, Nathan Brown
  * Modifcations:
 	Nathan Brown: incorporation of player interaction
-	Pierce Thompson: incorporation of animations, sound effects and refactoring
+	Pierce Thompson: incorporation of animations, sound effects and refactoring, Addition of controller support, cleaning of code
  ***********************/
 using UnityEngine;
 using System.Collections;
@@ -68,42 +68,39 @@ public class P_Movement : MonoBehaviour
 	void FixedUpdate()
 	{
 
-		//Debug.Log(layerMask.ToString());
 		if(Player1)
 		{
 			//Cast a ray beneath the player and check that the distance from the player to the ground is less than 1, if so you can jump!!
 			RaycastHit hit;
 			Ray downRay = new Ray (Player1.transform.position, -Vector3.up);
 			Physics.Raycast (downRay, out hit, Mathf.Infinity, layerMask);
-			//Debug.Log (hit.distance);
-			//Debug.Log(hit.transform.gameObject.layer);
 
 			if (hit.distance < 1.1) {
 				BeingCarried1 = false;
 				P1OnGround = true;
 			} else {
 				P1OnGround = false;
-				//Player1Anim.GetComponent<Animator> ().Play ("Idle");
 			}
 			
-
-			if(!BeingCarried1){
-				if(!P1Carrying && P1OnGround){
-					if (Input.GetButton ("P1_Jump") && hit.distance < 1.1) {
+			if(!BeingCarried1)
+            {
+				if(!P1Carrying && P1OnGround)
+                {
+					if (Input.GetButton ("A_1") && hit.distance < 1.1)
+                    {
 						Player1Anim.GetComponent<Animator> ().Play ("Jump");
-						if (GameObject.Find ("Player1").transform.GetChild (2).GetComponent<P_PickUp> ().Carrying == false) {
+						if (Player1.transform.GetChild (2).GetComponent<P_PickUp> ().Carrying == false)
+                        {
 							Player1.GetComponent<Rigidbody> ().velocity = new Vector3 (Player1.GetComponent<Rigidbody> ().velocity.x, jumpForce, Player1.GetComponent<Rigidbody> ().velocity.z);
 						}
 					} 
 				}
 			
-
-					
-
-			//Player 1:
-			float horizontal = Input.GetAxis ("P1_Horizontal");
-			//float vertical = Input.GetAxis ("P1_Vertical");
-				if (!Input.GetKey (KeyCode.LeftArrow) && !Input.GetKey (KeyCode.RightArrow)) {
+			    //Player 1:
+			    float horizontal = Input.GetAxis ("L_XAxis_1");
+                //if (!Input.GetKey (KeyCode.LeftArrow) && !Input.GetKey (KeyCode.RightArrow)) {
+                if(horizontal == 0)
+                {
 					if (hit.distance < 1.1) {
 						Player1Anim.GetComponent<Animator> ().Play ("Idle");
 						GameObject.FindGameObjectWithTag ("AudioManager").GetComponent<M_AudioManager> ().SoundFXOutput.Stop();
@@ -146,17 +143,6 @@ public class P_Movement : MonoBehaviour
 					}
 					Player1.GetComponent<Rigidbody> ().velocity = new Vector3 (horizontal * movementForce, Player1.GetComponent<Rigidbody> ().velocity.y, Player1.GetComponent<Rigidbody> ().velocity.z);
 				}
-
-			//WE move the rigid body depending of the input.
-			//		if (vertical < 0)
-			//		{
-			//			GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().rotation * Vector3.back * movementForce);
-			//		}
-			//		
-			//		if (vertical > 0)
-			//		{
-			//			GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().rotation * Vector3.forward * movementForce);
-			//		}
 			}
 		}
 
@@ -177,9 +163,9 @@ public class P_Movement : MonoBehaviour
 
             if (!BeingCarried2) {
 				if(!P2Carrying && P2OnGround){
-					if (Input.GetButton ("P2_Jump") && hit.distance < 1.1 ) {
+					if (Input.GetButton ("A_2") && hit.distance < 1.1 ) {
 						Player2Anim.GetComponent<Animator> ().Play ("Jump");
-						if (GameObject.Find ("Player2").transform.GetChild (2).GetComponent<P_PickUp> ().Carrying == false) {
+						if (Player2.transform.GetChild (2).GetComponent<P_PickUp> ().Carrying == false) {
 							Player2.GetComponent<Rigidbody> ().velocity = new Vector3 (Player2.GetComponent<Rigidbody> ().velocity.x, jumpForce, Player2.GetComponent<Rigidbody> ().velocity.z);
 							Player2Anim.GetComponent<Animator> ().Play ("Jump");
 						}
@@ -187,10 +173,12 @@ public class P_Movement : MonoBehaviour
 				}
 
 				//Player 2:
-				float horizontal = Input.GetAxis ("P2_Horizontal");
-				//float vertical = Input.GetAxis ("P2_Vertical");
+				float horizontal = Input.GetAxis ("L_XAxis_2");
+                //float vertical = Input.GetAxis ("P2_Vertical");
 
-				if (!Input.GetKey (KeyCode.A) && !Input.GetKey (KeyCode.D)){
+                //if (!Input.GetKey (KeyCode.A) && !Input.GetKey (KeyCode.D)){
+                if(horizontal == 0)
+                {
 					if (hit.distance < 1.1){
 						Player2Anim.GetComponent<Animator> ().Play ("Idle");
 					}
@@ -226,20 +214,7 @@ public class P_Movement : MonoBehaviour
 						FacingRight2 = true;
 					}
 					Player2.GetComponent<Rigidbody> ().velocity = new Vector3 (Player2.GetComponent<Rigidbody> ().velocity.x, Player2.GetComponent<Rigidbody> ().velocity.y, horizontal * movementForce);
-				}
-
-				//WE move the rigid body depending of the input.
-				//		if (vertical < 0)
-				//		{
-				//			GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().rotation * Vector3.back * movementForce);
-				//		}
-				//		
-				//		if (vertical > 0)
-				//		{
-				//			GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().rotation * Vector3.forward * movementForce);
-				//		}
-
-			
+				}			
 			}
 		}
 		if(Player3)
@@ -259,7 +234,7 @@ public class P_Movement : MonoBehaviour
 				
 			if(!BeingCarried3){
 				if(!P3Carrying && P3OnGround){
-					if (Input.GetButton ("P3_Jump") && hit.distance < 1.1) {
+					if (Input.GetButton ("A_3") && hit.distance < 1.1) {
 						Player3Anim.GetComponent<Animator> ().Play ("Jump");
 						if(GameObject.Find("Player3").transform.GetChild(2).GetComponent<P_PickUp>().Carrying == false){
 							Player3.GetComponent<Rigidbody> ().velocity = new Vector3 (Player3.GetComponent<Rigidbody> ().velocity.x, jumpForce, Player3.GetComponent<Rigidbody> ().velocity.z);
@@ -269,10 +244,12 @@ public class P_Movement : MonoBehaviour
 				}
 
 			//Player 3:
-			float horizontal = Input.GetAxis ("P3_Horizontal");
+			float horizontal = Input.GetAxis ("L_XAxis_3");
 			//float vertical = Input.GetAxis ("P3_Vertical");
 
-			if(!Input.GetKey(KeyCode.J) && !Input.GetKey(KeyCode.L)){
+			//if(!Input.GetKey(KeyCode.J) && !Input.GetKey(KeyCode.L)){
+            if(horizontal == 0)
+            {
 				if (hit.distance < 1.1){
 					Player3Anim.GetComponent<Animator> ().Play ("Idle");
 				}
@@ -310,26 +287,8 @@ public class P_Movement : MonoBehaviour
 					FacingRight3 = true;
 				}
 				Player3.GetComponent<Rigidbody> ().velocity = new Vector3 (-horizontal * movementForce, Player3.GetComponent<Rigidbody> ().velocity.y, Player3.GetComponent<Rigidbody> ().velocity.x);
-			}
-			
-			
-			//WE move the rigid body depending of the input.
-			//		if (vertical < 0)
-			//		{
-			//			GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().rotation * Vector3.back * movementForce);
-			//		}
-			//		
-			//		if (vertical > 0)
-			//		{
-			//			GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().rotation * Vector3.forward * movementForce);
-			//		}
-
-			
+			}			
 		}
-//		//if distance between player and grappling hook < some value, create a hinge
-//		foreach(GameObject gPoint in grapplePoints){
-//			if(Vector3.Distance(Player1.transform.position, gPoint) > grappleDistance){}
-//		}
 		}
 	}
 }
