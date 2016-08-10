@@ -14,16 +14,18 @@ public class IN_Industrial_Brakes_Activated : MonoBehaviour {
 	}
 	
 	void Update () {
-		if(GameObject.Find("IndicatorLightL").GetComponent<IN_IndicatorLight>().Activated && GameObject.Find("IndicatorLightC").GetComponent<IN_IndicatorLight>().Activated && GameObject.Find("IndicatorLightR").GetComponent<IN_IndicatorLight>().Activated){
-			GameObject.Find("brake1").GetComponent<IN_Industrial_Brake>().Activated = true;
-			GameObject.Find("brake2").GetComponent<IN_Industrial_Brake>().Activated = true;
-			GameObject.Find("brake3").GetComponent<IN_Industrial_Brake>().Activated = true;
-			GameObject.Find("brake4").GetComponent<IN_Industrial_Brake>().Activated = true;
-		} else {
-			GameObject.Find("brake1").GetComponent<IN_Industrial_Brake>().Activated = false;
-			GameObject.Find("brake2").GetComponent<IN_Industrial_Brake>().Activated = false;
-			GameObject.Find("brake3").GetComponent<IN_Industrial_Brake>().Activated = false;
-			GameObject.Find("brake4").GetComponent<IN_Industrial_Brake>().Activated = false;
+		if(GameObject.Find("IndicatorLight1").GetComponent<IN_IndicatorLight>().Activated && GameObject.Find("IndicatorLight2").GetComponent<IN_IndicatorLight>().Activated){
+			if(GameObject.Find("IndicatorLight3").GetComponent<IN_IndicatorLight>().Activated && GameObject.Find("IndicatorLight4").GetComponent<IN_IndicatorLight>().Activated){
+				GameObject.Find("brake1").GetComponent<IN_Industrial_Brake>().Activated = true;
+				GameObject.Find("brake2").GetComponent<IN_Industrial_Brake>().Activated = true;
+				GameObject.Find("brake3").GetComponent<IN_Industrial_Brake>().Activated = true;
+				GameObject.Find("brake4").GetComponent<IN_Industrial_Brake>().Activated = true;
+			} else {
+				GameObject.Find("brake1").GetComponent<IN_Industrial_Brake>().Activated = false;
+				GameObject.Find("brake2").GetComponent<IN_Industrial_Brake>().Activated = false;
+				GameObject.Find("brake3").GetComponent<IN_Industrial_Brake>().Activated = false;
+				GameObject.Find("brake4").GetComponent<IN_Industrial_Brake>().Activated = false;
+			}
 		}
 		
 		//check if dropped all the way
