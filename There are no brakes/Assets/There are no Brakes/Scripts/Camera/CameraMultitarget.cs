@@ -4,7 +4,6 @@
  * Originally Written by Rainbirth SLU
  * Modified By:
  * Pierce Thompson
- * Xinyu Feng
  ***********************/
 using UnityEngine;
 using System.Collections;
@@ -109,7 +108,7 @@ public class CameraMultitarget : MonoBehaviour {
 			bool inited = false;
 			// we get the maximum and minimum bounds of the elements we want to fit in the camera.			
 			foreach(GameObject tr in targetObjects)
-			{
+			{				
 				if (tr.GetComponent<CameraMultiTargetObjective>().enableTracking)
 				{
 					if (!inited)
@@ -143,12 +142,11 @@ public class CameraMultitarget : MonoBehaviour {
 		Gizmos.color = Color.green;
 		Gizmos.DrawWireCube(currentBounds.center, currentBounds.size);
 	}
-
-    private float lastHoldTime = -3f;
-    private float holdDeplayTime = 2.0f;
+	
 	// Update is called once per frame
 	void FixedUpdate () {	
 		currentBounds = GetElementsBounds();
+		
 		// we stablish our lookAt point to the center of that bounds.
 		lookAt = currentBounds.center;
 		
@@ -160,9 +158,8 @@ public class CameraMultitarget : MonoBehaviour {
 		
 		// we get the distance at which we need to position our camera.
 		if (!Input.GetKey(KeyCode.Space)) {
-            if (Time.time < lastHoldTime + holdDeplayTime)
-                return;
-            distance = Mathf.Max (minDistanceToTarget, Mathf.Min (distance, maxDistanceToTarget));
+			distance = Mathf.Max (minDistanceToTarget, Mathf.Min (distance, maxDistanceToTarget));
+			
 			// we interpolate to the new desired positions.	
 			Vector3 currentCameraDirection = Quaternion.Euler (orbitRotation) * cameraDirection;
 			currentLookAt = Vector3.Lerp (currentLookAt, lookAt, targetInterpolationSpeed * Time.fixedDeltaTime);
@@ -176,9 +173,8 @@ public class CameraMultitarget : MonoBehaviour {
 
 			//c.transform.LookAt (currentLookAt);
 		} else {
-            //Debug.Log ("Zoom Out");
-            lastHoldTime = Time.time;
-            c.transform.position = Vector3.Lerp (c.transform.position, origin, 0.01f);
+			//Debug.Log ("Zoom Out");
+			c.transform.position = Vector3.Lerp (c.transform.position, origin, 0.05f);
 			//c.transform.rotation = Quaternion.Lerp (c.transform.rotation, originalRot, 0.05f);
 		}
 	}

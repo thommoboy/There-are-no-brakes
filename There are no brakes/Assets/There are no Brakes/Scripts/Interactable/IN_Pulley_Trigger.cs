@@ -16,7 +16,7 @@ public class IN_Pulley_Trigger : MonoBehaviour
 	/// <summary>
 	/// If an object stays the Collision then Lower the platform that is attatched.
 	/// </summary>
-	void Update()
+	void OnTriggerStay(Collider other)
 	{
         if (IN_P_Platform == Platform.Left)
             if (howMany > 1)
@@ -30,8 +30,6 @@ public class IN_Pulley_Trigger : MonoBehaviour
             }
                 
 	}
-
-    
 
 	/// <summary>
 	/// If an object enters the Collision then Increment the player count.
