@@ -38,10 +38,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -62,8 +62,13 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_BreakWall.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Collapsible_Platform.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Door.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Group_Checkpoint.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_IndicatorLight.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Industrial_Brake.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Industrial_Brakes_Activated.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_InteractableObject.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Lantern.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_ProximityLight.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Pulley.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Pulley_Trigger.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Pyramid_Door.cs" />
@@ -72,6 +77,7 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Retractable_Spikes.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_SeeSaw.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_TextTrigger.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_TextTrigger_ConetentControl.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_VerticalSlider.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_WallPiece.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Winch.cs" />
@@ -92,6 +98,7 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_HUD.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_Movement.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PickUp.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PlayerLight.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PyramidFakePlayer.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PyramidPosition.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Industrial_HorizontalSlider.cs" />
@@ -178,10 +185,10 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
