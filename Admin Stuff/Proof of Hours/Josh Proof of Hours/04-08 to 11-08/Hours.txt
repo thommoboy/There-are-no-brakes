@@ -1,0 +1,16 @@
+Monday + Tueday = 7 hours (Image/Scripts)
+	Implementing Proximity Lights/Script
+	HUD and Important Object Lighting
+	Backlog
+
+Wednesday = 11 hours (GitHub Logs)
+	Finishing Lighting in Industrial Level
+		Player
+		Level Completion Indicator
+	Fixing version control issues with GitHub
+	Re-implementing changes due to version control issues
+	Changed proximity detection to use trigger colliders instead of checking distance every frame
+	Burndown Chart
+
+	
+Meeting Minutes Total ~ 2 hours (Meeting Minutes)
