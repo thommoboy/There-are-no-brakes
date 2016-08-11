@@ -145,7 +145,7 @@ public class CameraMultitarget : MonoBehaviour {
 	}
 
     private float lastHoldTime = -3f;
-    private float holdDeplayTime = 2.0f;
+    private float holdDeplayTime = 8.0f;
 	// Update is called once per frame
 	void FixedUpdate () {	
 		currentBounds = GetElementsBounds();
@@ -170,7 +170,8 @@ public class CameraMultitarget : MonoBehaviour {
 				c.orthographicSize = boundsSizeSphere + (screenSafeArea / orthographicSafeAreaMulti);
 			}
 
-			c.transform.position = Vector3.Lerp (new Vector3(c.transform.position.x, c.transform.position.y - 0.2f, c.transform.position.z), posAt, 0.1f);
+			//c.transform.position = Vector3.Lerp (new Vector3(c.transform.position.x, c.transform.position.y - 0.2f, c.transform.position.z), posAt, 0.1f);
+			c.transform.position = Vector3.Lerp (new Vector3(c.transform.position.x, c.transform.position.y, c.transform.position.z), posAt, 0.007f);
 
 			//c.transform.LookAt (currentLookAt);
 		} else {
@@ -182,7 +183,7 @@ public class CameraMultitarget : MonoBehaviour {
             }
             else
             {
-                c.transform.position = Vector3.Lerp(c.transform.position, origin, 0.003f);
+                c.transform.position = Vector3.Lerp(c.transform.position, origin, 0.009f);
             }
             //c.transform.rotation = Quaternion.Lerp (c.transform.rotation, originalRot, 0.05f);
         }

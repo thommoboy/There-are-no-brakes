@@ -9,10 +9,11 @@ using System.Collections;
 public class IN_IndicatorLight : MonoBehaviour {
 	public GameObject Trigger;
 	public GameObject IndLight;
+	public int defaultLightLevel = 1;
+	public int maxLightLevel = 6;
 	public bool Activated = false;
 
 	void Start () {
-		//IndLights = GameObject.FindGameObjectsWithTag("BrakeLight");
 	}
 	
 	void Update () {
@@ -20,32 +21,11 @@ public class IN_IndicatorLight : MonoBehaviour {
 		
 		if(Activated){
 			IndLight.GetComponent<Light> ().color = Color.green;
-//			for (int i = 0; i < IndLights.Length; i++) {
-//				if (Trigger.name == "Pressureplate" && IndLights[i].name == "Point light (1)") {
-//					IndLights [i].GetComponent<Light> ().color = Color.green;
-//				}
-//				if (Trigger.name == "Lever" && IndLights[i].name == "Point light (2)") {
-//					IndLights [i].GetComponent<Light> ().color = Color.green;
-//				}
-//				if (Trigger.name == "Lever (1)" && IndLights[i].name == "Point light (3)") {
-//					IndLights [i].GetComponent<Light> ().color = Color.green;
-//				}
-//			}
-
+			IndLight.GetComponent<Light> ().intensity = maxLightLevel;
 			this.transform.eulerAngles = new Vector3(0,180,0);
 		} else {
 			IndLight.GetComponent<Light> ().color = Color.red;
-//			for (int i = 0; i < IndLights.Length; i++) {
-//				if (Trigger.name == "Pressureplate" && IndLights [i].name == "Point light (1)") {
-//					IndLights [i].GetComponent<Light> ().color = Color.red;
-//				}
-//				if (Trigger.name == "Lever" && IndLights [i].name == "Point light (2)") {
-//					IndLights [i].GetComponent<Light> ().color = Color.red;
-//				}
-//				if (Trigger.name == "Lever (1)" && IndLights [i].name == "Point light (3)") {
-//					IndLights [i].GetComponent<Light> ().color = Color.red;
-//				}
-//			}
+			IndLight.GetComponent<Light> ().intensity = defaultLightLevel;
 			this.transform.eulerAngles = new Vector3(0,0,0);
 		}
 	}		
