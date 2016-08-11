@@ -19,11 +19,11 @@ public class M_MenuPaperBox : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Mouse1)) {
+		/*if (Input.GetKeyDown (KeyCode.Mouse1)) {
 			StartCoroutine ("delayExecute");
 			GameObject.Find ("MenuButtonManager").GetComponent<M_3DMenuButton> ().started = true;
 			animator.enabled = true;
-		}
+		}*/
 	}
 
 	IEnumerator delayExecute(){

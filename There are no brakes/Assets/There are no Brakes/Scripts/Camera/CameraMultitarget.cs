@@ -159,9 +159,7 @@ public class CameraMultitarget : MonoBehaviour {
 		float distance = boundsSizeSphere / (Mathf.Sin(fov * Mathf.Deg2Rad/2));
 		
 		// we get the distance at which we need to position our camera.
-		if (!Input.GetKey(KeyCode.Space)) {
-            if (Time.time < lastHoldTime + holdDeplayTime)
-                return;
+		if (!Input.GetKey(KeyCode.Space) && Time.time >= lastHoldTime + holdDeplayTime) {
             distance = Mathf.Max (minDistanceToTarget, Mathf.Min (distance, maxDistanceToTarget));
 			// we interpolate to the new desired positions.	
 			Vector3 currentCameraDirection = Quaternion.Euler (orbitRotation) * cameraDirection;
@@ -177,9 +175,16 @@ public class CameraMultitarget : MonoBehaviour {
 			//c.transform.LookAt (currentLookAt);
 		} else {
             //Debug.Log ("Zoom Out");
-            lastHoldTime = Time.time;
-            c.transform.position = Vector3.Lerp (c.transform.position, origin, 0.01f);
-			//c.transform.rotation = Quaternion.Lerp (c.transform.rotation, originalRot, 0.05f);
-		}
+            if (Input.GetKey(KeyCode.Space))
+            {
+                lastHoldTime = Time.time;
+                c.transform.position = Vector3.Lerp(c.transform.position, origin, 0.01f);
+            }
+            else
+            {
+                c.transform.position = Vector3.Lerp(c.transform.position, origin, 0.003f);
+            }
+            //c.transform.rotation = Quaternion.Lerp (c.transform.rotation, originalRot, 0.05f);
+        }
 	}
 }
