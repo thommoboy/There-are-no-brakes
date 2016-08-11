@@ -3,7 +3,8 @@
  * Originally Written by Feng
  * Modified By: Nathan Brown
  * Modificaions:
-	Nathan Brown: interaction with heavy weight object
+	Nathan Brown: 	interaction with heavy weight object
+					compatibility with reset functionality
  ***********************/
 using UnityEngine;
 using System.Collections;
@@ -33,7 +34,8 @@ public class IN_BreakWall : MonoBehaviour
 			GameObject wall = GameObject.Instantiate(remains, this.transform.position, this.transform.rotation) as GameObject;
 			wall.transform.localScale =new Vector3(this.transform.localScale.x / (float)4.5, this.transform.localScale.y / (float)3.5, this.transform.localScale.z);
 			other.gameObject.GetComponent<Rigidbody> ().AddForce (Vector3.forward * 200);
-			Destroy (this.gameObject);
+			//Destroy (this.gameObject);
+			this.transform.position += new Vector3(55f,0,0);
 			other.gameObject.GetComponent<Rigidbody> ().mass = 1000;
 			/*
 			Rigidbody rigid = other.gameObject.GetComponent<Rigidbody> ();
