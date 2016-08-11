@@ -56,12 +56,6 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -141,16 +135,19 @@
     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_VerticalSlider.cs" />
     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_WallPiece.cs" />
     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Winch.cs" />
+    <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Train_Tracks.cs" />
     <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_3DMenuButton.cs" />
     <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_3D_OnMouseOver.cs" />
     <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_MenuPaperBox.cs" />
     <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_MoveForward.cs" />
+    <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\Ms_3D_CreditsText.cs" />
     <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_ClickPlay.cs" />
     <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_DontDistroy.cs" />
     <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_MusicVolumeScript.cs" />
     <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_OnClick.cs" />
     <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_OnMouseExit.cs" />
     <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_OnMouseOver.cs" />
+    <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_Pause.cs" />
     <Compile Include="Assets\There are no Brakes\Scripts\Player\Obsolete\PlayerControl.cs" />
     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_GHandle.cs" />
     <Compile Include="Assets\There are no Brakes\Scripts\Player\P_GHook.cs" />
@@ -246,6 +243,7 @@
     <None Include="Assets\There are no Brakes\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
     <None Include="Assets\There are no Brakes\Shaders\3DTextShader.shader" />
     <None Include="Assets\There are no Brakes\Shaders\Flat.shader" />
+    <None Include="Assets\There are no Brakes\Text\Credits_text.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

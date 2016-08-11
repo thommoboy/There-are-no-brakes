@@ -36,7 +36,7 @@ public class P_GShot : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if(Input.GetKeyDown("X_1") && hook1Active == false)
+		if(Input.GetKeyDown(KeyCode.Joystick1Button2) && hook1Active == false)
 		{
 			//if distance between player and grappling hook < some value, create a hinge
 
@@ -60,7 +60,7 @@ public class P_GShot : MonoBehaviour
 					//rope1.material.color = color;
 				}
 			}
-		} else if (Input.GetKeyDown ("X_1") && hook1Active == true) {
+		} else if (Input.GetKeyDown (KeyCode.Joystick1Button2) && hook1Active == true) {
 			hook1Active = false;
 			Destroy(Player1.GetComponent<SpringJoint> ());
 			Destroy (Player1.GetComponent<LineRenderer> ());

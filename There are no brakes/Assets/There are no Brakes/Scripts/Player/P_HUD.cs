@@ -74,7 +74,7 @@ public class P_HUD : MonoBehaviour {
 	}
 	public M_Pause pauseCompoment;
 	public void GameLost(){
-        pauseCompoment.GameOver();
+        //pauseCompoment.GameOver();
         //Debug.Log("GAME OVER");
     }
 	
