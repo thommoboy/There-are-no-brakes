@@ -20,7 +20,7 @@ public class P_HUD : MonoBehaviour {
 	public Texture2D cloudIcon;
 	public Texture2D trainIcon;
 	public int MaxLevelTime = 300; //time limit in seconds
-	public int MaxGameTime = 3000; //time limit in seconds
+	private int MaxGameTime = 1500; //time limit in seconds
 	private bool GameOver = false;
 	public int PercentageRecoverOnLevelComplete = 15;
 	private Vector3 traindefaultpos;
@@ -28,8 +28,9 @@ public class P_HUD : MonoBehaviour {
 	public float maxpos = 16;
 	private float trainmaxpos;
 	private float cloudmaxpos;
+	public float trainspeed = 1f;
 	public bool firstLevel = false;
-	private int levelID = 0;
+	public int levelID = 0;
 	
 	void Start(){
 		if(firstLevel){
@@ -39,6 +40,7 @@ public class P_HUD : MonoBehaviour {
 		} else {
 			barDisplay1 = remainingCloudTime();
 			barDisplay2 = remainingTrainTime();
+			trainspeed = getTrainSpeed();
 			levelID = loadLevelID();
 		}
 		pos2 = new Vector2(Screen.width - (size.x + pos1.x),pos1.y);
@@ -50,8 +52,10 @@ public class P_HUD : MonoBehaviour {
 	 
 	void FixedUpdate() {
 		//calculate the timers
-		barDisplay1 += Time.deltaTime/MaxGameTime;
-		barDisplay2 -= Time.deltaTime/MaxLevelTime;
+		barDisplay1 += (Time.deltaTime/MaxGameTime)*trainspeed;
+		if(!firstLevel){
+			barDisplay2 -= Time.deltaTime/MaxLevelTime;
+		}
 		
 		//trigger game over if either bar empties
 		if(barDisplay1 >= 1){GameOver = true;barDisplay1 = 1;GameLost();}
@@ -62,7 +66,6 @@ public class P_HUD : MonoBehaviour {
 			barDisplay2 += Time.deltaTime/MaxLevelTime * 10;
 		} else {
 			recoveredDistance = 0;
-			recovering = false;
 		}
 		
 		
@@ -70,7 +73,12 @@ public class P_HUD : MonoBehaviour {
 		float cloudpos = barDisplay1 * maxpos + clouddefaultpos.z;
 		GameObject.Find("HUDcloudIcon").transform.position = new Vector3(clouddefaultpos.x,clouddefaultpos.y,cloudpos);
 		float trainpos = barDisplay2 * maxpos + traindefaultpos.z - maxpos;
-		GameObject.Find("HUDtrainIcon").transform.position = new Vector3(traindefaultpos.x,traindefaultpos.y,trainpos);
+		if(!firstLevel){
+			GameObject.Find("HUDtrainIcon").transform.position = new Vector3(traindefaultpos.x,traindefaultpos.y,trainpos);
+		} else {
+			GameObject.Find("HUDtrainIcon").transform.position = new Vector3(-9999,-9999,-9999);
+			GameObject.Find("HUD Train").transform.position = new Vector3(-9999,-9999,-9999);
+		}
 	}
 	public M_Pause pauseCompoment;
 	public void GameLost(){
@@ -78,29 +86,35 @@ public class P_HUD : MonoBehaviour {
         //Debug.Log("GAME OVER");
     }
 	
-	private bool recovering = false;
-	private float recoveredDistance;
+	private float recoveredDistance = 0;
 	public void LevelCompleted(){
 		Debug.Log("LEVEL COMPLETED");
 		StartCoroutine(loadnextlevel(10));
-		recoveredDistance = barDisplay2 + (((float)PercentageRecoverOnLevelComplete)/100);
-		recovering = true;
-		saveRemainingCloudTime(barDisplay1);
-		saveRemainingTrainTime(barDisplay2);
+		if(!firstLevel){
+			recoveredDistance = barDisplay2 + (((float)PercentageRecoverOnLevelComplete)/100);
+		}
 	}
 	
 	IEnumerator loadnextlevel(float time){
 		yield return new WaitForSeconds(time);
+		if(!firstLevel){
+			trainspeed += 1f;
+		}
 		levelID++;
 		saveLevelID(levelID);
+		saveRemainingCloudTime(barDisplay1);
+		saveRemainingTrainTime(barDisplay2);
+		saveTrainSpeed(trainspeed);
 		Application.LoadLevel (levelID);
 	}
 	
 	public void resetValues(){
 		barDisplay1 = 0.015f;
 		barDisplay2 = 0.9f;
+		trainspeed = 1f;
 		saveRemainingCloudTime(barDisplay1);
 		saveRemainingTrainTime(barDisplay2);
+		saveTrainSpeed(trainspeed);
 	}
 	
 	
@@ -110,6 +124,9 @@ public class P_HUD : MonoBehaviour {
     }
     float remainingCloudTime() {
         return PlayerPrefs.GetFloat("RemainingCloudTime");
+    }
+    float getTrainSpeed() {
+        return PlayerPrefs.GetFloat("TrainSpeed");
     }
     int loadLevelID() {
         return PlayerPrefs.GetInt("LevelID");
@@ -121,7 +138,10 @@ public class P_HUD : MonoBehaviour {
     void saveRemainingCloudTime(float value) {
         PlayerPrefs.SetFloat("RemainingCloudTime", value);
     }
-    void saveLevelID(float value) {
-        PlayerPrefs.SetFloat("LevelID", value);
+    void saveTrainSpeed(float value) {
+        PlayerPrefs.SetFloat("TrainSpeed", value);
+    }
+    void saveLevelID(int value) {
+        PlayerPrefs.SetInt("LevelID", value);
     }
 }
