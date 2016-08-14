@@ -7,13 +7,20 @@ using UnityEngine;
 using System.Collections;
  
 public class Tutorial_FakeDoor : MonoBehaviour {
-	private float timeout = 0.25F;
+	private float timeout = 0.5F;
 	private float nextInteract = 0.0F;
+	public GameObject teleportTarget;
+    private IN_TextTrigger_ConetentControl TextController;
 	
 	void Start(){
+        TextController = GameObject.Find("TextObjects").GetComponent<IN_TextTrigger_ConetentControl>();
 	}
 	
-	void Update(){	
+	void Update(){
+		if(intrigger){
+			TextController.display = true;
+			TextController.content = "Press [Interact] to use";
+		}
 	}
 	
 	private bool intrigger = false;
@@ -21,18 +28,8 @@ public class Tutorial_FakeDoor : MonoBehaviour {
 		if(other.tag == "Player"){
 			intrigger = true;
 			if(Time.time > nextInteract){
-				if (other.name == "Player1"){
-					if (Input.GetKey (KeyCode.DownArrow)) {
-						movePlayer(other);
-					}
-				}
 				if (other.name == "Player2"){
 					if (Input.GetKey (KeyCode.S)) {
-						movePlayer(other);
-					}
-				}
-				if (other.name == "Player3"){
-					if (Input.GetKey (KeyCode.K)) {
 						movePlayer(other);
 					}
 				}
@@ -40,20 +37,22 @@ public class Tutorial_FakeDoor : MonoBehaviour {
 		}
 	}
 	
+	void OnTriggerEnter(Collider other) {
+		if(other.tag == "Player"){
+			if (other.name == "Player2"){
+				nextInteract = Time.time + timeout;
+			}
+		}
+	}
+	
 	void OnTriggerExit(Collider other) {
 		if(other.tag == "Player"){
 			intrigger = false;
+			TextController.display = false;
 		}
 	}
 	
 	void movePlayer(Collider other){
-		nextInteract = Time.time + timeout;
-		other.transform.position = new Vector3 (other.transform.position.x,other.transform.position.y,307);
-	}
-	
-	void OnGUI(){
-		if(intrigger){
-			GUI.Label(new Rect (Screen.width/2 - 170, Screen.height/2 - 50, 500, 50), "Press [Interact] to use");
-		}
+		other.transform.position = teleportTarget.transform.position;
 	}
 }

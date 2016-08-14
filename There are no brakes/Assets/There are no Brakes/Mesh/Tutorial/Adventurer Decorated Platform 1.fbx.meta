@@ -1,0 +1,192 @@
+fileFormatVersion: 2
+guid: 82997bf97cadfb24aa1168f4a9e21c08
+timeCreated: 1471172969
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Adventurer_Platform_5_02
+    100004: Adventurer_Platform_5_03
+    100006: Adventurer_Platform_5_04
+    100008: Adventurer_Platform_5_05
+    100010: Adventurer_Platform_5_06
+    100012: Adventurer_Platform_5_07
+    100014: Adventurer_Skull_2_01
+    100016: Adventurer_Skull_2_02
+    100018: Adventurer_Skull_2_03
+    100020: Adventurer_Skull_2_04
+    100022: Adventurer_Skull_2_05
+    100024: Adventurer_Skull_2_06
+    100026: Adventurer_Skull_2_07
+    100028: Adventurer_Skull_2_08
+    100030: Adventurer_Skull_2_09
+    100032: Adventurer_Skull_2_10
+    100034: Adventurer_Skull_2_11
+    100036: Adventurer_Skull_2_12
+    100038: Adventurer_Skull_2_13
+    100040: Adventurer_Skull_2_14
+    100042: Adventurer_Skull_2_15
+    100044: Adventurer_Skull_2_16
+    100046: Adventurer_Skull_2_17
+    400000: //RootNode
+    400002: Adventurer_Platform_5_02
+    400004: Adventurer_Platform_5_03
+    400006: Adventurer_Platform_5_04
+    400008: Adventurer_Platform_5_05
+    400010: Adventurer_Platform_5_06
+    400012: Adventurer_Platform_5_07
+    400014: Adventurer_Skull_2_01
+    400016: Adventurer_Skull_2_02
+    400018: Adventurer_Skull_2_03
+    400020: Adventurer_Skull_2_04
+    400022: Adventurer_Skull_2_05
+    400024: Adventurer_Skull_2_06
+    400026: Adventurer_Skull_2_07
+    400028: Adventurer_Skull_2_08
+    400030: Adventurer_Skull_2_09
+    400032: Adventurer_Skull_2_10
+    400034: Adventurer_Skull_2_11
+    400036: Adventurer_Skull_2_12
+    400038: Adventurer_Skull_2_13
+    400040: Adventurer_Skull_2_14
+    400042: Adventurer_Skull_2_15
+    400044: Adventurer_Skull_2_16
+    400046: Adventurer_Skull_2_17
+    2300000: //RootNode
+    2300002: Adventurer_Platform_5_02
+    2300004: Adventurer_Platform_5_03
+    2300006: Adventurer_Platform_5_04
+    2300008: Adventurer_Platform_5_05
+    2300010: Adventurer_Platform_5_06
+    2300012: Adventurer_Platform_5_07
+    2300014: Adventurer_Skull_2_01
+    2300016: Adventurer_Skull_2_02
+    2300018: Adventurer_Skull_2_03
+    2300020: Adventurer_Skull_2_04
+    2300022: Adventurer_Skull_2_05
+    2300024: Adventurer_Skull_2_06
+    2300026: Adventurer_Skull_2_07
+    2300028: Adventurer_Skull_2_08
+    2300030: Adventurer_Skull_2_09
+    2300032: Adventurer_Skull_2_10
+    2300034: Adventurer_Skull_2_11
+    2300036: Adventurer_Skull_2_12
+    2300038: Adventurer_Skull_2_13
+    2300040: Adventurer_Skull_2_14
+    2300042: Adventurer_Skull_2_15
+    2300044: Adventurer_Skull_2_16
+    2300046: Adventurer_Skull_2_17
+    3300000: //RootNode
+    3300002: Adventurer_Platform_5_02
+    3300004: Adventurer_Platform_5_03
+    3300006: Adventurer_Platform_5_04
+    3300008: Adventurer_Platform_5_05
+    3300010: Adventurer_Platform_5_06
+    3300012: Adventurer_Platform_5_07
+    3300014: Adventurer_Skull_2_01
+    3300016: Adventurer_Skull_2_02
+    3300018: Adventurer_Skull_2_03
+    3300020: Adventurer_Skull_2_04
+    3300022: Adventurer_Skull_2_05
+    3300024: Adventurer_Skull_2_06
+    3300026: Adventurer_Skull_2_07
+    3300028: Adventurer_Skull_2_08
+    3300030: Adventurer_Skull_2_09
+    3300032: Adventurer_Skull_2_10
+    3300034: Adventurer_Skull_2_11
+    3300036: Adventurer_Skull_2_12
+    3300038: Adventurer_Skull_2_13
+    3300040: Adventurer_Skull_2_14
+    3300042: Adventurer_Skull_2_15
+    3300044: Adventurer_Skull_2_16
+    3300046: Adventurer_Skull_2_17
+    4300000: Adventurer_Platform_5_01
+    4300002: Adventurer_Platform_5_07
+    4300004: Adventurer_Platform_5_06
+    4300006: Adventurer_Platform_5_05
+    4300008: Adventurer_Platform_5_04
+    4300010: Adventurer_Platform_5_03
+    4300012: Adventurer_Platform_5_02
+    4300014: Adventurer_Skull_2_01
+    4300016: Adventurer_Skull_2_17
+    4300018: Adventurer_Skull_2_16
+    4300020: Adventurer_Skull_2_15
+    4300022: Adventurer_Skull_2_14
+    4300024: Adventurer_Skull_2_13
+    4300026: Adventurer_Skull_2_12
+    4300028: Adventurer_Skull_2_11
+    4300030: Adventurer_Skull_2_10
+    4300032: Adventurer_Skull_2_09
+    4300034: Adventurer_Skull_2_08
+    4300036: Adventurer_Skull_2_07
+    4300038: Adventurer_Skull_2_06
+    4300040: Adventurer_Skull_2_05
+    4300042: Adventurer_Skull_2_04
+    4300044: Adventurer_Skull_2_03
+    4300046: Adventurer_Skull_2_02
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
