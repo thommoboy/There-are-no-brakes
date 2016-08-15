@@ -73,7 +73,8 @@ public class IN_Activation : MonoBehaviour{
 		if(pressureplate){
 			if(other.tag == "Player" || other.tag == "Weight"){
 				activated = true;
-				this.transform.localScale = new Vector3(3, 2, 3);
+				this.transform.FindChild("Panel").gameObject.transform.localScale = new Vector3(73, 6, 73);
+				this.transform.FindChild("Panel").gameObject.transform.localPosition = new Vector3(-0.0165445f, 0.031726f, 0.009995698f);
 			}
 		}
 	}
@@ -86,7 +87,8 @@ public class IN_Activation : MonoBehaviour{
 			}
 			if(pressureplate){
 				activated = false;
-				this.transform.localScale = new Vector3(3, 4, 3);
+				this.transform.FindChild("Panel").gameObject.transform.localScale = new Vector3(73, 12, 73);
+				this.transform.FindChild("Panel").gameObject.transform.localPosition = new Vector3(-0.0165445f, 0.07411726f, 0.009995698f);
 			}
 		}
 	}
