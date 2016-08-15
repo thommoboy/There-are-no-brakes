@@ -26,10 +26,10 @@ public class Tutorial_FakeDoor : MonoBehaviour {
 	private bool intrigger = false;
 	void OnTriggerStay(Collider other) {
 		if(other.tag == "Player"){
-			intrigger = true;
-			if(Time.time > nextInteract){
-				if (other.name == "Player2"){
-					if (Input.GetKey (KeyCode.S)) {
+			if (other.name == "Player2"){
+				intrigger = true;
+				if(Time.time > nextInteract){
+					if (Input.GetAxis("P2 Interact") > 0) {
 						movePlayer(other);
 					}
 				}

@@ -13,6 +13,7 @@ public class IN_Collapsible_Platform : MonoBehaviour {
 	private GameObject RotatePart;
 	private int RotateAngle = 305;
 	private float RotateSpeed = 3.5f;
+	public bool tutorial = false;
 
 	void Start () {
 		RotatePart = this.transform.FindChild("RotatingSection").gameObject;
@@ -27,7 +28,11 @@ public class IN_Collapsible_Platform : MonoBehaviour {
 		if(Activated){
 			RotatePart.transform.localEulerAngles = Vector3.Lerp(RotatePart.transform.localEulerAngles, new Vector3(0, 0, 359), RotateSpeed*Time.deltaTime);
 		} else {
-			RotatePart.transform.localEulerAngles = Vector3.Lerp(RotatePart.transform.localEulerAngles, new Vector3(0, 0, RotateAngle), RotateSpeed*Time.deltaTime);
+			if(!tutorial){
+				RotatePart.transform.localEulerAngles = Vector3.Lerp(RotatePart.transform.localEulerAngles, new Vector3(0, 0, RotateAngle), RotateSpeed*Time.deltaTime);
+			} else {
+				RotatePart.transform.localEulerAngles = Vector3.Lerp(RotatePart.transform.localEulerAngles, new Vector3(0, 0, 270), RotateSpeed*Time.deltaTime);
+			}
 		}
 	}		
 }
