@@ -368,7 +368,7 @@ public class P_Movement : MonoBehaviour
 
                     //Player 1:
                     float horizontal = Input.GetAxis("P1 Horizontal");
-                    if (!Input.GetKey (KeyCode.LeftArrow) && !Input.GetKey (KeyCode.RightArrow)) {
+                    if (horizontal == 0) {
                         if (hit.distance < 1.1)
                         {
                             Player1Anim.GetComponent<Animator>().Play("Idle");
@@ -459,7 +459,7 @@ public class P_Movement : MonoBehaviour
                     float horizontal = Input.GetAxis("P2 Horizontal");
                     //float vertical = Input.GetAxis ("P2_Vertical");
 
-                    if (!Input.GetKey (KeyCode.A) && !Input.GetKey (KeyCode.D))
+                    if (horizontal == 0)
                     {
                         if (hit.distance < 1.1)
                         {
@@ -543,7 +543,7 @@ public class P_Movement : MonoBehaviour
                     float horizontal = Input.GetAxis("P3 Horizontal");
                     //float vertical = Input.GetAxis ("P3_Vertical");
 
-                    if(!Input.GetKey(KeyCode.J) && !Input.GetKey(KeyCode.L))
+                    if(horizontal == 0)
                     {
                         if (hit.distance < 1.1)
                         {

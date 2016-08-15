@@ -38,22 +38,22 @@ public class IN_Winch : IN_InteractableObject{
 		if(other.tag == "Player"){
 			intrigger = true;
 			if (other.name == "Player1"){
-				if (Input.GetKey (KeyCode.DownArrow)) {
+				if (Input.GetAxis("P1 Interact") > 0) {
 					WindWinch ();
 				}
 			}
 			if (other.name == "Player2"){
-				if (Input.GetKey (KeyCode.S)) {
+				if (Input.GetAxis("P2 Interact") > 0) {
 					WindWinch ();
 				}
 			}
 			if (other.name == "Player3"){
-				if (Input.GetKey (KeyCode.K)) {
+				if (Input.GetAxis("P3 Interact") > 0) {
 					WindWinch ();
 				}
 			}
 			
-			if (!Input.GetKey (KeyCode.DownArrow) && !Input.GetKey (KeyCode.S) && !Input.GetKey (KeyCode.K)) {
+			if (Input.GetAxis("P1 Interact") == 0 && Input.GetAxis("P2 Interact") == 0 && Input.GetAxis("P3 Interact") == 0) {
 				GetComponent<AudioSource>().Stop();
 				playingsound = false;
 			}

@@ -41,12 +41,12 @@ public class IN_Pyramid_Latch : MonoBehaviour {
 	void OnTriggerStay(Collider other) {
 		if(other.tag == "Player"){//no player 2 check needed
 			if (other.name == "Player1" && GameObject.Find("PlayerControllers").GetComponent<P_Movement>().P1OnGround){
-				if (Input.GetKey (KeyCode.DownArrow)) {
+				if (Input.GetAxis("P1 Interact") > 0) {
 					Activated = true;
 				}
 			}
 			if (other.name == "Player3" && GameObject.Find("PlayerControllers").GetComponent<P_Movement>().P3OnGround){
-				if (Input.GetKey (KeyCode.K)) {
+				if (Input.GetAxis("P3 Interact") > 0) {
 					Activated = true;
 				}
 			}
