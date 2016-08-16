@@ -310,7 +310,7 @@ public class P_Movement : MonoBehaviour
 			{
 				if (!P3Carrying && P3OnGround)
 				{
-					if (Input.GetButton("A_3") && hit.distance < 1.1)
+					if (hit.distance < 1.1)
 					{
 						if(Input.GetAxis("P3 Jump") > 0 || Input.GetAxis("A_3") > 0)
 						{
