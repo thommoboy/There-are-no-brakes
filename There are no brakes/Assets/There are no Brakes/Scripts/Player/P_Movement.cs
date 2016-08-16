@@ -111,7 +111,7 @@ public class P_Movement : MonoBehaviour
 				{
 					if(P1OnGround)
 					{
-						Player1.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+						Player1.GetComponent<Rigidbody>().velocity = new Vector3(0, Player1.GetComponent<Rigidbody>().velocity.y, 0);
 					}
 					if (hit.distance < 1.1)
 					{
@@ -227,7 +227,7 @@ public class P_Movement : MonoBehaviour
 				{
 					if(P2OnGround)
 					{
-						Player2.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+						Player2.GetComponent<Rigidbody>().velocity = new Vector3(0, Player2.GetComponent<Rigidbody>().velocity.y, 0);
 					}
 					if (hit.distance < 1.1)
 					{
@@ -335,7 +335,7 @@ public class P_Movement : MonoBehaviour
 				{
 					if(P3OnGround)
 					{
-						Player3.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+						Player3.GetComponent<Rigidbody>().velocity = new Vector3(0, Player3.GetComponent<Rigidbody>().velocity.y, 0);
 					}
 					if (hit.distance < 1.1)
 					{

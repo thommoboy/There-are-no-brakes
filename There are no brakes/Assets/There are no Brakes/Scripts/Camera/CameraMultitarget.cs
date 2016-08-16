@@ -161,7 +161,7 @@ public class CameraMultitarget : MonoBehaviour {
 	}
 
     private float lastHoldTime = -3f;
-    private float holdDeplayTime = 3.0f;
+    private float holdDeplayTime = 7.0f;
 	// Update is called once per frame
 	void FixedUpdate () {	
 		currentBounds = GetElementsBounds();
