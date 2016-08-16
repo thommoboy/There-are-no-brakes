@@ -146,6 +146,7 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Industrial_HorizontalSlider.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_FakeDarkness.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_FakeDoor.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_RoomChange.cs" />
      <None Include="Assets\There are no Brakes\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />

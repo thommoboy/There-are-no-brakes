@@ -103,7 +103,7 @@ public class IN_Pyramid_Door : MonoBehaviour {
 			if (other.name == "Player2"){
 				intrigger = true;
 				if (Time.time > nextInteract){
-					if (Input.GetAxis("P2 Interact") > 0) {
+					if (Input.GetAxis("P2 Interact") > 0 || Input.GetAxis("B_2") > 0) {
 						movePlayer(other);
                     }
                 }

@@ -38,24 +38,26 @@ public class IN_Winch : IN_InteractableObject{
 		if(other.tag == "Player"){
 			intrigger = true;
 			if (other.name == "Player1"){
-				if (Input.GetAxis("P1 Interact") > 0) {
+				if (Input.GetAxis("P1 Interact") > 0 || Input.GetAxis("B_1") > 0) {
 					WindWinch ();
 				}
 			}
 			if (other.name == "Player2"){
-				if (Input.GetAxis("P2 Interact") > 0) {
+				if (Input.GetAxis("P2 Interact") > 0 || Input.GetAxis("B_2") > 0) {
 					WindWinch ();
 				}
 			}
 			if (other.name == "Player3"){
-				if (Input.GetAxis("P3 Interact") > 0) {
+				if (Input.GetAxis("P3 Interact") > 0 || Input.GetAxis("B_3") > 0) {
 					WindWinch ();
 				}
 			}
 			
 			if (Input.GetAxis("P1 Interact") == 0 && Input.GetAxis("P2 Interact") == 0 && Input.GetAxis("P3 Interact") == 0) {
-				GetComponent<AudioSource>().Stop();
-				playingsound = false;
+				if (Input.GetAxis("B_1") == 0 && Input.GetAxis("B_2") == 0 && Input.GetAxis("B_3") == 0) {
+					GetComponent<AudioSource>().Stop();
+					playingsound = false;
+				}
 			}
 		}
 	}

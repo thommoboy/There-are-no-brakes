@@ -29,7 +29,7 @@ public class Tutorial_FakeDoor : MonoBehaviour {
 			if (other.name == "Player2"){
 				intrigger = true;
 				if(Time.time > nextInteract){
-					if (Input.GetAxis("P2 Interact") > 0) {
+					if (Input.GetAxis("P2 Interact") > 0 || Input.GetAxis("B_2") > 0) {
 						movePlayer(other);
 					}
 				}
@@ -54,7 +54,7 @@ public class Tutorial_FakeDoor : MonoBehaviour {
 	
 	void movePlayer(Collider other){
 		//make player drop anything theyre carrying before going through door
-		other.transform.FindChild("Player").gameObject.GetComponent<P_PickUp>().DropObject();
+		other.transform.FindChild("Player").gameObject.GetComponent<P_PickUp>().DropObject(true);
 		other.transform.position = teleportTarget.transform.position;
 	}
 }

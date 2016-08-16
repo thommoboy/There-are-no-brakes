@@ -28,7 +28,7 @@ public class IN_Lantern : MonoBehaviour{
 	void OnTriggerStay(Collider other) {
 		if (other.name == "Player3"){
 			intrigger = true;
-			if (Input.GetAxis("P3 Interact") > 0) {
+			if (Input.GetAxis("P3 Interact") > 0 || Input.GetAxis("B_3") > 0) {
 				lantern.GetComponent<Light> ().enabled = true;
 				activated = true;
 				TextController.display = false;

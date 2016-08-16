@@ -30,17 +30,18 @@ public class P_PickUp : MonoBehaviour {
 					// check that player is on the ground
 					if (ThisPlayer.name == "Player1" && PlayerController.GetComponent<P_Movement> ().P1OnGround) {
 						// only looks for the interact key of the actual player (no pressing interact to make someone else interact)
-						if (Input.GetKeyDown(KeyCode.DownArrow)) {
+						// uses timeout to prevent player picking up someone right after dropping them
+						if ((Input.GetAxis("P1 Interact") > 0 || Input.GetAxis("B_1") > 0) && Time.time > nextInteract) {
 							PickUp (other.gameObject);
 						}
 					}
 					if (ThisPlayer.name == "Player2" && PlayerController.GetComponent<P_Movement> ().P2OnGround) {
-						if (Input.GetKeyDown(KeyCode.S)) {
+						if ((Input.GetAxis("P2 Interact") > 0 || Input.GetAxis("B_2") > 0) && Time.time > nextInteract) {
 							PickUp (other.gameObject);
 						}
 					}
 					if (ThisPlayer.name == "Player3" && PlayerController.GetComponent<P_Movement> ().P3OnGround) {
-						if (Input.GetKeyDown(KeyCode.K)) {
+						if ((Input.GetAxis("P3 Interact") > 0 || Input.GetAxis("B_3") > 0) && Time.time > nextInteract) {
 							PickUp (other.gameObject);
 						}
 					}
@@ -74,21 +75,21 @@ public class P_PickUp : MonoBehaviour {
 					}
 				}
 				// throw carried object
-				if(Input.GetKeyDown(KeyCode.UpArrow) && Time.time > nextInteract){
+				if((Input.GetAxis("P1 Jump") > 0 || Input.GetAxis("A_1") > 0) && Time.time > nextInteract){
 					ThrowAway();
 				}
 				// drop carried object
-				if(Input.GetKeyDown(KeyCode.DownArrow) && Time.time > nextInteract){
-					DropObject();
+				if((Input.GetAxis("P1 Interact") > 0 || Input.GetAxis("B_1") > 0) && Time.time > nextInteract){
+					DropObject(false);
 				}
 				// stop player from carrying something if they get picked up
 				if(PlayerController.GetComponent<P_Movement> ().BeingCarried1){
-					DropObject();
+					DropObject(false);
 				}
 				// stop player from carrying another player while in the air
 				if(!PlayerController.GetComponent<P_Movement> ().P1OnGround){
 					if(PlayerController.GetComponent<P_Movement> ().BeingCarried2 || PlayerController.GetComponent<P_Movement> ().BeingCarried3){
-						DropObject();
+						DropObject(false);
 					}
 				}
 			}
@@ -107,18 +108,18 @@ public class P_PickUp : MonoBehaviour {
 						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x, ThisPlayer.transform.position.y + carryHeight, ThisPlayer.transform.position.z+carryDistance);
 					}
 				}
-				if(Input.GetKeyDown(KeyCode.W) && Time.time > nextInteract){
+				if((Input.GetAxis("P2 Jump") > 0 || Input.GetAxis("A_2") > 0) && Time.time > nextInteract){
 					ThrowAway();
 				}
-				if(Input.GetKeyDown(KeyCode.S) && Time.time > nextInteract){
-					DropObject();
+				if((Input.GetAxis("P2 Interact") > 0 || Input.GetAxis("B_2") > 0) && Time.time > nextInteract){
+					DropObject(false);
 				}
 				if(PlayerController.GetComponent<P_Movement> ().BeingCarried2){
-					DropObject();
+					DropObject(false);
 				}
 				if(!PlayerController.GetComponent<P_Movement> ().P2OnGround){
 					if(PlayerController.GetComponent<P_Movement> ().BeingCarried1 || PlayerController.GetComponent<P_Movement> ().BeingCarried3){
-						DropObject();
+						DropObject(false);
 					}
 				}
 			}
@@ -137,18 +138,18 @@ public class P_PickUp : MonoBehaviour {
 						carriedObject.transform.position = new Vector3 (ThisPlayer.transform.position.x+carryDistance, ThisPlayer.transform.position.y + carryHeight, ThisPlayer.transform.position.z);
 					}
 				}
-				if(Input.GetKeyDown(KeyCode.I) && Time.time > nextInteract){
+				if((Input.GetAxis("P3 Jump") > 0 || Input.GetAxis("A_3") > 0) && Time.time > nextInteract){
 					ThrowAway();
 				}
-				if(Input.GetKeyDown(KeyCode.K) && Time.time > nextInteract){
-					DropObject();
+				if((Input.GetAxis("P3 Interact") > 0 || Input.GetAxis("B_3") > 0) && Time.time > nextInteract){
+					DropObject(false);
 				}
 				if(PlayerController.GetComponent<P_Movement> ().BeingCarried3){
-					DropObject();
+					DropObject(false);
 				}
 				if(!PlayerController.GetComponent<P_Movement> ().P3OnGround){
 					if(PlayerController.GetComponent<P_Movement> ().BeingCarried1 || PlayerController.GetComponent<P_Movement> ().BeingCarried2){
-						DropObject();
+						DropObject(false);
 					}
 				}
 			}
@@ -204,7 +205,7 @@ public class P_PickUp : MonoBehaviour {
 
 	void ThrowAway(){
 		//launch object
-		DropObject();
+		DropObject(false);
 		//set launch position
 		HeldObject.transform.position = new Vector3(HeldObject.transform.position.x,HeldObject.transform.position.y+0.5f,HeldObject.transform.position.z);
 		//dont put boxes too high
@@ -262,19 +263,20 @@ public class P_PickUp : MonoBehaviour {
 		}
 	}
 	
-	public void DropObject(){
-		//Prevents bugs if triggered by other script   
+	public void DropObject(bool external){ 
 		if(Carrying){
-			Debug.Log("Dropped");
 			//disconnect object
 			HeldObject.transform.parent = null;
 			// re-enable objects gravity
 			HeldObject.GetComponent<Rigidbody>().useGravity = true;
 			//can now pick up things again
 			Carrying = false;
-			HeldObject = null;
 			//stop player jumping right after they throw object
 			nextInteract = Time.time + timeout;
 		}
+		//Prevents bugs if triggered by other script 
+		if(external){
+			HeldObject = null;
+		} 
 	}
 }

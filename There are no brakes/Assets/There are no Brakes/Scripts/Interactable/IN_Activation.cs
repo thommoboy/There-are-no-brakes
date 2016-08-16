@@ -33,17 +33,17 @@ public class IN_Activation : MonoBehaviour{
 				intrigger = true;
 				if(Time.time > nextInteract){
 					if (other.name == "Player1"){
-						if (Input.GetAxis("P1 Interact") > 0) {
+						if (Input.GetAxis("P1 Interact") > 0 || Input.GetAxis("B_1") > 0) {
 							changeState();
 						}
 					}
 					if (other.name == "Player2"){
-						if (Input.GetAxis("P2 Interact") > 0) {
+						if (Input.GetAxis("P2 Interact") > 0 || Input.GetAxis("B_2") > 0) {
 							changeState();
 						}
 					}
 					if (other.name == "Player3"){
-						if (Input.GetAxis("P3 Interact") > 0) {
+						if (Input.GetAxis("P3 Interact") > 0 || Input.GetAxis("B_3") > 0) {
 							changeState();
 						}
 					}
@@ -54,17 +54,17 @@ public class IN_Activation : MonoBehaviour{
 			if(other.tag == "Player"){
 				intrigger = true;
 				if (other.name == "Player1"){
-					if (Input.GetAxis("P1 Interact") > 0) {
+					if (Input.GetAxis("P1 Interact") > 0 || Input.GetAxis("B_1") > 0) {
 						changeState();
 					}
 				}
 				if (other.name == "Player2"){
-					if (Input.GetAxis("P2 Interact") > 0) {
+					if (Input.GetAxis("P2 Interact") > 0 || Input.GetAxis("B_2") > 0) {
 						changeState();
 					}
 				}
 				if (other.name == "Player3"){
-					if (Input.GetAxis("P3 Interact") > 0) {
+					if (Input.GetAxis("P3 Interact") > 0 || Input.GetAxis("B_3") > 0) {
 						changeState();
 					}
 				}
