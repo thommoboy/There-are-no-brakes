@@ -1,0 +1,15 @@
+Tuesday 11am - 2pm
+Added frictionless physics material to player (fixing sticky platforming problems) (also done to individual prefabs used in pyramid level)
+Removed obselete head, shotspawn and disabled player objects from "Player" prefad (also done to individual prefabs used in pyramid level)
+	fixed resulting childing issue in player movement script
+Fixed pressure plate exploit on the industrialist level (collider was large enough to trigger when below the pressure plate)
+Re-fixed light collider jumping on industrial level
+Camera half fix (simply moving the camera so that it starts on all 3 players makes the multi target script work, zoom out still needs tweeking)
+
+Tuesday 2:20pm - 5:20pm
+Made different zoom out areas for the camera based on the room
+
+--Cleaning Fridge--
+
+Tuesday 6:10pm - 7:10pm
+Working on Backlog/burndown chart
