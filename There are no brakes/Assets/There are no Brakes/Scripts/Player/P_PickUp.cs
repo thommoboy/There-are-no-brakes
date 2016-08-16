@@ -262,14 +262,19 @@ public class P_PickUp : MonoBehaviour {
 		}
 	}
 	
-	void DropObject(){
-		//disconnect object
-		HeldObject.transform.parent = null;
-		// re-enable objects gravity
-		HeldObject.GetComponent<Rigidbody>().useGravity = true;
-		//can now pick up things again
-		Carrying = false;
-		//stop player jumping right after they throw object
-		nextInteract = Time.time + timeout;
+	public void DropObject(){
+		//Prevents bugs if triggered by other script   
+		if(Carrying){
+			Debug.Log("Dropped");
+			//disconnect object
+			HeldObject.transform.parent = null;
+			// re-enable objects gravity
+			HeldObject.GetComponent<Rigidbody>().useGravity = true;
+			//can now pick up things again
+			Carrying = false;
+			HeldObject = null;
+			//stop player jumping right after they throw object
+			nextInteract = Time.time + timeout;
+		}
 	}
 }

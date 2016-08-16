@@ -53,6 +53,8 @@ public class Tutorial_FakeDoor : MonoBehaviour {
 	}
 	
 	void movePlayer(Collider other){
+		//make player drop anything theyre carrying before going through door
+		other.transform.FindChild("Player").gameObject.GetComponent<P_PickUp>().DropObject();
 		other.transform.position = teleportTarget.transform.position;
 	}
 }
