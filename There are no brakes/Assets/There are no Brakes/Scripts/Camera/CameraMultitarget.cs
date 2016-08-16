@@ -5,8 +5,10 @@
  * Modified By:
  * Pierce Thompson
  * Xinyu Feng
+ * Josh Garvey --> Modified to allow zoom out mechanic to work with multi room levels such as tutorial (several different zoom positions)
  ***********************/
 using UnityEngine;
+using UnityEngine.SceneManagement; //to determine which scene we are in
 using System.Collections;
 using System.Collections.Generic;
 
@@ -75,12 +77,26 @@ public class CameraMultitarget : MonoBehaviour {
 	public Vector3 origin;
 	public Quaternion originalRot;
 
+	//tutorial camera zoom origins
+//	public Vector3 pos1;
+//	public Quaternion rot1;
+//	public Vector3 pos2;
+//	public Quaternion rot2;
+//	public Vector3 pos3;
+//	public Quaternion rot3;
+	public string currentRoom = "Room1";
+
 	#endregion
 	
 	// Use this for initialization
 	void Start () {
 		origin = transform.position;
 		originalRot = transform.rotation;
+		if (SceneManager.GetActiveScene().name == "Tutorial Level") {
+			//RoomDoors = GameObject.FindGameObjectsWithTag ("TuteRoom");
+			//Debug.Log ("In tha sceeeeeeene");
+			//do stuff
+		}
 
 		camPosition = transform.position;
 	
@@ -145,7 +161,7 @@ public class CameraMultitarget : MonoBehaviour {
 	}
 
     private float lastHoldTime = -3f;
-    private float holdDeplayTime = 8.0f;
+    private float holdDeplayTime = 3.0f;
 	// Update is called once per frame
 	void FixedUpdate () {	
 		currentBounds = GetElementsBounds();
@@ -160,6 +176,7 @@ public class CameraMultitarget : MonoBehaviour {
 		
 		// we get the distance at which we need to position our camera.
 		if (!Input.GetKey(KeyCode.Space) && Time.time >= lastHoldTime + holdDeplayTime) {
+			//Debug.Log ("test");
             distance = Mathf.Max (minDistanceToTarget, Mathf.Min (distance, maxDistanceToTarget));
 			// we interpolate to the new desired positions.	
 			Vector3 currentCameraDirection = Quaternion.Euler (orbitRotation) * cameraDirection;
@@ -175,15 +192,41 @@ public class CameraMultitarget : MonoBehaviour {
 
 			//c.transform.LookAt (currentLookAt);
 		} else {
+			
             //Debug.Log ("Zoom Out");
             if (Input.GetKey(KeyCode.Space))
             {
+
                 lastHoldTime = Time.time;
-                c.transform.position = Vector3.Lerp(c.transform.position, origin, 0.01f);
+				if (SceneManager.GetActiveScene ().name == "Tutorial Level") {
+					if (currentRoom == "Room1") {
+						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam1").transform.position, 0.01f);
+					} else if (currentRoom == "Room2") {
+						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam2").transform.position, 0.01f);
+					} /*else if (currentRoom == "Room3"){
+						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam3").transform.position, 0.01f);
+					}*/
+				} else {
+					c.transform.position = Vector3.Lerp (c.transform.position, origin, 0.01f);
+				}
             }
             else
-            {
-                c.transform.position = Vector3.Lerp(c.transform.position, origin, 0.009f);
+			{
+				if (SceneManager.GetActiveScene ().name == "Tutorial Level") {
+					if (currentRoom == "Room1") {
+						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam1").transform.position, 0.009f);
+					} else if (currentRoom == "Room2") {
+						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam2").transform.position, 0.009f);
+					} /*else if (currentRoom == "Room3"){
+						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam3").transform.position, 0.01f);
+					}*/
+				} else {
+					c.transform.position = Vector3.Lerp (c.transform.position, origin, 0.009f);
+				}
+//				if (SceneManager.GetActiveScene ().name == "Tutorial Level") {
+//				} else {
+//					c.transform.position = Vector3.Lerp (c.transform.position, origin, 0.009f);
+//				}
             }
             //c.transform.rotation = Quaternion.Lerp (c.transform.rotation, originalRot, 0.05f);
         }
