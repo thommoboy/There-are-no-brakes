@@ -95,7 +95,7 @@ public class P_Movement : MonoBehaviour
                         if (Input.GetButton("A_1") && hit.distance < 1.1)
                         {
                             Player1Anim.GetComponent<Animator>().Play("Jump");
-                            if (Player1.transform.GetChild(2).GetComponent<P_PickUp>().Carrying == false)
+                            if (Player1.transform.GetChild(0).GetComponent<P_PickUp>().Carrying == false)
                             {
                                 Player1.GetComponent<Rigidbody>().velocity = new Vector3(Player1.GetComponent<Rigidbody>().velocity.x, jumpForce, Player1.GetComponent<Rigidbody>().velocity.z);
                             }
@@ -185,7 +185,7 @@ public class P_Movement : MonoBehaviour
                         if (Input.GetButton("A_2") && hit.distance < 1.1)
                         {
                             Player2Anim.GetComponent<Animator>().Play("Jump");
-                            if (Player2.transform.GetChild(2).GetComponent<P_PickUp>().Carrying == false)
+                            if (Player2.transform.GetChild(0).GetComponent<P_PickUp>().Carrying == false)
                             {
                                 Player2.GetComponent<Rigidbody>().velocity = new Vector3(Player2.GetComponent<Rigidbody>().velocity.x, jumpForce, Player2.GetComponent<Rigidbody>().velocity.z);
                                 Player2Anim.GetComponent<Animator>().Play("Jump");
@@ -270,7 +270,7 @@ public class P_Movement : MonoBehaviour
                         if (Input.GetButton("A_3") && hit.distance < 1.1)
                         {
                             Player3Anim.GetComponent<Animator>().Play("Jump");
-                            if (GameObject.Find("Player3").transform.GetChild(2).GetComponent<P_PickUp>().Carrying == false)
+                            if (GameObject.Find("Player3").transform.GetChild(0).GetComponent<P_PickUp>().Carrying == false)
                             {
                                 Player3.GetComponent<Rigidbody>().velocity = new Vector3(Player3.GetComponent<Rigidbody>().velocity.x, jumpForce, Player3.GetComponent<Rigidbody>().velocity.z);
                                 Player3Anim.GetComponent<Animator>().Play("Jump");
@@ -359,7 +359,7 @@ public class P_Movement : MonoBehaviour
                         if (Input.GetButton("P1 Jump") && hit.distance < 1.1)
                         {
                             Player1Anim.GetComponent<Animator>().Play("Jump");
-                            if (Player1.transform.GetChild(2).GetComponent<P_PickUp>().Carrying == false)
+                            if (Player1.transform.GetChild(0).GetComponent<P_PickUp>().Carrying == false)
                             {
                                 Player1.GetComponent<Rigidbody>().velocity = new Vector3(Player1.GetComponent<Rigidbody>().velocity.x, jumpForce, Player1.GetComponent<Rigidbody>().velocity.z);
                             }
@@ -447,7 +447,7 @@ public class P_Movement : MonoBehaviour
                         if (Input.GetButton("P2 Jump") && hit.distance < 1.1)
                         {
                             Player2Anim.GetComponent<Animator>().Play("Jump");
-                            if (Player2.transform.GetChild(2).GetComponent<P_PickUp>().Carrying == false)
+                            if (Player2.transform.GetChild(0).GetComponent<P_PickUp>().Carrying == false)
                             {
                                 Player2.GetComponent<Rigidbody>().velocity = new Vector3(Player2.GetComponent<Rigidbody>().velocity.x, jumpForce, Player2.GetComponent<Rigidbody>().velocity.z);
                                 Player2Anim.GetComponent<Animator>().Play("Jump");
@@ -531,7 +531,7 @@ public class P_Movement : MonoBehaviour
                         if (Input.GetButton("P3 Jump") && hit.distance < 1.1)
                         {
                             Player3Anim.GetComponent<Animator>().Play("Jump");
-                            if (GameObject.Find("Player3").transform.GetChild(2).GetComponent<P_PickUp>().Carrying == false)
+                            if (GameObject.Find("Player3").transform.GetChild(0).GetComponent<P_PickUp>().Carrying == false)
                             {
                                 Player3.GetComponent<Rigidbody>().velocity = new Vector3(Player3.GetComponent<Rigidbody>().velocity.x, jumpForce, Player3.GetComponent<Rigidbody>().velocity.z);
                                 Player3Anim.GetComponent<Animator>().Play("Jump");
