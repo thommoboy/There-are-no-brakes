@@ -1,0 +1,122 @@
+fileFormatVersion: 2
+guid: a84e63e77daa74c4ea930f3fe6e4bce7
+timeCreated: 1471421933
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Ancient_Lever
+    100004: Ancient_Platform_6_2
+    100006: Ancient_Platform_6_3
+    100008: Ancient_Platform_6_4
+    100010: Ancient_Sarcophagus_2
+    100012: Ancient_Storage_Vase_6_01
+    100014: Ancient_Storage_Vase_6_02
+    100016: Ancient_Storage_Vase_6_03
+    100018: Lever
+    400000: //RootNode
+    400002: Ancient_Lever
+    400004: Ancient_Platform_6_2
+    400006: Ancient_Platform_6_3
+    400008: Ancient_Platform_6_4
+    400010: Ancient_Sarcophagus_2
+    400012: Ancient_Storage_Vase_6_01
+    400014: Ancient_Storage_Vase_6_02
+    400016: Ancient_Storage_Vase_6_03
+    400018: Lever
+    2300000: //RootNode
+    2300002: Ancient_Lever
+    2300004: Ancient_Platform_6_2
+    2300006: Ancient_Platform_6_3
+    2300008: Ancient_Platform_6_4
+    2300010: Ancient_Sarcophagus_2
+    2300012: Ancient_Storage_Vase_6_01
+    2300014: Ancient_Storage_Vase_6_02
+    2300016: Ancient_Storage_Vase_6_03
+    2300018: Lever
+    3300000: //RootNode
+    3300002: Ancient_Lever
+    3300004: Ancient_Platform_6_2
+    3300006: Ancient_Platform_6_3
+    3300008: Ancient_Platform_6_4
+    3300010: Ancient_Sarcophagus_2
+    3300012: Ancient_Storage_Vase_6_01
+    3300014: Ancient_Storage_Vase_6_02
+    3300016: Ancient_Storage_Vase_6_03
+    3300018: Lever
+    4300000: Ancient_Platform_6_1
+    4300002: Ancient_Platform_6_4
+    4300004: Ancient_Platform_6_3
+    4300006: Ancient_Platform_6_2
+    4300008: Ancient_Storage_Vase_6_01
+    4300010: Ancient_Storage_Vase_6_03
+    4300012: Ancient_Storage_Vase_6_02
+    4300014: Ancient_Sarcophagus_2
+    4300016: Ancient_Lever
+    4300018: Lever
+    9500000: //RootNode
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
