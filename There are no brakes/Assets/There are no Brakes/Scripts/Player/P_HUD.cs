@@ -2,6 +2,9 @@
  * P_HUD.cs
  * Originally Written by Nathan Brown
  * Modified By:
+ *  Xinyu Feng:
+ *      Edit game over event
+ *      Pass remaining time data to next screen
  ***********************/
 using UnityEngine;
 using System.Collections;
@@ -80,10 +83,10 @@ public class P_HUD : MonoBehaviour {
 			GameObject.Find("HUD Train").transform.position = new Vector3(-9999,-9999,-9999);
 		}
 	}
-	public M_Pause pauseCompoment;
+	public M_Pause PauseCompoment;
 	public void GameLost(){
-        //pauseCompoment.GameOver();
-        //Debug.Log("GAME OVER");
+        PauseCompoment.GameOver();
+        Debug.Log("GAME OVER");
     }
 	
 	private float recoveredDistance = 0;
@@ -143,5 +146,8 @@ public class P_HUD : MonoBehaviour {
     }
     void saveLevelID(int value) {
         PlayerPrefs.SetInt("LevelID", value);
+    }
+    public int getMaxTime() {
+        return MaxGameTime;
     }
 }
