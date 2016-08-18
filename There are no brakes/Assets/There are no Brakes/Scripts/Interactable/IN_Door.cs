@@ -13,11 +13,9 @@ public class IN_Door : MonoBehaviour {
 	public int openHeight = 5;
 	public float rotatetime = 1f;
     private float currentLerpTime;
-	public bool Tutorial = false;
 	public bool Ancient = false;
 	public bool Adventurer = false;
 	public bool Industrial = false;
-	private bool activationCheck = false;
 
 	void Start () {
 		doorPos = this.transform.position;
@@ -51,40 +49,12 @@ public class IN_Door : MonoBehaviour {
 				this.transform.position = Vector3.Lerp(doorPos, new Vector3(doorPos.x - 8f, doorPos.y, doorPos.z), perc);
 			}
 		} else if(Industrial){
-			if(Trigger.GetComponent<IN_Activation>().activated && openHeight != 99){
-				currentLerpTime = 0f;
-				perc = currentLerpTime / rotatetime;
-				openHeight = 99;
-			}
-			if(openHeight == 99){
-				this.transform.position = Vector3.Lerp(doorPos, new Vector3(doorPos.x, doorPos.y - 18.81f, doorPos.z), perc);
-			}
-		} else if(Tutorial) {
-			if (Trigger.GetComponent<IN_Activation> ().activated != activationCheck) {
-				currentLerpTime = 0f;
-				perc = currentLerpTime / rotatetime;
-			}
-			if (Trigger.GetComponent<IN_Activation> ().activated) {
-				//this.transform.localEulerAngles = Vector3.Lerp (doorRot, new Vector3 (0, 180, 0), perc);
-				this.transform.position = Vector3.Lerp(doorPos, new Vector3(doorPos.x - 6f, doorPos.y, doorPos.z), perc);
-			} else {
-				//this.transform.localEulerAngles = Vector3.Lerp (new Vector3 (0, 180, 0), doorRot, perc);
-				this.transform.position = Vector3.Lerp(new Vector3(doorPos.x - 6f, doorPos.y, doorPos.z), doorPos,  perc);
-			}
-			activationCheck = Trigger.GetComponent<IN_Activation> ().activated;
 		} else {
-			if (Trigger.GetComponent<IN_Activation> ().activated != activationCheck) {
-				currentLerpTime = 0f;
-				perc = currentLerpTime / rotatetime;
-			}
-			if (Trigger.GetComponent<IN_Activation> ().activated) {
-				this.transform.localEulerAngles = Vector3.Lerp (doorRot, new Vector3 (0, 180, 0), perc);
-				this.transform.position = Vector3.Lerp(doorPos, new Vector3(doorPos.x - 3f, doorPos.y, doorPos.z + 2.7f), perc);
+			if(Trigger.GetComponent<IN_Activation>().activated){
+				this.transform.position = new Vector3 (doorPos.x,doorPos.y+openHeight,doorPos.z);
 			} else {
-				this.transform.localEulerAngles = Vector3.Lerp (new Vector3 (0, 180, 0), doorRot, perc);
-				this.transform.position = Vector3.Lerp(new Vector3(doorPos.x - 3f, doorPos.y, doorPos.z + 2.7f), doorPos,  perc);
+				this.transform.position = new Vector3 (doorPos.x,doorPos.y,doorPos.z);
 			}
-			activationCheck = Trigger.GetComponent<IN_Activation> ().activated;
 		}
 	}		
 }
