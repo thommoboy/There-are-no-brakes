@@ -7,6 +7,8 @@ using UnityEngine;
 using System.Collections;
 
 public class IN_Group_Checkpoint : MonoBehaviour {
+	public bool final = false;
+	private bool complete = false;
 	private bool switched = false;
 	private int playernum = 0;
 	private bool istriggered = false;
@@ -21,6 +23,10 @@ public class IN_Group_Checkpoint : MonoBehaviour {
 		if(playernum == 3 && !switched){
 			switched = true;
 			this.transform.Rotate(0, 180, 0);
+			if (final && !complete) {
+				GameObject.Find("HUDmanager").GetComponent<P_HUD>().LevelCompleted();
+				complete = true;
+			}
 		}
 		if(istriggered && !switched){
             TextController.display = true;

@@ -31,13 +31,13 @@ public class IN_VerticalSlider : MonoBehaviour {
 		if(Trigger1.GetComponent<IN_Activation>().activated){
 			movingUp = !movingUp;
 		}
-		if(Trigger2.GetComponent<IN_Activation>().activated){
+		if(Trigger2 != null && Trigger2.GetComponent<IN_Activation>().activated){
 			movingUp = !movingUp;
 		}
-		if(Trigger3.GetComponent<IN_Activation>().activated){
+		if(Trigger3 != null && Trigger3.GetComponent<IN_Activation>().activated){
 			movingUp = !movingUp;
 		}
-		if(Trigger4.GetComponent<IN_Activation>().activated){
+		if(Trigger4 != null && Trigger4.GetComponent<IN_Activation>().activated){
 			movingUp = !movingUp;
 		}
 		
