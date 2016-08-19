@@ -11,12 +11,19 @@ public class IN_TextTrigger : MonoBehaviour {
 	public string message1 = "";
 	public string message2 = "";
 	public string message3 = "";
+	public string message4 = "";
+	public string message5 = "";
     private IN_TextTrigger_ConetentControl TextController;
     private bool display = false;
+	private int LineNum;
 
 	void Start () {
         TextController = GameObject.Find("TextObjects").GetComponent<IN_TextTrigger_ConetentControl>();
-        
+		LineNum = 5;
+        if(message5 == ""){LineNum = 4;}
+        if(message4 == ""){LineNum = 3;}
+        if(message3 == ""){LineNum = 2;}
+        if(message2 == ""){LineNum = 1;}
     }
 	
 	void Update () {
@@ -34,7 +41,8 @@ public class IN_TextTrigger : MonoBehaviour {
 		if (other.tag == "Player") {
             // display message
             TextController.display = true;
-            TextController.content = message1 + "\n\n" + message2 + "\n\n" + message3;
+            TextController.content = message1 + "\n\n" + message2 + "\n\n" + message3 + "\n\n" + message4 + "\n\n" + message5;
+            TextController.lineNum = LineNum;
 
         }
 	}
@@ -45,19 +53,9 @@ public class IN_TextTrigger : MonoBehaviour {
             if (TextController.display == false)
             {
                 TextController.display = true;
-                TextController.content = message1 + "\n\n" + message2 + "\n\n" + message3;
+                TextController.content = message1 + "\n\n" + message2 + "\n\n" + message3 + "\n\n" + message4 + "\n\n" + message5;
+            TextController.lineNum = LineNum;
             }
         }
     }
-
-    /*
-	public Vector3 textBoxSize = new Vector3(350,100,50);
-	void OnGUI() {
-		if(display){
-            GUI.Box(new Rect((Screen.width - textBoxSize.x) / 2, textBoxSize.z, textBoxSize.x, textBoxSize.y),
-                message1 + "\n\n" + message2 + "\n\n" + message3);
-		}
-	}
-    */
-
 }

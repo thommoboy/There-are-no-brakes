@@ -19,6 +19,7 @@ public class IN_Winch : IN_InteractableObject{
 		if(intrigger){
 			TextController.display = true;
 			TextController.content = "Press [Interact] to use";
+            TextController.lineNum = 1;
 		}
 	}
 	

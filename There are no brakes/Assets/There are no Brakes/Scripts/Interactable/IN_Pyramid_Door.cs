@@ -38,6 +38,7 @@ public class IN_Pyramid_Door : MonoBehaviour {
 		if(intrigger){
 			TextController.display = true;
 			TextController.content = "Press [Interact] to use";
+            TextController.lineNum = 1;
 		}
 		
         if (entering)

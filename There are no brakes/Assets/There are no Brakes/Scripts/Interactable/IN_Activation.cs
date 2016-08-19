@@ -24,6 +24,7 @@ public class IN_Activation : MonoBehaviour{
 		if(intrigger){
 			TextController.display = true;
 			TextController.content = "Press [Interact] to use";
+            TextController.lineNum = 1;
 		}
 	}
 	

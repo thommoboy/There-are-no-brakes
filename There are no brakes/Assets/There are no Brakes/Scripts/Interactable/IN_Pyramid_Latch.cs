@@ -24,6 +24,7 @@ public class IN_Pyramid_Latch : MonoBehaviour {
 		if(intrigger){
 			TextController.display = true;
 			TextController.content = "Press [Interact] to use";
+            TextController.lineNum = 1;
 		}
 		if(Activated){
 			if(this.transform.parent.name == "Latch_Back"){

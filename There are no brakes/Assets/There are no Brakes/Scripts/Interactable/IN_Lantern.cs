@@ -21,6 +21,7 @@ public class IN_Lantern : MonoBehaviour{
 		if(intrigger && !activated){
 			TextController.display = true;
 			TextController.content = "Press [Interact] to use";
+            TextController.lineNum = 1;
 		}
 	}
 	

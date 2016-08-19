@@ -203,9 +203,9 @@ public class CameraMultitarget : MonoBehaviour {
 						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam1").transform.position, 0.01f);
 					} else if (currentRoom == "Room2") {
 						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam2").transform.position, 0.01f);
-					} /*else if (currentRoom == "Room3"){
+					} else if (currentRoom == "Room3"){
 						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam3").transform.position, 0.01f);
-					}*/
+					}
 				} else {
 					c.transform.position = Vector3.Lerp (c.transform.position, origin, 0.01f);
 				}
@@ -217,9 +217,9 @@ public class CameraMultitarget : MonoBehaviour {
 						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam1").transform.position, 0.009f);
 					} else if (currentRoom == "Room2") {
 						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam2").transform.position, 0.009f);
-					} /*else if (currentRoom == "Room3"){
+					} else if (currentRoom == "Room3"){
 						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam3").transform.position, 0.01f);
-					}*/
+					}
 				} else {
 					c.transform.position = Vector3.Lerp (c.transform.position, origin, 0.009f);
 				}

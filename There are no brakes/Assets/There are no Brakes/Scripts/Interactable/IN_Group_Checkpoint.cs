@@ -31,6 +31,7 @@ public class IN_Group_Checkpoint : MonoBehaviour {
 		if(istriggered && !switched){
             TextController.display = true;
             TextController.content = message1;
+            TextController.lineNum = 1;
 		}
 	}
 		
