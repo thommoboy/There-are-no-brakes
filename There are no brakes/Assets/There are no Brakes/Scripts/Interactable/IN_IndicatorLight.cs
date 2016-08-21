@@ -22,11 +22,9 @@ public class IN_IndicatorLight : MonoBehaviour {
 		if(Activated){
 			IndLight.GetComponent<Light> ().color = Color.green;
 			IndLight.GetComponent<Light> ().intensity = maxLightLevel;
-			this.transform.eulerAngles = new Vector3(0,180,0);
 		} else {
 			IndLight.GetComponent<Light> ().color = Color.red;
 			IndLight.GetComponent<Light> ().intensity = defaultLightLevel;
-			this.transform.eulerAngles = new Vector3(0,0,0);
 		}
 	}		
 }

@@ -106,6 +106,7 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Industrial_Brakes_Activated.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_InteractableObject.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Lantern.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_LightLower.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_ProximityLight.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Pulley.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Pulley_Trigger.cs" />
@@ -147,6 +148,7 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Industrial_HorizontalSlider.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_FakeDarkness.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_FakeDoor.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_FlickerLight.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_RoomChange.cs" />
      <None Include="Assets\There are no Brakes\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
