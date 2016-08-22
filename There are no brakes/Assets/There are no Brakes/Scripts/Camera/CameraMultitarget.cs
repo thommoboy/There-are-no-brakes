@@ -175,7 +175,7 @@ public class CameraMultitarget : MonoBehaviour {
 		float distance = boundsSizeSphere / (Mathf.Sin(fov * Mathf.Deg2Rad/2));
 		
 		// we get the distance at which we need to position our camera.
-		if (!Input.GetKey(KeyCode.Space) && Time.time >= lastHoldTime + holdDeplayTime) {
+		if (!Input.GetKey(KeyCode.Space) && Input.GetAxis("Y_1") < 0.1f && Input.GetAxis("Y_2") < 0.1f && Input.GetAxis("Y_3") < 0.1f && Time.time >= lastHoldTime + holdDeplayTime) {
 			//Debug.Log ("test");
             distance = Mathf.Max (minDistanceToTarget, Mathf.Min (distance, maxDistanceToTarget));
 			// we interpolate to the new desired positions.	
@@ -194,7 +194,7 @@ public class CameraMultitarget : MonoBehaviour {
 		} else {
 			
             //Debug.Log ("Zoom Out");
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space) || Input.GetAxis("Y_1") > 0.1f || Input.GetAxis("Y_2") > 0.1f || Input.GetAxis("Y_3") > 0.1f)
             {
 
                 lastHoldTime = Time.time;
