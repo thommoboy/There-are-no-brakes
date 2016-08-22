@@ -24,7 +24,7 @@ public class P_LevelReset : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.R)) {
+		if (Input.GetKeyDown(KeyCode.R) || Input.GetAxis("Back_1") > 0 || Input.GetAxis("Back_2") > 0 || Input.GetAxis("Back_3") > 0) {
 			ResetLevel();
 		}
 	}

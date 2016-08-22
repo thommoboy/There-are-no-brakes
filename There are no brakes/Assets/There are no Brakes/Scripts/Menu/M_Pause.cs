@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/***********************
+ * M_Pause.cs
+ * Originally Written by Xinyu Feng
+ * Modified By:
+	Nathan Brown: Controller support
+ ***********************/
+using UnityEngine;
 using System.Collections;
 using System;
 using UnityEngine.EventSystems;
@@ -13,6 +19,8 @@ public class M_Pause : MonoBehaviour {
     public Camera GUIcamera;
     private string current_panel;
     private bool gameover = false;
+	private bool controllerinput = false;
+	
     // Use this for initialization
     void Start () {
         ori_pos = this.transform.localPosition;
@@ -35,7 +43,7 @@ public class M_Pause : MonoBehaviour {
             UnityEngine.SceneManagement.SceneManager.LoadScene(5);
         }
         
-        if (Input.GetKeyDown(KeyCode.Escape) && !gameover ) {
+        if (!gameover && (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start_1") || Input.GetButtonDown("Start_2") || Input.GetButtonDown("Start_3"))) {
             if (isPause)
             {
                 isPause = false;
