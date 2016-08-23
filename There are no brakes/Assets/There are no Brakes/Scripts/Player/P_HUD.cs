@@ -146,13 +146,13 @@ public class P_HUD : MonoBehaviour {
     int loadLevelID() {
         return PlayerPrefs.GetInt("LevelID");
     }
-    float getLevel1Time() {
+    public float getLevel1Time() {
         return PlayerPrefs.GetFloat("Level1Time");
     }
-    float getLevel2Time() {
+    public float getLevel2Time() {
         return PlayerPrefs.GetFloat("Level2Time");
     }
-    float getLevel3Time() {
+    public float getLevel3Time() {
         return PlayerPrefs.GetFloat("Level3Time");
     }
 	
