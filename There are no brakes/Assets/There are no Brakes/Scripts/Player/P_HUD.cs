@@ -34,12 +34,16 @@ public class P_HUD : MonoBehaviour {
 	public float trainspeed = 1f;
 	public bool firstLevel = false;
 	public int levelID = 0;
+	private float timeCheck = 0;
 	
 	void Start(){
 		if(firstLevel){
 			resetValues();
 			levelID = Application.loadedLevel;
 			saveLevelID(levelID);
+			saveLevel1Time(0);
+			saveLevel2Time(0);
+			saveLevel3Time(0);
 		} else {
 			barDisplay1 = remainingCloudTime();
 			barDisplay2 = remainingTrainTime();
@@ -51,6 +55,7 @@ public class P_HUD : MonoBehaviour {
 		clouddefaultpos = GameObject.Find("HUDcloudIcon").transform.position;
 		trainmaxpos = traindefaultpos.z - maxpos;
 		cloudmaxpos = clouddefaultpos.z + maxpos;
+		timeCheck = Time.time;
 	}
 	 
 	void FixedUpdate() {
@@ -103,6 +108,13 @@ public class P_HUD : MonoBehaviour {
 		if(!firstLevel){
 			trainspeed += 1f;
 		}
+		if(levelID == 2){
+			saveLevel1Time(Time.time - timeCheck);
+		} else if(levelID == 3){
+			saveLevel2Time(Time.time - timeCheck);
+		} else if(levelID == 4){
+			saveLevel3Time(Time.time - timeCheck);
+		}
 		levelID++;
 		saveLevelID(levelID);
 		saveRemainingCloudTime(barDisplay1);
@@ -134,6 +146,15 @@ public class P_HUD : MonoBehaviour {
     int loadLevelID() {
         return PlayerPrefs.GetInt("LevelID");
     }
+    float getLevel1Time() {
+        return PlayerPrefs.GetFloat("Level1Time");
+    }
+    float getLevel2Time() {
+        return PlayerPrefs.GetFloat("Level2Time");
+    }
+    float getLevel3Time() {
+        return PlayerPrefs.GetFloat("Level3Time");
+    }
 	
     void saveRemainingTrainTime(float value) {
         PlayerPrefs.SetFloat("RemainingTrainTime", value);
@@ -146,6 +167,15 @@ public class P_HUD : MonoBehaviour {
     }
     void saveLevelID(int value) {
         PlayerPrefs.SetInt("LevelID", value);
+    }
+    void saveLevel1Time(float value) {
+        PlayerPrefs.SetFloat("Level1Time", value);
+    }
+    void saveLevel2Time(float value) {
+        PlayerPrefs.SetFloat("Level2Time", value);
+    }
+    void saveLevel3Time(float value) {
+        PlayerPrefs.SetFloat("Level3Time", value);
     }
     public int getMaxTime() {
         return MaxGameTime;
