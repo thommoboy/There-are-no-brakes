@@ -16,6 +16,7 @@ public class IN_TextTrigger_ConetentControl : MonoBehaviour {
 	private int linespace = 30;
 	private int height;
     public M_Pause pause;
+    GUIStyle customGuiStyle;
 	// Use this for initialization
 	void Start () {
         display = false;
@@ -47,7 +48,9 @@ public class IN_TextTrigger_ConetentControl : MonoBehaviour {
     {
         if (display && !pause.isPause)
         {
-            GUI.Box(new Rect((Screen.width - textBoxSize.x) / 2, textBoxSize.z, textBoxSize.x, height ), content);
+            customGuiStyle = new GUIStyle(GUI.skin.box);
+            customGuiStyle.normal.textColor = Color.white;
+            GUI.Box(new Rect((Screen.width - textBoxSize.x) / 2, textBoxSize.z, textBoxSize.x, height ), content, customGuiStyle);
         }
     }
 }

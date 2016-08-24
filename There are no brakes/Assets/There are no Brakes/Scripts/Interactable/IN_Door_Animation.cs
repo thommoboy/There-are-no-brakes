@@ -11,13 +11,13 @@ using System.Collections;
 public class IN_Door_Animation : MonoBehaviour {
     //public IN_Group_Checkpoint checkPoint;
     public GameObject door_0;
-    public GameObject door_1;
+    //public GameObject door_1;
 
     //public Vector3 door_0_open_position;
     //public Vector3 door_1_open_position;
 
     private Vector3 door_0_ori_position;
-    private Vector3 door_1_ori_position;
+    //private Vector3 door_1_ori_position;
 
     private float speed = 0.03f;
 
@@ -36,7 +36,7 @@ public class IN_Door_Animation : MonoBehaviour {
     // Use this for initialization
     void Start () {
         door_0_ori_position = door_0.transform.localPosition;
-        door_1_ori_position = door_1.transform.localPosition;
+        //door_1_ori_position = door_1.transform.localPosition;
 
         switch (open_deriction) {
             case Deriction.x_inc:
@@ -120,7 +120,7 @@ public class IN_Door_Animation : MonoBehaviour {
     }
 
     void Move_door(int door_index, string statu) {
-        GameObject door;
+        GameObject door = door_0;
         Vector3 destination = door_0_ori_position;
 
         if (door_index == 0)
@@ -131,6 +131,7 @@ public class IN_Door_Animation : MonoBehaviour {
             else if (statu == "closing")
                destination = door_0_ori_position ;
         }
+        /*
         else
         {
             door = door_1;
@@ -139,7 +140,7 @@ public class IN_Door_Animation : MonoBehaviour {
             else if (statu == "closing")
                 destination = door_1_ori_position ;
         }
-
+        */
         door.transform.localPosition = Vector3.Lerp(door.transform.localPosition, destination, speed);
     }
 }
