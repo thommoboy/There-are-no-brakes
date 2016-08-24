@@ -15,6 +15,7 @@ public class IN_TextTrigger_ConetentControl : MonoBehaviour {
 	public int lineNum = 1;
 	private int linespace = 30;
 	private int height;
+    public M_Pause pause;
 	// Use this for initialization
 	void Start () {
         display = false;
@@ -44,7 +45,7 @@ public class IN_TextTrigger_ConetentControl : MonoBehaviour {
 	
     void OnGUI()
     {
-        if (display)
+        if (display && !pause.isPause)
         {
             GUI.Box(new Rect((Screen.width - textBoxSize.x) / 2, textBoxSize.z, textBoxSize.x, height ), content);
         }

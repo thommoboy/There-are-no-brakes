@@ -20,9 +20,10 @@ public class GC_GameComplete : MonoBehaviour {
         float maxGameTime = (float)new P_HUD().getMaxTime();
         float usedGameTime = maxGameTime - PlayerPrefs.GetFloat("RemainingCloudTime");
         //Debug.Log(maxGameTime + "    " + PlayerPrefs.GetFloat("RemainingCloudTime"));
-        message = "Ued Time:        " + usedGameTime + "\n";
-        message = message + "Totol level:       " +  (SceneManager.GetActiveScene().buildIndex - 2) + "\n";
-
+        message = "Used Time:        " + usedGameTime + "\n";
+        message = message + "level 1 Time:       " + PlayerPrefs.GetFloat("Level1Time") + "\n";
+        message = message + "level 2 Time:       " + PlayerPrefs.GetFloat("Level2Time") + "\n";
+        message = message + "level 3 Time:       " + PlayerPrefs.GetFloat("Level3Time") + "\n";
         for (int i = GameRateTimeUsed.Length - 1; i >= 0; i--) {
             if (usedGameTime >= GameRateTimeUsed[i] * maxGameTime) {
                 rateMessage = "Game rate:\n          " + rateTextInfo[i];
