@@ -20,13 +20,17 @@ public class GC_GameComplete : MonoBehaviour {
         float maxGameTime = (float)new P_HUD().getMaxTime();
         float usedGameTime = maxGameTime - PlayerPrefs.GetFloat("RemainingCloudTime");
         //Debug.Log(maxGameTime + "    " + PlayerPrefs.GetFloat("RemainingCloudTime"));
-        message = "Used Time:        " + usedGameTime + "\n";
-        message = message + "level 1 Time:       " + PlayerPrefs.GetFloat("Level1Time") + "\n";
-        message = message + "level 2 Time:       " + PlayerPrefs.GetFloat("Level2Time") + "\n";
-        message = message + "level 3 Time:       " + PlayerPrefs.GetFloat("Level3Time") + "\n";
+        //message = "Used Time:        " + usedGameTime + "\n";
+		message = message + "Level 1: " + System.Math.Round(PlayerPrefs.GetFloat("Level1Time"),2) + " Seconds \n";
+		message = message + "Level 2: " + System.Math.Round(PlayerPrefs.GetFloat("Level2Time"),2) + " Seconds \n";
+		message = message + "Level 3: " + System.Math.Round(PlayerPrefs.GetFloat("Level3Time"),2) + " Seconds \n";
+		//Debug.Log (usedGameTime);
+		usedGameTime = PlayerPrefs.GetFloat ("Level1Time") + PlayerPrefs.GetFloat ("Level2Time") + PlayerPrefs.GetFloat ("Level3Time");
+		//Debug.Log (usedGameTime);
         for (int i = GameRateTimeUsed.Length - 1; i >= 0; i--) {
-            if (usedGameTime >= GameRateTimeUsed[i] * maxGameTime) {
+			if (usedGameTime / maxGameTime >= GameRateTimeUsed[i] ) {
                 rateMessage = "Game rate:\n          " + rateTextInfo[i];
+				//Debug.Log (rateTextInfo [i]);
                 break;
             }
         }
@@ -67,10 +71,11 @@ public class GC_GameComplete : MonoBehaviour {
             }
         }
         if (rate) {
-            rateText.transform.position = Vector3.Lerp(rateText.transform.position, text_pos, 0.05f);
+            //rateText.transform.position = Vector3.Lerp(rateText.transform.position, text_pos, 0.05f);
             StartCoroutine(DelayToInvoke.DelayToInvokeDo(() =>
             {
-                DisplayRateText();
+                //DisplayRateText();
+				btns.SetActive(true);
             }, 1.5f));
         }
         checkClick();
@@ -126,7 +131,7 @@ public class GC_GameComplete : MonoBehaviour {
             {
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    Debug.Log(hitThing.name);
+                    //Debug.Log(hitThing.name);
                     if (hitThing.name == "CompleteMutton_Quit" || hitThing.name == "GameOverMutton_Quit")
                     {
                         Application.Quit();
