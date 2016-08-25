@@ -7,13 +7,12 @@ using UnityEngine;
 using System.Collections;
  
 public class IN_VerticalSlider : MonoBehaviour {
-	public float speed = 0.1F;
 	public float moveto;
 	private Vector3 AltPos;
 	private Vector3 Origin;
 	private bool movingUp = false;
 	private float currentLerpTime;
-	private float lerpTime = 1f;
+	public float lerpTime = 1f;
 	public GameObject Trigger1;
 	public GameObject Trigger2;
 	public GameObject Trigger3;
@@ -42,7 +41,11 @@ public class IN_VerticalSlider : MonoBehaviour {
 		}
 		
 		if(movingUp != moveUpCheck){
-			currentLerpTime = 0f;
+			if (currentLerpTime >= lerpTime) {
+				currentLerpTime = 0f;
+			} else {
+				currentLerpTime = lerpTime - currentLerpTime;
+			}
 		}
 		moveUpCheck = movingUp;
 		
@@ -51,11 +54,10 @@ public class IN_VerticalSlider : MonoBehaviour {
             currentLerpTime = lerpTime;
         }
 		float percentage = currentLerpTime / lerpTime;
-		percentage = speed*percentage*percentage;
 		if(!movingUp){
-			this.transform.position = Vector3.Lerp(this.transform.position, Origin, percentage);
+			this.transform.position = Vector3.Lerp(AltPos, Origin, percentage);
 		} else {
-			this.transform.position = Vector3.Lerp(this.transform.position, AltPos, percentage);
+			this.transform.position = Vector3.Lerp(Origin, AltPos, percentage);
 		}
 	}
 }
