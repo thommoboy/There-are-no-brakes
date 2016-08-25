@@ -1,4 +1,4 @@
-﻿/***********************
+/***********************
  * M_Pause.cs
  * Originally Written by Xinyu Feng
  * Modified By:
@@ -104,6 +104,7 @@ public class M_Pause : MonoBehaviour {
                         }
                         if (hitThing.name == "GameOverMutton_Back") {
                             //Application.LoadLevel(0);
+                            Time.timeScale = 1;
                             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
                         }
                     }
@@ -117,12 +118,16 @@ public class M_Pause : MonoBehaviour {
         current_panel = "gameOver";
         gameover = true;
         //should pause game when game over?
-        /*
-        isPause = true;
+        
+        //isPause = true;
         Time.timeScale = 0;
-        */
+        
     }
-    
+
+    public bool IsGameOver() {
+        return gameover;
+    }
+
     void Option() {
         DownToScreen(optionPanel);
        /* StartCoroutine(DelayToInvoke.DelayToInvokeDo(() =>
