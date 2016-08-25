@@ -1,2 +1,9 @@
 # There-are-no-brakes
-To be edited! Much to do!
+
+Priority Low = if you have time
+
+Priority Medium = this should be done
+
+Priority High = this needs to be done
+
+Priority IMPORTANT = THIS NEEDS TO BE DONE ASAP!
