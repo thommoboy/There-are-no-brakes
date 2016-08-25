@@ -1,17 +1,26 @@
+/***********************
+ * Tutorial_FakeDarkness.cs
+ * Originally Written by Nathan Brown
+ * Modified By:
+	Xinyu Feng - alternate loading method
+ ***********************/
+ 
 using UnityEngine;
 using System.Collections;
 
 public class CutscenePlay : MonoBehaviour {
-	private MovieTexture cutscene;
+	public MovieTexture cutscene;
+	public bool VideoLoadAlt = false;
     WWW request;
     string url;
+	
     // Use this for initialization
     void Start () {
-        url = "file:///" + Application.dataPath + "/Resources/Cutscene.ogv";
-        request = new WWW(url);
-        Debug.Log(url);
-        //cutscene = (MovieTexture)Resources.Load("Cutscene.ogv",MovieTexture);
-        cutscene = (MovieTexture)request.movie;
+		if(VideoLoadAlt){
+			url = "file:///" + Application.dataPath + "/Resources/Cutscene.ogv";
+			request = new WWW(url);
+			cutscene = (MovieTexture)request.movie;
+		}
         GetComponent<Renderer>().material.mainTexture = cutscene as MovieTexture;
 		cutscene.Play();
 
@@ -22,7 +31,7 @@ public class CutscenePlay : MonoBehaviour {
 	void Update () {
         //Debug.Log(url);
 
-        if (!cutscene.isPlaying){
+        if (!cutscene.isPlaying || Input.GetKeyDown (KeyCode.Mouse1)){
             //cutscene.Play();
             Application.LoadLevel ("Tutorial Level");
 		}	

@@ -108,11 +108,11 @@ public class P_HUD : MonoBehaviour {
 		if(!firstLevel){
 			trainspeed += 1f;
 		}
-		if(levelID == 2){
+		if(levelID == 3){
 			saveLevel1Time(Time.time - timeCheck);
-		} else if(levelID == 3){
-			saveLevel2Time(Time.time - timeCheck);
 		} else if(levelID == 4){
+			saveLevel2Time(Time.time - timeCheck);
+		} else if(levelID == 5){
 			saveLevel3Time(Time.time - timeCheck);
 		}
 		levelID++;

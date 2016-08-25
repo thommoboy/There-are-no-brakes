@@ -4,7 +4,6 @@
  * Modified By:
  *  Pierce Thompson - Addition of Controller support, Cleaning of code
  ***********************/
-using UnityEditor;
 using UnityEngine;
 using System.Collections;
 

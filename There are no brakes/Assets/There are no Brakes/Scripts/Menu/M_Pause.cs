@@ -35,13 +35,13 @@ public class M_Pause : MonoBehaviour {
         //right click to test game over
         //mid lick to text game complete
         
-        if (Input.GetKeyDown(KeyCode.Mouse1)) {
+        /*if (Input.GetKeyDown(KeyCode.Mouse1)) {
             GameOver();
         }
 
         if (Input.GetMouseButtonDown(2)){
-            UnityEngine.SceneManagement.SceneManager.LoadScene(5);
-        }
+            UnityEngine.SceneManagement.SceneManager.LoadScene(6);
+        }*/
         
         if (!gameover && (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start_1") || Input.GetButtonDown("Start_2") || Input.GetButtonDown("Start_3"))) {
             if (isPause)
