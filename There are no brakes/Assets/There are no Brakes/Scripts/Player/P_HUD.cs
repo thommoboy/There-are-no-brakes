@@ -22,8 +22,8 @@ public class P_HUD : MonoBehaviour {
 	public Texture2D fullTex;
 	public Texture2D cloudIcon;
 	public Texture2D trainIcon;
-	public int MaxLevelTime = 300; //time limit in seconds
-	private int MaxGameTime = 1500; //time limit in seconds
+	public int MaxLevelTime = 900; //time limit in seconds
+	private int MaxGameTime = 3600; //time limit in seconds
 	private bool GameOver = false;
 	public int PercentageRecoverOnLevelComplete = 15;
 	private Vector3 traindefaultpos;
@@ -60,8 +60,8 @@ public class P_HUD : MonoBehaviour {
 	 
 	void FixedUpdate() {
 		//calculate the timers
-		barDisplay1 += (Time.deltaTime/MaxGameTime)*trainspeed;
 		if(!firstLevel){
+			barDisplay1 += (Time.deltaTime/MaxGameTime)*trainspeed;
 			barDisplay2 -= Time.deltaTime/MaxLevelTime;
 		}
 		
@@ -81,12 +81,7 @@ public class P_HUD : MonoBehaviour {
 		float cloudpos = barDisplay1 * maxpos + clouddefaultpos.z;
 		GameObject.Find("HUDcloudIcon").transform.position = new Vector3(clouddefaultpos.x,clouddefaultpos.y,cloudpos);
 		float trainpos = barDisplay2 * maxpos + traindefaultpos.z - maxpos;
-		if(!firstLevel){
-			GameObject.Find("HUDtrainIcon").transform.position = new Vector3(traindefaultpos.x,traindefaultpos.y,trainpos);
-		} else {
-			GameObject.Find("HUDtrainIcon").transform.position = new Vector3(-9999,-9999,-9999);
-			GameObject.Find("HUD Train").transform.position = new Vector3(-9999,-9999,-9999);
-		}
+		GameObject.Find("HUDtrainIcon").transform.position = new Vector3(traindefaultpos.x,traindefaultpos.y,trainpos);
 	}
 	public M_Pause PauseCompoment;
 	public void GameLost(){
