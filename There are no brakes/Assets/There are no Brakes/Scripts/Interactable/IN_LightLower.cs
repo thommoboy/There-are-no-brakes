@@ -19,6 +19,7 @@ public class IN_LightLower : MonoBehaviour {
 		HUDlight2.GetComponent<Light>().intensity = 0;
 		HUDlight3.GetComponent<Light>().intensity = 0;
 		HUDlight4.GetComponent<Light>().intensity = 0;
+		RenderSettings.ambientLight = new Color(0.5f, 0.5f, 0.5f);
 	}
 	
 	void Update () {
