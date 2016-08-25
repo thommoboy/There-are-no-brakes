@@ -1,4 +1,4 @@
-﻿/***********************
+/***********************
  * IN_TextTrigger_ConetentControl
  * Originally Written by Xinyu Feng
  * Modified By:
@@ -46,7 +46,7 @@ public class IN_TextTrigger_ConetentControl : MonoBehaviour {
 	
     void OnGUI()
     {
-        if (display && !pause.isPause)
+        if (display && !pause.isPause && !pause.IsGameOver())
         {
             customGuiStyle = new GUIStyle(GUI.skin.box);
             customGuiStyle.normal.textColor = Color.white;
