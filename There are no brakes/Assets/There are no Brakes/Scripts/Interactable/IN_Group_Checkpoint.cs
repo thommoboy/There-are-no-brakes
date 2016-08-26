@@ -18,6 +18,7 @@ public class IN_Group_Checkpoint : MonoBehaviour {
     private IN_TextTrigger_ConetentControl TextController;
     private IN_Door_Animation Door_Amime;
     private string door_statu;
+	private float teleportDistance = 20f;
 	void Start () {
         TextController = GameObject.Find("TextObjects").GetComponent<IN_TextTrigger_ConetentControl>();
         Door_Amime = this.GetComponent<IN_Door_Animation>();
@@ -27,8 +28,14 @@ public class IN_Group_Checkpoint : MonoBehaviour {
 	void Update () {
 		if(playernum == 3 && !switched){
 			switched = true;
-			this.transform.Rotate(0, 180, 0);
-            //door_statu = "open";
+			Vector3 temp = GameObject.Find("Player1").transform.position;
+			GameObject.Find("Player1").transform.position = new Vector3(temp.x,temp.y,temp.z+teleportDistance);
+			temp = GameObject.Find("Player2").transform.position;
+			GameObject.Find("Player2").transform.position = new Vector3(temp.x,temp.y,temp.z+teleportDistance);
+			temp = GameObject.Find("Player3").transform.position;
+			GameObject.Find("Player3").transform.position = new Vector3(temp.x,temp.y,temp.z+teleportDistance);
+			temp = GameObject.Find("Main Camera").transform.position;
+			GameObject.Find("Main Camera").transform.position = new Vector3(temp.x,temp.y,temp.z+(2*teleportDistance));
             Door_Amime.Open_door(0);
             if (final && !complete) {
 				GameObject.Find("HUDmanager").GetComponent<P_HUD>().LevelCompleted();

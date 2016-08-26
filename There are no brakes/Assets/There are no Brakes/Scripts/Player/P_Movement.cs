@@ -93,7 +93,6 @@ public class P_Movement : MonoBehaviour
 						if(P1OnGround){
 							if(Input.GetAxis("P1 Jump") > 0 || Input.GetAxis("A_1") > 0)
 							{
-						Debug.Log("jump");
 								P1OnGround = false;
 								Player1Anim.GetComponent<Animator>().Play("Jump");
 								if (Player1.transform.GetChild(0).GetComponent<P_PickUp>().Carrying == false)
