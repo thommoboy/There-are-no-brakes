@@ -19,9 +19,12 @@ public class IN_Lantern : MonoBehaviour{
 	
 	void Update(){
 		if(intrigger && !activated){
-			TextController.display = true;
-			TextController.content = "Press [Interact] to use";
-            TextController.lineNum = 1;
+			///TextController.display = true;
+			///TextController.content = "Press [Interact] to use";
+            ///TextController.lineNum = 1;
+			this.transform.GetChild(2).GetComponent<Renderer>().material.shader = Shader.Find("Toon/Lit Outline");
+		} else {
+			this.transform.GetChild(2).GetComponent<Renderer>().material.shader = Shader.Find("Standard");
 		}
 	}
 	

@@ -100,6 +100,7 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_BreakWall.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Collapsible_Platform.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Door.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Door_Animation.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Group_Checkpoint.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_IndicatorLight.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Industrial_Brake.cs" />
@@ -115,11 +116,14 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_RESPAWN.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Retractable_Spikes.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_SeeSaw.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_ShowIcon.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_ShowIconTrigger.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_TextTrigger.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_TextTrigger_ConetentControl.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_VerticalSlider.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_WallPiece.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Winch.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\TUT.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Train_Tracks.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_3DMenuButton.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_3D_OnMouseOver.cs" />
@@ -145,6 +149,8 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PlayerLight.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PyramidFakePlayer.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Player\P_PyramidPosition.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Scene\Adventurer_RopeRender.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Scene\CutscenePlay.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Industrial_HorizontalSlider.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_FakeDarkness.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_FakeDoor.cs" />
@@ -167,6 +173,7 @@
      <None Include="Assets\There are no Brakes\Effects\TessellationShaders\Shaders\BumpedSpecularSmooth.shader" />
      <None Include="Assets\There are no Brakes\Effects\Projectors\Guidelines.txt" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\MotionBlur.shader" />
+     <None Include="Assets\TSF\TOON SHADER FREE.txt" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBloom.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\Contrast Stretch\MinMaxReduction.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_Antialiasing\SSAA.shader" />
@@ -185,10 +192,12 @@
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\SSAOShader.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\ConvertDepth.shader" />
+     <None Include="Assets\TSF\Shaders\TSFOutline.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\ColorCorrectionCurvesSimple.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\NoiseEffectShaderYUV.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\CreaseApply.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />
+     <None Include="Assets\TSF\Shaders\TSF.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\There are no Brakes\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\Contrast Stretch\Luminance.shader" />

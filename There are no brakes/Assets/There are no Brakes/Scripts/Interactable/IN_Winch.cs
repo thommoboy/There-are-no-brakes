@@ -9,6 +9,7 @@ using System.Collections;
 public class IN_Winch : IN_InteractableObject{
 	private float targetminheight;
     private IN_TextTrigger_ConetentControl TextController;
+	public bool tutorial = false;
 	
 	void Start(){
 		targetminheight = target.transform.position.y;
@@ -17,9 +18,22 @@ public class IN_Winch : IN_InteractableObject{
 	
 	void Update(){
 		if(intrigger){
-			TextController.display = true;
-			TextController.content = "Press [Interact] to use";
-            TextController.lineNum = 1;
+			///TextController.display = true;
+			///TextController.content = "Press [Interact] to use";
+            ///TextController.lineNum = 1;
+			if(tutorial){
+				this.transform.GetChild(3).transform.GetChild(0).GetComponent<Renderer>().material.shader = Shader.Find("TSF/BaseOutline1");
+				this.transform.GetChild(3).transform.GetChild(1).GetComponent<Renderer>().material.shader = Shader.Find("TSF/BaseOutline1");
+			} else {
+				this.transform.GetChild(3).GetComponent<Renderer>().material.shader = Shader.Find("TSF/BaseOutline1");
+			}
+		} else {
+			if(tutorial){
+				this.transform.GetChild(3).transform.GetChild(0).GetComponent<Renderer>().material.shader = Shader.Find("Standard");
+				this.transform.GetChild(3).transform.GetChild(1).GetComponent<Renderer>().material.shader = Shader.Find("Standard");
+			} else {
+				this.transform.GetChild(3).GetComponent<Renderer>().material.shader = Shader.Find("Standard");
+			}
 		}
 	}
 	

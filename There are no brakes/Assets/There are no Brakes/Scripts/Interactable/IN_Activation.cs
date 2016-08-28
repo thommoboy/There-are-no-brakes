@@ -22,9 +22,10 @@ public class IN_Activation : MonoBehaviour{
 	
 	void Update(){
 		if(intrigger){
-			TextController.display = true;
-			TextController.content = "Press [Interact] to use";
-            TextController.lineNum = 1;
+			//TextController.display = true;
+			//TextController.content = "Press [Interact] to use";
+            //TextController.lineNum = 1;
+			this.transform.GetChild(0).GetComponent<Renderer>().material.shader = Shader.Find("TSF/BaseOutline1");
 		}
 	}
 	
@@ -82,6 +83,7 @@ public class IN_Activation : MonoBehaviour{
 	
 	void OnTriggerExit(Collider other) {
 		if(other.tag == "Player" || other.tag == "Weight"){
+			this.transform.GetChild(0).GetComponent<Renderer>().material.shader = Shader.Find("Standard");
 			if(lever){
 				intrigger = false;
 				TextController.display = false;

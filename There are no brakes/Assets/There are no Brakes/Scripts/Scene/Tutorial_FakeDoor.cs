@@ -36,8 +36,15 @@ public class Tutorial_FakeDoor : MonoBehaviour {
 	
 	void Update(){
 		if(intrigger){
-			TextController.display = true;
-			TextController.content = "Press [Interact] to use";
+			//TextController.display = true;
+			//TextController.content = "Press [Interact] to use";
+			this.transform.GetChild(0).GetComponent<Renderer>().material.shader = Shader.Find("Toon/Lit Outline");
+			this.transform.GetChild(1).GetComponent<Renderer>().material.shader = Shader.Find("Toon/Lit Outline");
+			this.transform.GetChild(2).GetComponent<Renderer>().material.shader = Shader.Find("Toon/Lit Outline");
+		} else {
+			this.transform.GetChild(0).GetComponent<Renderer>().material.shader = Shader.Find("Standard");
+			this.transform.GetChild(1).GetComponent<Renderer>().material.shader = Shader.Find("Standard");
+			this.transform.GetChild(2).GetComponent<Renderer>().material.shader = Shader.Find("Standard");
 		}
 
         if (stage == "point1") {
