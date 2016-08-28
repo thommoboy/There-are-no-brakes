@@ -16,6 +16,7 @@ public class IN_TextTrigger : MonoBehaviour {
     private IN_TextTrigger_ConetentControl TextController;
     private bool display = false;
 	private int LineNum;
+	public bool forcePause = false;
 
 	void Start () {
         TextController = GameObject.Find("TextObjects").GetComponent<IN_TextTrigger_ConetentControl>();
@@ -43,7 +44,10 @@ public class IN_TextTrigger : MonoBehaviour {
             TextController.display = true;
             TextController.content = message1 + "\n\n" + message2 + "\n\n" + message3 + "\n\n" + message4 + "\n\n" + message5;
             TextController.lineNum = LineNum;
-
+			if(forcePause){
+				TextController.enlarge = true;
+				forcePause = false;
+			}
         }
 	}
 
@@ -54,7 +58,7 @@ public class IN_TextTrigger : MonoBehaviour {
             {
                 TextController.display = true;
                 TextController.content = message1 + "\n\n" + message2 + "\n\n" + message3 + "\n\n" + message4 + "\n\n" + message5;
-            TextController.lineNum = LineNum;
+				TextController.lineNum = LineNum;
             }
         }
     }

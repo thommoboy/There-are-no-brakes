@@ -12,7 +12,7 @@ public class IN_Activation : MonoBehaviour{
 	public bool pressureplate = false;
 	public bool lantern = false;
 	private bool intrigger = false;
-	private float timeout = 0.25F;
+	private float timeout = 0.4F;
 	private float nextInteract = 0.0F;
     private IN_TextTrigger_ConetentControl TextController;
 	

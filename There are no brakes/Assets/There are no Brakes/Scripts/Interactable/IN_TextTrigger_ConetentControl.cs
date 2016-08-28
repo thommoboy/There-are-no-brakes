@@ -20,10 +20,10 @@ public class IN_TextTrigger_ConetentControl : MonoBehaviour {
     int tail = -1;
     string[] messages;
     int[] linesNum;
-    bool enlarge = false;
+    public bool enlarge = false;
     ArrayList msgRecord = new ArrayList();
-    int buttonWidth = 100;
-    int buttonHeight = 100;
+    int buttonWidth = 50;
+    int buttonHeight = 50;
     Rect buttonRect;
     public float enlargeScale = 1.3f;
     // Use this for initialization
@@ -70,7 +70,7 @@ public class IN_TextTrigger_ConetentControl : MonoBehaviour {
                 GUI.Box(new Rect((Screen.width - textBoxSize.x) / 2, textBoxSize.z, textBoxSize.x, height), content, customGuiStyle);
             }
             else {
-                buttonRect = new Rect((Screen.width - buttonWidth) / 2, enlargetextBoxSize.z + height * enlargeScale / 2 , buttonWidth,buttonHeight);
+                buttonRect = new Rect((Screen.width - buttonWidth) / 2, enlargetextBoxSize.z + height * enlargeScale , buttonWidth,buttonHeight);
                 Time.timeScale = 0;
                 customGuiStyle = new GUIStyle(GUI.skin.box);
                 customGuiStyle.normal.textColor = Color.white;
@@ -78,7 +78,11 @@ public class IN_TextTrigger_ConetentControl : MonoBehaviour {
                 GUI.Box(new Rect((Screen.width - enlargetextBoxSize.x) / 2, enlargetextBoxSize.z, enlargetextBoxSize.x, height * enlargeScale), 
                     content, 
                     customGuiStyle);
-                if (GUI.Button(buttonRect, "Confirm")) {
+                if (GUI.Button(buttonRect, "OK")) {
+                    Time.timeScale = 1;
+                    enlarge = false;
+                }
+                if (Input.GetKey(KeyCode.Return)) {
                     Time.timeScale = 1;
                     enlarge = false;
                 }
