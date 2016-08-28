@@ -82,6 +82,7 @@ public class P_Movement : MonoBehaviour
 			}
 			else
 			{
+				GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().SoundFXOutput.Stop();
 				P1OnGround = false;
 			}
 
@@ -134,17 +135,21 @@ public class P_Movement : MonoBehaviour
 					if (horizontal < 0 || horizontal2 < 0)
 					{
 						Player1.transform.rotation = Quaternion.Euler(0, 270, 0);
-						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
 						if (hit.distance < 1.1)
-							Player1Anim.GetComponent<Animator>().Play("Walk");
+							GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
+							if(P1OnGround){
+								Player1Anim.GetComponent<Animator>().Play("Walk");
+							}
 						FacingRight1 = false;
 					}
 					if (horizontal > 0 || horizontal2 > 0)
 					{
 						Player1.transform.rotation = Quaternion.Euler(0, 90, 0);
-						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
 						if (hit.distance < 1.1)
-							Player1Anim.GetComponent<Animator>().Play("Walk");
+							GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
+							if(P1OnGround){
+								Player1Anim.GetComponent<Animator>().Play("Walk");
+							}
 						FacingRight1 = true;
 					}
 					if(horizontal != 0)
@@ -161,17 +166,21 @@ public class P_Movement : MonoBehaviour
 					if (horizontal < 0 || horizontal2 < 0)
 					{
 						Player1.transform.rotation = Quaternion.Euler(0, 0, 0);
-						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
 						if (hit.distance < 1.1)
-							Player1Anim.GetComponent<Animator>().Play("Walk");
+							GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
+							if(P1OnGround){
+								Player1Anim.GetComponent<Animator>().Play("Walk");
+							}
 						FacingRight1 = false;
 					}
 					if (horizontal > 0 || horizontal2 > 0)
 					{
 						Player1.transform.rotation = Quaternion.Euler(0, 180, 0);
-						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
 						if (hit.distance < 1.1)
-							Player1Anim.GetComponent<Animator>().Play("Walk");
+							GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
+							if(P1OnGround){
+								Player1Anim.GetComponent<Animator>().Play("Walk");
+							}
 						FacingRight1 = true;
 					}
 					if(horizontal != 0)

@@ -2,6 +2,7 @@
  * M_AudioManager.cs
  * Originally Written by Pierce Thompson
  * Modified By:
+	Nathan Brown: bugfixing
  ***********************/
 using UnityEngine;
 using System.Collections;
@@ -40,23 +41,25 @@ public class M_AudioManager : MonoBehaviour
 	{
 		if (Clip == "Step") {
 			SoundFXOutput.clip = Step;
+		} else if (Clip == "Jump"){
+			SoundFXOutput.PlayOneShot (Jump);
+		} else if (Clip == "Winch"){
+			SoundFXOutput.PlayOneShot (Winch);
+		} else if (Clip == "Platform"){
+			SoundFXOutput.PlayOneShot (Platform);
+		} else if (Clip == "Gate"){
+			SoundFXOutput.PlayOneShot (Gate);
+		} else if (Clip == "Anchor"){
+			SoundFXOutput.PlayOneShot (Anchor);
+		} else if (Clip == "GrappleShoot"){
+			SoundFXOutput.PlayOneShot (GrappleShoot);
+		} else if (Clip == "GrappleShoot"){
+			SoundFXOutput.PlayOneShot (GrappleAttach);
+		} else {
+			Debug.LogError ("Looks like you tried to play a sound that doesn't exist");
+		}
+		if(!SoundFXOutput.isPlaying){
 			SoundFXOutput.Play ();
 		}
-		else if (Clip == "Jump")
-			SoundFXOutput.PlayOneShot (Jump);
-		else if (Clip == "Winch")
-			SoundFXOutput.PlayOneShot (Winch);
-		else if (Clip == "Platform")
-			SoundFXOutput.PlayOneShot (Platform);
-		else if (Clip == "Gate")
-			SoundFXOutput.PlayOneShot (Gate);
-		else if (Clip == "Anchor")
-			SoundFXOutput.PlayOneShot (Anchor);
-		else if (Clip == "GrappleShoot")
-			SoundFXOutput.PlayOneShot (GrappleShoot);
-		else if (Clip == "GrappleShoot")
-			SoundFXOutput.PlayOneShot (GrappleAttach);
-		else
-			Debug.LogError ("Looks like you tried to play a sound that doesn't exist");
 	}
 }
