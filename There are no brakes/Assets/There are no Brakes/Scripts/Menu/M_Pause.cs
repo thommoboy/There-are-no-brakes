@@ -99,6 +99,11 @@ public class M_Pause : MonoBehaviour {
                         {
                             Continue();
                         }
+                        if (hitThing.name == "PauseMutton_Restart")
+                        {
+                            Time.timeScale = 1;
+                            Application.LoadLevel(Application.loadedLevel);
+                        }
                         if (hitThing.name == "OptionMutton_Back") {
                             current_panel = "pause";
                         }
