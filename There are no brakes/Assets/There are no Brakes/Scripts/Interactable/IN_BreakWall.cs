@@ -30,7 +30,7 @@ public class IN_BreakWall : MonoBehaviour
 
 
 	void OnCollisionEnter(Collision other){
-		if (other.gameObject.tag == "Weight") {
+		if (other.gameObject.tag == "UncarryableWeight") {
 			GameObject wall = GameObject.Instantiate(remains, this.transform.position, this.transform.rotation) as GameObject;
 			wall.transform.localScale =new Vector3(this.transform.localScale.x / (float)4.5, this.transform.localScale.y / (float)3.5, this.transform.localScale.z);
 			other.gameObject.GetComponent<Rigidbody> ().AddForce (Vector3.forward * 200);

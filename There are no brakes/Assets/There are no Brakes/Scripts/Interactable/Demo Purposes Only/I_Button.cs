@@ -46,7 +46,7 @@ public class I_Button : MonoBehaviour
 
 	void OnTriggerStay(Collider other)
 	{
-		if(other.tag == "Weight"){
+		if(other.tag == "UncarryableWeight"){
 			if(Gate.transform.rotation.z < 0.5f){
 				Gate.transform.Rotate(0, 0, Time.deltaTime*25);
 			}
@@ -65,7 +65,7 @@ public class I_Button : MonoBehaviour
 	{
 		if(InTrigger)
 		{
-			GUI.Label(new Rect (Screen.width / 2, Screen.height / 2, 500, 50), "Press [E] To Use");
+			//GUI.Label(new Rect (Screen.width / 2, Screen.height / 2, 500, 50), "Press [E] To Use");
 		}
 	}
 }
