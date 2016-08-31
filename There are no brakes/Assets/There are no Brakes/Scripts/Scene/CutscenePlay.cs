@@ -11,6 +11,8 @@ using System.Collections;
 public class CutscenePlay : MonoBehaviour {
 	public MovieTexture cutscene;
 	public bool VideoLoadAlt = false;
+	public bool isFirst = false;
+
     WWW request;
     string url;
 	
@@ -30,11 +32,14 @@ public class CutscenePlay : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Debug.Log(url);
-
-        if (!cutscene.isPlaying || Input.GetKeyDown (KeyCode.Mouse1)){
-            //cutscene.Play();
-            Application.LoadLevel ("Tutorial Level");
-		}	
+		if (isFirst) {
+			if (!cutscene.isPlaying || Input.GetKeyDown (KeyCode.Mouse1)) {
+				//cutscene.Play();
+				Application.LoadLevel ("Tutorial Level");
+			}	
+		} else {
+			cutscene.loop = true;
+		}
 
 	}
 }
