@@ -10,7 +10,7 @@ using UnityEngine;
 using System.Collections;
  
 public class P_HUD : MonoBehaviour {
-	public GUIStyle HUDGUIStyle;
+	//public GUIStyle HUDGUIStyle;
 	private Vector2 size = new Vector2(375,60);
 	public Vector2 pos1;
 	private Vector2 pos2 = new Vector2(0,0);
@@ -35,8 +35,14 @@ public class P_HUD : MonoBehaviour {
 	public bool firstLevel = false;
 	public int levelID = 0;
 	private float timeCheck = 0;
-	
+
+	public GameObject text;
+	private Vector3 levCompTextPos;
+	private float speed = 0;
+
+	private bool levelComplete = false;
 	void Start(){
+		levCompTextPos = text.transform.position;
 		if(firstLevel){
 			resetValues();
 			levelID = Application.loadedLevel;
@@ -59,6 +65,10 @@ public class P_HUD : MonoBehaviour {
 	}
 	 
 	void FixedUpdate() {
+		if (levelComplete) {
+			speed += Time.deltaTime;
+			text.transform.position = new Vector3(levCompTextPos.x, Mathf.Lerp(levCompTextPos.y, levCompTextPos.y - 35, speed),levCompTextPos.z);
+		}
 		//calculate the timers
 		if(!firstLevel){
 			barDisplay1 += (Time.deltaTime/MaxGameTime)*trainspeed;
@@ -92,7 +102,12 @@ public class P_HUD : MonoBehaviour {
 	private float recoveredDistance = 0;
 	public void LevelCompleted(){
 		Debug.Log("LEVEL COMPLETED");
-		StartCoroutine(loadnextlevel(10));
+		levelComplete = true;
+		//Vector3 guiPos = GameObject.Find ("GUI Camera").transform.position;
+
+
+
+		StartCoroutine(loadnextlevel(5));
 		if(!firstLevel){
 			recoveredDistance = barDisplay2 + (((float)PercentageRecoverOnLevelComplete)/100);
 		}
