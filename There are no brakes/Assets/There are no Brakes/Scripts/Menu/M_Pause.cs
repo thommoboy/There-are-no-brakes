@@ -15,6 +15,7 @@ public class M_Pause : MonoBehaviour {
     public Vector3 destination;
     public GameObject optionPanel;
     public GameObject gameOverPanel;
+    public GameObject completePanel;
    //public GameObject gameOverText;
     public Camera GUIcamera;
     private string current_panel;
@@ -55,6 +56,14 @@ public class M_Pause : MonoBehaviour {
                 current_panel = "pause";
                 Time.timeScale = 0;
             }
+        }
+
+        if (current_panel == "complete")
+        {
+            Complete();
+        }
+        else {
+            UpToOffScreen(completePanel);
         }
 
         if (current_panel == "pause")
@@ -119,6 +128,10 @@ public class M_Pause : MonoBehaviour {
         }
 	}
     
+    public void LevelComplete(){
+        current_panel = "complete";
+    }
+
     public void GameOver() {
         current_panel = "gameOver";
         gameover = true;
@@ -131,6 +144,10 @@ public class M_Pause : MonoBehaviour {
 
     public bool IsGameOver() {
         return gameover;
+    }
+
+    void Complete() {
+        DownToScreen(completePanel);
     }
 
     void Option() {

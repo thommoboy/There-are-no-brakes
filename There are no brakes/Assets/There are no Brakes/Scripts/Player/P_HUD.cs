@@ -103,11 +103,12 @@ public class P_HUD : MonoBehaviour {
 	public void LevelCompleted(){
 		Debug.Log("LEVEL COMPLETED");
 		levelComplete = true;
-		//Vector3 guiPos = GameObject.Find ("GUI Camera").transform.position;
+        //Vector3 guiPos = GameObject.Find ("GUI Camera").transform.position;
+        PauseCompoment.LevelComplete();
 
 
 
-		StartCoroutine(loadnextlevel(5));
+        StartCoroutine(loadnextlevel(5));
 		if(!firstLevel){
 			recoveredDistance = barDisplay2 + (((float)PercentageRecoverOnLevelComplete)/100);
 		}
