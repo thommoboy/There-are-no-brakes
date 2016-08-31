@@ -11,7 +11,7 @@ public class IN_VerticalSlider : MonoBehaviour {
 	private Vector3 AltPos;
 	private Vector3 Origin;
 	private bool movingUp = false;
-	private float currentLerpTime;
+	private float currentLerpTime = 99f;
 	public float lerpTime = 1f;
 	public GameObject Trigger1;
 	public GameObject Trigger2;

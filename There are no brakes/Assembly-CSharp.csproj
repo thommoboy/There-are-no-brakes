@@ -152,6 +152,7 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Adventurer_RopeRender.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\CutscenePlay.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Industrial_HorizontalSlider.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_ControlsPopUp.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_FakeDarkness.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_FakeDoor.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_FlickerLight.cs" />
