@@ -14,7 +14,8 @@ public class P_PickUp : MonoBehaviour {
 	private GameObject PlayerController;
 	private float timeout = 0.5F;
 	private float nextInteract = 0.0F;
-	
+	public bool isAncientLevel;
+
 	void Start(){
 		ThisPlayer = this.transform.parent.gameObject;
 		PlayerController = GameObject.Find ("PlayerControllers");
@@ -24,7 +25,7 @@ public class P_PickUp : MonoBehaviour {
 		// Checks for objects in range, dont allow player to pick up themselves
 		if (other.name != ThisPlayer.name) {
 			// if object is supposed to be 'pick-up-able'
-			if (other.tag == "Player" || other.tag == "Weight") {
+			if ((other.tag == "Player" || other.tag == "Weight") && !isAncientLevel) {
 				// check that player isnt already carrying something 
 				if (!Carrying) {
 					// check that player is on the ground
@@ -46,6 +47,10 @@ public class P_PickUp : MonoBehaviour {
 						}
 					}
 				}
+			}
+			if (other.tag == "Weight" && isAncientLevel) {
+				// check that player isnt already carrying something 
+				PickUp(other.gameObject);
 			}
 		}
 	}
