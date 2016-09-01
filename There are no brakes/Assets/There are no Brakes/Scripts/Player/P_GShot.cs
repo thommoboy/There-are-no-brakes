@@ -28,6 +28,9 @@ public class P_GShot : MonoBehaviour
 
 	public GameObject Player1;
 
+	private float timeout = 0.4F;
+	private float nextInteract = 0.0F;
+
 	void Start(){
 		grapplePoints = GameObject.FindGameObjectsWithTag("gp");
 	}
@@ -35,33 +38,37 @@ public class P_GShot : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if((Input.GetAxis("P1 Interact") > 0 || Input.GetAxis("B_1") > 0) && hook1Active == false) {
-			//if distance between player and grappling hook < some value, create a hinge
+		if (Time.time > nextInteract) {
+			if ((Input.GetAxis ("P1 Interact") > 0 || Input.GetAxis ("B_1") > 0) && hook1Active == false) {
+				//if distance between player and grappling hook < some value, create a hinge
 
-			foreach(GameObject gPoint in grapplePoints){
-				//Debug.Log (Vector3.Distance (Player1.transform.position, gPoint.transform.position));
-				if(Vector3.Distance(Player1.transform.position, gPoint.transform.position) < grappleDistance /* && gPoint-player distance is smallest distance in grapplePoints*/){
-					hook1Active = true;
-					currentGPoint1 = gPoint;
-					grabJoint = Player1.AddComponent <SpringJoint>();
-					grabJoint.connectedBody = gPoint.GetComponent<Rigidbody> ();
-					grabJoint.autoConfigureConnectedAnchor = false;
-					grabJoint.connectedAnchor = new Vector3 (-0.5f, 0, 0);
-					grabJoint.spring = springStrength;
-					grabJoint.enableCollision = true;
-					grabJoint.maxDistance = springMaxDistance;
-					grabJoint.tolerance = 1;
-					rope1 = Player1.AddComponent<LineRenderer> ();
-					rope1.material = new Material(shader);
-					rope1.material.mainTexture = texture;
-					rope1.SetWidth (0.25f, 0.25f);
-					//rope1.material.color = color;
+				foreach (GameObject gPoint in grapplePoints) {
+					//Debug.Log (Vector3.Distance (Player1.transform.position, gPoint.transform.position));
+					if (Vector3.Distance (Player1.transform.position, gPoint.transform.position) < grappleDistance /* && gPoint-player distance is smallest distance in grapplePoints*/) {
+						hook1Active = true;
+						currentGPoint1 = gPoint;
+						grabJoint = Player1.AddComponent <SpringJoint> ();
+						grabJoint.connectedBody = gPoint.GetComponent<Rigidbody> ();
+						grabJoint.autoConfigureConnectedAnchor = false;
+						grabJoint.connectedAnchor = new Vector3 (-0.5f, 0, 0);
+						grabJoint.spring = springStrength;
+						grabJoint.enableCollision = true;
+						grabJoint.maxDistance = springMaxDistance;
+						grabJoint.tolerance = 1;
+						rope1 = Player1.AddComponent<LineRenderer> ();
+						rope1.material = new Material (shader);
+						rope1.material.mainTexture = texture;
+						rope1.SetWidth (0.25f, 0.25f);
+						//rope1.material.color = color;
+					}
 				}
+				nextInteract = Time.time + timeout;
+			} else if ((Input.GetAxis ("P1 Interact") > 0 || Input.GetAxis ("B_1") > 0) && hook1Active == true) {
+				hook1Active = false;
+				Destroy (Player1.GetComponent<SpringJoint> ());
+				Destroy (Player1.GetComponent<LineRenderer> ());
+				nextInteract = Time.time + timeout;
 			}
-		} else if ((Input.GetAxis("P1 Interact") > 0 || Input.GetAxis("B_1") > 0) && hook1Active == true) {
-			hook1Active = false;
-			Destroy(Player1.GetComponent<SpringJoint> ());
-			Destroy (Player1.GetComponent<LineRenderer> ());
 		}
 //		//keyboard inputs
 //		if(Input.GetKeyDown(KeyCode.DownArrow) && hook1Active == false) {
