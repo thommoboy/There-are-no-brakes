@@ -38,6 +38,10 @@ public class IN_Pulley_Trigger : MonoBehaviour
 	/// </summary>
 	void OnTriggerEnter(Collider other)
 	{
+		if(other.name == "PulleyBlocker"){
+			howMany = 99;
+		}
+	
 		if(IN_P_Platform == Platform.Left)
 			howMany++; // increment counter
     }

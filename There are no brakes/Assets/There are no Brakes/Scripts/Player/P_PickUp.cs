@@ -23,7 +23,7 @@ public class P_PickUp : MonoBehaviour {
 		 
 	void OnTriggerStay(Collider other){
 		// Checks for objects in range, dont allow player to pick up themselves
-		if (other.name != ThisPlayer.name) {
+		if (other.name != ThisPlayer.name && other.name != "PulleyBlocker") {
 			// if object is supposed to be 'pick-up-able'
 			if ((other.tag == "Player" || other.tag == "Weight") && !isAncientLevel) {
 				// check that player isnt already carrying something 
@@ -49,8 +49,21 @@ public class P_PickUp : MonoBehaviour {
 				}
 			}
 			if (other.tag == "Weight" && isAncientLevel) {
-				// check that player isnt already carrying something 
-				PickUp(other.gameObject);
+				if (ThisPlayer.name == "Player1" && PlayerController.GetComponent<P_Movement> ().P1OnGround) {
+					if ((Input.GetAxis("P1 Interact") > 0 || Input.GetAxis("B_1") > 0) && Time.time > nextInteract) {
+						PickUp (other.gameObject);
+					}
+				}
+				if (ThisPlayer.name == "Player2" && PlayerController.GetComponent<P_Movement> ().P2OnGround) {
+					if ((Input.GetAxis("P2 Interact") > 0 || Input.GetAxis("B_2") > 0) && Time.time > nextInteract) {
+						PickUp (other.gameObject);
+					}
+				}
+				if (ThisPlayer.name == "Player3" && PlayerController.GetComponent<P_Movement> ().P3OnGround) {
+					if ((Input.GetAxis("P3 Interact") > 0 || Input.GetAxis("B_3") > 0) && Time.time > nextInteract) {
+						PickUp (other.gameObject);
+					}
+				}
 			}
 		}
 	}

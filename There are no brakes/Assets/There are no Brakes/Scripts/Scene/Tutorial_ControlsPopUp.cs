@@ -18,7 +18,7 @@ public class Tutorial_ControlsPopUp : MonoBehaviour {
 
 	void OnTriggerStay(Collider other) {			
 		if (other.tag == "Player" && !activated) {
-			if (Input.GetKey("return")) {
+			if (Input.GetKey("return") || Input.GetAxis("Back_1") > 0.1f || Input.GetAxis("Back_2") > 0.1f || Input.GetAxis("Back_3") > 0.1f) {
 				activated = true;
 				PopUp.SetActive(false);
 			}

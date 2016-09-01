@@ -48,7 +48,7 @@ public class IN_Door : MonoBehaviour {
 				openHeight = 99;
 			}
 			if(openHeight == 99){
-				this.transform.position = Vector3.Lerp(doorPos, new Vector3(doorPos.x - 8f, doorPos.y, doorPos.z), perc);
+				this.transform.position = Vector3.Lerp(doorPos, new Vector3(doorPos.x - 15f, doorPos.y, doorPos.z), perc);
 			}
 		} else if(Industrial){
 			if(Trigger.GetComponent<IN_Activation>().activated && openHeight != 99){

@@ -33,7 +33,7 @@ public class CutscenePlay : MonoBehaviour {
 	void Update () {
         //Debug.Log(url);
 		if (isFirst) {
-			if (!cutscene.isPlaying || Input.GetKeyDown (KeyCode.Mouse1)) {
+			if (!cutscene.isPlaying || Input.GetKey("return") || Input.GetAxis("Back_1") > 0.1f || Input.GetAxis("Back_2") > 0.1f || Input.GetAxis("Back_3") > 0.1f) {
 				//cutscene.Play();
 				Application.LoadLevel ("Tutorial Level");
 			}	
