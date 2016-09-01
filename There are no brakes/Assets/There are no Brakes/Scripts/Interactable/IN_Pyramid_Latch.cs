@@ -21,22 +21,6 @@ public class IN_Pyramid_Latch : MonoBehaviour {
 	}
 	
 	void Update(){
-		if(intrigger){
-			//TextController.display = true;
-			//TextController.content = "Press [Interact] to use";
-            //TextController.lineNum = 1;
-			this.transform.parent.transform.GetChild(0).GetComponent<Renderer>().material.shader = Shader.Find("TSF/BaseOutline1");
-			this.transform.parent.transform.GetChild(1).GetComponent<Renderer>().material.shader = Shader.Find("TSF/BaseOutline1");
-			this.transform.parent.transform.GetChild(2).GetComponent<Renderer>().material.shader = Shader.Find("TSF/BaseOutline1");
-			this.transform.parent.transform.GetChild(3).GetComponent<Renderer>().material.shader = Shader.Find("TSF/BaseOutline1");
-			this.transform.parent.transform.GetChild(4).GetComponent<Renderer>().material.shader = Shader.Find("TSF/BaseOutline1");
-		} else {
-			this.transform.parent.transform.GetChild(0).GetComponent<Renderer>().material.shader = Shader.Find("Custom/Flat");
-			this.transform.parent.transform.GetChild(1).GetComponent<Renderer>().material.shader = Shader.Find("Custom/Flat");
-			this.transform.parent.transform.GetChild(2).GetComponent<Renderer>().material.shader = Shader.Find("Custom/Flat");
-			this.transform.parent.transform.GetChild(3).GetComponent<Renderer>().material.shader = Shader.Find("Custom/Flat");
-			this.transform.parent.transform.GetChild(4).GetComponent<Renderer>().material.shader = Shader.Find("Custom/Flat");
-		}
 		if(Activated){
 			if(this.transform.parent.name == "Latch_Back"){
 				this.transform.parent.transform.localEulerAngles = Vector3.Lerp(this.transform.parent.transform.localEulerAngles, new Vector3(0, 270, 1), RotateSpeed*Time.deltaTime);
@@ -53,23 +37,11 @@ public class IN_Pyramid_Latch : MonoBehaviour {
 	void OnTriggerStay(Collider other) {
 		if(other.tag == "Player"){//no player 2 check needed
 			if (other.name == "Player1" && GameObject.Find("PlayerControllers").GetComponent<P_Movement>().P1OnGround){
-				intrigger = true;
-				if (Input.GetAxis("P1 Interact") > 0 || Input.GetAxis("B_1") > 0) {
-					Activated = true;
-				}
+				Activated = true;
 			}
 			if (other.name == "Player3" && GameObject.Find("PlayerControllers").GetComponent<P_Movement>().P3OnGround){
-				intrigger = true;
-				if (Input.GetAxis("P3 Interact") > 0 || Input.GetAxis("B_3") > 0) {
-					Activated = true;
-				}
+				Activated = true;
 			}
-		}
-	}
-	
-	void OnTriggerExit(Collider other){
-		if(other.tag == "Player"){
-			intrigger = false;
 		}
 	}
 }
