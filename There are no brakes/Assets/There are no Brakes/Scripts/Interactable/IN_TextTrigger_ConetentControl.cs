@@ -9,6 +9,7 @@ using System.Collections;
 
 public class IN_TextTrigger_ConetentControl : MonoBehaviour {
 
+	//public GUIStyle PopupGUIStyle;
     public string content;
     public bool display;
     public int triggerCount;
@@ -16,7 +17,7 @@ public class IN_TextTrigger_ConetentControl : MonoBehaviour {
 	private int linespace = 30;
 	private int height;
     public M_Pause pause;
-    GUIStyle customGuiStyle;
+    public GUIStyle customGuiStyle;
     int tail = -1;
     string[] messages;
     int[] linesNum;
@@ -26,56 +27,45 @@ public class IN_TextTrigger_ConetentControl : MonoBehaviour {
     int buttonHeight = 50;
     Rect buttonRect;
     public float enlargeScale = 1.3f;
-    // Use this for initialization
+	
+	// Use this for initialization
     void Start () {
         display = false;
         triggerCount = 0;
         messages = new string[10];
         linesNum = new int[10];
         enlargetextBoxSize = textBoxSize * enlargeScale;
+		normalFontSize = Mathf.Min(Mathf.FloorToInt(Screen.width * FontSize/1000), Mathf.FloorToInt(Screen.height * FontSize/1000));
     }
 
-    public Vector3 textBoxSize = new Vector3(350, 100, 50);
+    public Vector3 textBoxSize = new Vector3(600, 100, 100);
     public Vector3 enlargetextBoxSize;
     void Update(){
-		switch (lineNum){
-			case 1:
-				height = (int)textBoxSize.y - (2*linespace);
-				break;
-			case 2:
-				height = (int)textBoxSize.y - linespace;
-				break;
-			case 3:
-				height = (int)textBoxSize.y;
-				break;
-			case 4:
-				height = (int)textBoxSize.y + linespace;
-				break;
-			default:
-				height = (int)textBoxSize.y + (2*linespace);
-				break;
-		}
+		height = Mathf.FloorToInt(lineNum * normalFontSize * 2.5f);
 	}
 
+    public int FontSize = 16;
     int normalFontSize = 16;
     void OnGUI()
     {
+		normalFontSize = Mathf.Min(Mathf.FloorToInt(Screen.width * FontSize/1000), Mathf.FloorToInt(Screen.height * FontSize/1000));
         if (display && !pause.isPause && !pause.IsGameOver())
         {
             if (!enlarge)
             {
                 customGuiStyle = new GUIStyle(GUI.skin.box);
+                customGuiStyle.padding = new RectOffset(4,4,Mathf.FloorToInt(0.8f*normalFontSize),4);
                 customGuiStyle.normal.textColor = Color.white;
                 customGuiStyle.fontSize = normalFontSize;
-                GUI.Box(new Rect((Screen.width - textBoxSize.x) / 2, textBoxSize.z, textBoxSize.x, height), content, customGuiStyle);
+                GUI.Box(new Rect(0, Screen.height - height, Screen.width, height), content, customGuiStyle);
             }
             else {
-                buttonRect = new Rect((Screen.width - buttonWidth) / 2, enlargetextBoxSize.z + height * enlargeScale , buttonWidth,buttonHeight);
+                buttonRect = new Rect((Screen.width - buttonWidth) / 2, enlargetextBoxSize.z + height * enlargeScale*100 , buttonWidth,buttonHeight);
                 Time.timeScale = 0;
                 customGuiStyle = new GUIStyle(GUI.skin.box);
                 customGuiStyle.normal.textColor = Color.white;
                 customGuiStyle.fontSize = (int)(normalFontSize * enlargeScale);
-                GUI.Box(new Rect((Screen.width - enlargetextBoxSize.x) / 2, enlargetextBoxSize.z, enlargetextBoxSize.x, height * enlargeScale), 
+                GUI.Box(new Rect(0, Screen.height - height, Screen.width, height * enlargeScale), 
                     content, 
                     customGuiStyle);
                 if (GUI.Button(buttonRect, "OK")) {
