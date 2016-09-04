@@ -9,15 +9,14 @@ using System.Collections;
 
 public class IN_TextTrigger_ConetentControl : MonoBehaviour {
 
-	//public GUIStyle PopupGUIStyle;
-    public string content;
+	public string content;
     public bool display;
     public int triggerCount;
 	public int lineNum = 1;
 	private int linespace = 30;
 	private int height;
     public M_Pause pause;
-    public GUIStyle customGuiStyle;
+    GUIStyle customGuiStyle;
     int tail = -1;
     string[] messages;
     int[] linesNum;
@@ -44,8 +43,8 @@ public class IN_TextTrigger_ConetentControl : MonoBehaviour {
 		height = Mathf.FloorToInt(lineNum * normalFontSize * 2.5f);
 	}
 
-    public int FontSize = 16;
-    int normalFontSize = 16;
+    int FontSize = 30;
+    int normalFontSize = 30;
     void OnGUI()
     {
 		normalFontSize = Mathf.Min(Mathf.FloorToInt(Screen.width * FontSize/1000), Mathf.FloorToInt(Screen.height * FontSize/1000));
