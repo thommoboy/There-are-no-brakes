@@ -40,6 +40,7 @@ public class IN_Door : MonoBehaviour {
 			if(openHeight == 99){
 				this.transform.localEulerAngles = Vector3.Lerp(doorRot, new Vector3(0, 270, 180), perc);
 				this.transform.position = Vector3.Lerp(doorPos, new Vector3(doorPos.x - 1.75f, doorPos.y, doorPos.z), perc);
+				GameObject.Find("Arrow").GetComponent<Tutorial_MoveArrow> ().active = true;
 			}
 		} else if(Adventurer){
 			if(Trigger.GetComponent<IN_Activation>().activated && openHeight != 99){

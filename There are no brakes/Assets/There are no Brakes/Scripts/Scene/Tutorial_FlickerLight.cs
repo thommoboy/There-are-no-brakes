@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/***********************
+ *  Tutorial_FlickerLight.cs
+ * Originally Written by Nathan Brown
+ * Modified By:
+ ***********************/
+using UnityEngine;
 using System.Collections;
 
 public class Tutorial_FlickerLight : MonoBehaviour {
