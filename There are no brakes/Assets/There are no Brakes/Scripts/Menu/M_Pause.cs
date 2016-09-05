@@ -17,13 +17,19 @@ public class M_Pause : MonoBehaviour {
     public GameObject gameOverPanel;
    //public GameObject gameOverText;
     public Camera GUIcamera;
+    public GameObject[] buttonList;
     private string current_panel;
     private bool gameover = false;
 	private bool controllerinput = false;
+    private int mouseOver = -1;
+    private Vector3 ori_scale;
+    private Vector3 select_scale;
 	
     // Use this for initialization
     void Start () {
         ori_pos = this.transform.localPosition;
+        ori_scale = buttonList[0].transform.localScale;
+        select_scale = ori_scale * 1.3f;
         current_panel = "";
         //destination = transform.localPosition;
     }
@@ -32,16 +38,6 @@ public class M_Pause : MonoBehaviour {
     
 	// Update is called once per frame
 	void Update () {
-        //right click to test game over
-        //mid lick to text game complete
-        
-        /*if (Input.GetKeyDown(KeyCode.Mouse1)) {
-            GameOver();
-        }
-
-        if (Input.GetMouseButtonDown(2)){
-            UnityEngine.SceneManagement.SceneManager.LoadScene(6);
-        }*/
         
         if (!gameover && (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start_1") || Input.GetButtonDown("Start_2") || Input.GetButtonDown("Start_3"))) {
             if (isPause)
@@ -57,6 +53,10 @@ public class M_Pause : MonoBehaviour {
             }
         }
 
+        //get controller input
+        controllerInput();
+
+        //check current panel
         if (current_panel == "pause")
             DownToScreen(this.gameObject);
         else
@@ -71,7 +71,7 @@ public class M_Pause : MonoBehaviour {
             DownToScreen(gameOverPanel);
         else
             UpToOffScreen(gameOverPanel);
-
+        //get mouse click
         if (true)
         {
             //this.gameObject.SetActive(true);
@@ -82,43 +82,105 @@ public class M_Pause : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, 1000.00f))
             {
                 hitThing = hit.collider.gameObject;
-                
+
+                for (int i = 0; i < buttonList.Length; i++) {
+                    if (hitThing == buttonList[i]) {
+                        mouseOver = i;
+                        break;
+                    }
+                }
+
                 if (hitThing.tag == "MenuButton")
                 {
                     if (Input.GetKeyDown(KeyCode.Mouse0))
                     {
                         Debug.Log(hitThing.name);
-                        if (hitThing.name == "PauseMutton_Option") {
-                            current_panel = "option";
-                        }
-                        if (hitThing.name == "PauseMutton_Quit" || hitThing.name == "GameOverMutton_Quit")
-                        {
-                            Exit();
-                        }
-                        if (hitThing.name == "PauseMutton_Back")
-                        {
-                            Continue();
-                        }
-                        if (hitThing.name == "PauseMutton_Restart")
-                        {
-                            Time.timeScale = 1;
-                            Application.LoadLevel(Application.loadedLevel);
-                        }
-                        if (hitThing.name == "OptionMutton_Back") {
-                            current_panel = "pause";
-                        }
-                        if (hitThing.name == "GameOverMutton_Back") {
-                            //Application.LoadLevel(0);
-                            Time.timeScale = 1;
-                            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-                        }
+                        clickButton(hitThing.name);
                     }
                 }
+            }
+        }
 
+        for (int i = 0; i < buttonList.Length; i++) {
+            if (mouseOver == i)
+            {
+                buttonList[i].transform.localScale = Vector3.Lerp(buttonList[i].transform.localScale, select_scale, 0.1f);
+            }
+            else {
+                buttonList[i].transform.localScale = Vector3.Lerp(buttonList[i].transform.localScale, ori_scale, 0.1f);
             }
         }
 	}
-    
+
+    private void clickButton(string buttonName) {
+
+        if (buttonName == "PauseMutton_Option")
+        {
+            current_panel = "option";
+        }
+        if (buttonName == "PauseMutton_Quit" || buttonName == "GameOverMutton_Quit")
+        {
+            Exit();
+        }
+        if (buttonName == "PauseMutton_Back")
+        {
+            Continue();
+        }
+        if (buttonName == "PauseMutton_Restart")
+        {
+            Time.timeScale = 1;
+            Application.LoadLevel(Application.loadedLevel);
+        }
+        if (buttonName == "OptionMutton_Back")
+        {
+            current_panel = "pause";
+        }
+        if (buttonName == "GameOverMutton_Back")
+        {
+            //Application.LoadLevel(0);
+            Time.timeScale = 1;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        }
+    }
+    private float changeTime;
+    private float gap = 0.5f;
+    private void controllerInput() {
+        float temp = 0.7f;
+        if (Input.GetAxis("L_YAxis_1") > temp || Input.GetAxis("L_YAxis_2") > temp
+            || Input.GetAxis("L_YAxis_3") > temp || Input.GetAxis("L_YAxis_4") > temp )
+        {
+            if (Time.realtimeSinceStartup > changeTime + gap) {
+                mouseOver = (mouseOver + 1) % buttonList.Length;
+                //Debug.Log((changeTime + gap) + "   " + Time.realtimeSinceStartup);
+                changeTime = Time.realtimeSinceStartup;
+            }
+            
+        }
+
+        if (Input.GetAxis("L_YAxis_1") < -temp || Input.GetAxis("L_YAxis_2") < -temp
+            || Input.GetAxis("L_YAxis_3") < -temp || Input.GetAxis("L_YAxis_4") < -temp)
+        {
+            if (mouseOver != -1 && Time.realtimeSinceStartup > changeTime + gap)
+            {
+                mouseOver = (mouseOver - 1) % buttonList.Length;
+                changeTime = Time.realtimeSinceStartup;
+            }
+        }
+
+        if (Input.GetButtonDown("A_1") || Input.GetButtonDown("A_2") || Input.GetButtonDown("A_3") || Input.GetButtonDown("A_4"))
+        {
+            clickButton(buttonList[mouseOver].name);
+            mouseOver = -1;
+        }
+
+        if (Input.GetButtonDown("B_1") || Input.GetButtonDown("B_2") || Input.GetButtonDown("B_3") || Input.GetButtonDown("B_4"))
+        {
+            clickButton("PauseMutton_Back");
+            mouseOver = -1;
+        }
+
+    }
+
     public void GameOver() {
         current_panel = "gameOver";
         gameover = true;

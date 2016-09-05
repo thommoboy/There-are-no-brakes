@@ -24,16 +24,17 @@ public class M_3D_OnMouseOver : MonoBehaviour {
 		if (Physics.Raycast (ray, out hit, 1000.00f)) {
 			hitThing = hit.collider.gameObject;
 			if (hitThing == this.gameObject) {
-				transform.localScale = ori_Scale * 1.3f;
+				//transform.localScale = ori_Scale * 1.3f;
 				//if (tag == "MenuButton")
 				//	return;
 				if (Input.GetKeyDown (KeyCode.Mouse0)) {
 					//ClickAsync (1);
 					StartCoroutine(delayExecute(1));
 				}
-			} else {
+			} /*else {
 				transform.localScale = ori_Scale;
 			}
+            */
 		} 
 	}
 

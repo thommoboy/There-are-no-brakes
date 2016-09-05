@@ -19,6 +19,7 @@ public class M_3DMenuButton : MonoBehaviour {
 	bool right_menu = false;
 	float menuMoveSpeed  = 20;
 	public bool started = false;
+    private int controllerSelected = -1;
     // Use this for initialization
 
 	void removeAllUI(){
@@ -51,32 +52,81 @@ public class M_3DMenuButton : MonoBehaviour {
 		menu_ori_position = MenuList [0].transform.position;
         button_ori_scale = MenuButtonList[0].transform.localScale;
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+    float changeTime;
+    // Update is called once per frame
+    void FixedUpdate () {
 		
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		GameObject hitThing;
-		if (focusedButtonIndex != -1) {
+
+        for (int i = 0; i < MenuButtonList.Length; i++)
+        {
+            if (controllerSelected != i) {
+                sizeStatu[i] = -1;
+            }
+        }
+        /*
+            if (focusedButtonIndex != -1) {
 			sizeStatu [focusedButtonIndex] = -1;
-		}
+		}*/
+
 		if (Physics.Raycast (ray, out hit, 1000.00f)) {
 			hitThing = hit.collider.gameObject;
 			if (hitThing.tag == "MenuButton") {
 				ButtonOnSelected (hitThing);
+
+                for (int i = 0; i < MenuButtonList.Length; i++) {
+                    if (hitThing == MenuButtonList[i]) {
+                        controllerSelected = i;
+                        break;
+                    }
+                }
+
 				if (Input.GetKeyDown (KeyCode.Mouse0)) {
 					onClick (hitThing.name);
 				}
 			}
-
 		}
 		if (started) {
 			removeAllUI ();
 		}
-		updateButton ();
-		updateMenu ();
+        float temp = 0.7f;
+        float gap = 0.5f;
+        if (Input.GetAxis("L_YAxis_1") > temp || Input.GetAxis("L_YAxis_2") > temp
+            || Input.GetAxis("L_YAxis_3") > temp || Input.GetAxis("L_YAxis_4") > temp)
+        {
+            
+            if (Time.realtimeSinceStartup > changeTime + gap) {
+                //Debug.Log(Time.realtimeSinceStartup + "   " + (changeTime + gap));
+                controllerSelected = (controllerSelected + 1) % MenuButtonList.Length;
+                changeTime = Time.realtimeSinceStartup;
+                ButtonOnSelected(MenuButtonList[controllerSelected]);
+            }
+                
+        }
 
+        if (Input.GetAxis("L_YAxis_1") < -temp || Input.GetAxis("L_YAxis_2") < -temp
+            || Input.GetAxis("L_YAxis_3") < -temp || Input.GetAxis("L_YAxis_4") < -temp)
+        {
+            if (controllerSelected != -1 && Time.realtimeSinceStartup > changeTime + gap) {
+                controllerSelected = (controllerSelected - 1) % MenuButtonList.Length;
+                changeTime = Time.realtimeSinceStartup;
+                ButtonOnSelected(MenuButtonList[controllerSelected]);
+            }
+        }
+
+        if (Input.GetButtonDown("A_1") || Input.GetButtonDown("A_2") || Input.GetButtonDown("A_3") || Input.GetButtonDown("A_4"))
+        {
+            if (controllerSelected != -1)
+            {
+                onClick(MenuButtonList[controllerSelected].name);
+            }
+            
+        }
+
+        updateButton ();
+		updateMenu ();
     }
 
 	void updateMenu(){
@@ -153,8 +203,6 @@ public class M_3DMenuButton : MonoBehaviour {
 	void updateButton(){
 		for (int i = 0; i < MenuButtonList.Length; i++)
 		{
-			if (MenuButtonList [i].name == "new_game")
-				continue;
 			if (sizeStatu[i] == 1)
 			{
                 if (MenuButtonList[i].transform.localScale.x < button_ori_scale.x * 1.3)

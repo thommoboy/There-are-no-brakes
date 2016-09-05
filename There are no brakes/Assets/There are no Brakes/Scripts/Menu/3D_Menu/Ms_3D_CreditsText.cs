@@ -20,7 +20,6 @@ public class Ms_3D_CreditsText : MonoBehaviour {
     }
 
     void Update() {
-        Debug.Log(creditsMenu.transform.position.y);
         if (creditsMenu.transform.position.y <= 270)
         {
             StartPlay();
