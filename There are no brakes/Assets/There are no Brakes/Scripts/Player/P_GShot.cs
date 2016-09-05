@@ -55,6 +55,7 @@ public class P_GShot : MonoBehaviour
 						grabJoint.enableCollision = true;
 						grabJoint.maxDistance = springMaxDistance;
 						grabJoint.tolerance = 1;
+						grabJoint.damper = 250;
 						rope1 = Player1.AddComponent<LineRenderer> ();
 						rope1.material = new Material (shader);
 						rope1.material.mainTexture = texture;
