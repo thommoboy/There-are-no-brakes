@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/***********************
+ * Adventurer_Cannonballrope.cs
+ * Originally Written by Nathan Brown
+ * Modified By:
+ ***********************/
+using UnityEngine;
 using System.Collections;
 
 public class Adventurer_RopeRender : MonoBehaviour {
