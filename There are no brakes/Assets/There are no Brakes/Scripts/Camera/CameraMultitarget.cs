@@ -196,6 +196,8 @@ public class CameraMultitarget : MonoBehaviour {
             //Debug.Log ("Zoom Out");
             if (Input.GetKey(KeyCode.Space) || Input.GetAxis("Y_1") > 0.1f || Input.GetAxis("Y_2") > 0.1f || Input.GetAxis("Y_3") > 0.1f)
             {
+				this.GetComponent<CameraControl> ().wait = false;
+				this.GetComponent<CameraControl> ().StartCoroutine ("Work");
 
                 lastHoldTime = Time.time;
 				if (SceneManager.GetActiveScene ().name == "Tutorial Level") {

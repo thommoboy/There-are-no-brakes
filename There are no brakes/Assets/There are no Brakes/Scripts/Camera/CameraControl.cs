@@ -28,32 +28,24 @@ public class CameraControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        /*
+        
         if(!wait)
         {
-            StartCoroutine(Work(waitTimer));
+            StartCoroutine(Work());
         }
         if (wait == true)
         {
             Move();
             Zoom();
         }
-        */
-
-        if(Time.time > waitTimer)
-        {
-            Move();
-            Zoom();
-        }
     }
-    /*
-    IEnumerator Work(float waitTime)
+    
+    IEnumerator Work()
     {
-        Debug.Log("Working?");
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(waitTimer);
         wait = true;
     }
-    */
+    
 
     private void Move()
     {

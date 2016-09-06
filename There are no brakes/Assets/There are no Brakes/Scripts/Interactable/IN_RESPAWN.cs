@@ -13,6 +13,7 @@ public class IN_RESPAWN : MonoBehaviour {
 	static Vector3 P3respawnPOS;
 	static Vector3 WeightRespawnPOS;
 	public bool destroyObjects = false;
+	public bool isPyramid = false;
 
 	void Start () {
 		P1respawnPOS = GameObject.Find("Player1").transform.position;
@@ -37,7 +38,7 @@ public class IN_RESPAWN : MonoBehaviour {
 			} else if (other.tag == "Weight" /*&& destroyObjects*/) {
 				if (destroyObjects) {
 					Destroy (other.gameObject);
-				} else {
+				} else if (isPyramid) {
 					other.transform.position = WeightRespawnPOS;
 				}
 			}

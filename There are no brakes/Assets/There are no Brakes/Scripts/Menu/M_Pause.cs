@@ -54,7 +54,11 @@ public class M_Pause : MonoBehaviour {
         }
 
         //get controller input
-        controllerInput();
+		if (isPause){
+
+			controllerInput();
+		}
+        
 
         //check current panel
         if (current_panel == "pause")
