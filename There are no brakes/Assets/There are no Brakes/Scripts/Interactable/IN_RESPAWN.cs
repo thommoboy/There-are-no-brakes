@@ -11,12 +11,14 @@ public class IN_RESPAWN : MonoBehaviour {
 	static Vector3 P1respawnPOS;
 	static Vector3 P2respawnPOS;
 	static Vector3 P3respawnPOS;
+	static Vector3 WeightRespawnPOS;
 	public bool destroyObjects = false;
 
 	void Start () {
 		P1respawnPOS = GameObject.Find("Player1").transform.position;
 		P2respawnPOS = GameObject.Find("Player2").transform.position;
 		P3respawnPOS = GameObject.Find("Player3").transform.position;
+		WeightRespawnPOS = GameObject.Find ("weight").transform.position;
 	}
 	
 	void OnTriggerEnter(Collider other) {
@@ -32,8 +34,12 @@ public class IN_RESPAWN : MonoBehaviour {
 				if (other.name == "Player3") {
 					other.transform.position = P3respawnPOS;
 				}
-			} else if (other.tag == "Weight" && destroyObjects) {
-				Destroy (other.gameObject);
+			} else if (other.tag == "Weight" /*&& destroyObjects*/) {
+				if (destroyObjects) {
+					Destroy (other.gameObject);
+				} else {
+					other.transform.position = WeightRespawnPOS;
+				}
 			}
 		// if its a spawn point update the players spawn position
 		} else {
