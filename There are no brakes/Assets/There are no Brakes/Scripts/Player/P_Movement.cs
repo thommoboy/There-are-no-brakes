@@ -96,10 +96,10 @@ public class P_Movement : MonoBehaviour
 							{
 								P1OnGround = false;
 								Player1Anim.GetComponent<Animator>().Play("Jump");
-								if (Player1.transform.GetChild(0).GetComponent<P_PickUp>().Carrying == false)
-								{
+								//if (Player1.transform.GetChild(0).GetComponent<P_PickUp>().Carrying == false)
+								//{
 									Player1.GetComponent<Rigidbody>().velocity = new Vector3(Player1.GetComponent<Rigidbody>().velocity.x, jumpForce, Player1.GetComponent<Rigidbody>().velocity.z);
-								}
+								//}
 							}
 						}
 					} else {
@@ -224,11 +224,11 @@ public class P_Movement : MonoBehaviour
 							{
 								P2OnGround = false;
 								Player2Anim.GetComponent<Animator>().Play("Jump");
-								if (Player2.transform.GetChild(0).GetComponent<P_PickUp>().Carrying == false)
-								{
+								//if (Player2.transform.GetChild(0).GetComponent<P_PickUp>().Carrying == false)
+								//{
 									Player2.GetComponent<Rigidbody>().velocity = new Vector3(Player2.GetComponent<Rigidbody>().velocity.x, jumpForce, Player2.GetComponent<Rigidbody>().velocity.z);
 									Player2Anim.GetComponent<Animator>().Play("Jump");
-								}
+								//}
 							}
 						}
 					} else {
@@ -339,11 +339,11 @@ public class P_Movement : MonoBehaviour
 							{
 								P3OnGround = false;
 								Player3Anim.GetComponent<Animator>().Play("Jump");
-								if (GameObject.Find("Player3").transform.GetChild(0).GetComponent<P_PickUp>().Carrying == false)
-								{
+								//if (GameObject.Find("Player3").transform.GetChild(0).GetComponent<P_PickUp>().Carrying == false)
+								//{
 									Player3.GetComponent<Rigidbody>().velocity = new Vector3(Player3.GetComponent<Rigidbody>().velocity.x, jumpForce, Player3.GetComponent<Rigidbody>().velocity.z);
 									Player3Anim.GetComponent<Animator>().Play("Jump");
-								}
+								//}
 							}
 						}
 					} else {

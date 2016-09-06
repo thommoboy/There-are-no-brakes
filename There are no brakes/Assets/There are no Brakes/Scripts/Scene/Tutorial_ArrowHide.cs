@@ -18,7 +18,7 @@ public class Tutorial_ArrowHide : MonoBehaviour {
 	}
 	
 	void Update(){
-		if((P1 && P2 && P3) || stayoff){
+		if((P1 && P2) || (P1 && P3) || (P2 && P3) || stayoff){
 			GameObject.Find("Arrow").GetComponent<Tutorial_MoveArrow> ().active = false;
 			stayoff = true;
 		}
