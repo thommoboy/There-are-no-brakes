@@ -179,7 +179,7 @@ public class CameraMultitarget : MonoBehaviour {
 			//Debug.Log ("test");
             distance = Mathf.Max (minDistanceToTarget, Mathf.Min (distance, maxDistanceToTarget));
 			// we interpolate to the new desired positions.	
-			Vector3 currentCameraDirection = Quaternion.Euler (orbitRotation) * cameraDirection;
+			Vector3 currentCameraDirection = Quaternion.Euler (new Vector3 (orbitRotation.x, orbitRotation.y, orbitRotation.z - 3)) * cameraDirection;
 			currentLookAt = Vector3.Lerp (currentLookAt, lookAt, targetInterpolationSpeed * Time.fixedDeltaTime);
 			posAt = Vector3.Lerp (posAt, currentLookAt + (currentCameraDirection * distance), positionInterpolationSpeed * Time.fixedDeltaTime);
 
