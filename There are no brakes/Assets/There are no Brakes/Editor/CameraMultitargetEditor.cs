@@ -28,7 +28,9 @@ public class CameraMultitargetEditor : Editor {
 
        	}
 
-		rotationParams = EditorGUILayout.Foldout(rotationParams, "Movement Settings");
+        myTarget.cameraDistance = EditorGUILayout.FloatField("Distance", myTarget.cameraDistance); 
+
+        rotationParams = EditorGUILayout.Foldout(rotationParams, "Movement Settings");
 		if (rotationParams)
 		{
 			myTarget.orbitRotation.x = EditorGUILayout.FloatField("Orbit X", myTarget.orbitRotation.x);

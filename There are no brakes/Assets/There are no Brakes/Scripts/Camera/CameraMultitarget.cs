@@ -22,6 +22,8 @@ public class CameraMultitarget : MonoBehaviour {
 
 	public Vector3 orbitRotation;
 
+    public float cameraDistance = 0.35f;
+
 	/// <summary>
 	/// the closest the camera will be, from here the objects won't get framed.
 	/// </summary>	
@@ -173,7 +175,7 @@ public class CameraMultitarget : MonoBehaviour {
 		Camera c = GetComponent<Camera>();
 		float hFov = Mathf.Atan(Mathf.Tan(c.fieldOfView * Mathf.Deg2Rad / 2f) * c.aspect) * Mathf.Rad2Deg;
 		float fov = Mathf.Min (c.fieldOfView, hFov) - ((screenSafeArea / 100) * c.fieldOfView);		
-		float distance = boundsSizeSphere / (Mathf.Sin(fov * Mathf.Deg2Rad/2));
+		float distance = boundsSizeSphere / (Mathf.Sin(fov * Mathf.Deg2Rad));
 
         //delete this IF if find any bug
         if (Input.GetKey(KeyCode.Space) || Input.GetButtonDown("Y_1") || Input.GetButtonDown("Y_2") || Input.GetButtonDown("Y_3") && Time.time > lastHoldTime + holdDeplayTime) {
@@ -197,7 +199,7 @@ public class CameraMultitarget : MonoBehaviour {
 			}
 
 			//c.transform.position = Vector3.Lerp (new Vector3(c.transform.position.x, c.transform.position.y - 0.2f, c.transform.position.z), posAt, 0.1f);
-			c.transform.position = Vector3.Lerp (new Vector3(c.transform.position.x - 0.35f, c.transform.position.y, c.transform.position.z), posAt, 0.007f);
+			c.transform.position = Vector3.Lerp (new Vector3(c.transform.position.x - cameraDistance, c.transform.position.y, c.transform.position.z), posAt, 0.007f);
 
 			//c.transform.LookAt (currentLookAt);
 		} else {

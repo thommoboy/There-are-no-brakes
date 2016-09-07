@@ -20,7 +20,8 @@ public class CutscenePlay : MonoBehaviour {
     void Start () {
 		if(VideoLoadAlt){
 			url = "file:///" + Application.dataPath + "/Resources/Cutscene.ogv";
-			request = new WWW(url);
+
+            request = new WWW(url);
 			cutscene = (MovieTexture)request.movie;
 		}
         GetComponent<Renderer>().material.mainTexture = cutscene as MovieTexture;
