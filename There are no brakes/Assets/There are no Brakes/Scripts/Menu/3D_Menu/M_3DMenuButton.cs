@@ -102,6 +102,7 @@ public class M_3DMenuButton : MonoBehaviour {
                 controllerSelected = (controllerSelected + 1) % MenuButtonList.Length;
                 changeTime = Time.realtimeSinceStartup;
                 ButtonOnSelected(MenuButtonList[controllerSelected]);
+                //GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
             }
                 
         }
@@ -113,6 +114,7 @@ public class M_3DMenuButton : MonoBehaviour {
                 controllerSelected = (controllerSelected - 1) % MenuButtonList.Length;
                 changeTime = Time.realtimeSinceStartup;
                 ButtonOnSelected(MenuButtonList[controllerSelected]);
+                //GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
             }
         }
 
@@ -157,7 +159,7 @@ public class M_3DMenuButton : MonoBehaviour {
 
 	void onClick(string buttonName){
 		if (buttonName == "MenuButton_Start") {
-			//updateMenuStatu (0);
+            GameObject.Find("MenuButton_Start").GetComponent<M_3D_OnMouseOver>().gameStart();
 		}
 		if (buttonName == "MenuButton_Option") {
 			updateMenuStatu (1);

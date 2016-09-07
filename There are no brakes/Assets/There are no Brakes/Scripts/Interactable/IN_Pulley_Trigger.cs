@@ -42,7 +42,7 @@ public class IN_Pulley_Trigger : MonoBehaviour
 			howMany = 99;
 		}
 	
-		if(IN_P_Platform == Platform.Left)
+		if(IN_P_Platform == Platform.Left && other.tag != "Untagged")
 			howMany++; // increment counter
     }
 
@@ -51,7 +51,7 @@ public class IN_Pulley_Trigger : MonoBehaviour
 	/// </summary>
 	void OnTriggerExit(Collider other)
 	{
-		if(IN_P_Platform == Platform.Left)
+		if(IN_P_Platform == Platform.Left && other.tag != "Untagged")
 			howMany--;
 	}
 }

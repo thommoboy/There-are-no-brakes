@@ -160,9 +160,8 @@ public class CameraMultitarget : MonoBehaviour {
 		Gizmos.DrawWireCube(currentBounds.center, currentBounds.size);
 	}
 
-    private float lastHoldTime = 0f;
-    private float holdDeplayTime = 1.0f;
-    private bool zoomed = false;
+    private float lastHoldTime = -3f;
+    private float holdDeplayTime = 7.0f;
 	// Update is called once per frame
 	void FixedUpdate () {	
 		currentBounds = GetElementsBounds();
@@ -174,17 +173,9 @@ public class CameraMultitarget : MonoBehaviour {
 		float hFov = Mathf.Atan(Mathf.Tan(c.fieldOfView * Mathf.Deg2Rad / 2f) * c.aspect) * Mathf.Rad2Deg;
 		float fov = Mathf.Min (c.fieldOfView, hFov) - ((screenSafeArea / 100) * c.fieldOfView);		
 		float distance = boundsSizeSphere / (Mathf.Sin(fov * Mathf.Deg2Rad/2));
-
-        //delete this IF if find any bug
-        if (Input.GetKey(KeyCode.Space) || Input.GetButtonDown("Y_1") || Input.GetButtonDown("Y_2") || Input.GetButtonDown("Y_3") && Time.time > lastHoldTime + holdDeplayTime) {
-            zoomed = !zoomed;
-            lastHoldTime = Time.time;
-            //Debug.Log(zoomed);
-        }
-
+		
 		// we get the distance at which we need to position our camera.
-		//if (!Input.GetKey(KeyCode.Space) && Input.GetAxis("Y_1") < 0.1f && Input.GetAxis("Y_2") < 0.1f && Input.GetAxis("Y_3") < 0.1f && Time.time >= lastHoldTime + holdDeplayTime) {
-        if (!zoomed) { 
+		if (!Input.GetKey(KeyCode.Space) && Input.GetAxis("Y_1") < 0.1f && Input.GetAxis("Y_2") < 0.1f && Input.GetAxis("Y_3") < 0.1f && Time.time >= lastHoldTime + holdDeplayTime) {
 			//Debug.Log ("test");
             distance = Mathf.Max (minDistanceToTarget, Mathf.Min (distance, maxDistanceToTarget));
 			// we interpolate to the new desired positions.	
@@ -203,13 +194,12 @@ public class CameraMultitarget : MonoBehaviour {
 		} else {
 			
             //Debug.Log ("Zoom Out");
-            //if (Input.GetKey(KeyCode.Space) || Input.GetAxis("Y_1") > 0.1f || Input.GetAxis("Y_2") > 0.1f || Input.GetAxis("Y_3") > 0.1f)
-            if (zoomed)
+            if (Input.GetKey(KeyCode.Space) || Input.GetAxis("Y_1") > 0.1f || Input.GetAxis("Y_2") > 0.1f || Input.GetAxis("Y_3") > 0.1f)
             {
 				//this.GetComponent<CameraControl> ().wait = false;
 				//this.GetComponent<CameraControl> ().StartCoroutine ("Work");
 
-               // lastHoldTime = Time.time;
+                lastHoldTime = Time.time;
 				if (SceneManager.GetActiveScene ().name == "Tutorial Level") {
 					if (currentRoom == "Room1") {
 						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam1").transform.position, 0.01f);

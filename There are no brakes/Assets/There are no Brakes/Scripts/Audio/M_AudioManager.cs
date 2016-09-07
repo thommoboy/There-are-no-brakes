@@ -20,6 +20,7 @@ public class M_AudioManager : MonoBehaviour
 	public AudioClip Anchor;
 	public AudioClip GrappleShoot;
 	public AudioClip GrappleAttach;
+    public AudioClip MenuSwitch;
 
 	public AudioClip AmbientMusic;
 	/// <summary>
@@ -39,23 +40,25 @@ public class M_AudioManager : MonoBehaviour
 	/// </summary>
 	public void PlayAudio(string Clip)
 	{
-		if (Clip == "Step") {
-			SoundFXOutput.clip = Step;
-		} else if (Clip == "Jump"){
-			SoundFXOutput.PlayOneShot (Jump);
-		} else if (Clip == "Winch"){
-			SoundFXOutput.PlayOneShot (Winch);
-		} else if (Clip == "Platform"){
-			SoundFXOutput.PlayOneShot (Platform);
-		} else if (Clip == "Gate"){
-			SoundFXOutput.PlayOneShot (Gate);
-		} else if (Clip == "Anchor"){
-			SoundFXOutput.PlayOneShot (Anchor);
-		} else if (Clip == "GrappleShoot"){
-			SoundFXOutput.PlayOneShot (GrappleShoot);
-		} else if (Clip == "GrappleShoot"){
-			SoundFXOutput.PlayOneShot (GrappleAttach);
-		} else {
+        if (Clip == "Step") {
+            SoundFXOutput.clip = Step;
+        } else if (Clip == "Jump") {
+            SoundFXOutput.PlayOneShot(Jump);
+        } else if (Clip == "Winch") {
+            SoundFXOutput.PlayOneShot(Winch);
+        } else if (Clip == "Platform") {
+            SoundFXOutput.PlayOneShot(Platform);
+        } else if (Clip == "Gate") {
+            SoundFXOutput.PlayOneShot(Gate);
+        } else if (Clip == "Anchor") {
+            SoundFXOutput.PlayOneShot(Anchor);
+        } else if (Clip == "GrappleShoot") {
+            SoundFXOutput.PlayOneShot(GrappleShoot);
+        } else if (Clip == "GrappleShoot") {
+            SoundFXOutput.PlayOneShot(GrappleAttach);
+        } else if (Clip == "MenuSwitch") {
+            SoundFXOutput.PlayOneShot(MenuSwitch);
+        } else {
 			Debug.LogError ("Looks like you tried to play a sound that doesn't exist");
 		}
 		if(!SoundFXOutput.isPlaying){

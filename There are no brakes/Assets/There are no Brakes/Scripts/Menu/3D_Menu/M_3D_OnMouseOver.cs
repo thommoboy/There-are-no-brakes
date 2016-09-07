@@ -38,6 +38,10 @@ public class M_3D_OnMouseOver : MonoBehaviour {
 		} 
 	}
 
+    public void gameStart() {
+        StartCoroutine(delayExecute(1));
+    }
+
 	public void ClickAsync(int level){
 		loadingImage.SetActive (true);
 		StartCoroutine (LoadLevel (level));

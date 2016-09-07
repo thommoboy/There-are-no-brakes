@@ -31,11 +31,12 @@ public class M_Pause : MonoBehaviour {
         ori_scale = buttonList[0].transform.localScale;
         select_scale = ori_scale * 1.3f;
         current_panel = "";
+        lastHit = optionPanel;
         //destination = transform.localPosition;
     }
 
 
-    
+    private GameObject lastHit;
 	// Update is called once per frame
 	void Update () {
         
@@ -96,12 +97,16 @@ public class M_Pause : MonoBehaviour {
 
                 if (hitThing.tag == "MenuButton")
                 {
+                    if (hitThing != lastHit) {
+                        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
+                    }
                     if (Input.GetKeyDown(KeyCode.Mouse0))
                     {
                         Debug.Log(hitThing.name);
                         clickButton(hitThing.name);
                     }
                 }
+                lastHit = hitThing;
             }
         }
 
@@ -157,6 +162,7 @@ public class M_Pause : MonoBehaviour {
                 mouseOver = (mouseOver + 1) % buttonList.Length;
                 //Debug.Log((changeTime + gap) + "   " + Time.realtimeSinceStartup);
                 changeTime = Time.realtimeSinceStartup;
+                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
             }
             
         }
@@ -168,6 +174,7 @@ public class M_Pause : MonoBehaviour {
             {
                 mouseOver = (mouseOver - 1) % buttonList.Length;
                 changeTime = Time.realtimeSinceStartup;
+                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
             }
         }
 
@@ -181,6 +188,7 @@ public class M_Pause : MonoBehaviour {
         {
             clickButton("PauseMutton_Back");
             mouseOver = -1;
+            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
         }
 
     }

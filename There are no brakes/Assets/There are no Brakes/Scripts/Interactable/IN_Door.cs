@@ -43,6 +43,8 @@ public class IN_Door : MonoBehaviour {
 				GameObject.Find("Arrow").GetComponent<Tutorial_MoveArrow> ().active = true;
 			}
 		} else if(Adventurer){
+            /*
+
 			if(Trigger.GetComponent<IN_Activation>().activated && openHeight != 99){
 				currentLerpTime = 0f;
 				perc = currentLerpTime / rotatetime;
@@ -50,8 +52,26 @@ public class IN_Door : MonoBehaviour {
 			}
 			if(openHeight == 99){
 				this.transform.position = Vector3.Lerp(doorPos, new Vector3(doorPos.x - 15f, doorPos.y, doorPos.z), perc);
-			}
-		} else if(Industrial){
+			}*/
+            
+            if (Trigger.GetComponent<IN_Activation>().activated && openHeight != 99)
+            {
+                currentLerpTime = 0f;
+                perc = currentLerpTime / (rotatetime * 2);
+                openHeight = 99;
+            }
+
+            if (Trigger.GetComponent<IN_Activation>().activated)
+            {
+                this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(doorPos.x - 15f, doorPos.y, doorPos.z), perc);
+            }
+            else if(openHeight != 5)
+            {
+                openHeight = 6;
+                this.transform.position = Vector3.Lerp(this.transform.position, doorPos, 0.1f);
+            }
+
+        } else if(Industrial){
 			if(Trigger.GetComponent<IN_Activation>().activated && openHeight != 99){
 				currentLerpTime = 0f;
 				perc = currentLerpTime / rotatetime;
@@ -61,6 +81,7 @@ public class IN_Door : MonoBehaviour {
 				this.transform.position = Vector3.Lerp(doorPos, new Vector3(doorPos.x, doorPos.y - 18.81f, doorPos.z), perc);
 			}
 		} else if(Tutorial) {
+
 			if (Trigger.GetComponent<IN_Activation> ().activated != activationCheck) {
 				currentLerpTime = 0f;
 				perc = currentLerpTime / rotatetime;
@@ -73,6 +94,8 @@ public class IN_Door : MonoBehaviour {
 				this.transform.position = Vector3.Lerp(new Vector3(doorPos.x - 6f, doorPos.y, doorPos.z), doorPos,  perc);
 			}
 			activationCheck = Trigger.GetComponent<IN_Activation> ().activated;
+            
+
 		} else {
 			if (Trigger.GetComponent<IN_Activation> ().activated != activationCheck) {
 				currentLerpTime = 0f;

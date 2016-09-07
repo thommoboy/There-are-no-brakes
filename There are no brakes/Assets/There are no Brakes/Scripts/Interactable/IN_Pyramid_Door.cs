@@ -151,6 +151,7 @@ public class IN_Pyramid_Door : MonoBehaviour {
         usingDoorPlayer = other.gameObject;
         usingDoorPlayer.transform.Rotate(0,(direction*90),0);
         usingDoorPlayer.GetComponent<P_PyramidPosition>().usingdoor = true;
+        playercontroller.GetComponent<P_Movement>().P2Uncontroled = true;
         firstDoorCloseTime = Time.time + firstDelayTime;
         secondDoorOpenTime = Time.time + secondDelayTime;
     }
