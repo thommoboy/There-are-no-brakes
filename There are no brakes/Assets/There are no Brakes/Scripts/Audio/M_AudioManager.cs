@@ -21,6 +21,8 @@ public class M_AudioManager : MonoBehaviour
 	public AudioClip GrappleShoot;
 	public AudioClip GrappleAttach;
     public AudioClip MenuSwitch;
+    public AudioClip LevelComplete;
+    public AudioClip GameOver;
 
 	public AudioClip AmbientMusic;
 	/// <summary>
@@ -58,7 +60,15 @@ public class M_AudioManager : MonoBehaviour
             SoundFXOutput.PlayOneShot(GrappleAttach);
         } else if (Clip == "MenuSwitch") {
             SoundFXOutput.PlayOneShot(MenuSwitch);
-        } else {
+        } else if (Clip == "MenuSwitch") {
+            SoundFXOutput.PlayOneShot(MenuSwitch);
+        } else if (Clip == "LevelComplete")  {
+            SoundFXOutput.PlayOneShot(LevelComplete);
+        } else if (Clip == "GameOver")  {
+            SoundFXOutput.PlayOneShot(GameOver);
+        }
+
+        else {
 			Debug.LogError ("Looks like you tried to play a sound that doesn't exist");
 		}
 		if(!SoundFXOutput.isPlaying){

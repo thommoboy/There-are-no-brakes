@@ -102,7 +102,7 @@ public class M_3DMenuButton : MonoBehaviour {
                 controllerSelected = (controllerSelected + 1) % MenuButtonList.Length;
                 changeTime = Time.realtimeSinceStartup;
                 ButtonOnSelected(MenuButtonList[controllerSelected]);
-                //GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
+                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
             }
                 
         }
@@ -114,7 +114,7 @@ public class M_3DMenuButton : MonoBehaviour {
                 controllerSelected = (controllerSelected - 1) % MenuButtonList.Length;
                 changeTime = Time.realtimeSinceStartup;
                 ButtonOnSelected(MenuButtonList[controllerSelected]);
-                //GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
+                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
             }
         }
 
@@ -231,6 +231,9 @@ public class M_3DMenuButton : MonoBehaviour {
             if (MenuButtonList[i] == button) {
 				//button_ori_scale = button.transform.localScale;
                 focusedButtonIndex = i;
+                if (sizeStatu[i] != 0 && sizeStatu[i] != 1) {
+                    GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
+                }
                 sizeStatu[i] = 1;
             }
         }

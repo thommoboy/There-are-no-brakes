@@ -18,6 +18,7 @@ public class M_3D_OnMouseOver : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        /*
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		GameObject hitThing;
@@ -35,7 +36,8 @@ public class M_3D_OnMouseOver : MonoBehaviour {
 				transform.localScale = ori_Scale;
 			}
             */
-		} 
+		//} 
+    
 	}
 
     public void gameStart() {

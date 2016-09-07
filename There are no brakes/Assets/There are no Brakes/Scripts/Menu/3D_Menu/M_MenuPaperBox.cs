@@ -27,9 +27,9 @@ public class M_MenuPaperBox : MonoBehaviour {
 	}
 
 	IEnumerator delayExecute(){
-		print (Time.time);
+		//print (Time.time);
 		yield return new WaitForSeconds (5);
-		print (Time.time);
+		//print (Time.time);
 
 	}
 }

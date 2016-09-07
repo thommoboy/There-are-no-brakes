@@ -25,7 +25,7 @@ public class M_MoveForward : MonoBehaviour {
 
     IEnumerator delayExecute(int time)
     {
-        print("camera start moving at : " + time);
+       // print("camera start moving at : " + time);
         yield return new WaitForSeconds(time);
         this.moving = true;
     }
