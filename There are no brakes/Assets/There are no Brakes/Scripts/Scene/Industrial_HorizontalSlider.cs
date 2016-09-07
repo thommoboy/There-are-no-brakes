@@ -7,7 +7,7 @@ using UnityEngine;
 using System.Collections;
  
 public class Industrial_HorizontalSlider : MonoBehaviour {
-	public float timeout = 5f;
+	public float timeout = 7f;
 	private float NextMove;
 	public float speed = 0.1F;
 	public float moveto;

@@ -38,10 +38,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -58,8 +58,6 @@
      <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\ContrastEnhance.cs" />
      <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\ContrastStretch.cs" />
      <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\CreaseShading.cs" />
-     <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\DepthOfField.cs" />
-     <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\DepthOfFieldDeprecated.cs" />
      <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\EdgeDetection.cs" />
      <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\Fisheye.cs" />
      <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\GlobalFog.cs" />
@@ -248,10 +246,10 @@
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

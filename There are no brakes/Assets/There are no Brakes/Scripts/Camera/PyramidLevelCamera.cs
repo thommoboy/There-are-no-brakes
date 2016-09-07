@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class PyramidLevelCamera : MonoBehaviour {
-    public enum Player_name {player1,player2,player3 }
+    public enum Player_name {player1,player2,player3,player2ALT }
     public Player_name playerName;
     public GameObject player1;
     public GameObject player2;
@@ -12,6 +12,7 @@ public class PyramidLevelCamera : MonoBehaviour {
 	private bool zoomed = false;
 	private float defaultsize;
     Vector3 ori_pos;
+	private GameObject PlayerController;
 
 	private float timeout = 0.4F;
 	private float nextInteract = 0.0F;
@@ -20,6 +21,7 @@ public class PyramidLevelCamera : MonoBehaviour {
     void Start () {
         ori_pos = this.transform.position;
 		defaultsize = this.GetComponent<Camera> ().orthographicSize;
+		PlayerController = GameObject.Find ("PlayerControllers");
     }
 	
 	// Update is called once per frame
@@ -34,11 +36,14 @@ public class PyramidLevelCamera : MonoBehaviour {
 			}
 
 			if (playerName == Player_name.player2) {
-				if (Input.GetAxis ("Y_2") > 0.1f || Input.GetKey (KeyCode.Space)) {
-					zoomed = !zoomed;
-					nextInteract = Time.time + timeout;
+				if(PlayerController.GetComponent<P_Movement> ().P2Direction == "x+"){
+					if (Input.GetAxis ("Y_2") > 0.1f || Input.GetKey (KeyCode.Space)) {
+						zoomed = !zoomed;
+						nextInteract = Time.time + timeout;
+					}
+				} else {
+					zoomed = false;
 				}
-
 			}
 
 			if (playerName == Player_name.player3) {
@@ -47,6 +52,17 @@ public class PyramidLevelCamera : MonoBehaviour {
 					nextInteract = Time.time + timeout;
 				}
 
+			}
+			
+			if(playerName == Player_name.player2ALT) {
+				if(PlayerController.GetComponent<P_Movement> ().P2Direction == "x-"){
+					if (Input.GetAxis ("Y_2") > 0.1f || Input.GetKey (KeyCode.Space)) {
+						zoomed = !zoomed;
+						nextInteract = Time.time + timeout;
+					}
+				} else {
+					zoomed = false;
+				}
 			}
 		}
 
@@ -58,7 +74,7 @@ public class PyramidLevelCamera : MonoBehaviour {
 				this.GetComponent<Camera> ().orthographicSize = distance;
 			}
 
-			if (playerName == Player_name.player2)
+			if (playerName == Player_name.player2 || playerName == Player_name.player2ALT)
 			{
 				this.transform.position = new Vector3(this.transform.position.x, player2.transform.position.y + height, player2.transform.position.z);
 				this.GetComponent<Camera> ().orthographicSize = distance;
@@ -78,7 +94,7 @@ public class PyramidLevelCamera : MonoBehaviour {
 				this.GetComponent<Camera> ().orthographicSize = defaultsize;
 			}
 
-			if (playerName == Player_name.player2)
+			if (playerName == Player_name.player2 || playerName == Player_name.player2ALT)
 			{
 				this.transform.position = ori_pos;
 				this.GetComponent<Camera> ().orthographicSize = defaultsize;
