@@ -23,7 +23,7 @@ public class P_HUD : MonoBehaviour {
 	public Texture2D cloudIcon;
 	public Texture2D trainIcon;
 	public int MaxLevelTime = 900; //time limit in seconds
-	private int MaxGameTime = 3600; //time limit in seconds
+	private int MaxGameTime = 3900; //time limit in seconds
 	private bool GameOver = false;
 	public int PercentageRecoverOnLevelComplete = 15;
 	private Vector3 traindefaultpos;
@@ -42,7 +42,7 @@ public class P_HUD : MonoBehaviour {
 
 	private bool levelComplete = false;
 	void Start(){
-		levCompTextPos = text.transform.position;
+		//levCompTextPos = text.transform.position;
 		if(firstLevel){
 			resetValues();
 			levelID = Application.loadedLevel;
@@ -67,7 +67,7 @@ public class P_HUD : MonoBehaviour {
 	void FixedUpdate() {
 		if (levelComplete) {
 			speed += Time.deltaTime;
-			text.transform.position = new Vector3(levCompTextPos.x, Mathf.Lerp(levCompTextPos.y, levCompTextPos.y - 35, speed),levCompTextPos.z);
+			//text.transform.position = new Vector3(levCompTextPos.x, Mathf.Lerp(levCompTextPos.y, levCompTextPos.y - 35, speed),levCompTextPos.z);
 		}
 		//calculate the timers
 		if(!firstLevel){
@@ -106,7 +106,7 @@ public class P_HUD : MonoBehaviour {
 		levelComplete = true;
         //Vector3 guiPos = GameObject.Find ("GUI Camera").transform.position;
         GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("LevelComplete");
-
+		GameObject.Find ("Pause").GetComponent<M_Pause> ().LevelComplete ();
 
         StartCoroutine(loadnextlevel(5));
 		if(!firstLevel){

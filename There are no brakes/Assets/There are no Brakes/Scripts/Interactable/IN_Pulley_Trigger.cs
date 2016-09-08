@@ -11,7 +11,8 @@ public class IN_Pulley_Trigger : MonoBehaviour
 	public IN_Pulley IN_P;
 	public enum Platform{Left, Right}
 	public Platform IN_P_Platform;
-	private int howMany = 0;
+	private int howMany;
+	public int weight;
 
 	/// <summary>
 	/// If an object stays the Collision then Lower the platform that is attatched.
@@ -19,7 +20,7 @@ public class IN_Pulley_Trigger : MonoBehaviour
 	void Update()
 	{
         if (IN_P_Platform == Platform.Left)
-            if (howMany > 1)
+		if (howMany >= weight)
             {
                // IN_P.Origin = false;
                 IN_P.LeftPlatformDown();
