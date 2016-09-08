@@ -6,6 +6,7 @@
  * Pierce Thompson
  * Xinyu Feng
  * Josh Garvey --> Modified to allow zoom out mechanic to work with multi room levels such as tutorial (several different zoom positions)
+ * Nathan Brown: make zoomout able to be triggered by other scripts
  ***********************/
 using UnityEngine;
 using UnityEngine.SceneManagement; //to determine which scene we are in
@@ -165,6 +166,7 @@ public class CameraMultitarget : MonoBehaviour {
     private float lastHoldTime = 0f;
     private float holdDeplayTime = 1.0f;
     private bool zoomed = false;
+	public bool zoomout = false;
 	// Update is called once per frame
 	void FixedUpdate () {	
 		currentBounds = GetElementsBounds();
@@ -178,9 +180,15 @@ public class CameraMultitarget : MonoBehaviour {
 		float distance = boundsSizeSphere / (Mathf.Sin(fov * Mathf.Deg2Rad));
 
         //delete this IF if find any bug
-        if (Input.GetKey(KeyCode.Space) || Input.GetButtonDown("Y_1") || Input.GetButtonDown("Y_2") || Input.GetButtonDown("Y_3") && Time.time > lastHoldTime + holdDeplayTime) {
+        if ((Input.GetKey(KeyCode.Space) || Input.GetButtonDown("Y_1") || Input.GetButtonDown("Y_2") || Input.GetButtonDown("Y_3")) && Time.time > lastHoldTime + holdDeplayTime) {
             zoomed = !zoomed;
             lastHoldTime = Time.time;
+            //Debug.Log(zoomed);
+        }
+		//if another function says to zoomout
+        if (zoomout) {
+            zoomout = false;
+            zoomed = true;
             //Debug.Log(zoomed);
         }
 
