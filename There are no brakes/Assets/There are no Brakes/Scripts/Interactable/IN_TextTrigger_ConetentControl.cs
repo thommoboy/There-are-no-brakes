@@ -26,6 +26,9 @@ public class IN_TextTrigger_ConetentControl : MonoBehaviour {
     int buttonHeight = 50;
     Rect buttonRect;
     public float enlargeScale = 1.3f;
+
+	public bool importantTextControl = false;
+
 	
 	// Use this for initialization
     void Start () {

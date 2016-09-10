@@ -17,6 +17,7 @@ public class IN_TextTrigger : MonoBehaviour {
     private bool display = false;
 	private int LineNum;
 	public bool forcePause = false;
+	public bool importantText = false;
 
 	void Start () {
         TextController = GameObject.Find("TextObjects").GetComponent<IN_TextTrigger_ConetentControl>();
@@ -34,6 +35,7 @@ public class IN_TextTrigger : MonoBehaviour {
 		// Checks for players leaving range
 		if (other.tag == "Player") {
             TextController.display = false;
+			TextController.importantTextControl = false;
 		}
 	}
 	
@@ -42,24 +44,36 @@ public class IN_TextTrigger : MonoBehaviour {
 		if (other.tag == "Player") {
             // display message
             TextController.display = true;
-            TextController.content = message1 + "\n\n" + message2 + "\n\n" + message3 + "\n\n" + message4 + "\n\n" + message5;
-            TextController.lineNum = LineNum;
-			if(forcePause){
-				TextController.enlarge = true;
-				forcePause = false;
+			if (!TextController.importantTextControl) {
+				TextController.content = message1 + "\n\n" + message2 + "\n\n" + message3 + "\n\n" + message4 + "\n\n" + message5;
+				TextController.lineNum = LineNum;
+				if (importantText == true) {
+					TextController.importantTextControl = true;
+				}
+				if (forcePause) {
+					TextController.enlarge = true;
+					forcePause = false;
+				}
 			}
         }
 	}
 
     void OnTriggerStay(Collider other) {
-        if (other.tag == "Player")
+		
+		if (other.tag == "Player")
         {
-            if (TextController.display == false)
-            {
+//            if (TextController.display == false)
+//            {
                 TextController.display = true;
-                TextController.content = message1 + "\n\n" + message2 + "\n\n" + message3 + "\n\n" + message4 + "\n\n" + message5;
-				TextController.lineNum = LineNum;
-            }
+				if (!TextController.importantTextControl) {
+					TextController.content = message1 + "\n\n" + message2 + "\n\n" + message3 + "\n\n" + message4 + "\n\n" + message5;
+					TextController.lineNum = LineNum;
+					if (importantText == true) {
+						//Debug.Log (other.name);
+						TextController.importantTextControl = true;
+					}
+				}
+            //}
         }
     }
 }
