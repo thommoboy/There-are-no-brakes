@@ -15,6 +15,7 @@ public class P_PickUp : MonoBehaviour {
 	private float timeout = 0.5F;
 	private float nextInteract = 0.0F;
 	public bool isAncientLevel;
+	public bool isTutorialLevel;
 
 	void Start(){
 		ThisPlayer = this.transform.parent.gameObject;
@@ -207,9 +208,10 @@ public class P_PickUp : MonoBehaviour {
 			} else if(ThisPlayer.name== "Player3") {
 				PlayerController.GetComponent<P_Movement> ().P3Carrying = true;
 			}
-		} else {
+		} else if (!isTutorialLevel) {
 			target.GetComponent<Collider> ().enabled = false;
 		}
+
 		//get other player
 		HeldObject = target;
 		//move carried object up
@@ -303,6 +305,10 @@ public class P_PickUp : MonoBehaviour {
 			Carrying = false;
 			if(HeldObject.tag == "Weight"){
 				HeldObject.GetComponent<Collider> ().enabled = true;
+//				if (isTutorialLevel) {
+//					//default
+//					HeldObject.layer = 0;
+//				}
 			}
 			//stop player jumping right after they throw object
 			nextInteract = Time.time + timeout;
