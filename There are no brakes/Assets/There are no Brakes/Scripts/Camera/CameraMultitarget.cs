@@ -6,7 +6,7 @@
  * Pierce Thompson
  * Xinyu Feng
  * Josh Garvey --> Modified to allow zoom out mechanic to work with multi room levels such as tutorial (several different zoom positions)
- * Nathan Brown: make zoomout able to be triggered by other scripts
+ * Nathan Brown: make zoomout able to be triggered by other scripts, stop camera zooming out further than default zoomout position
  ***********************/
 using UnityEngine;
 using UnityEngine.SceneManagement; //to determine which scene we are in
@@ -191,6 +191,25 @@ public class CameraMultitarget : MonoBehaviour {
             zoomed = true;
             //Debug.Log(zoomed);
         }
+		
+		
+		// get zoomout position if tutorial
+		if (SceneManager.GetActiveScene ().name == "Tutorial Level") {
+			if (currentRoom == "Room1") {
+				origin = GameObject.Find ("Cam1").transform.position;
+			} else if (currentRoom == "Room2") {
+				origin = GameObject.Find ("Cam2").transform.position;
+			} else if (currentRoom == "Room3"){
+				origin = GameObject.Find ("Cam3").transform.position;
+			}
+		}
+		
+		// dont auto zoom out further than zoomout position
+		if(c.transform.position.x > origin.x){
+			zoomed = true;
+		}
+		
+		
 
 		// we get the distance at which we need to position our camera.
 		//if (!Input.GetKey(KeyCode.Space) && Input.GetAxis("Y_1") < 0.1f && Input.GetAxis("Y_2") < 0.1f && Input.GetAxis("Y_3") < 0.1f && Time.time >= lastHoldTime + holdDeplayTime) {
@@ -211,27 +230,19 @@ public class CameraMultitarget : MonoBehaviour {
 
 			//c.transform.LookAt (currentLookAt);
 		} else {
-			
             //Debug.Log ("Zoom Out");
+			c.transform.position = Vector3.Lerp (c.transform.position, origin, 0.01f);
+			
+			
             //if (Input.GetKey(KeyCode.Space) || Input.GetAxis("Y_1") > 0.1f || Input.GetAxis("Y_2") > 0.1f || Input.GetAxis("Y_3") > 0.1f)
-            if (zoomed)
-            {
+            //if (zoomed)
+            //{
 				//this.GetComponent<CameraControl> ().wait = false;
 				//this.GetComponent<CameraControl> ().StartCoroutine ("Work");
 
                // lastHoldTime = Time.time;
-				if (SceneManager.GetActiveScene ().name == "Tutorial Level") {
-					if (currentRoom == "Room1") {
-						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam1").transform.position, 0.01f);
-					} else if (currentRoom == "Room2") {
-						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam2").transform.position, 0.01f);
-					} else if (currentRoom == "Room3"){
-						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam3").transform.position, 0.01f);
-					}
-				} else {
-					c.transform.position = Vector3.Lerp (c.transform.position, origin, 0.01f);
-				}
-            }
+				
+            /*}
             else
 			{
 				if (SceneManager.GetActiveScene ().name == "Tutorial Level") {
@@ -249,7 +260,7 @@ public class CameraMultitarget : MonoBehaviour {
 //				} else {
 //					c.transform.position = Vector3.Lerp (c.transform.position, origin, 0.009f);
 //				}
-            }
+            }*/
             //c.transform.rotation = Quaternion.Lerp (c.transform.rotation, originalRot, 0.05f);
         }
 	}
