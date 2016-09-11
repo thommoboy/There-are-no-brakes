@@ -25,7 +25,7 @@ public class P_HUD : MonoBehaviour {
 	public int MaxLevelTime = 900; //time limit in seconds
 	private int MaxGameTime = 3900; //time limit in seconds
 	private bool GameOver = false;
-	public int PercentageRecoverOnLevelComplete = 15;
+	public int PercentageRecoverOnLevelComplete = 20;
 	private Vector3 traindefaultpos;
 	private Vector3 clouddefaultpos;
 	public float maxpos = 16;
