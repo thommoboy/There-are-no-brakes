@@ -16,6 +16,9 @@ public class PyramidLevelCamera : MonoBehaviour {
 
 	private float timeout = 0.4F;
 	private float nextInteract = 0.0F;
+	
+	private bool allzoomed = false;
+	private string directioncheck = "x+";
 
     // Use this for initialization
     void Start () {
@@ -27,8 +30,14 @@ public class PyramidLevelCamera : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Time.time > nextInteract) {
+			if (Input.GetKey (KeyCode.Space)){
+				allzoomed = !allzoomed;
+				zoomed = allzoomed;
+				nextInteract = Time.time + timeout;
+			}
+		
 			if (playerName == Player_name.player1) {
-				if (Input.GetAxis ("Y_1") > 0.1f || Input.GetKey (KeyCode.Space)) {
+				if (Input.GetAxis ("Y_1") > 0.1f) {
 					zoomed = !zoomed;
 					nextInteract = Time.time + timeout;
 				}
@@ -37,7 +46,7 @@ public class PyramidLevelCamera : MonoBehaviour {
 
 			if (playerName == Player_name.player2) {
 				if(PlayerController.GetComponent<P_Movement> ().P2Direction == "x+"){
-					if (Input.GetAxis ("Y_2") > 0.1f || Input.GetKey (KeyCode.Space)) {
+					if (Input.GetAxis ("Y_2") > 0.1f) {
 						zoomed = !zoomed;
 						nextInteract = Time.time + timeout;
 					}
@@ -47,7 +56,7 @@ public class PyramidLevelCamera : MonoBehaviour {
 			}
 
 			if (playerName == Player_name.player3) {
-				if (Input.GetAxis ("Y_3") > 0.1f || Input.GetKey (KeyCode.Space)) {
+				if (Input.GetAxis ("Y_3") > 0.1f) {
 					zoomed = !zoomed;
 					nextInteract = Time.time + timeout;
 				}
@@ -56,7 +65,7 @@ public class PyramidLevelCamera : MonoBehaviour {
 			
 			if(playerName == Player_name.player2ALT) {
 				if(PlayerController.GetComponent<P_Movement> ().P2Direction == "x-"){
-					if (Input.GetAxis ("Y_2") > 0.1f || Input.GetKey (KeyCode.Space)) {
+					if (Input.GetAxis ("Y_2") > 0.1f) {
 						zoomed = !zoomed;
 						nextInteract = Time.time + timeout;
 					}
