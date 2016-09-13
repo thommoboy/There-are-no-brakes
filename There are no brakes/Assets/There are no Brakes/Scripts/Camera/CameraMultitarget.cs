@@ -205,8 +205,9 @@ public class CameraMultitarget : MonoBehaviour {
 		}
 		
 		// dont auto zoom out further than zoomout position
-		if(c.transform.position.x > origin.x){
+		if(c.transform.position.x > origin.x && Time.time > lastHoldTime + holdDeplayTime){
 			zoomed = true;
+            lastHoldTime = Time.time;
 		}
 		
 		
