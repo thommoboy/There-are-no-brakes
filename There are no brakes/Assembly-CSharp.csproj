@@ -38,10 +38,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +123,7 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_VerticalSlider.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_WallPiece.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Winch.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_trigger_zoomout.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\TUT.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Train_Tracks.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_3DMenuButton.cs" />
@@ -199,7 +200,7 @@
      <None Include="Assets\TSF\Shaders\TSFOutline.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\ColorCorrectionCurvesSimple.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\NoiseEffectShaderYUV.shader" />
-     <None Include="Assets\There are no Brakes\Audio\Sounds\FREE SOUND . ORG.txt" />
+     <None Include="Assets\Resources\Sounds\FREE SOUND . ORG.txt" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\CreaseApply.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />
      <None Include="Assets\TSF\Shaders\TSF.shader" />
@@ -246,10 +247,10 @@
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

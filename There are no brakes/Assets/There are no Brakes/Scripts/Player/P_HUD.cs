@@ -93,9 +93,17 @@ public class P_HUD : MonoBehaviour {
 		float trainpos = barDisplay2 * maxpos + traindefaultpos.z - maxpos;
 		GameObject.Find("HUDtrainIcon").transform.position = new Vector3(traindefaultpos.x,traindefaultpos.y,trainpos);
 	}
+	
+	
+	public AudioClip Win;
+	public AudioClip Fail;
+	
 	public M_Pause PauseCompoment;
 	public void GameLost(){
-        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("GameOver");
+		GetComponent<AudioSource>().loop = false;
+		GetComponent<AudioSource>().clip = Fail;
+		GetComponent<AudioSource>().Play();
+        //GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("GameOver");
         PauseCompoment.GameOver();
         Debug.Log("GAME OVER");
     }
@@ -105,7 +113,10 @@ public class P_HUD : MonoBehaviour {
 		Debug.Log("LEVEL COMPLETED");
 		levelComplete = true;
         //Vector3 guiPos = GameObject.Find ("GUI Camera").transform.position;
-        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("LevelComplete");
+		GetComponent<AudioSource>().loop = false;
+		GetComponent<AudioSource>().clip = Win;
+		GetComponent<AudioSource>().Play();
+        //GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("LevelComplete");
 		GameObject.Find ("Pause").GetComponent<M_Pause> ().LevelComplete ();
 
         StartCoroutine(loadnextlevel(5));

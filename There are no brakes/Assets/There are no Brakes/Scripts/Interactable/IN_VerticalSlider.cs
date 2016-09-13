@@ -20,10 +20,15 @@ public class IN_VerticalSlider : MonoBehaviour {
 	public GameObject Trigger5;
 	private bool moveUpCheck = false;
 	
+	private AudioClip Hydraulics;
+	
 	void Start(){
 		Origin = this.transform.position;
 		AltPos = Origin;
 		AltPos.y = moveto;
+		Hydraulics = Resources.Load("Sounds/hydraulics") as AudioClip;
+		GetComponent<AudioSource>().loop = true;
+		GetComponent<AudioSource>().clip = Hydraulics;
 	}
 	
 	void Update(){
@@ -56,7 +61,12 @@ public class IN_VerticalSlider : MonoBehaviour {
 		currentLerpTime += Time.deltaTime;
         if (currentLerpTime > lerpTime) {
             currentLerpTime = lerpTime;
-        }
+			GetComponent<AudioSource>().Stop();
+        } else {
+			if(!GetComponent<AudioSource>().isPlaying){
+				GetComponent<AudioSource>().Play();
+			}
+		}
 		float percentage = currentLerpTime / lerpTime;
 		if(!movingUp){
 			this.transform.position = Vector3.Lerp(AltPos, Origin, percentage);

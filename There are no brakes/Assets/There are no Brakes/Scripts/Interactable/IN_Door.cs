@@ -18,10 +18,14 @@ public class IN_Door : MonoBehaviour {
 	public bool Adventurer = false;
 	public bool Industrial = false;
 	private bool activationCheck = false;
+	
+	private AudioClip StoneDrag;
 
 	void Start () {
 		doorPos = this.transform.position;
 		doorRot = this.transform.localEulerAngles;
+		StoneDrag = Resources.Load("Sounds/stone drag") as AudioClip;
+		GetComponent<AudioSource>().loop = true;
 	}
 	
 	void Update () {
@@ -53,22 +57,27 @@ public class IN_Door : MonoBehaviour {
 			if(openHeight == 99){
 				this.transform.position = Vector3.Lerp(doorPos, new Vector3(doorPos.x - 15f, doorPos.y, doorPos.z), perc);
 			}*/
+			GetComponent<AudioSource>().clip = StoneDrag;
             
-            if (Trigger.GetComponent<IN_Activation>().activated && openHeight != 99)
-            {
+            perc = currentLerpTime / (rotatetime * 50);
+            if (Trigger.GetComponent<IN_Activation>().activated && openHeight != 99){
                 currentLerpTime = 0f;
-                perc = currentLerpTime / (rotatetime * 2);
                 openHeight = 99;
             }
 
-            if (Trigger.GetComponent<IN_Activation>().activated)
-            {
+            if (Trigger.GetComponent<IN_Activation>().activated){
                 this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(doorPos.x - 15f, doorPos.y, doorPos.z), perc);
-            }
-            else if(openHeight != 5)
-            {
+				
+				if(!GetComponent<AudioSource>().isPlaying && perc < 0.02f){
+					GetComponent<AudioSource>().Play();
+				}
+				if(perc >= 0.02f){
+					GetComponent<AudioSource>().Stop();
+				}
+            } else if(openHeight != 5){
                 openHeight = 6;
                 this.transform.position = Vector3.Lerp(this.transform.position, doorPos, 0.1f);
+				GetComponent<AudioSource>().Stop();
             }
 
         } else if(Industrial){

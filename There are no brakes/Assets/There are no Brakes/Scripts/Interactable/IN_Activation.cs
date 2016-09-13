@@ -16,8 +16,16 @@ public class IN_Activation : MonoBehaviour{
 	private float nextInteract = 0.0F;
     private IN_TextTrigger_ConetentControl TextController;
 	
+	private AudioClip Leversound;
+	private AudioClip ButtonOnsound;
+	private AudioClip ButtonOffsound;
+	
 	void Start(){
         TextController = GameObject.Find("TextObjects").GetComponent<IN_TextTrigger_ConetentControl>();
+		Leversound = Resources.Load("Sounds/switch") as AudioClip;
+		ButtonOnsound = Resources.Load("Sounds/button-press") as AudioClip;
+		ButtonOffsound = Resources.Load("Sounds/button-release") as AudioClip;
+		GetComponent<AudioSource>().loop = false;
 	}
 	
 	void Update(){
@@ -80,6 +88,14 @@ public class IN_Activation : MonoBehaviour{
 			}
 		}
 	}
+	void OnTriggerEnter(Collider other) {
+		if(pressureplate){
+			if((other.tag == "Player" || other.tag == "Weight") && !activated){
+				GetComponent<AudioSource>().clip = ButtonOnsound;
+				GetComponent<AudioSource>().Play();
+			}
+		}
+	}
 	
 	void OnTriggerExit(Collider other) {
 		if(other.tag == "Player" || other.tag == "Weight"){
@@ -92,6 +108,9 @@ public class IN_Activation : MonoBehaviour{
 				activated = false;
 				this.transform.FindChild("Panel").gameObject.transform.localScale = new Vector3(73, 12, 73);
 				this.transform.FindChild("Panel").gameObject.transform.localPosition = new Vector3(-0.0165445f, 0.07411726f, 0.009995698f);
+				
+				GetComponent<AudioSource>().clip = ButtonOffsound;
+				GetComponent<AudioSource>().Play();
 			}
 		}
 	}
@@ -99,7 +118,11 @@ public class IN_Activation : MonoBehaviour{
 	void changeState(){
 		activated = !activated;
 		nextInteract = Time.time + timeout;
-		if(lever){this.transform.Rotate(0, 180, 0);}
+		if(lever){
+			this.transform.Rotate(0, 180, 0);
+			GetComponent<AudioSource>().clip = Leversound;
+			GetComponent<AudioSource>().Play();
+		}
 		if(lantern){intrigger = false;TextController.display = false;}
 	}
 }
