@@ -81,13 +81,24 @@ public class IN_Door : MonoBehaviour {
             }
 
         } else if(Industrial){
-			if(Trigger.GetComponent<IN_Activation>().activated && openHeight != 99){
+			if(Trigger.GetComponent<IN_Activation>().activated && openHeight != 99 && openHeight != 95){
 				currentLerpTime = 0f;
 				perc = currentLerpTime / rotatetime;
 				openHeight = 99;
 			}
+			if(!Trigger.GetComponent<IN_Activation>().activated && openHeight == 95){
+				currentLerpTime = 0f;
+				perc = currentLerpTime / rotatetime;
+				openHeight = -99;
+			}
 			if(openHeight == 99){
 				this.transform.position = Vector3.Lerp(doorPos, new Vector3(doorPos.x, doorPos.y - 18.81f, doorPos.z), perc);
+			}
+			if(openHeight == -99){
+				this.transform.position = Vector3.Lerp(new Vector3(doorPos.x, doorPos.y - 18.81f, doorPos.z), doorPos, perc);
+			}
+			if(this.transform.position.y <= doorPos.y - 18.81f && openHeight == 99){
+				openHeight = 95;
 			}
 		} else if(Tutorial) {
 
