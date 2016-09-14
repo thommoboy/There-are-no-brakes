@@ -68,6 +68,9 @@ public class IN_VerticalSlider : MonoBehaviour {
 			}
 		}
 		float percentage = currentLerpTime / lerpTime;
+		if (percentage >= 1) {
+			GetComponent<AudioSource>().Stop();
+		}
 		if(!movingUp){
 			this.transform.position = Vector3.Lerp(AltPos, Origin, percentage);
 		} else {
