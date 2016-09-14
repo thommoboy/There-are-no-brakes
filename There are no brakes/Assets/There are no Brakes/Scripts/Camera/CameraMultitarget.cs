@@ -164,7 +164,9 @@ public class CameraMultitarget : MonoBehaviour {
 	}
 
     private float lastHoldTime = 0f;
-    private float holdDeplayTime = 1.0f;
+	private float holdDelayTime = 1.0f;
+	private float lastAutoZoomTime = 0f;
+	private float autoZoomDelayTime = 5.0f;
     private bool zoomed = false;
 	public bool zoomout = false;
 	// Update is called once per frame
@@ -180,7 +182,7 @@ public class CameraMultitarget : MonoBehaviour {
 		float distance = boundsSizeSphere / (Mathf.Sin(fov * Mathf.Deg2Rad));
 
         //delete this IF if find any bug
-        if ((Input.GetKey(KeyCode.Space) || Input.GetButtonDown("Y_1") || Input.GetButtonDown("Y_2") || Input.GetButtonDown("Y_3")) && Time.time > lastHoldTime + holdDeplayTime) {
+        if ((Input.GetKey(KeyCode.Space) || Input.GetButtonDown("Y_1") || Input.GetButtonDown("Y_2") || Input.GetButtonDown("Y_3")) && Time.time > lastHoldTime + holdDelayTime) {
             zoomed = !zoomed;
             lastHoldTime = Time.time;
             //Debug.Log(zoomed);
@@ -205,9 +207,10 @@ public class CameraMultitarget : MonoBehaviour {
 		}
 		
 		// dont auto zoom out further than zoomout position
-		if(c.transform.position.x > origin.x && Time.time > lastHoldTime + holdDeplayTime){
+		if(c.transform.position.x > origin.x && Time.time > lastAutoZoomTime + autoZoomDelayTime){
 			zoomed = true;
-            lastHoldTime = Time.time;
+			lastAutoZoomTime = Time.time;
+			//Debug.Log ("test");
 		}
 		
 		

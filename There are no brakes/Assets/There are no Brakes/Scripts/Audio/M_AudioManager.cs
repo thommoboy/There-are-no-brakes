@@ -31,7 +31,7 @@ public class M_AudioManager : MonoBehaviour
 	/// <summary>
 	/// Grab the objects that will play certain effects
 	/// </summary>
-	private AudioSource SoundFXOutput;
+	public AudioSource SoundFXOutput;
 	public AudioSource MusicOutput;
 
 	private void Start()
@@ -84,7 +84,7 @@ public class M_AudioManager : MonoBehaviour
 	}
 		
 	public void stopPlaying(){
-		Debug.Log ("stop playing");
+		//Debug.Log ("stop playing");
 		SoundFXOutput.Stop ();
 	}
 
