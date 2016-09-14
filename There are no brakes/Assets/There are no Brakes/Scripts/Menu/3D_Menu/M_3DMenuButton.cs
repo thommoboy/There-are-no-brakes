@@ -51,6 +51,7 @@ public class M_3DMenuButton : MonoBehaviour {
 
 		menu_ori_position = MenuList [0].transform.position;
         button_ori_scale = MenuButtonList[0].transform.localScale;
+		lastButton = GameObject.Find ("Cube");
 	}
     float changeTime;
     // Update is called once per frame
@@ -176,9 +177,15 @@ public class M_3DMenuButton : MonoBehaviour {
 	}
 
 	void updateMenuStatu(int menuIndex){
-		if (MenuList [menuIndex].transform.position.y < 700 || MenuMoveStatu[menuIndex] != 0) {
+		if ( MenuMoveStatu[menuIndex] != 0) {
 			return;
 		}
+		if (MenuList [menuIndex].transform.position.y < 700) {
+			MenuMoveStatu [menuIndex] = 2;
+			right_menu = false;;
+			return;
+		}
+
 		MenuMoveStatu [menuIndex] = -1;
         //让当前menu延迟下降
 		if (right_menu) {
@@ -224,6 +231,8 @@ public class M_3DMenuButton : MonoBehaviour {
 		}
 	}
 
+	private GameObject lastButton;
+
     void ButtonOnSelected(GameObject button) {
 
         for (int i = 0; i < MenuButtonList.Length; i++)
@@ -231,8 +240,11 @@ public class M_3DMenuButton : MonoBehaviour {
             if (MenuButtonList[i] == button) {
 				//button_ori_scale = button.transform.localScale;
                 focusedButtonIndex = i;
-                if (sizeStatu[i] != 0 && sizeStatu[i] != 1) {
+				if (sizeStatu[i] != 0 && sizeStatu[i] != 1 && (button.name != lastButton.name)) {
+					//Debug.Log (1 + " " + lastButton.name + "   " + button.name);
                     GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
+					lastButton = button;
+					//Debug.Log (2 + " " + lastButton.name + "   " + button.name);
                 }
                 sizeStatu[i] = 1;
             }

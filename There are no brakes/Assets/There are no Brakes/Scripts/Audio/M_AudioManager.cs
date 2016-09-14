@@ -66,7 +66,7 @@ public class M_AudioManager : MonoBehaviour
         } else if (Clip == "GrappleShoot") {
             SoundFXOutput.PlayOneShot(GrappleShoot);
         } else if (Clip == "MenuSwitch") {
-			SoundFXOutput.clip = MenuSwitch;
+			SoundFXOutput.PlayOneShot(MenuSwitch);
             //SoundFXOutput.PlayOneShot(MenuSwitch);
         } else if (Clip == "LevelComplete")  {
             SoundFXOutput.PlayOneShot(LevelComplete);

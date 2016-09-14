@@ -73,7 +73,7 @@ public class IN_Pyramid_Door : MonoBehaviour {
             //player reach desination
             if (Mathf.Abs(usingDoorPlayer.transform.position.x) >= Mathf.Abs(destination_x))
             {
-                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().SoundFXOutput.Stop();
+				GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().stopPlaying();
                 Player.GetComponent<Animator>().Play("Idle");
                 usingDoorPlayer.transform.Rotate(0, -(direction * 90), 0);
                 entering = false;
