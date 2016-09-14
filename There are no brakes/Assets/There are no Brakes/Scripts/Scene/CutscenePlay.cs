@@ -9,9 +9,10 @@ using UnityEngine;
 using System.Collections;
 
 public class CutscenePlay : MonoBehaviour {
-	public MovieTexture cutscene;
-	public bool VideoLoadAlt = false;
+	private MovieTexture cutscene;
+	public bool VideoLoadAlt = true;
 	public bool isFirst = false;
+    public string fileName;
 
     WWW request;
     string url;
@@ -19,14 +20,13 @@ public class CutscenePlay : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		if(VideoLoadAlt){
-			url = "file:///" + Application.dataPath + "/Resources/Cutscene.ogv";
-
+			url = "file:///" + Application.dataPath + "/Resources/"+fileName;
             request = new WWW(url);
-			cutscene = (MovieTexture)request.movie;
+            cutscene = request.movie as MovieTexture;
 		}
+
         GetComponent<Renderer>().material.mainTexture = cutscene as MovieTexture;
 		cutscene.Play();
-
 
 	}
 	
