@@ -31,7 +31,7 @@ public class M_AudioManager : MonoBehaviour
 	/// <summary>
 	/// Grab the objects that will play certain effects
 	/// </summary>
-	private AudioSource SoundFXOutput;
+	public AudioSource SoundFXOutput;
 	public AudioSource MusicOutput;
 
 	private void Start()
@@ -51,7 +51,7 @@ public class M_AudioManager : MonoBehaviour
 			return;
 		}
 		if (Clip == "Step" && SoundFXOutput.clip != Step) {
-			Debug.Log ("test");
+			//Debug.Log ("test");
             SoundFXOutput.clip = Step;
         } else if (Clip == "Jump") {
             SoundFXOutput.PlayOneShot(Jump);
@@ -84,7 +84,7 @@ public class M_AudioManager : MonoBehaviour
 	}
 		
 	public void stopPlaying(){
-		Debug.Log ("stop playing");
+		//Debug.Log ("stop playing");
 		SoundFXOutput.Stop ();
 	}
 
@@ -96,7 +96,7 @@ public class M_AudioManager : MonoBehaviour
 		if (playerIndex == 3)
 			player3Waling = f;
 		if (player1Waling || player2Waling || player3Waling) {
-			Debug.Log (player1Waling + " " + player2Waling + " " + player3Waling);
+			//Debug.Log (player1Waling + " " + player2Waling + " " + player3Waling);
 			PlayAudio ("Step");
 		} else {
 			if (SoundFXOutput.clip == Step)
