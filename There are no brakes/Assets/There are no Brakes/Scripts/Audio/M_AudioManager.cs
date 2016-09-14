@@ -23,17 +23,22 @@ public class M_AudioManager : MonoBehaviour
     public AudioClip MenuSwitch;
     public AudioClip LevelComplete;
     public AudioClip GameOver;
-
 	public AudioClip AmbientMusic;
+
+	private bool player1Waling = false;
+	private bool player2Waling = false;
+	private bool player3Waling = false;
 	/// <summary>
 	/// Grab the objects that will play certain effects
 	/// </summary>
-	public AudioSource SoundFXOutput;
+	private AudioSource SoundFXOutput;
 	public AudioSource MusicOutput;
 
 	private void Start()
 	{
 		MusicOutput.PlayOneShot (AmbientMusic);
+		SoundFXOutput = GameObject.Find ("SoundFX").GetComponent<AudioSource>();
+		SoundFXOutput.playOnAwake = true;
 	}
 	/// <summary>
 	/// Call this function to play audio clips from the audio source
@@ -42,7 +47,11 @@ public class M_AudioManager : MonoBehaviour
 	/// </summary>
 	public void PlayAudio(string Clip)
 	{
-        if (Clip == "Step") {
+		if (SoundFXOutput.isPlaying) {
+			return;
+		}
+		if (Clip == "Step" && SoundFXOutput.clip != Step) {
+			Debug.Log ("test");
             SoundFXOutput.clip = Step;
         } else if (Clip == "Jump") {
             SoundFXOutput.PlayOneShot(Jump);
@@ -56,12 +65,9 @@ public class M_AudioManager : MonoBehaviour
             SoundFXOutput.PlayOneShot(Anchor);
         } else if (Clip == "GrappleShoot") {
             SoundFXOutput.PlayOneShot(GrappleShoot);
-        } else if (Clip == "GrappleShoot") {
-            SoundFXOutput.PlayOneShot(GrappleAttach);
         } else if (Clip == "MenuSwitch") {
-            SoundFXOutput.PlayOneShot(MenuSwitch);
-        } else if (Clip == "MenuSwitch") {
-            SoundFXOutput.PlayOneShot(MenuSwitch);
+			SoundFXOutput.clip = MenuSwitch;
+            //SoundFXOutput.PlayOneShot(MenuSwitch);
         } else if (Clip == "LevelComplete")  {
             SoundFXOutput.PlayOneShot(LevelComplete);
         } else if (Clip == "GameOver")  {
@@ -69,10 +75,33 @@ public class M_AudioManager : MonoBehaviour
         }
 
         else {
-			Debug.LogError ("Looks like you tried to play a sound that doesn't exist");
+			//Debug.LogError ("Looks like you tried to play a sound that doesn't exist");
 		}
 		if(!SoundFXOutput.isPlaying){
-			SoundFXOutput.Play ();
+			SoundFXOutput.Play();
+			//SoundFXOutput.PlayOneShot(SoundFXOutput.clip);
 		}
+	}
+		
+	public void stopPlaying(){
+		Debug.Log ("stop playing");
+		SoundFXOutput.Stop ();
+	}
+
+	public void switchPlayerWalking(int playerIndex, bool f){
+		if (playerIndex == 1)
+			player1Waling = f;
+		if (playerIndex == 2)
+			player2Waling = f;
+		if (playerIndex == 3)
+			player3Waling = f;
+		if (player1Waling || player2Waling || player3Waling) {
+			Debug.Log (player1Waling + " " + player2Waling + " " + player3Waling);
+			PlayAudio ("Step");
+		} else {
+			if (SoundFXOutput.clip == Step)
+				SoundFXOutput.Stop ();
+		}
+			
 	}
 }
