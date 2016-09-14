@@ -101,7 +101,9 @@ public class P_PickUp : MonoBehaviour {
 				}
 				// drop carried object
 				if((Input.GetAxis("P1 Interact") > 0 || Input.GetAxis("B_1") > 0) && Time.time > nextInteract){
-					DropObject(false);
+					if (PlayerController.GetComponent<P_Movement> ().P1OnGround) {
+						DropObject (false);
+					}
 				}
 				// stop player from carrying something if they get picked up
 				if(PlayerController.GetComponent<P_Movement> ().BeingCarried1){
@@ -135,7 +137,9 @@ public class P_PickUp : MonoBehaviour {
 					}
 				}
 				if((Input.GetAxis("P2 Interact") > 0 || Input.GetAxis("B_2") > 0) && Time.time > nextInteract){
-					DropObject(false);
+					if (PlayerController.GetComponent<P_Movement> ().P2OnGround) {
+						DropObject (false);
+					}
 				}
 				if(PlayerController.GetComponent<P_Movement> ().BeingCarried2){
 					DropObject(false);
@@ -167,7 +171,9 @@ public class P_PickUp : MonoBehaviour {
 					}
 				}
 				if((Input.GetAxis("P3 Interact") > 0 || Input.GetAxis("B_3") > 0) && Time.time > nextInteract){
-					DropObject(false);
+					if (PlayerController.GetComponent<P_Movement> ().P3OnGround) {
+						DropObject (false);
+					}
 				}
 				if(PlayerController.GetComponent<P_Movement> ().BeingCarried3){
 					DropObject(false);

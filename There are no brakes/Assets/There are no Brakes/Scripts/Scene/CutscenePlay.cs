@@ -9,7 +9,7 @@ using UnityEngine;
 using System.Collections;
 
 public class CutscenePlay : MonoBehaviour {
-	private MovieTexture cutscene;
+	public MovieTexture cutscene;
 	public bool VideoLoadAlt = true;
 	public bool isFirst = false;
     public string fileName;
