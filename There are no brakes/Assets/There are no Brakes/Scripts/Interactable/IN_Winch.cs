@@ -18,9 +18,6 @@ public class IN_Winch : IN_InteractableObject{
 	
 	void Update(){
 		if(intrigger){
-			///TextController.display = true;
-			///TextController.content = "Press [Interact] to use";
-            ///TextController.lineNum = 1;
 			if(tutorial){
 				this.transform.GetChild(3).transform.GetChild(0).GetComponent<Renderer>().material.shader = Shader.Find("TSF/BaseOutline1");
 				this.transform.GetChild(3).transform.GetChild(1).GetComponent<Renderer>().material.shader = Shader.Find("TSF/BaseOutline1");
@@ -71,6 +68,9 @@ public class IN_Winch : IN_InteractableObject{
 			if (Input.GetAxis("P1 Interact") == 0 && Input.GetAxis("P2 Interact") == 0 && Input.GetAxis("P3 Interact") == 0) {
 				if (Input.GetAxis("B_1") == 0 && Input.GetAxis("B_2") == 0 && Input.GetAxis("B_3") == 0) {
 					GetComponent<AudioSource>().Stop();
+					if(playingsound){
+						up = !up;
+					}
 					playingsound = false;
 				}
 			}
