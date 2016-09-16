@@ -108,10 +108,10 @@ public class IN_Door : MonoBehaviour {
 			}
 			if (Trigger.GetComponent<IN_Activation> ().activated) {
 				//this.transform.localEulerAngles = Vector3.Lerp (doorRot, new Vector3 (0, 180, 0), perc);
-				this.transform.position = Vector3.Lerp(doorPos, new Vector3(doorPos.x - 6f, doorPos.y, doorPos.z), perc);
+				this.transform.position = Vector3.Lerp(doorPos, new Vector3(doorPos.x - 6.75f, doorPos.y, doorPos.z), perc);
 			} else {
 				//this.transform.localEulerAngles = Vector3.Lerp (new Vector3 (0, 180, 0), doorRot, perc);
-				this.transform.position = Vector3.Lerp(new Vector3(doorPos.x - 6f, doorPos.y, doorPos.z), doorPos,  perc);
+				this.transform.position = Vector3.Lerp(new Vector3(doorPos.x - 6.75f, doorPos.y, doorPos.z), doorPos,  perc);
 			}
 			activationCheck = Trigger.GetComponent<IN_Activation> ().activated;
             
