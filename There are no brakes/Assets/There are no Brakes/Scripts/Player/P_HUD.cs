@@ -14,7 +14,7 @@ public class P_HUD : MonoBehaviour {
 	private Vector2 size = new Vector2(375,60);
 	public Vector2 pos1;
 	private Vector2 pos2 = new Vector2(0,0);
-	public float barDisplay1 = 0.015f; //whole game
+	//public float barDisplay1 = 0.015f; //whole game
 	public float barDisplay2 = 0.9f; //current level
 	private float bar1distance = 0; //whole game
 	private float bar2distance = 0; //current level
@@ -51,7 +51,7 @@ public class P_HUD : MonoBehaviour {
 			saveLevel2Time(0);
 			saveLevel3Time(0);
 		} else {
-			barDisplay1 = remainingCloudTime();
+			//barDisplay1 = remainingCloudTime();
 			barDisplay2 = remainingTrainTime();
 			trainspeed = getTrainSpeed();
 			levelID = loadLevelID();
@@ -71,12 +71,12 @@ public class P_HUD : MonoBehaviour {
 		}
 		//calculate the timers
 		if(!firstLevel){
-			barDisplay1 += (Time.deltaTime/MaxGameTime)*trainspeed;
+			//barDisplay1 += (Time.deltaTime/MaxGameTime)*trainspeed;
 			barDisplay2 -= Time.deltaTime/MaxLevelTime;
 		}
 		
 		//trigger game over if either bar empties
-		if(barDisplay1 >= 1){GameOver = true;barDisplay1 = 1;GameLost();}
+		//if(barDisplay1 >= 1){GameOver = true;barDisplay1 = 1;GameLost();}
 		if(barDisplay2 <= 0){GameOver = true;barDisplay2 = 0;GameLost();}
 		
 		//recover distance on level completion
@@ -88,8 +88,9 @@ public class P_HUD : MonoBehaviour {
 		
 		
 		//render HUD as 3D Mesh objects
-		float cloudpos = barDisplay1 * maxpos + clouddefaultpos.z;
-		GameObject.Find("HUDcloudIcon").transform.position = new Vector3(clouddefaultpos.x,clouddefaultpos.y,cloudpos);
+		//float cloudpos = barDisplay1 * maxpos + clouddefaultpos.z;
+		GameObject.Find("HUDcloudIcon").transform.position = new Vector3(-9999,-9999,-9999);
+		GameObject.Find("HUD Cloud").transform.position = new Vector3(-9999,-9999,-9999);
 		float trainpos = barDisplay2 * maxpos + traindefaultpos.z - maxpos;
 		GameObject.Find("HUDtrainIcon").transform.position = new Vector3(traindefaultpos.x,traindefaultpos.y,trainpos);
 	}
@@ -139,17 +140,17 @@ public class P_HUD : MonoBehaviour {
 		}
 		levelID++;
 		saveLevelID(levelID);
-		saveRemainingCloudTime(barDisplay1);
+		//saveRemainingCloudTime(barDisplay1);
 		saveRemainingTrainTime(barDisplay2);
 		saveTrainSpeed(trainspeed);
 		Application.LoadLevel (levelID);
 	}
 	
 	public void resetValues(){
-		barDisplay1 = 0.015f;
+		//barDisplay1 = 0.015f;
 		barDisplay2 = 0.9f;
 		trainspeed = 1f;
-		saveRemainingCloudTime(barDisplay1);
+		//saveRemainingCloudTime(barDisplay1);
 		saveRemainingTrainTime(barDisplay2);
 		saveTrainSpeed(trainspeed);
 	}

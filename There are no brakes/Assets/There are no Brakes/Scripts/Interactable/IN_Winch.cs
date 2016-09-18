@@ -38,6 +38,7 @@ public class IN_Winch : IN_InteractableObject{
 	void playsoundeffect(){
 		if(!playingsound){
 			GetComponent<AudioSource>().Play();
+			//GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Winch");
 			playingsound = true;
 		}
 	}
