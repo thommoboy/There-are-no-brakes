@@ -70,6 +70,7 @@ public class IN_Door : MonoBehaviour {
 				this.transform.position = Vector3.Lerp (this.transform.position, new Vector3 (doorPos.x - 15f, doorPos.y, doorPos.z), perc);
 				
 				if (!GetComponent<AudioSource> ().isPlaying && perc < 0.02f) {
+					//GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("StoneDrag");
 					GetComponent<AudioSource> ().Play ();
 				}
 				if (perc >= 0.02f) {

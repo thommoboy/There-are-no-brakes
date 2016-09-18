@@ -92,6 +92,7 @@ public class IN_Activation : MonoBehaviour{
 		if(pressureplate){
 			if((other.tag == "Player" || other.tag == "Weight") && !activated){
 				GetComponent<AudioSource>().clip = ButtonOnsound;
+				//GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("PressurePlateOn");
 				GetComponent<AudioSource>().Play();
 			}
 		}
@@ -110,6 +111,7 @@ public class IN_Activation : MonoBehaviour{
 				this.transform.FindChild("Panel").gameObject.transform.localPosition = new Vector3(-0.0165445f, 0.07411726f, 0.009995698f);
 				
 				GetComponent<AudioSource>().clip = ButtonOffsound;
+				//GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("PressurePlateOff");
 				GetComponent<AudioSource>().Play();
 			}
 		}
@@ -121,6 +123,7 @@ public class IN_Activation : MonoBehaviour{
 		if(lever){
 			this.transform.Rotate(0, 180, 0);
 			GetComponent<AudioSource>().clip = Leversound;
+			//GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Lever");
 			GetComponent<AudioSource>().Play();
 		}
 		if(lantern){intrigger = false;TextController.display = false;}

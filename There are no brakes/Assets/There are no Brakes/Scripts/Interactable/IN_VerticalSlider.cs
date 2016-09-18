@@ -64,6 +64,7 @@ public class IN_VerticalSlider : MonoBehaviour {
 			GetComponent<AudioSource>().Stop();
         } else {
 			if(!GetComponent<AudioSource>().isPlaying){
+				//GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Hydraulics");
 				GetComponent<AudioSource>().Play();
 			}
 		}
