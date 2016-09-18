@@ -8,6 +8,7 @@ using System.Collections;
 
 public class IN_Door : MonoBehaviour {
 	public GameObject Trigger;
+	public GameObject Trigger2;
 	private Vector3 doorPos;
 	private Vector3 doorRot;
 	public int openHeight = 5;
@@ -35,19 +36,19 @@ public class IN_Door : MonoBehaviour {
         }
 		float perc = currentLerpTime / rotatetime;
 		
-		if(Ancient){
-			if(Trigger.GetComponent<IN_Activation>().activated && openHeight != 99){
+		if (Ancient) {
+			if (Trigger.GetComponent<IN_Activation> ().activated && openHeight != 99) {
 				currentLerpTime = 0f;
 				perc = currentLerpTime / rotatetime;
 				openHeight = 99;
 			}
-			if(openHeight == 99){
-				this.transform.localEulerAngles = Vector3.Lerp(doorRot, new Vector3(0, 270, 180), perc);
-				this.transform.position = Vector3.Lerp(doorPos, new Vector3(doorPos.x - 1.75f, doorPos.y, doorPos.z), perc);
-				GameObject.Find("Arrow").GetComponent<Tutorial_MoveArrow> ().active = true;
+			if (openHeight == 99) {
+				this.transform.localEulerAngles = Vector3.Lerp (doorRot, new Vector3 (0, 270, 180), perc);
+				this.transform.position = Vector3.Lerp (doorPos, new Vector3 (doorPos.x - 1.75f, doorPos.y, doorPos.z), perc);
+				GameObject.Find ("Arrow").GetComponent<Tutorial_MoveArrow> ().active = true;
 			}
-		} else if(Adventurer){
-            /*
+		} else if (Adventurer) {
+			/*
 
 			if(Trigger.GetComponent<IN_Activation>().activated && openHeight != 99){
 				currentLerpTime = 0f;
@@ -57,63 +58,76 @@ public class IN_Door : MonoBehaviour {
 			if(openHeight == 99){
 				this.transform.position = Vector3.Lerp(doorPos, new Vector3(doorPos.x - 15f, doorPos.y, doorPos.z), perc);
 			}*/
-			GetComponent<AudioSource>().clip = StoneDrag;
+			GetComponent<AudioSource> ().clip = StoneDrag;
             
-            perc = currentLerpTime / (rotatetime * 50);
-            if (Trigger.GetComponent<IN_Activation>().activated && openHeight != 99){
-                currentLerpTime = 0f;
-                openHeight = 99;
-            }
+			perc = currentLerpTime / (rotatetime * 50);
+			if (Trigger.GetComponent<IN_Activation> ().activated && openHeight != 99) {
+				currentLerpTime = 0f;
+				openHeight = 99;
+			}
 
-            if (Trigger.GetComponent<IN_Activation>().activated){
-                this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(doorPos.x - 15f, doorPos.y, doorPos.z), perc);
+			if (Trigger.GetComponent<IN_Activation> ().activated) {
+				this.transform.position = Vector3.Lerp (this.transform.position, new Vector3 (doorPos.x - 15f, doorPos.y, doorPos.z), perc);
 				
-				if(!GetComponent<AudioSource>().isPlaying && perc < 0.02f){
-					GetComponent<AudioSource>().Play();
+				if (!GetComponent<AudioSource> ().isPlaying && perc < 0.02f) {
+					GetComponent<AudioSource> ().Play ();
 				}
-				if(perc >= 0.02f){
-					GetComponent<AudioSource>().Stop();
+				if (perc >= 0.02f) {
+					GetComponent<AudioSource> ().Stop ();
 				}
-            } else if(openHeight != 5){
-                openHeight = 6;
-                this.transform.position = Vector3.Lerp(this.transform.position, doorPos, 0.1f);
-				GetComponent<AudioSource>().Stop();
-            }
+			} else if (openHeight != 5) {
+				openHeight = 6;
+				this.transform.position = Vector3.Lerp (this.transform.position, doorPos, 0.1f);
+				GetComponent<AudioSource> ().Stop ();
+			}
 
-        } else if(Industrial){
-			if(Trigger.GetComponent<IN_Activation>().activated && openHeight != 99 && openHeight != 95){
+		} else if (Industrial) {
+			if ((Trigger.GetComponent<IN_Activation> ().activated || Trigger2.GetComponent<IN_Activation> ().activated) && openHeight != 99 && openHeight != 95) {
 				currentLerpTime = 0f;
 				perc = currentLerpTime / rotatetime;
 				openHeight = 99;
 			}
-			if(!Trigger.GetComponent<IN_Activation>().activated && openHeight == 95){
+			if ((!Trigger.GetComponent<IN_Activation> ().activated && !Trigger2.GetComponent<IN_Activation> ().activated) && openHeight == 95) {
 				currentLerpTime = 0f;
 				perc = currentLerpTime / rotatetime;
 				openHeight = -99;
 			}
-			if(openHeight == 99){
-				this.transform.position = Vector3.Lerp(doorPos, new Vector3(doorPos.x, doorPos.y - 18.81f, doorPos.z), perc);
+			if (openHeight == 99) {
+				this.transform.position = Vector3.Lerp (doorPos, new Vector3 (doorPos.x, doorPos.y - 18.81f, doorPos.z), perc);
 			}
-			if(openHeight == -99){
-				this.transform.position = Vector3.Lerp(new Vector3(doorPos.x, doorPos.y - 18.81f, doorPos.z), doorPos, perc);
+			if (openHeight == -99) {
+				this.transform.position = Vector3.Lerp (new Vector3 (doorPos.x, doorPos.y - 18.81f, doorPos.z), doorPos, perc);
 			}
-			if(this.transform.position.y <= doorPos.y - 18.81f && openHeight == 99){
+			if (this.transform.position.y <= doorPos.y - 18.81f && openHeight == 99) {
 				openHeight = 95;
 			}
-		} else if(Tutorial) {
+		} else if (Tutorial) {
 
-			if (Trigger.GetComponent<IN_Activation> ().activated != activationCheck) {
+			if (Trigger.GetComponent<IN_Activation> ().activated != activationCheck /*|| Trigger2.GetComponent<IN_Activation> ().activated != activationCheck*/) {
 				currentLerpTime = 0f;
 				perc = currentLerpTime / rotatetime;
 			}
-			if (Trigger.GetComponent<IN_Activation> ().activated) {
+			if (Trigger.GetComponent<IN_Activation> ().activated /*|| Trigger2.GetComponent<IN_Activation> ().activated*/) {
 				//this.transform.localEulerAngles = Vector3.Lerp (doorRot, new Vector3 (0, 180, 0), perc);
-				this.transform.position = Vector3.Lerp(doorPos, new Vector3(doorPos.x - 6.75f, doorPos.y, doorPos.z), perc);
+				this.transform.position = Vector3.Lerp (doorPos, new Vector3 (doorPos.x - 6.75f, doorPos.y, doorPos.z), perc);
 			} else {
 				//this.transform.localEulerAngles = Vector3.Lerp (new Vector3 (0, 180, 0), doorRot, perc);
-				this.transform.position = Vector3.Lerp(new Vector3(doorPos.x - 6.75f, doorPos.y, doorPos.z), doorPos,  perc);
+				this.transform.position = Vector3.Lerp (new Vector3 (doorPos.x - 6.75f, doorPos.y, doorPos.z), doorPos, perc);
 			}
 			activationCheck = Trigger.GetComponent<IN_Activation> ().activated;
+
+
+//			if(Trigger.GetComponent<IN_Activation> ().activated && Trigger2.GetComponent<IN_Activation> ().activated) 
+//			{
+//				activationCheck = Trigger.GetComponent<IN_Activation> ().activated;
+//			} else 
+//			if (Trigger.GetComponent<IN_Activation> ().activated) {
+//				activationCheck = Trigger.GetComponent<IN_Activation> ().activated;
+//			} else if (Trigger2.GetComponent<IN_Activation> ().activated) {
+//				activationCheck = Trigger2.GetComponent<IN_Activation> ().activated;
+//			} else {
+//				activationCheck = false;
+//			}
             
 
 		} else {
