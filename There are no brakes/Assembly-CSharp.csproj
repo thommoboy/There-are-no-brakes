@@ -85,6 +85,7 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraControl.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraMultiTargetObjective.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraMultitarget.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraPreviewObjective.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraSimpleFollow.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\PyramidLevelCamera.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_Button.cs" />
@@ -101,6 +102,7 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Collapsible_Platform.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Door.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Door_Animation.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Drop_Object.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Group_Checkpoint.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_IndicatorLight.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_Industrial_Brake.cs" />
@@ -118,6 +120,7 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_SeeSaw.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_ShowIcon.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_ShowIconTrigger.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_SkipCutscenePrompt.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_TextTrigger.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_TextTrigger_ConetentControl.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\IN_VerticalSlider.cs" />

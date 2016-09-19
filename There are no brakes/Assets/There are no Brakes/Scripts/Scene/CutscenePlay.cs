@@ -24,10 +24,9 @@ public class CutscenePlay : MonoBehaviour {
             request = new WWW(url);
             cutscene = request.movie as MovieTexture;
 		}
-
-        GetComponent<Renderer>().material.mainTexture = cutscene as MovieTexture;
+		
+		GetComponent<Renderer>().material.mainTexture = cutscene as MovieTexture;
 		cutscene.Play();
-
 	}
 	
 	// Update is called once per frame
@@ -43,4 +42,9 @@ public class CutscenePlay : MonoBehaviour {
 		}
 
 	}
+	
+	/* For TESTING ONLY 
+	void OnGUI() {
+		GUI.DrawTexture( new Rect(0,0,100,100), cutscene );
+	}*/
 }
