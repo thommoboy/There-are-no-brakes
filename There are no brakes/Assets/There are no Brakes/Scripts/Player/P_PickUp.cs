@@ -80,7 +80,8 @@ public class P_PickUp : MonoBehaviour {
 			}
 			//stops players going through MOST roofs
 			if (isIndustrialLevel) {
-				carryHeight = 1.5f;
+				carryHeight = 1.1f;
+				carryDistance = 0.6f;
 			}
 			if(ThisPlayer.name == "Player1"){
 				// move carried object to either side if carrying player turns around, taking direction into account
@@ -261,6 +262,8 @@ public class P_PickUp : MonoBehaviour {
 		//dont put boxes too high
 		if(HeldObject.tag == "Weight"){
 			HeldObject.transform.position = new Vector3(HeldObject.transform.position.x,HeldObject.transform.position.y-0.4f,HeldObject.transform.position.z);
+		} else if (isIndustrialLevel){
+			HeldObject.transform.position = new Vector3(this.transform.position.x,this.transform.position.y+2f,this.transform.position.z);
 		}
 		// defines which direction to throw object based on players direction
 		if(carriedObject.tag != "Weight"){
