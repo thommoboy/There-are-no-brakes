@@ -16,6 +16,7 @@ public class P_PickUp : MonoBehaviour {
 	private float nextInteract = 0.0F;
 	public bool isAncientLevel;
 	public bool isTutorialLevel;
+	public bool isIndustrialLevel;
 
 	void Start(){
 		ThisPlayer = this.transform.parent.gameObject;
@@ -76,6 +77,10 @@ public class P_PickUp : MonoBehaviour {
 			if(carriedObject.tag == "Weight"){
 				carryHeight = 1.1f;
 				carryDistance = 0.7f;
+			}
+			//stops players going through MOST roofs
+			if (isIndustrialLevel) {
+				carryHeight = 1.5f;
 			}
 			if(ThisPlayer.name == "Player1"){
 				// move carried object to either side if carrying player turns around, taking direction into account
@@ -207,7 +212,16 @@ public class P_PickUp : MonoBehaviour {
 		//cant pick up anymore things
 		Carrying = true;
 		if(target.tag != "Weight"){
-			if (ThisPlayer.name == "Player1") {
+			if (isIndustrialLevel){
+				//swap to a box collider to make limiting player movement easier (for wall hax in industrial level)
+				ThisPlayer.GetComponentInParent<CapsuleCollider> ().enabled = false;
+				ThisPlayer.GetComponentInParent<BoxCollider> ().enabled = true;
+				ThisPlayer.GetComponentInParent<BoxCollider> ().size = new Vector3(1.5f, ThisPlayer.GetComponentInParent<BoxCollider> ().size.y, ThisPlayer.GetComponentInParent<BoxCollider> ().size.z);
+				ThisPlayer.GetComponentInParent<BoxCollider> ().center = new Vector3(-0.2f, ThisPlayer.GetComponentInParent<BoxCollider> ().center.y, ThisPlayer.GetComponentInParent<BoxCollider> ().center.z);
+				//ThisPlayer.GetComponentInParent<CapsuleCollider> ().radius = 1.5f;
+				//ThisPlayer.GetComponentInParent<CapsuleCollider> ().center = new Vector3(ThisPlayer.GetComponentInParent<CapsuleCollider> ().center.x, ThisPlayer.GetComponentInParent<CapsuleCollider> ().center.y+0.5f,ThisPlayer.GetComponentInParent<CapsuleCollider> ().center.z);
+			}
+				if (ThisPlayer.name == "Player1") {
 				PlayerController.GetComponent<P_Movement> ().P1Carrying = true;
 			} else if(ThisPlayer.name == "Player2"){
 				PlayerController.GetComponent<P_Movement> ().P2Carrying = true;
@@ -220,8 +234,8 @@ public class P_PickUp : MonoBehaviour {
 
 		//get other player
 		HeldObject = target;
-		//move carried object up
-		target.transform.position = new Vector3(target.transform.position.x,target.transform.position.y+0.9f,target.transform.position.z);
+		target.transform.position = new Vector3 (target.transform.position.x, target.transform.position.y + 0.9f, target.transform.position.z);
+
 		// stop carried object from falling
 		target.GetComponent<Rigidbody>().useGravity = false;
 		carriedObject = target;
@@ -303,7 +317,15 @@ public class P_PickUp : MonoBehaviour {
 	
 	public void DropObject(bool external){ 
 		if(Carrying){
-			//disconnect object
+			if(isIndustrialLevel){
+				ThisPlayer.GetComponentInParent<CapsuleCollider> ().enabled = true;
+				ThisPlayer.GetComponentInParent<BoxCollider> ().enabled = false;
+				ThisPlayer.GetComponentInParent<BoxCollider> ().size = new Vector3(1.0f, ThisPlayer.GetComponentInParent<BoxCollider> ().size.y, ThisPlayer.GetComponentInParent<BoxCollider> ().size.z);
+				ThisPlayer.GetComponentInParent<BoxCollider> ().center = new Vector3(0.0f, ThisPlayer.GetComponentInParent<BoxCollider> ().center.y, ThisPlayer.GetComponentInParent<BoxCollider> ().center.z);
+				//ThisPlayer.GetComponentInParent<CapsuleCollider> ().radius = 0.5f;
+				//ThisPlayer.GetComponentInParent<CapsuleCollider> ().center = new Vector3(ThisPlayer.GetComponentInParent<CapsuleCollider> ().center.x, ThisPlayer.GetComponentInParent<CapsuleCollider> ().center.y-0.5f,ThisPlayer.GetComponentInParent<CapsuleCollider> ().center.z);
+			}
+				//disconnect object
 			HeldObject.transform.parent = null;
 			// re-enable objects gravity
 			HeldObject.GetComponent<Rigidbody>().useGravity = true;
