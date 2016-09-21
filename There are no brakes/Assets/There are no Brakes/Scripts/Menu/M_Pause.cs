@@ -40,9 +40,9 @@ public class M_Pause : MonoBehaviour {
     private GameObject lastHit;
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Mouse1)) {
-			LevelComplete ();
-		}
+//		if (Input.GetKeyDown (KeyCode.Mouse1)) {
+//			LevelComplete ();
+//		}
 
 		if (current_panel!="levelComplete" && !gameover && (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start_1") || Input.GetButtonDown("Start_2") || Input.GetButtonDown("Start_3"))) {
             if (isPause)
