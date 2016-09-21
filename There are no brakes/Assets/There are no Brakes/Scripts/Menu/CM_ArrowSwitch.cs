@@ -6,6 +6,7 @@ public class CM_ArrowSwitch : MonoBehaviour {
     private ArrayList[] arrowsMap;
     private bool[] isPlayerChoosen;
     private int[] playerChoise;
+    public GameObject[] players;
     private float horizontalGap = 8.0f;
     private float verticalGap = 3.0f;
     private float minYPos;
@@ -22,6 +23,7 @@ public class CM_ArrowSwitch : MonoBehaviour {
             arrowsMap[0].Add(arrows[i]);
             isPlayerChoosen[i] = false;
             playerChoise[i] = -1;
+            players[i].GetComponent<Animator>().Play("Idle");
         }
         
     }
@@ -53,12 +55,14 @@ public class CM_ArrowSwitch : MonoBehaviour {
                 arrows[controllingIndex].GetComponent<CM_ChooseArrow>().switchLockStatu();
                 playerChoise[controllingIndex] = row;
                 isPlayerChoosen[row] = true;
+                players[row].GetComponent<Animator>().Play("Walk");
                 checkAll();
             }
             else {
                 if (playerChoise[controllingIndex] == row) {
                     isPlayerChoosen[row] = false;
                     arrows[controllingIndex].GetComponent<CM_ChooseArrow>().switchLockStatu();
+                    players[row].GetComponent<Animator>().Play("Idle");
                 }
             }
             return;
@@ -121,16 +125,21 @@ public class CM_ArrowSwitch : MonoBehaviour {
         }
     }
     float temp = 0.7f;
+    float[] playerLastTime = new float[3];
+    float delay = 0.3f;
     private int getLeftButton() {
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetAxis("L_XAxis_1") < temp) {
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetAxis("L_XAxis_1") < -temp && Time.time > playerLastTime[0] +delay) {
+            playerLastTime[0] = Time.time;
             return 0;
         }
-        if (Input.GetKeyDown(KeyCode.J) || Input.GetAxis("L_XAxis_2") < temp)
+        if (Input.GetKeyDown(KeyCode.J) || Input.GetAxis("L_XAxis_2") < -temp && Time.time > playerLastTime[1] + delay)
         {
+            playerLastTime[1] = Time.time;
             return 1;
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("L_XAxis_3") < temp)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("L_XAxis_3") < -temp && Time.time > playerLastTime[2] + delay)
         {
+            playerLastTime[2] = Time.time;
             return 2;
         }
         return -1;
@@ -138,16 +147,19 @@ public class CM_ArrowSwitch : MonoBehaviour {
 
     private int getRightButton()
     {
-        if (Input.GetKeyDown(KeyCode.D)||Input.GetAxis("L_XAxis_1") > temp)
+        if (Input.GetKeyDown(KeyCode.D)||Input.GetAxis("L_XAxis_1") > temp && Time.time > playerLastTime[0] + delay)
         {
+            playerLastTime[0] = Time.time;
             return 0;
         }
-        if (Input.GetKeyDown(KeyCode.L)||Input.GetAxis("L_XAxis_1") > temp)
+        if (Input.GetKeyDown(KeyCode.L)||Input.GetAxis("L_XAxis_2") > temp && Time.time > playerLastTime[1] + delay)
         {
+            playerLastTime[1] = Time.time;
             return 1;
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow)||Input.GetAxis("L_XAxis_1") > temp)
+        if (Input.GetKeyDown(KeyCode.RightArrow)||Input.GetAxis("L_XAxis_3") > temp && Time.time > playerLastTime[2] + delay)
         {
+            playerLastTime[2] = Time.time;
             return 2;
         }
         return -1;
