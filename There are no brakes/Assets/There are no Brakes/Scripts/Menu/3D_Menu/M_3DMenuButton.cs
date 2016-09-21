@@ -11,7 +11,7 @@ public class M_3DMenuButton : MonoBehaviour {
     public GameObject[] MenuButtonList;
 	public GameObject[] MenuList;
 	private int[] MenuMoveStatu;
-    private Vector3 button_ori_scale;
+    private Vector3[] buttons_ori_scale;
     private int[] sizeStatu;
     private float resizeSpeed = 1.03f;
     private int focusedButtonIndex = -1;
@@ -45,12 +45,15 @@ public class M_3DMenuButton : MonoBehaviour {
 			MenuMoveStatu[i] = 0;
         }
 		sizeStatu = new int[MenuButtonList.Length];
-		for (int i = 0; i < sizeStatu.Length; i++) {
+        buttons_ori_scale = new Vector3[MenuButtonList.Length];
+
+        for (int i = 0; i < sizeStatu.Length; i++) {
 			sizeStatu[i] = 0;
-		}
+            buttons_ori_scale[i] = MenuButtonList[i].transform.localScale;
+        }
 
 		menu_ori_position = MenuList [0].transform.position;
-        button_ori_scale = MenuButtonList[0].transform.localScale;
+        
 		lastButton = GameObject.Find ("Cube");
 	}
     float changeTime;
@@ -100,7 +103,7 @@ public class M_3DMenuButton : MonoBehaviour {
             
             if (Time.realtimeSinceStartup > changeTime + gap) {
                 //Debug.Log(Time.realtimeSinceStartup + "   " + (changeTime + gap));
-                controllerSelected = (controllerSelected + 1) % MenuButtonList.Length;
+                controllerSelected = (controllerSelected + 1) % 4;
                 changeTime = Time.realtimeSinceStartup;
                 ButtonOnSelected(MenuButtonList[controllerSelected]);
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
@@ -112,7 +115,7 @@ public class M_3DMenuButton : MonoBehaviour {
             || Input.GetAxis("L_YAxis_3") < -temp || Input.GetAxis("L_YAxis_4") < -temp)
         {
             if (controllerSelected != -1 && Time.realtimeSinceStartup > changeTime + gap) {
-                controllerSelected = (controllerSelected - 1) % MenuButtonList.Length;
+                controllerSelected = (controllerSelected - 1) % 4;
                 changeTime = Time.realtimeSinceStartup;
                 ButtonOnSelected(MenuButtonList[controllerSelected]);
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
@@ -168,13 +171,20 @@ public class M_3DMenuButton : MonoBehaviour {
 		if (buttonName == "MenuButton_Credits") {
 			updateMenuStatu (2);
 		}
-		if (buttonName == "new_game") {
-			updateMenuStatu (3);
-		}
 		if (buttonName == "MenuButton_Exit") {
 			Application.Quit ();
 		}
-	}
+        if (buttonName == "Graphcis_Pre") {
+            GameObject.Find("GraphicMenu").GetComponent<M_GrahpicPanel>().prePage();
+        }
+        if (buttonName == "Graphcis_Next")
+        {
+            GameObject.Find("GraphicMenu").GetComponent<M_GrahpicPanel>().nextPage();
+        }
+        if (buttonName == "Option_graphcis") {
+            updateMenuStatu(3);
+        }
+    }
 
 	void updateMenuStatu(int menuIndex){
 		if ( MenuMoveStatu[menuIndex] != 0) {
@@ -214,7 +224,7 @@ public class M_3DMenuButton : MonoBehaviour {
 		{
 			if (sizeStatu[i] == 1)
 			{
-                if (MenuButtonList[i].transform.localScale.x < button_ori_scale.x * 1.3)
+                if (MenuButtonList[i].transform.localScale.x < buttons_ori_scale[i].x * 1.3)
 				{
 					MenuButtonList[i].transform.localScale = MenuButtonList[i].transform.localScale * resizeSpeed;
 				}
@@ -222,7 +232,7 @@ public class M_3DMenuButton : MonoBehaviour {
 			}
 
 			if (sizeStatu[i] == -1){
-                if (MenuButtonList[i].transform.localScale.x > button_ori_scale.x)
+                if (MenuButtonList[i].transform.localScale.x > buttons_ori_scale[i].x)
 				{
 					MenuButtonList[i].transform.localScale = MenuButtonList[i].transform.localScale * (1/resizeSpeed);
 				}
