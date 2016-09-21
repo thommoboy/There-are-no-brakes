@@ -428,7 +428,7 @@ public class P_Movement : MonoBehaviour
 				}
 				if (P3Direction == "z+")
 				{
-					if (horizontal < 0)
+					if (horizontal < 0 || horizontal2 < 0)
 					{
 						Player3.transform.rotation = Quaternion.Euler(0, 180, 0);
 					if (hit.distance < 1.1){
@@ -438,7 +438,7 @@ public class P_Movement : MonoBehaviour
 					}
 						FacingRight3 = false;
 					}
-					if (horizontal > 0)
+				if (horizontal > 0|| horizontal2 > 0)
 					{
 						Player3.transform.rotation = Quaternion.Euler(0, 0, 0);
 					if (hit.distance < 1.1){

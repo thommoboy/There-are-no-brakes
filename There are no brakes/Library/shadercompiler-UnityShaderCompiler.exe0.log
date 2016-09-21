@@ -1,4 +1,4 @@
-Base path: D:/Unity/Editor/Data
+Base path: C:/Program Files/Unity/Editor/Data
 Cmd: getPlatforms
 Cmd: compileSnippet
   error: 2 plat 4 at (83): undeclared identifier '_Object2World'\nCompiling Vertex program with DIRECTIONAL LIGHTMAP_OFF DYNAMICLIGHTMAP_OFF DIRLIGHTMAP_OFF SHADOWS_OFF
