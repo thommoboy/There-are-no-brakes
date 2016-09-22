@@ -7,7 +7,7 @@ public class PyramidLevelCamera : MonoBehaviour {
     public GameObject player1;
     public GameObject player2;
     public GameObject player3;
-    private float height = 3f;
+    private float height = 4.5f;
     private float distance = 25f;
 	private bool zoomed = false;
     Vector3 ori_pos;
