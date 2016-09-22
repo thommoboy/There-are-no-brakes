@@ -45,6 +45,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\GConsole\Scripts\Commands\Demonstration\GConsoleSuggestionDemonstration.cs" />
+     <Compile Include="Assets\GConsole\Scripts\Commands\Demonstration\GConsoleUnityLoggingDemonstration.cs" />
+     <Compile Include="Assets\GConsole\Scripts\Commands\GConsoleLevelLoad.cs" />
+     <Compile Include="Assets\GConsole\Scripts\Commands\GConsoleQuit.cs" />
+     <Compile Include="Assets\GConsole\Scripts\Commands\GConsoleVolume.cs" />
+     <Compile Include="Assets\GConsole\Scripts\GConsole.cs" />
+     <Compile Include="Assets\GConsole\Scripts\GConsoleCommand.cs" />
      <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\Antialiasing.cs" />
      <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\Bloom.cs" />
      <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\BloomAndFlares.cs" />
@@ -132,9 +139,12 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Train_Wheels.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_3DMenuButton.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_3D_OnMouseOver.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_GrahpicPanel.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_MenuPaperBox.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_MoveForward.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\Ms_3D_CreditsText.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Menu\CM_ArrowSwitch.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Menu\CM_ChooseArrow.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\GC_GameComplete.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_ClickPlay.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\M_DontDistroy.cs" />
@@ -165,6 +175,10 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_FlickerLight.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_MoveArrow.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_RoomChange.cs" />
+     <Compile Include="Assets\uGUI\GConsoleSimpleToggle.cs" />
+     <Compile Include="Assets\uGUI\GConsoleuGUI.cs" />
+     <Compile Include="Assets\uGUI\GConsoleuGUIInput.cs" />
+     <Compile Include="Assets\uGUI\GConsoleuGUISuggestion.cs" />
      <None Include="Assets\There are no Brakes\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
