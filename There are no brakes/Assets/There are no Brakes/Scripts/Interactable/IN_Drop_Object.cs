@@ -7,6 +7,8 @@ using UnityEngine;
 using System.Collections;
  
 public class IN_Drop_Object : MonoBehaviour {
+
+	public bool isPyramidLevel = false;
 	
 	static Vector3 WeightRespawnPOS;
 	void Start(){
@@ -17,7 +19,7 @@ public class IN_Drop_Object : MonoBehaviour {
 		if(other.tag == "Player"){
 			other.transform.FindChild("Player").gameObject.GetComponent<P_PickUp>().DropObject(true);
 		}
-		if(other.tag == "Weight"){
+		if(other.tag == "Weight" && isPyramidLevel){
 			other.transform.position = WeightRespawnPOS;
 		}
 	}
