@@ -19,22 +19,22 @@ public class IN_SkipCutscenePrompt : MonoBehaviour{
 	}
 
 	public void Update(){
-		if(Input.GetAxis("P1 Jump") > 0 || Input.GetAxis("A_1") > 0 || Input.GetAxis("P2 Jump") > 0 || Input.GetAxis("A_2") > 0 || Input.GetAxis("P3 Jump") > 0 || Input.GetAxis("A_3") > 0){
-			active = true;
-			currentLerpTime = 0f;		
-		}
-		if(Input.GetAxis("P1 Interact") > 0 || Input.GetAxis("B_1") > 0 || Input.GetAxis("P2 Interact") > 0 || Input.GetAxis("B_2") > 0 || Input.GetAxis("P3 Interact") > 0 || Input.GetAxis("B_3") > 0){
-			active = true;
-			currentLerpTime = 0f;
-		}
-	
-		if(active){
+		if (active) {
 			currentLerpTime += Time.deltaTime;
 			if (currentLerpTime > lerpTime) {
 				currentLerpTime = lerpTime;
 			}
 			float percentage = currentLerpTime / lerpTime;
-			this.transform.position = Vector3.Lerp(Origin, movetopos, percentage);
+			this.transform.position = Vector3.Lerp (Origin, movetopos, percentage);
+		} else {
+			if(Input.GetAxis("P1 Jump") > 0 || Input.GetAxis("A_1") > 0 || Input.GetAxis("P2 Jump") > 0 || Input.GetAxis("A_2") > 0 || Input.GetAxis("P3 Jump") > 0 || Input.GetAxis("A_3") > 0){
+				active = true;
+				currentLerpTime = 0f;		
+			}
+			if(Input.GetAxis("P1 Interact") > 0 || Input.GetAxis("B_1") > 0 || Input.GetAxis("P2 Interact") > 0 || Input.GetAxis("B_2") > 0 || Input.GetAxis("P3 Interact") > 0 || Input.GetAxis("B_3") > 0){
+				active = true;
+				currentLerpTime = 0f;
+			}
 		}
 	}
 }
