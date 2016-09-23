@@ -208,8 +208,11 @@ public class CameraMultitarget : MonoBehaviour {
 		
 		// dont auto zoom out further than zoomout position
 		if(c.transform.position.x > origin.x && Time.time > lastAutoZoomTime + autoZoomDelayTime){
-			zoomed = true;
 			lastAutoZoomTime = Time.time;
+			if(!zoomed){
+				GameObject.Find("PlayerControllers").GetComponent<IN_ShowIcon>().ShowIcon(0);
+			}
+			zoomed = true;
 			//Debug.Log ("test");
 		}
 		
