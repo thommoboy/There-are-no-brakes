@@ -55,6 +55,9 @@ public class P_Movement : MonoBehaviour
 	public string P1Direction = "x+";
 	public string P2Direction = "x+";
 	public string P3Direction = "x+";
+	
+	// speed of turning when changing direction
+	private int turningspeed = 600;
 
 
 	public int layerMask;
@@ -135,7 +138,10 @@ public class P_Movement : MonoBehaviour
 				{
 					if (horizontal < 0 || horizontal2 < 0)
 					{
-						Player1.transform.rotation = Quaternion.Euler(0, 270, 0);
+						//Player1.transform.rotation = Quaternion.Euler(0, 270, 0);
+						if(Player1.transform.rotation.eulerAngles.y < 270){
+							Player1.transform.Rotate(Vector3.up * Time.deltaTime * turningspeed, Space.World);	
+						}
 						if (hit.distance < 1.1)
 						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(1,true);
 							if(P1OnGround){
@@ -145,7 +151,10 @@ public class P_Movement : MonoBehaviour
 					}
 					if (horizontal > 0 || horizontal2 > 0)
 					{
-						Player1.transform.rotation = Quaternion.Euler(0, 90, 0);
+						//Player1.transform.rotation = Quaternion.Euler(0, 90, 0);
+						if(Player1.transform.rotation.eulerAngles.y > 90){
+							Player1.transform.Rotate(Vector3.up * Time.deltaTime * -turningspeed, Space.World);
+						}
 						if (hit.distance < 1.1)
 						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(1,true);
 							if(P1OnGround){
@@ -166,7 +175,10 @@ public class P_Movement : MonoBehaviour
 				{
 					if (horizontal < 0 || horizontal2 < 0)
 					{
-						Player1.transform.rotation = Quaternion.Euler(0, 0, 0);
+						//Player1.transform.rotation = Quaternion.Euler(0, 0, 0);
+						if(Player1.transform.rotation.eulerAngles.y < 350){
+							Player1.transform.Rotate(Vector3.up * Time.deltaTime * turningspeed, Space.World);	
+						}
 						if (hit.distance < 1.1)
 						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(1,true);
 							if(P1OnGround){
@@ -176,7 +188,10 @@ public class P_Movement : MonoBehaviour
 					}
 					if (horizontal > 0 || horizontal2 > 0)
 					{
-						Player1.transform.rotation = Quaternion.Euler(0, 180, 0);
+						//Player1.transform.rotation = Quaternion.Euler(0, 180, 0);
+						if(Player1.transform.rotation.eulerAngles.y > 180){
+							Player1.transform.Rotate(Vector3.up * Time.deltaTime * -turningspeed, Space.World);	
+						}
 						if (hit.distance < 1.1)
 						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(1,true);
 							if(P1OnGround){
@@ -264,7 +279,10 @@ public class P_Movement : MonoBehaviour
 				{
 					if (horizontal < 0 || horizontal2 < 0)
 					{
-						Player2.transform.rotation = Quaternion.Euler(0, 90, 0);
+						//Player2.transform.rotation = Quaternion.Euler(0, 90, 0);
+						if(Player2.transform.rotation.eulerAngles.y > 180 || Player2.transform.rotation.eulerAngles.y < 90){
+							Player2.transform.Rotate(Vector3.up * Time.deltaTime * turningspeed, Space.World);	
+						}
 					if (hit.distance < 1.1) {
 						//GameObject.FindGameObjectWithTag ("AudioManager").GetComponent<M_AudioManager> ().PlayAudio ("Step");
 						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(2,true);
@@ -274,7 +292,10 @@ public class P_Movement : MonoBehaviour
 					}
 					if (horizontal > 0 || horizontal2 > 0)
 					{
-						Player2.transform.rotation = Quaternion.Euler(0, 270, 0);
+						//Player2.transform.rotation = Quaternion.Euler(0, 270, 0);
+						if(Player2.transform.rotation.eulerAngles.y > 270 || Player2.transform.rotation.eulerAngles.y < 180){
+							Player2.transform.Rotate(Vector3.up * Time.deltaTime * -turningspeed, Space.World);	
+						}
 						if (hit.distance < 1.1)
 					{
 						//GameObject.FindGameObjectWithTag ("AudioManager").GetComponent<M_AudioManager> ().PlayAudio ("Step");
@@ -296,7 +317,10 @@ public class P_Movement : MonoBehaviour
 				{
 					if (horizontal < 0 || horizontal2 < 0)
 					{
-						Player2.transform.rotation = Quaternion.Euler(0, 270, 0);
+						//Player2.transform.rotation = Quaternion.Euler(0, 270, 0);
+						if(Player2.transform.rotation.eulerAngles.y < 270){
+							Player2.transform.Rotate(Vector3.up * Time.deltaTime * turningspeed, Space.World);	
+						}
 						if (hit.distance < 1.1)
 					{
 						//GameObject.Find ("AudioManager").GetComponent<M_AudioManager> ().PlayAudio ("Step");
@@ -307,7 +331,10 @@ public class P_Movement : MonoBehaviour
 					}
 					if (horizontal > 0 || horizontal2 > 0)
 					{
-						Player2.transform.rotation = Quaternion.Euler(0, 90, 0);
+						//Player2.transform.rotation = Quaternion.Euler(0, 90, 0);
+						if(Player2.transform.rotation.eulerAngles.y > 90){
+							Player2.transform.Rotate(Vector3.up * Time.deltaTime * -turningspeed, Space.World);	
+						}
 						if (hit.distance < 1.1)
 					{
 						//GameObject.FindGameObjectWithTag ("AudioManager").GetComponent<M_AudioManager> ().PlayAudio ("Step");
@@ -398,7 +425,10 @@ public class P_Movement : MonoBehaviour
 				{
 					if (horizontal < 0 || horizontal2 < 0)
 					{
-						Player3.transform.rotation = Quaternion.Euler(0, 270, 0);
+						//Player3.transform.rotation = Quaternion.Euler(0, 270, 0);
+						if(Player3.transform.rotation.eulerAngles.y < 270){
+							Player3.transform.Rotate(Vector3.up * Time.deltaTime * turningspeed, Space.World);	
+						}
 					if (hit.distance < 1.1) {
 						//GameObject.FindGameObjectWithTag ("AudioManager").GetComponent<M_AudioManager> ().PlayAudio ("Step");
 						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(3,true);
@@ -409,7 +439,10 @@ public class P_Movement : MonoBehaviour
 					}
 					if (horizontal > 0 || horizontal2 > 0)
 					{
-						Player3.transform.rotation = Quaternion.Euler(0, 90, 0);
+						//Player3.transform.rotation = Quaternion.Euler(0, 90, 0);
+						if(Player3.transform.rotation.eulerAngles.y  > 90){
+							Player3.transform.Rotate(Vector3.up * Time.deltaTime * -turningspeed, Space.World);	
+						}
 					if (hit.distance < 1.1){
 						//GameObject.FindGameObjectWithTag ("AudioManager").GetComponent<M_AudioManager> ().PlayAudio ("Step");
 						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(3,true);
@@ -430,7 +463,10 @@ public class P_Movement : MonoBehaviour
 				{
 					if (horizontal < 0 || horizontal2 < 0)
 					{
-						Player3.transform.rotation = Quaternion.Euler(0, 180, 0);
+						//Player3.transform.rotation = Quaternion.Euler(0, 180, 0);
+						if(Player3.transform.rotation.eulerAngles.y < 180){
+							Player3.transform.Rotate(Vector3.up * Time.deltaTime * turningspeed, Space.World);	
+						}
 					if (hit.distance < 1.1){
 						//GameObject.FindGameObjectWithTag ("AudioManager").GetComponent<M_AudioManager> ().PlayAudio ("Step");
 						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(3,true);
@@ -440,7 +476,10 @@ public class P_Movement : MonoBehaviour
 					}
 				if (horizontal > 0|| horizontal2 > 0)
 					{
-						Player3.transform.rotation = Quaternion.Euler(0, 0, 0);
+						//Player3.transform.rotation = Quaternion.Euler(0, 0, 0);
+						if(Player3.transform.rotation.eulerAngles.y > 1){
+							Player3.transform.Rotate(Vector3.up * Time.deltaTime * -turningspeed, Space.World);	
+						}
 					if (hit.distance < 1.1){
 						//GameObject.FindGameObjectWithTag ("AudioManager").GetComponent<M_AudioManager> ().PlayAudio ("Step");
 						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(3,true);
