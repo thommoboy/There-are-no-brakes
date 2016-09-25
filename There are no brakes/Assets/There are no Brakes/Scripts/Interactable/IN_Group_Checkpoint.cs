@@ -18,7 +18,7 @@ public class IN_Group_Checkpoint : MonoBehaviour {
     private IN_TextTrigger_ConetentControl TextController;
     private IN_Door_Animation Door_Amime;
     private string door_statu;
-	private float teleportDistance = 20f;
+	private float teleportDistance = 70f;
 	void Start () {
         TextController = GameObject.Find("TextObjects").GetComponent<IN_TextTrigger_ConetentControl>();
         Door_Amime = this.GetComponent<IN_Door_Animation>();
