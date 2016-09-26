@@ -7,6 +7,9 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 using UnityEngine.EventSystems;
 
 public class M_Pause : MonoBehaviour {
@@ -144,6 +147,10 @@ public class M_Pause : MonoBehaviour {
         if (buttonName == "PauseMutton_Restart")
         {
             Time.timeScale = 1;
+			Analytics.CustomEvent("Level Restarted", new Dictionary<string, object>
+			{
+				{ "level name", SceneManager.GetActiveScene().name }
+			});
             Application.LoadLevel(Application.loadedLevel);
         }
         if (buttonName == "OptionMutton_Back")

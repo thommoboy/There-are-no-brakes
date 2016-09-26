@@ -7,7 +7,11 @@
  *      Pass remaining time data to next screen
  ***********************/
 using UnityEngine;
+using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
+
  
 public class P_HUD : MonoBehaviour {
 	//public GUIStyle HUDGUIStyle;
@@ -131,13 +135,22 @@ public class P_HUD : MonoBehaviour {
 		if(!firstLevel){
 			trainspeed += 1f;
 		}
+		string report = "N/A";
 		if(levelID == 3){
 			saveLevel1Time(Time.time - timeCheck);
+			report = System.Math.Round(getLevel1Time(),2) + " seconds";
 		} else if(levelID == 4){
 			saveLevel2Time(Time.time - timeCheck);
+			report = System.Math.Round(getLevel2Time(),2) + " seconds";
 		} else if(levelID == 5){
 			saveLevel3Time(Time.time - timeCheck);
+			report = System.Math.Round(getLevel3Time(),2) + " seconds";
 		}
+		Analytics.CustomEvent("Level finished", new Dictionary<string, object>
+		{
+			{ "level name", SceneManager.GetActiveScene().name },
+			{ "time", report }
+		});
 		levelID++;
 		saveLevelID(levelID);
 		//saveRemainingCloudTime(barDisplay1);
