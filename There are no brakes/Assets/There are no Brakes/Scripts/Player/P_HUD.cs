@@ -109,6 +109,10 @@ public class P_HUD : MonoBehaviour {
 		GetComponent<AudioSource>().clip = Fail;
 		GetComponent<AudioSource>().Play();
         //GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("GameOver");
+		Analytics.CustomEvent("Game Over", new Dictionary<string, object>
+		{
+			{ "level name", SceneManager.GetActiveScene().name }
+		});
         PauseCompoment.GameOver();
         Debug.Log("GAME OVER");
     }
