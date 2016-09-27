@@ -138,7 +138,8 @@ public class M_Pause : MonoBehaviour {
         }
         if (buttonName == "PauseMutton_Quit" || buttonName == "GameOverMutton_Quit")
         {
-            Exit();
+            //Exit();
+			Application.LoadLevel(0);
         }
         if (buttonName == "PauseMutton_Back")
         {

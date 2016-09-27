@@ -4,7 +4,10 @@
  * Modified By:
  ***********************/
 using UnityEngine;
+using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 
 public class IN_RESPAWN : MonoBehaviour {
 	public bool isSpawnPoint = false;
@@ -35,6 +38,11 @@ public class IN_RESPAWN : MonoBehaviour {
 				if (other.name == "Player3") {
 					other.transform.position = P3respawnPOS;
 				}
+				Analytics.CustomEvent("Player Died", new Dictionary<string, object>
+				{
+					{ "level name", SceneManager.GetActiveScene().name },
+					{ "object name", this.name }
+				});
 			} else if (other.tag == "Weight" /*&& destroyObjects*/) {
 				if (destroyObjects) {
 					Destroy (other.gameObject);
