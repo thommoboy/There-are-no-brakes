@@ -27,6 +27,11 @@ public class CutscenePlay : MonoBehaviour {
 		
 		GetComponent<Renderer>().material.mainTexture = cutscene as MovieTexture;
 		cutscene.Play();
+		
+		if (isFirst) {
+			GetComponent<AudioSource>().clip = cutscene.audioClip;
+			GetComponent<AudioSource>().Play();
+		}
 	}
 	
 	// Update is called once per frame
