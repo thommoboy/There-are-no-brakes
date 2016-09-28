@@ -45,7 +45,6 @@ public class CutscenePlay : MonoBehaviour {
 		} else {
 			cutscene.loop = true;
 		}
-
 	}
 	
 	/* For TESTING ONLY 

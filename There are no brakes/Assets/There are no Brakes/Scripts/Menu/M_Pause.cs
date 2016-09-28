@@ -107,7 +107,7 @@ public class M_Pause : MonoBehaviour {
                 if (hitThing.tag == "MenuButton")
                 {
                     if (hitThing != lastHit) {
-                        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
+//                        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
                     }
                     if (Input.GetKeyDown(KeyCode.Mouse0))
                     {
@@ -176,7 +176,7 @@ public class M_Pause : MonoBehaviour {
                 mouseOver = (mouseOver + 1) % buttonList.Length;
                 //Debug.Log((changeTime + gap) + "   " + Time.realtimeSinceStartup);
                 changeTime = Time.realtimeSinceStartup;
-                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
+//                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
             }
             
         }
@@ -188,7 +188,7 @@ public class M_Pause : MonoBehaviour {
             {
                 mouseOver = (mouseOver - 1) % buttonList.Length;
                 changeTime = Time.realtimeSinceStartup;
-                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
+//                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
             }
         }
 
@@ -202,7 +202,7 @@ public class M_Pause : MonoBehaviour {
         {
             clickButton("PauseMutton_Back");
             mouseOver = -1;
-            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
+//            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
         }
 
     }

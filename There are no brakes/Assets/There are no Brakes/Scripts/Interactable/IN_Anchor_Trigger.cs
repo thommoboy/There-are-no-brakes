@@ -41,7 +41,7 @@ public class IN_Anchor_Trigger : MonoBehaviour
 	void OnTriggerExit(Collider other)
 	{
 		Blocked = false;
-		AudioManager.PlayAudio ("Anchor"); //Play the associated AudioClip
+		//AudioManager.PlayAudio ("Anchor"); //Play the associated AudioClip
 		/*
 		if(IN_P_Platform == Platform.Left)
 			IN_P.Origin = true;

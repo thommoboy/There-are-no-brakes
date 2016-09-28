@@ -86,7 +86,7 @@ public class P_Movement : MonoBehaviour
 			}
 			else
 			{
-				GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(1,false);
+//				// GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(1,false);
 				P1OnGround = false;
 			}
 
@@ -128,7 +128,7 @@ public class P_Movement : MonoBehaviour
 					if (hit.distance < 1.1)
 					{
 						Player1Anim.GetComponent<Animator>().Play("Idle");
-					GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(1,false);
+					// GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(1,false);
 					}
 				}
 
@@ -143,7 +143,7 @@ public class P_Movement : MonoBehaviour
 							Player1.transform.Rotate(Vector3.up * Time.deltaTime * turningspeed, Space.World);	
 						}
 						if (hit.distance < 1.1)
-						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(1,true);
+						// GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(1,true);
 							if(P1OnGround){
 								Player1Anim.GetComponent<Animator>().Play("Walk");
 							}
@@ -156,7 +156,7 @@ public class P_Movement : MonoBehaviour
 							Player1.transform.Rotate(Vector3.up * Time.deltaTime * -turningspeed, Space.World);
 						}
 						if (hit.distance < 1.1)
-						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(1,true);
+						// GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(1,true);
 							if(P1OnGround){
 								Player1Anim.GetComponent<Animator>().Play("Walk");
 							}
@@ -180,7 +180,7 @@ public class P_Movement : MonoBehaviour
 							Player1.transform.Rotate(Vector3.up * Time.deltaTime * turningspeed, Space.World);	
 						}
 						if (hit.distance < 1.1)
-						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(1,true);
+						// GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(1,true);
 							if(P1OnGround){
 								Player1Anim.GetComponent<Animator>().Play("Walk");
 							}
@@ -193,7 +193,7 @@ public class P_Movement : MonoBehaviour
 							Player1.transform.Rotate(Vector3.up * Time.deltaTime * -turningspeed, Space.World);	
 						}
 						if (hit.distance < 1.1)
-						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(1,true);
+						// GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(1,true);
 							if(P1OnGround){
 								Player1Anim.GetComponent<Animator>().Play("Walk");
 							}
@@ -226,7 +226,7 @@ public class P_Movement : MonoBehaviour
 			else
 			{
 				P2OnGround = false;
-				GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(2,false);
+				// GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(2,false);
 			}
 
 			
@@ -269,7 +269,7 @@ public class P_Movement : MonoBehaviour
 					}
 					if (hit.distance < 1.1)
 					{
-						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(2,false);
+						// GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(2,false);
 						Player2Anim.GetComponent<Animator>().Play("Idle");
 					}
 				}
@@ -285,7 +285,7 @@ public class P_Movement : MonoBehaviour
 						}
 					if (hit.distance < 1.1) {
 						//GameObject.FindGameObjectWithTag ("AudioManager").GetComponent<M_AudioManager> ().PlayAudio ("Step");
-						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(2,true);
+						// GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(2,true);
 						Player2Anim.GetComponent<Animator> ().Play ("Walk");
 					}
 						FacingRight2 = false;
@@ -299,7 +299,7 @@ public class P_Movement : MonoBehaviour
 						if (hit.distance < 1.1)
 					{
 						//GameObject.FindGameObjectWithTag ("AudioManager").GetComponent<M_AudioManager> ().PlayAudio ("Step");
-						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(2,true);
+						// GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(2,true);
 						Player2Anim.GetComponent<Animator> ().Play ("Walk");
 					}
 						FacingRight2 = true;
@@ -324,7 +324,7 @@ public class P_Movement : MonoBehaviour
 						if (hit.distance < 1.1)
 					{
 						//GameObject.Find ("AudioManager").GetComponent<M_AudioManager> ().PlayAudio ("Step");
-						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(2,true);
+						// GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(2,true);
 						Player2Anim.GetComponent<Animator> ().Play ("Walk");
 					}
 						FacingRight2 = false;
@@ -338,7 +338,7 @@ public class P_Movement : MonoBehaviour
 						if (hit.distance < 1.1)
 					{
 						//GameObject.FindGameObjectWithTag ("AudioManager").GetComponent<M_AudioManager> ().PlayAudio ("Step");
-						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(2,true);
+						// GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(2,true);
 						Player2Anim.GetComponent<Animator> ().Play ("Walk");
 					}
 						FacingRight2 = true;
@@ -369,7 +369,7 @@ public class P_Movement : MonoBehaviour
 			else
 			{
 				P3OnGround = false;
-				GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(3,false);
+				// GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(3,false);
 			}
 
 
@@ -413,7 +413,7 @@ public class P_Movement : MonoBehaviour
 					}
 					if (hit.distance < 1.1)
 					{
-						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(3,false);
+						// GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(3,false);
 						Player3Anim.GetComponent<Animator>().Play("Idle");
 					}
 				}
@@ -431,7 +431,7 @@ public class P_Movement : MonoBehaviour
 						}
 					if (hit.distance < 1.1) {
 						//GameObject.FindGameObjectWithTag ("AudioManager").GetComponent<M_AudioManager> ().PlayAudio ("Step");
-						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(3,true);
+						// GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(3,true);
 						Player3Anim.GetComponent<Animator>().Play("Walk");
 					}
 						
@@ -445,7 +445,7 @@ public class P_Movement : MonoBehaviour
 						}
 					if (hit.distance < 1.1){
 						//GameObject.FindGameObjectWithTag ("AudioManager").GetComponent<M_AudioManager> ().PlayAudio ("Step");
-						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(3,true);
+						// GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(3,true);
 						Player3Anim.GetComponent<Animator>().Play("Walk");
 					}
 						FacingRight3 = true;
@@ -469,7 +469,7 @@ public class P_Movement : MonoBehaviour
 						}
 					if (hit.distance < 1.1){
 						//GameObject.FindGameObjectWithTag ("AudioManager").GetComponent<M_AudioManager> ().PlayAudio ("Step");
-						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(3,true);
+						// GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(3,true);
 						Player3Anim.GetComponent<Animator>().Play("Walk");
 					}
 						FacingRight3 = false;
@@ -482,7 +482,7 @@ public class P_Movement : MonoBehaviour
 						}
 					if (hit.distance < 1.1){
 						//GameObject.FindGameObjectWithTag ("AudioManager").GetComponent<M_AudioManager> ().PlayAudio ("Step");
-						GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(3,true);
+						// GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().switchPlayerWalking(3,true);
 						Player3Anim.GetComponent<Animator>().Play("Walk");
 					}
 						FacingRight3 = true;

@@ -50,16 +50,16 @@ public class M_AudioManager : MonoBehaviour
 		HUDscript = GameObject.Find("HUDmanager");
 		MusicOutput.volume = 1;
 		MusicOutput2.volume = 0;
-        MusicOutput2.clip = AmbientMusicUrgent;
+		MusicOutput2.clip = AmbientMusicUrgent;
 		MusicOutput2.Stop ();
 	}
-	
+
 	private void Update(){
 		// play intro then go into the loops
 		if(!isTutorial && !MusicOutput.isPlaying && !musicIntroDone){
 			MusicOutput.loop = true;
 			MusicOutput2.loop = true;
-            MusicOutput.clip = AmbientMusicLoop;
+			MusicOutput.clip = AmbientMusicLoop;
 			MusicOutput.Play();
 			MusicOutput2.Play();
 			musicIntroDone = true;
@@ -72,6 +72,8 @@ public class M_AudioManager : MonoBehaviour
 			}
 		}
 	}
+
+	/*
 	/// <summary>
 	/// Call this function to play audio clips from the audio source
 	/// for example
@@ -137,5 +139,33 @@ public class M_AudioManager : MonoBehaviour
 				SoundFXOutput.Stop ();
 		}
 			
+	}
+	*/
+
+	// Static calls for playing audio
+
+	public static void PlayAudio(GameObject soundDestination, AudioClip sound)
+	{
+		//Create the audio source
+		AudioSource SD;
+		SD = soundDestination.AddComponent (typeof(AudioSource)) as AudioSource;
+		//Play the audio
+		SD.PlayOneShot (sound);
+		//Wait for the audio to finish then destroy the audio source
+		Destroy (soundDestination, sound.length);
+	}
+
+	public static void PlayAudioSelf(AudioClip sound)
+	{
+		//Create the audio source
+
+		Transform go = new GameObject ("sound").transform;
+		go.parent = GameObject.Find("AudioManager").transform;
+		AudioSource SD;
+		SD = go.gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
+		//Play the audio
+		SD.PlayOneShot (sound);
+		//Wait for the audio to finish then destroy the audio source
+		Destroy (go.gameObject, sound.length);
 	}
 }

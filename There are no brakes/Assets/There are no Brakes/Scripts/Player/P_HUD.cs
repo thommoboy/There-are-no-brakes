@@ -108,7 +108,7 @@ public class P_HUD : MonoBehaviour {
 		//GetComponent<AudioSource>().loop = false;
 		//GetComponent<AudioSource>().clip = Fail;
 		//GetComponent<AudioSource>().Play();
-        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("GameOver");
+//        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("GameOver");
 		Analytics.CustomEvent("Game Over", new Dictionary<string, object>
 		{
 			{ "level name", SceneManager.GetActiveScene().name }
@@ -125,7 +125,7 @@ public class P_HUD : MonoBehaviour {
 		//GetComponent<AudioSource>().loop = false;
 		//GetComponent<AudioSource>().clip = Win;
 		//GetComponent<AudioSource>().Play();
-        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("LevelComplete");
+//        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("LevelComplete");
 		GameObject.Find ("Pause").GetComponent<M_Pause> ().LevelComplete ();
 
         StartCoroutine(loadnextlevel(5));

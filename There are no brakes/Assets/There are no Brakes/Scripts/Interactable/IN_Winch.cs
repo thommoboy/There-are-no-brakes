@@ -10,6 +10,8 @@ public class IN_Winch : IN_InteractableObject{
 	private float targetminheight;
     private IN_TextTrigger_ConetentControl TextController;
 	public bool tutorial = false;
+
+	public AudioClip winch;
 	
 	void Start(){
 		targetminheight = target.transform.position.y;
@@ -36,11 +38,12 @@ public class IN_Winch : IN_InteractableObject{
 	
 	private bool playingsound = false;
 	void playsoundeffect(){
-		if(!playingsound){
-			GetComponent<AudioSource>().Play();
+		//if(!playingsound){
+			//GetComponent<AudioSource>().Play();
+			M_AudioManager.PlayAudioSelf(winch);
 			//GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Winch");
-			playingsound = true;
-		}
+			//playingsound = true;
+		//}
 	}
 
 	public GameObject target;

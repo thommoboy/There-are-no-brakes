@@ -58,7 +58,7 @@ public class IN_Pyramid_Door : MonoBehaviour {
         {
             Debug.Log("enter");
             //moving player
-            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
+           // GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Step");
             Player.GetComponent<Animator>().Play("Walk");
             usingDoorPlayer.transform.localPosition = Vector3.MoveTowards(usingDoorPlayer.transform.localPosition,
                 new Vector3(destination_x, usingDoorPlayer.transform.localPosition.y, usingDoorPlayer.transform.localPosition.z), movingSpeed * Time.deltaTime);
@@ -73,7 +73,7 @@ public class IN_Pyramid_Door : MonoBehaviour {
             //player reach desination
             if (Mathf.Abs(usingDoorPlayer.transform.position.x) >= Mathf.Abs(destination_x))
             {
-				GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().stopPlaying();
+				//GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().stopPlaying();
                 Player.GetComponent<Animator>().Play("Idle");
                 usingDoorPlayer.transform.Rotate(0, -(direction * 90), 0);
                 entering = false;
