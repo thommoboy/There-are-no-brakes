@@ -36,16 +36,6 @@ public class IN_Winch : IN_InteractableObject{
 		}
 	}
 	
-	private bool playingsound = false;
-	void playsoundeffect(){
-		//if(!playingsound){
-			//GetComponent<AudioSource>().Play();
-			M_AudioManager.PlayAudioSelf(winch);
-			//GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Winch");
-			//playingsound = true;
-		//}
-	}
-
 	public GameObject target;
 	public GameObject rope;
 	public bool gate = false;
@@ -71,11 +61,11 @@ public class IN_Winch : IN_InteractableObject{
 			
 			if (Input.GetAxis("P1 Interact") == 0 && Input.GetAxis("P2 Interact") == 0 && Input.GetAxis("P3 Interact") == 0) {
 				if (Input.GetAxis("B_1") == 0 && Input.GetAxis("B_2") == 0 && Input.GetAxis("B_3") == 0) {
-					GetComponent<AudioSource>().Stop();
-					if(playingsound){
+					M_AudioManager.StopAudio(winch);
+					if(usingwinch){
 						up = !up;
 					}
-					playingsound = false;
+					usingwinch = false;
 				}
 			}
 		}
@@ -85,11 +75,11 @@ public class IN_Winch : IN_InteractableObject{
 		if(other.tag == "Player"){
 			intrigger = false;
 			TextController.display = false;
-			GetComponent<AudioSource>().Stop();
-			playingsound = false;
+			M_AudioManager.StopAudio(winch);
 		}
 	}
 	
+	private bool usingwinch = false;
 	public float maxheight;
 	public float movespeed = 1.5f;
 	private bool up = true;
@@ -97,18 +87,19 @@ public class IN_Winch : IN_InteractableObject{
 		if(gate){
 			if(target.transform.rotation.z < 0.5f){
 				this.transform.GetChild(3).Rotate(0, 0, -Time.deltaTime*150);
-				playsoundeffect();
+				M_AudioManager.PlayAudioSelf(winch);
+				usingwinch = true;
 				Vector3 ropelength = rope.transform.localScale;
 				target.transform.Rotate(0, 0, Time.deltaTime*25);
 				ropelength.y -= movespeed/12.25f;
 				rope.transform.localScale = Vector3.Lerp(rope.transform.localScale, ropelength, Time.deltaTime);
 				rope.transform.Rotate(Time.deltaTime*4, 0, 0);
 			} else {
-				GetComponent<AudioSource>().Stop();
-				playingsound = false;
+				M_AudioManager.StopAudio(winch);
 			}
 		} else {
-			playsoundeffect();
+			M_AudioManager.PlayAudioSelf(winch);
+			usingwinch = true;
 			Vector3 platpos = target.transform.localPosition;
 			Vector3 ropelength = rope.transform.localScale;
 			if(up){

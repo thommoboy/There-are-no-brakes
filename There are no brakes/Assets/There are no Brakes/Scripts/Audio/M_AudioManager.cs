@@ -12,31 +12,18 @@ public class M_AudioManager : MonoBehaviour
 	/// <summary>
 	/// Store all the possible sounds
 	/// </summary>
-	public AudioClip Step;
-	public AudioClip Jump;
-	public AudioClip Winch;
-	public AudioClip Platform;
-	public AudioClip Gate;
-	public AudioClip Anchor;
-	public AudioClip GrappleShoot;
-	public AudioClip GrappleAttach;
-    public AudioClip MenuSwitch;
-    public AudioClip LevelComplete;
-    public AudioClip GameOver;
-	public AudioClip AmbientMusic;
-	public AudioClip AmbientMusicLoop;
-	public AudioClip AmbientMusicUrgent;
 
-	private bool player1Waling = false;
-	private bool player2Waling = false;
-	private bool player3Waling = false;
+	public AudioClip Ambience;
+	public AudioClip MusicIntro;
+	public AudioClip MusicNormalLoop;
+	public AudioClip MusicUrgentLoop;
 	
 	public bool isTutorial = false;
+	public bool isMenu = false;
 	private bool musicIntroDone = false;
 	/// <summary>
 	/// Grab the objects that will play certain effects
 	/// </summary>
-	public AudioSource SoundFXOutput;
 	public AudioSource MusicOutput;
 	public AudioSource MusicOutput2;
 	
@@ -44,13 +31,11 @@ public class M_AudioManager : MonoBehaviour
 
 	private void Start()
 	{
-		MusicOutput.PlayOneShot (AmbientMusic);
-		SoundFXOutput = GameObject.Find ("SoundFX").GetComponent<AudioSource>();
-		SoundFXOutput.playOnAwake = true;
+		MusicOutput.PlayOneShot (MusicIntro);
 		HUDscript = GameObject.Find("HUDmanager");
 		MusicOutput.volume = 1;
 		MusicOutput2.volume = 0;
-		MusicOutput2.clip = AmbientMusicUrgent;
+		MusicOutput2.clip = MusicUrgentLoop;
 		MusicOutput2.Stop ();
 	}
 
@@ -59,7 +44,7 @@ public class M_AudioManager : MonoBehaviour
 		if(!isTutorial && !MusicOutput.isPlaying && !musicIntroDone){
 			MusicOutput.loop = true;
 			MusicOutput2.loop = true;
-			MusicOutput.clip = AmbientMusicLoop;
+			MusicOutput.clip = MusicNormalLoop;
 			MusicOutput.Play();
 			MusicOutput2.Play();
 			musicIntroDone = true;
@@ -157,15 +142,35 @@ public class M_AudioManager : MonoBehaviour
 
 	public static void PlayAudioSelf(AudioClip sound)
 	{
-		//Create the audio source
+		//check if sound is already in use
+		bool used = false;
+		foreach (Transform child in GameObject.Find("AudioManager").transform)
+		{
+			if(sound.name == child.name){
+				used = true;
+			}
+		}
+		if(!used){
+			//Create the audio source
+			Transform go = new GameObject (sound.name).transform;
+			go.parent = GameObject.Find("AudioManager").transform;
+			AudioSource SD;
+			SD = go.gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
+			//Play the audio
+			SD.PlayOneShot (sound);
+			//Wait for the audio to finish then destroy the audio source
+			Destroy (go.gameObject, sound.length);
+		}
+	}
 
-		Transform go = new GameObject ("sound").transform;
-		go.parent = GameObject.Find("AudioManager").transform;
-		AudioSource SD;
-		SD = go.gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
-		//Play the audio
-		SD.PlayOneShot (sound);
-		//Wait for the audio to finish then destroy the audio source
-		Destroy (go.gameObject, sound.length);
+	public static void StopAudio(AudioClip sound)
+	{
+		//stop sound if already in use
+		foreach (Transform child in GameObject.Find("AudioManager").transform)
+		{
+			if(sound.name == child.name){
+				Destroy (child.gameObject, 0.001f);
+			}
+		}
 	}
 }
