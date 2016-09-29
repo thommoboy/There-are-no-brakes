@@ -21,12 +21,13 @@ public class IN_Door : MonoBehaviour {
 	private bool activationCheck = false;
 	
 	private AudioClip StoneDrag;
+	private AudioClip CoffinFall;
 
 	void Start () {
 		doorPos = this.transform.position;
 		doorRot = this.transform.localEulerAngles;
-		StoneDrag = Resources.Load("Sounds/stone drag") as AudioClip;
-		GetComponent<AudioSource>().loop = true;
+		StoneDrag = Resources.Load("Sounds/Stone Dragging (Loopable)") as AudioClip;
+		CoffinFall = Resources.Load("Sounds/Sarcophagus") as AudioClip;
 	}
 	
 	void Update () {
@@ -41,6 +42,7 @@ public class IN_Door : MonoBehaviour {
 				currentLerpTime = 0f;
 				perc = currentLerpTime / rotatetime;
 				openHeight = 99;
+				M_AudioManager.PlayAudioSelf(CoffinFall);
 			}
 			if (openHeight == 99) {
 				this.transform.localEulerAngles = Vector3.Lerp (doorRot, new Vector3 (0, 270, 180), perc);
@@ -58,7 +60,6 @@ public class IN_Door : MonoBehaviour {
 			if(openHeight == 99){
 				this.transform.position = Vector3.Lerp(doorPos, new Vector3(doorPos.x - 15f, doorPos.y, doorPos.z), perc);
 			}*/
-			GetComponent<AudioSource> ().clip = StoneDrag;
             
 			perc = currentLerpTime / (rotatetime * 50);
 			if (Trigger.GetComponent<IN_Activation> ().activated && openHeight != 99) {
@@ -69,17 +70,16 @@ public class IN_Door : MonoBehaviour {
 			if (Trigger.GetComponent<IN_Activation> ().activated) {
 				this.transform.position = Vector3.Lerp (this.transform.position, new Vector3 (doorPos.x - 15f, doorPos.y, doorPos.z), perc);
 				
-				if (!GetComponent<AudioSource> ().isPlaying && perc < 0.02f) {
-					//GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("StoneDrag");
-					GetComponent<AudioSource> ().Play ();
+				if (perc < 0.02f) {
+					M_AudioManager.PlayAudioSelf(StoneDrag);
 				}
 				if (perc >= 0.02f) {
-					GetComponent<AudioSource> ().Stop ();
+					M_AudioManager.StopAudio(StoneDrag);
 				}
 			} else if (openHeight != 5) {
 				openHeight = 6;
 				this.transform.position = Vector3.Lerp (this.transform.position, doorPos, 0.1f);
-				GetComponent<AudioSource> ().Stop ();
+				M_AudioManager.StopAudio(StoneDrag);
 			}
 
 		} else if (Industrial) {

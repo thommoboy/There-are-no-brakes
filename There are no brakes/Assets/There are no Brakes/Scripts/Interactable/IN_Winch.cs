@@ -11,11 +11,12 @@ public class IN_Winch : IN_InteractableObject{
     private IN_TextTrigger_ConetentControl TextController;
 	public bool tutorial = false;
 
-	public AudioClip winch;
+	private AudioClip winch;
 	
 	void Start(){
 		targetminheight = target.transform.position.y;
         TextController = GameObject.Find("TextObjects").GetComponent<IN_TextTrigger_ConetentControl>();
+		winch = Resources.Load("Sounds/windingwinch") as AudioClip;
 	}
 	
 	void Update(){

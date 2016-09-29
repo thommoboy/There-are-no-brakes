@@ -28,6 +28,7 @@ public class M_Pause : MonoBehaviour {
     private int mouseOver = -1;
     private Vector3 ori_scale;
     private Vector3 select_scale;
+	private AudioClip MenuSwitch;
 	
     // Use this for initialization
     void Start () {
@@ -37,6 +38,7 @@ public class M_Pause : MonoBehaviour {
         current_panel = "";
         lastHit = optionPanel;
         //destination = transform.localPosition;
+		MenuSwitch = Resources.Load("Sounds/MenuSwitch") as AudioClip;
     }
 
 
@@ -107,7 +109,7 @@ public class M_Pause : MonoBehaviour {
                 if (hitThing.tag == "MenuButton")
                 {
                     if (hitThing != lastHit) {
-//                        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
+                        M_AudioManager.PlayAudioSelf(MenuSwitch);
                     }
                     if (Input.GetKeyDown(KeyCode.Mouse0))
                     {
@@ -176,7 +178,7 @@ public class M_Pause : MonoBehaviour {
                 mouseOver = (mouseOver + 1) % buttonList.Length;
                 //Debug.Log((changeTime + gap) + "   " + Time.realtimeSinceStartup);
                 changeTime = Time.realtimeSinceStartup;
-//                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
+                M_AudioManager.PlayAudioSelf(MenuSwitch);
             }
             
         }
@@ -188,7 +190,7 @@ public class M_Pause : MonoBehaviour {
             {
                 mouseOver = (mouseOver - 1) % buttonList.Length;
                 changeTime = Time.realtimeSinceStartup;
-//                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
+                M_AudioManager.PlayAudioSelf(MenuSwitch);
             }
         }
 
@@ -202,7 +204,7 @@ public class M_Pause : MonoBehaviour {
         {
             clickButton("PauseMutton_Back");
             mouseOver = -1;
-//            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
+            M_AudioManager.PlayAudioSelf(MenuSwitch);
         }
 
     }

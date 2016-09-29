@@ -20,6 +20,8 @@ public class M_3DMenuButton : MonoBehaviour {
 	float menuMoveSpeed  = 20;
 	public bool started = false;
     private int controllerSelected = -1;
+	
+	private AudioClip MenuSwitch;
     // Use this for initialization
 
 	void removeAllUI(){
@@ -35,6 +37,7 @@ public class M_3DMenuButton : MonoBehaviour {
 	}
 
     void Start () {
+		MenuSwitch = Resources.Load("Sounds/MenuSwitch") as AudioClip;
 		//init menu movement statu and button size statu
 		//0: stay
 		//1: go up / being bigger
@@ -106,7 +109,7 @@ public class M_3DMenuButton : MonoBehaviour {
                 controllerSelected = (controllerSelected + 1) % 4;
                 changeTime = Time.realtimeSinceStartup;
                 ButtonOnSelected(MenuButtonList[controllerSelected]);
-              //  GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
+				M_AudioManager.PlayAudioSelf(MenuSwitch);
             }
                 
         }
@@ -118,7 +121,7 @@ public class M_3DMenuButton : MonoBehaviour {
                 controllerSelected = (controllerSelected - 1) % 4;
                 changeTime = Time.realtimeSinceStartup;
                 ButtonOnSelected(MenuButtonList[controllerSelected]);
-//                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
+                M_AudioManager.PlayAudioSelf(MenuSwitch);
             }
         }
 
@@ -252,7 +255,7 @@ public class M_3DMenuButton : MonoBehaviour {
                 focusedButtonIndex = i;
 				if (sizeStatu[i] != 0 && sizeStatu[i] != 1 && (button.name != lastButton.name)) {
 					//Debug.Log (1 + " " + lastButton.name + "   " + button.name);
-//                    GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("MenuSwitch");
+                    M_AudioManager.PlayAudioSelf(MenuSwitch);
 					lastButton = button;
 					//Debug.Log (2 + " " + lastButton.name + "   " + button.name);
                 }

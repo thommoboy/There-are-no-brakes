@@ -10,8 +10,8 @@ using UnityEngine.UI;
 public class M_MusicVolumeScript : MonoBehaviour {
 	private Slider musicSlider;
     private Slider audioSlider;
-	private AudioSource bgm;
-    private AudioSource audio;
+	//private AudioSource bgm;
+    //private AudioSource audio;
 	// Use this for initialization
 	void Start () {
         if (!GameObject.Find("MusicSlider"))
@@ -22,9 +22,9 @@ public class M_MusicVolumeScript : MonoBehaviour {
         {
             Debug.Log("Sound slider is not exist");
         }
-
-        bgm = GameObject.Find("MusicFX").GetComponent<AudioSource>();
-        audio = GameObject.Find("SoundFX").GetComponent<AudioSource>();
+		
+        //bgm = GameObject.Find("MusicFX").GetComponent<AudioSource>();
+        //audio = GameObject.Find("SoundFX").GetComponent<AudioSource>();
         musicSlider = GameObject.Find("MusicSlider").GetComponent<Slider>();
         audioSlider = GameObject.Find("SoundSlider").GetComponent<Slider>();
 
@@ -34,10 +34,10 @@ public class M_MusicVolumeScript : MonoBehaviour {
     public void reset() {
         //Debug.Log(PlayerPrefs.GetFloat("AudioVolume"));
 
-        bgm.volume = PlayerPrefs.GetFloat("BGMVolume");
-        audio.volume = PlayerPrefs.GetFloat("AudioVolume");
-        musicSlider.value = bgm.volume;
-        audioSlider.value = audio.volume;
+        //bgm.volume = PlayerPrefs.GetFloat("BGMVolume");
+        //GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("AudioVolume");
+        musicSlider.value = PlayerPrefs.GetFloat("BGMVolume");
+        audioSlider.value = PlayerPrefs.GetFloat("AudioVolume");
 
         musicSlider.onValueChanged.AddListener(delegate {
             BGMSliderChangeCheck();
@@ -50,15 +50,15 @@ public class M_MusicVolumeScript : MonoBehaviour {
 
 	// Update is called once per frame
 	public void BGMSliderChangeCheck () {
-		bgm.volume = musicSlider.value;
-        float value = bgm.volume;
+		//bgm.volume = musicSlider.value;
+        float value = musicSlider.value;
         PlayerPrefs.SetFloat("BGMVolume", value);
     }
 
     public void AudioSliderChangeCheck()
     {
-        audio.volume = audioSlider.value;
-        float value = audio.volume;
+        //GetComponent<AudioSource>().volume = audioSlider.value;
+        float value = audioSlider.value;
         PlayerPrefs.SetFloat("AudioVolume", value);
         //Debug.Log(PlayerPrefs.GetFloat("AudioVolume"));
     }

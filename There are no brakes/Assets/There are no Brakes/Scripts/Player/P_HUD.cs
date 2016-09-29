@@ -46,6 +46,8 @@ public class P_HUD : MonoBehaviour {
 
 	private bool levelComplete = false;
 	void Start(){
+		Win = Resources.Load("Sounds/LevelComplete") as AudioClip;
+		Fail = Resources.Load("Music/UD Ending") as AudioClip;
 		//levCompTextPos = text.transform.position;
 		if(firstLevel){
 			resetValues();
@@ -100,15 +102,13 @@ public class P_HUD : MonoBehaviour {
 	}
 	
 	
-	public AudioClip Win;
-	public AudioClip Fail;
+	private AudioClip Win;
+	private AudioClip Fail;
 	
 	public M_Pause PauseCompoment;
 	public void GameLost(){
-		//GetComponent<AudioSource>().loop = false;
-		//GetComponent<AudioSource>().clip = Fail;
-		//GetComponent<AudioSource>().Play();
-//        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("GameOver");
+		M_AudioManager.StopAllSound();
+		M_AudioManager.PlayAudioSelf(Fail);
 		Analytics.CustomEvent("Game Over", new Dictionary<string, object>
 		{
 			{ "level name", SceneManager.GetActiveScene().name }
@@ -122,10 +122,8 @@ public class P_HUD : MonoBehaviour {
 		Debug.Log("LEVEL COMPLETED");
 		levelComplete = true;
         //Vector3 guiPos = GameObject.Find ("GUI Camera").transform.position;
-		//GetComponent<AudioSource>().loop = false;
-		//GetComponent<AudioSource>().clip = Win;
-		//GetComponent<AudioSource>().Play();
-//        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("LevelComplete");
+		M_AudioManager.StopAllSound();
+		M_AudioManager.PlayAudioSelf(Win);
 		GameObject.Find ("Pause").GetComponent<M_Pause> ().LevelComplete ();
 
         StartCoroutine(loadnextlevel(5));

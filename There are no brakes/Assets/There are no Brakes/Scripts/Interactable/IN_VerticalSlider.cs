@@ -27,8 +27,6 @@ public class IN_VerticalSlider : MonoBehaviour {
 		AltPos = Origin;
 		AltPos.y = moveto;
 		Hydraulics = Resources.Load("Sounds/hydraulics") as AudioClip;
-		GetComponent<AudioSource>().loop = true;
-		GetComponent<AudioSource>().clip = Hydraulics;
 	}
 	
 	void Update(){
@@ -61,16 +59,15 @@ public class IN_VerticalSlider : MonoBehaviour {
 		currentLerpTime += Time.deltaTime;
         if (currentLerpTime > lerpTime) {
             currentLerpTime = lerpTime;
-			GetComponent<AudioSource>().Stop();
+			M_AudioManager.StopAudio(Hydraulics);
         } else {
 			if(!GetComponent<AudioSource>().isPlaying){
-				//GameObject.FindGameObjectWithTag("AudioManager").GetComponent<M_AudioManager>().PlayAudio("Hydraulics");
-				GetComponent<AudioSource>().Play();
+				M_AudioManager.PlayAudioSelf(Hydraulics);
 			}
 		}
 		float percentage = currentLerpTime / lerpTime;
 		if (percentage >= 1) {
-			GetComponent<AudioSource>().Stop();
+			M_AudioManager.StopAudio(Hydraulics);
 		}
 		if(!movingUp){
 			this.transform.position = Vector3.Lerp(AltPos, Origin, percentage);

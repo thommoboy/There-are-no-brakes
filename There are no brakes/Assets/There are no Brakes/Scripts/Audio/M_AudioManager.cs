@@ -13,30 +13,44 @@ public class M_AudioManager : MonoBehaviour
 	/// Store all the possible sounds
 	/// </summary>
 
-	public AudioClip Ambience;
-	public AudioClip MusicIntro;
+	public AudioClip Music;
 	public AudioClip MusicNormalLoop;
 	public AudioClip MusicUrgentLoop;
+	
+	public AudioClip Ambience;
+	
 	
 	public bool isTutorial = false;
 	public bool isMenu = false;
 	private bool musicIntroDone = false;
+	private float volumeChange = 0;
 	/// <summary>
 	/// Grab the objects that will play certain effects
 	/// </summary>
 	public AudioSource MusicOutput;
 	public AudioSource MusicOutput2;
+	public AudioSource AmbienceOutput;
+	
+	private static GameObject[] sounds;
 	
 	private GameObject HUDscript;
 
 	private void Start()
 	{
-		MusicOutput.PlayOneShot (MusicIntro);
+		//play train ambience
+		if(!isMenu){
+			AmbienceOutput.clip = Ambience;
+			AmbienceOutput.Play();
+		}
+		MusicOutput.PlayOneShot (Music);
 		HUDscript = GameObject.Find("HUDmanager");
-		MusicOutput.volume = 1;
-		MusicOutput2.volume = 0;
+		MusicOutput.volume = 1 * PlayerPrefs.GetFloat("BGMVolume");
+		MusicOutput2.volume = 0 * PlayerPrefs.GetFloat("BGMVolume");
 		MusicOutput2.clip = MusicUrgentLoop;
 		MusicOutput2.Stop ();
+		
+		//control volumes
+		sounds = GameObject.FindGameObjectsWithTag("SoundFX");
 	}
 
 	private void Update(){
@@ -51,11 +65,21 @@ public class M_AudioManager : MonoBehaviour
 		}
 		// if running out of time music becomes more urgent, time remaining as a precentage of the HUD bar
 		if(!isTutorial && musicIntroDone && HUDscript.GetComponent<P_HUD> ().barDisplay2 < 0.35f){
-			if(MusicOutput2.volume < 1){
-				MusicOutput.volume -= 0.1f * Time.deltaTime;
-				MusicOutput2.volume += 0.1f * Time.deltaTime;
+			if(volumeChange < 1){
+				volumeChange += 0.1f * Time.deltaTime;
 			}
 		}
+		//make sure volume updates apply
+		if(isTutorial || isMenu){
+			MusicOutput.volume = PlayerPrefs.GetFloat("BGMVolume");
+		} else {
+			MusicOutput.volume = (1-volumeChange) * PlayerPrefs.GetFloat("BGMVolume");
+			MusicOutput2.volume = volumeChange * PlayerPrefs.GetFloat("BGMVolume");
+		}
+		sounds = GameObject.FindGameObjectsWithTag("SoundFX");
+		foreach (GameObject player in sounds) {
+            player.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("AudioVolume");
+        }
 	}
 
 	/*
@@ -135,6 +159,7 @@ public class M_AudioManager : MonoBehaviour
 		AudioSource SD;
 		SD = soundDestination.AddComponent (typeof(AudioSource)) as AudioSource;
 		//Play the audio
+		SD.volume = PlayerPrefs.GetFloat("AudioVolume");
 		SD.PlayOneShot (sound);
 		//Wait for the audio to finish then destroy the audio source
 		Destroy (soundDestination, sound.length);
@@ -152,11 +177,14 @@ public class M_AudioManager : MonoBehaviour
 		}
 		if(!used){
 			//Create the audio source
-			Transform go = new GameObject (sound.name).transform;
+			GameObject temp = new GameObject (sound.name);
+			temp.tag = "SoundFX";
+			Transform go = temp.transform;
 			go.parent = GameObject.Find("AudioManager").transform;
 			AudioSource SD;
 			SD = go.gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
 			//Play the audio
+			SD.volume = PlayerPrefs.GetFloat("AudioVolume");
 			SD.PlayOneShot (sound);
 			//Wait for the audio to finish then destroy the audio source
 			Destroy (go.gameObject, sound.length);
@@ -169,8 +197,17 @@ public class M_AudioManager : MonoBehaviour
 		foreach (Transform child in GameObject.Find("AudioManager").transform)
 		{
 			if(sound.name == child.name){
-				Destroy (child.gameObject, 0.001f);
+				Destroy (child.gameObject, 0.0001f);
 			}
+		}
+	}
+
+	public static void StopAllSound()
+	{
+		//stop all sounds and music
+		foreach (Transform child in GameObject.Find("AudioManager").transform)
+		{
+			Destroy (child.gameObject, 0.0001f);
 		}
 	}
 }
