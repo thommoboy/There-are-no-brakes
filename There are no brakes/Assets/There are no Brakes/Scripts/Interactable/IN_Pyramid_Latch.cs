@@ -7,6 +7,7 @@ using UnityEngine;
 using System.Collections;
  
 public class IN_Pyramid_Latch : MonoBehaviour {
+	public GameObject Trigger;
 	public bool Activated = false;
 	public float MoveSpeed = 4.5f;
 	private float RotateSpeed = 3.5f;
@@ -36,10 +37,10 @@ public class IN_Pyramid_Latch : MonoBehaviour {
 	private bool intrigger = false;
 	void OnTriggerStay(Collider other) {
 		if(other.tag == "Player"){//no player 2 check needed
-			if (other.name == "Player1" && GameObject.Find("PlayerControllers").GetComponent<P_Movement>().P1OnGround){
+			if (other.name == "Player1" && GameObject.Find("PlayerControllers").GetComponent<P_Movement>().P1OnGround && Trigger.GetComponent<IN_Activation>().activated){
 				Activated = true;
 			}
-			if (other.name == "Player3" && GameObject.Find("PlayerControllers").GetComponent<P_Movement>().P3OnGround){
+			if (other.name == "Player3" && GameObject.Find("PlayerControllers").GetComponent<P_Movement>().P3OnGround && Trigger.GetComponent<IN_Activation>().activated){
 				Activated = true;
 			}
 		}
