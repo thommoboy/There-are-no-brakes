@@ -18,7 +18,8 @@ public class Tutorial_FakeDoor : MonoBehaviour {
 
     private Vector3 ori_1_left;
     private Vector3 ori_1_right;
-
+    public float deviation;
+    private Vector3 targetPosition;
     public Vector3 point_1;
     public Vector3 point_2;
     public float speed;
@@ -31,7 +32,8 @@ public class Tutorial_FakeDoor : MonoBehaviour {
         TextController = GameObject.Find("TextObjects").GetComponent<IN_TextTrigger_ConetentControl>();
         ori_1_left = door_1_left.transform.position;
         ori_1_right = door_1_right.transform.position;
-
+        targetPosition = teleportTarget.transform.position;
+        targetPosition.z += deviation;
     }
 	
 	void Update(){
@@ -65,10 +67,10 @@ public class Tutorial_FakeDoor : MonoBehaviour {
 
         if (stage == "teleportTarget")
         {
-            player.transform.position = Vector3.MoveTowards(player.transform.position, teleportTarget.transform.position, speed * Time.deltaTime);
+            player.transform.position = Vector3.MoveTowards(player.transform.position, targetPosition, speed * Time.deltaTime);
             door_1_left.transform.position = Vector3.Lerp(door_1_left.transform.position, destination_left, door_speed);
             door_1_right.transform.position = Vector3.Lerp(door_1_right.transform.position, destination_right, door_speed);
-            if (player.transform.position.x >= teleportTarget.transform.position.x ||
+            if (player.transform.position.x >= targetPosition.x ||
                 player.transform.localPosition.x >= -1.41)
             {
                 stage = "closing";
@@ -132,20 +134,25 @@ public class Tutorial_FakeDoor : MonoBehaviour {
         destination_right = door_0_right.transform.position + Vector3.forward * distance;
         //Debug.Log("point1");
         stage = "point1";
-
+        //set player postion and rotation
+        player.transform.position = this.transform.position;
+        player.transform.rotation = new Quaternion(player.transform.rotation.x, -90, player.transform.rotation.z, player.transform.rotation.w);
         StartCoroutine(DelayToInvoke.DelayToInvokeDo(() =>
         {
             //Debug.Log("point2");
             stage = "point2";
+            player.transform.position = point_1;
             destination_left = door_0_left.transform.position - Vector3.back * distance;
             destination_right = door_0_right.transform.position - Vector3.forward * distance;
         }, 1.5f));
 
         StartCoroutine(DelayToInvoke.DelayToInvokeDo(() =>
         {
-           // Debug.Log("teleportTarget");
+            // Debug.Log("teleportTarget");
+            player.transform.position = point_2;
             destination_left = door_1_left.transform.position + Vector3.back * distance;
             destination_right = door_1_right.transform.position + Vector3.forward * distance;
+            player.transform.rotation = new Quaternion(player.transform.rotation.x, 90, player.transform.rotation.z, player.transform.rotation.w);
             stage = "teleportTarget";
         }, 2.5f));
         /*
