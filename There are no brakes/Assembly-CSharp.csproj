@@ -38,13 +38,14 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CameraMultitarget\Scripts\Demo\CharacterMovement.cs" />
      <Compile Include="Assets\GConsole\Scripts\Commands\Demonstration\GConsoleSuggestionDemonstration.cs" />
      <Compile Include="Assets\GConsole\Scripts\Commands\Demonstration\GConsoleUnityLoggingDemonstration.cs" />
      <Compile Include="Assets\GConsole\Scripts\Commands\GConsoleLevelLoad.cs" />
@@ -88,12 +89,15 @@
      <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\Twirl.cs" />
      <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\VignetteAndChromaticAberration.cs" />
      <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\Vortex.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\AccessScript.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Audio\M_AudioManager.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\AudioManager.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraControl.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraMultiTargetObjective.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraMultitarget.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraPreviewObjective.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraSimpleFollow.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Camera\CameraZoom.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Camera\PyramidLevelCamera.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_Button.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Demo Purposes Only\I_ChestTrigger.cs" />
@@ -265,13 +269,13 @@
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
