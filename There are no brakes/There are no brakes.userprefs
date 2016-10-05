@@ -1,11 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\There are no Brakes\Scripts\Menu\M_MusicVolumeScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\There are no Brakes\Scripts\Audio\M_AudioManager.cs">
     <Files>
       <File FileName="Assets\There are no Brakes\Scripts\Scene\Tutorial_FakeDoor.cs" Line="1" Column="1" />
       <File FileName="Assets\There are no Brakes\Scripts\Camera\CameraMultitarget.cs" Line="1" Column="1" />
-      <File FileName="Assets\There are no Brakes\Scripts\Audio\M_AudioManager.cs" Line="78" Column="4" />
-      <File FileName="Assets\There are no Brakes\Scripts\Menu\M_Pause.cs" Line="212" Column="14" />
+      <File FileName="Assets\There are no Brakes\Scripts\Audio\M_AudioManager.cs" Line="53" Column="54" />
+      <File FileName="Assets\There are no Brakes\Scripts\Menu\M_Pause.cs" Line="1" Column="1" />
       <File FileName="Assets\There are no Brakes\Scripts\Menu\M_MusicVolumeScript.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
