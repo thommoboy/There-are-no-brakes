@@ -44,8 +44,8 @@ public class M_AudioManager : MonoBehaviour
 		}
 		MusicOutput.PlayOneShot (Music);
 		HUDscript = GameObject.Find("HUDmanager");
-		MusicOutput.volume = 1 * PlayerPrefs.GetFloat("BGMVolume");
-		MusicOutput2.volume = 0 * PlayerPrefs.GetFloat("BGMVolume");
+		MusicOutput.volume = 1 * PlayerPrefs.GetFloat("BGMVolume", 1.0f);
+		MusicOutput2.volume = 0 * PlayerPrefs.GetFloat("BGMVolume", 1.0f);
 		MusicOutput2.clip = MusicUrgentLoop;
 		MusicOutput2.Stop ();
 		
@@ -71,14 +71,14 @@ public class M_AudioManager : MonoBehaviour
 		}
 		//make sure volume updates apply
 		if(isTutorial || isMenu){
-			MusicOutput.volume = PlayerPrefs.GetFloat("BGMVolume");
+			MusicOutput.volume = PlayerPrefs.GetFloat("BGMVolume", 1.0f);
 		} else {
-			MusicOutput.volume = (1-volumeChange) * PlayerPrefs.GetFloat("BGMVolume");
-			MusicOutput2.volume = volumeChange * PlayerPrefs.GetFloat("BGMVolume");
+			MusicOutput.volume = (1-volumeChange) * PlayerPrefs.GetFloat("BGMVolume", 1.0f);
+			MusicOutput2.volume = volumeChange * PlayerPrefs.GetFloat("BGMVolume", 1.0f);
 		}
 		sounds = GameObject.FindGameObjectsWithTag("SoundFX");
 		foreach (GameObject player in sounds) {
-            player.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("AudioVolume");
+			player.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("AudioVolume", 1.0f);
         }
 	}
 
@@ -159,7 +159,7 @@ public class M_AudioManager : MonoBehaviour
 		AudioSource SD;
 		SD = soundDestination.AddComponent (typeof(AudioSource)) as AudioSource;
 		//Play the audio
-		SD.volume = PlayerPrefs.GetFloat("AudioVolume");
+		SD.volume = PlayerPrefs.GetFloat("AudioVolume", 1.0f);
 		SD.PlayOneShot (sound);
 		//Wait for the audio to finish then destroy the audio source
 		Destroy (soundDestination, sound.length);
@@ -184,7 +184,7 @@ public class M_AudioManager : MonoBehaviour
 			AudioSource SD;
 			SD = go.gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
 			//Play the audio
-			SD.volume = PlayerPrefs.GetFloat("AudioVolume");
+			SD.volume = PlayerPrefs.GetFloat("AudioVolume", 1.0f);
 			SD.PlayOneShot (sound);
 			//Wait for the audio to finish then destroy the audio source
 			Destroy (go.gameObject, sound.length);

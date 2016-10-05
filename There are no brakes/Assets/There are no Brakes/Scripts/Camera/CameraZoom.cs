@@ -45,17 +45,17 @@ public class CameraZoom : MonoBehaviour {
 				zoomed = true;
 				if (CurrentRoom == "Room1") {
 					cmt.OriginPos = new Vector3 (Camera1.transform.position.x, Camera1.transform.position.y, Camera1.transform.position.z);
-					cmt.OriginRot = new Quaternion (Camera1.transform.rotation.x, Camera1.transform.rotation.y, Camera1.transform.rotation.z, Camera1.transform.rotation.w);
+					cmt.OriginRot = new Quaternion (0.0f, 270.0f, 0.0f, 0.0f);
 				}
 
 				if (CurrentRoom == "Room2") {
 					cmt.OriginPos = new Vector3 (Camera2.transform.position.x, Camera2.transform.position.y, Camera2.transform.position.z);
-					cmt.OriginRot = new Quaternion (Camera2.transform.rotation.x, Camera2.transform.rotation.y, Camera2.transform.rotation.z, Camera2.transform.rotation.w);
+					cmt.OriginRot = new Quaternion (0.0f, 270.0f, 0.0f, 0.0f);
 				}
 
 				if (CurrentRoom == "Room3") {
 					cmt.OriginPos = new Vector3 (Camera3.transform.position.x, Camera3.transform.position.y, Camera3.transform.position.z);
-					cmt.OriginRot = new Quaternion (Camera3.transform.rotation.x, Camera3.transform.rotation.y, Camera3.transform.rotation.z, Camera3.transform.rotation.w);
+					cmt.OriginRot = new Quaternion (0.0f, 270.0f, 0.0f, 0.0f);
 				}
 
 				cmt.Zoomed = true;

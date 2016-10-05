@@ -179,12 +179,12 @@ public class CameraMultitarget : MonoBehaviour {
 		}
 
 		c.transform.position = Vector3.Lerp(c.transform.position , posAt, 0.1f);			
-		c.transform.LookAt(currentLookAt);
+		//c.transform.LookAt(currentLookAt);
 		}
 		else
 		{
 			c.transform.position = Vector3.Lerp(c.transform.position , OriginPos, 0.1f);
-			c.transform.rotation = Quaternion.Lerp(c.transform.rotation, OriginRot, 0.1f);
+			//c.transform.rotation = Quaternion.Lerp(c.transform.rotation, OriginRot, 0.1f);
 		}
 		#endregion
 	}
