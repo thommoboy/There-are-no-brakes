@@ -62,4 +62,29 @@ public class M_MusicVolumeScript : MonoBehaviour {
         PlayerPrefs.SetFloat("AudioVolume", value);
         //Debug.Log(PlayerPrefs.GetFloat("AudioVolume"));
     }
+
+    public void changeVoiceValue(string sliderName, float value) {
+        float temp = 0;
+
+        if (sliderName == "MusicSlider")
+            temp = PlayerPrefs.GetFloat("BGMVolume");
+        else if (sliderName == "SoundSlider")
+            temp = PlayerPrefs.GetFloat("AudioVolume");
+
+        if (value > 0)
+        {
+            temp = Mathf.Min(1.0f , temp + value);
+        }
+        else if (value < 0) {
+            temp = Mathf.Max(0.0f, temp + value);
+        }
+
+        if (sliderName == "MusicSlider")
+            PlayerPrefs.SetFloat("BGMVolume",temp);
+        else if (sliderName == "SoundSlider")
+            PlayerPrefs.SetFloat("AudioVolume", temp);
+
+        musicSlider.value = PlayerPrefs.GetFloat("BGMVolume");
+        audioSlider.value = PlayerPrefs.GetFloat("AudioVolume");
+    }
 }

@@ -99,7 +99,8 @@ public class Tutorial_FakeDoor : MonoBehaviour {
 				intrigger = true;
 				if(Time.time > nextInteract && stage!= "closing"){
 					if (Input.GetAxis("P2 Interact") > 0 || Input.GetAxis("B_2") > 0) {
-						movePlayer(other);
+                        if (!GameObject.Find("PlayerControllers").GetComponent<P_Movement>().P2Uncontroled)
+					    	movePlayer(other);
 					}
 				}
 			}

@@ -62,7 +62,7 @@ public class M_3D_OnMouseOver : MonoBehaviour {
 	IEnumerator delayExecute(int level){
         //print (Time.time);
         GameObject.Find("Main Camera").GetComponent<M_MoveForward>().startMove(3);
-		GameObject.Find ("MenuButtonManager").GetComponent<M_3DMenuButton> ().started = true;
+		GameObject.Find ("MenuButtonManager").GetComponent<M_MenuController> ().gameStart();
 		yield return new WaitForSeconds (1);
 		GameObject.Find("Paper_box").GetComponent<M_MenuPaperBox>().animator.enabled = true;
 		yield return new WaitForSeconds (3);
