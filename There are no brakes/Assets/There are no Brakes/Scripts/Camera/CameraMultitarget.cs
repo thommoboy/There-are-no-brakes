@@ -1,15 +1,4 @@
-/***********************
- * Multiple Target Tracking and Framing Camera
- * CameraMultitarget.cs
- * Originally Written by Rainbirth SLU
- * Modified By:
- * Pierce Thompson
- * Xinyu Feng
- * Josh Garvey --> Modified to allow zoom out mechanic to work with multi room levels such as tutorial (several different zoom positions)
- * Nathan Brown: make zoomout able to be triggered by other scripts, stop camera zooming out further than default zoomout position
- ***********************/
 using UnityEngine;
-using UnityEngine.SceneManagement; //to determine which scene we are in
 using System.Collections;
 using System.Collections.Generic;
 
@@ -18,47 +7,57 @@ public class CameraMultitarget : MonoBehaviour {
 	/// <summary>
 	/// The target objects.
 	/// </summary>
-	/// 
+	[HideInInspector]
 	public List<GameObject> targetObjects = new List<GameObject>();
-
+	[HideInInspector]
 	public Vector3 orbitRotation;
-
-    public float cameraDistance = 0.35f;
 
 	/// <summary>
 	/// the closest the camera will be, from here the objects won't get framed.
 	/// </summary>	
+	[HideInInspector]
 	public float minDistanceToTarget = 10;
 	
 	/// <summary>
 	/// the maximum distance to focus objects. After this distance objects won't get framed.
 	/// </summary>	
+	[HideInInspector]
 	public float maxDistanceToTarget = 100;
 	
 
 	/// <summary>
 	/// The screen safe area to keep your objects in, it's a percent of the fov.
 	/// </summary>	
+	[HideInInspector]
 	public float screenSafeArea = 200.0f;
 	
 	/// <summary>
 	/// the easing function that will be used to interpolate positions.
 	/// </summary>
+	[HideInInspector]
 	public float positionInterpolationSpeed = 5f;
 	
 	/// <summary>
 	/// the speed it will interpolate to the look at point desired.
 	/// </summary>
+	[HideInInspector]
 	public float targetInterpolationSpeed = 2f;
 
 	/// <summary>
 	/// The orthographic safe area multiplier to reduce the amount of safe area. More will result in 
 	/// less space when adjusting the safe area amount.
 	/// </summary>
+	[HideInInspector]
 	public float orthographicSafeAreaMulti = 4f;
 
-
+	[HideInInspector]
 	public Vector3 camPosition;
+	[HideInInspector]
+	public Vector3 OriginPos;
+	[HideInInspector]
+	public Quaternion OriginRot;
+	[HideInInspector]
+	public bool Zoomed = false;
 	
 	/// <summary>
 	/// Private variables for the script functionality.
@@ -76,43 +75,10 @@ public class CameraMultitarget : MonoBehaviour {
 		
 	private Vector3 cameraDirection;
 	private Bounds currentBounds;
-
-	public Vector3 origin;
-	public Quaternion originalRot;
-
-	//tutorial camera zoom origins
-//	public Vector3 pos1;
-//	public Quaternion rot1;
-//	public Vector3 pos2;
-//	public Quaternion rot2;
-//	public Vector3 pos3;
-//	public Quaternion rot3;
-	public string currentRoom = "Room1";
-
 	#endregion
-
-	void Awake()
-	{
-		Vector3 temp = transform.position;
-
-		if(Application.isEditor)
-			temp.z = -307; // Editor
-		else
-			temp.z = -226; // Standalone
-
-		transform.position = temp;
-	}
-
+	
 	// Use this for initialization
 	void Start () {
-		origin = transform.position;
-		originalRot = transform.rotation;
-		if (SceneManager.GetActiveScene().name == "Tutorial Level") {
-			//RoomDoors = GameObject.FindGameObjectsWithTag ("TuteRoom");
-			//Debug.Log ("In tha sceeeeeeene");
-			//do stuff
-		}
-
 		camPosition = transform.position;
 	
 		// places the camera at the initial position, relative to the look at vector.
@@ -129,6 +95,14 @@ public class CameraMultitarget : MonoBehaviour {
 		currentLookAt = lookAt;
 
 		orbitRotation = Quaternion.identity.eulerAngles;
+
+		if(Application.loadedLevelName == "Tutorial Level")
+			orbitRotation = new Vector3 (orbitRotation.x, orbitRotation.y + 27.5f, orbitRotation.z);
+		else if(Application.loadedLevelName == "Adventurer Level")
+			orbitRotation = new Vector3 (orbitRotation.x, orbitRotation.y + 27.5f, orbitRotation.z);
+		else if(Application.loadedLevelName == "Industrial Level")
+			orbitRotation = new Vector3 (orbitRotation.x, orbitRotation.y + 27.5f, orbitRotation.z);
+		
 	}
 	
 	private Bounds GetElementsBounds()
@@ -140,7 +114,7 @@ public class CameraMultitarget : MonoBehaviour {
 			bool inited = false;
 			// we get the maximum and minimum bounds of the elements we want to fit in the camera.			
 			foreach(GameObject tr in targetObjects)
-			{
+			{				
 				if (tr.GetComponent<CameraMultiTargetObjective>().enableTracking)
 				{
 					if (!inited)
@@ -174,16 +148,11 @@ public class CameraMultitarget : MonoBehaviour {
 		Gizmos.color = Color.green;
 		Gizmos.DrawWireCube(currentBounds.center, currentBounds.size);
 	}
-
-    private float lastHoldTime = 0f;
-	private float holdDelayTime = 1.0f;
-	private float lastAutoZoomTime = 0f;
-	private float autoZoomDelayTime = 5.0f;
-    private bool zoomed = false;
-	public bool zoomout = false;
+	
 	// Update is called once per frame
 	void FixedUpdate () {	
 		currentBounds = GetElementsBounds();
+		
 		// we stablish our lookAt point to the center of that bounds.
 		lookAt = currentBounds.center;
 		
@@ -191,96 +160,32 @@ public class CameraMultitarget : MonoBehaviour {
 		Camera c = GetComponent<Camera>();
 		float hFov = Mathf.Atan(Mathf.Tan(c.fieldOfView * Mathf.Deg2Rad / 2f) * c.aspect) * Mathf.Rad2Deg;
 		float fov = Mathf.Min (c.fieldOfView, hFov) - ((screenSafeArea / 100) * c.fieldOfView);		
-		float distance = boundsSizeSphere / (Mathf.Sin(fov * Mathf.Deg2Rad));
-
-        //delete this IF if find any bug
-        if ((Input.GetKey(KeyCode.Space) || Input.GetButtonDown("Y_1") || Input.GetButtonDown("Y_2") || Input.GetButtonDown("Y_3")) && Time.time > lastHoldTime + holdDelayTime) {
-            zoomed = !zoomed;
-            lastHoldTime = Time.time;
-            //Debug.Log(zoomed);
-        }
-		//if another function says to zoomout
-        if (zoomout) {
-            zoomout = false;
-            zoomed = true;
-            //Debug.Log(zoomed);
-        }
+		float distance = boundsSizeSphere / (Mathf.Sin(fov * Mathf.Deg2Rad/2));
 		
-		
-		// get zoomout position if tutorial
-		if (SceneManager.GetActiveScene ().name == "Tutorial Level") {
-			if (currentRoom == "Room1") {
-				origin = GameObject.Find ("Cam1").transform.position;
-			} else if (currentRoom == "Room2") {
-				origin = GameObject.Find ("Cam2").transform.position;
-			} else if (currentRoom == "Room3"){
-				origin = GameObject.Find ("Cam3").transform.position;
-			}
-		}
-		
-		// dont auto zoom out further than zoomout position
-		if(c.transform.position.x > origin.x && Time.time > lastAutoZoomTime + autoZoomDelayTime){
-			lastAutoZoomTime = Time.time;
-			if(!zoomed){
-				GameObject.Find("PlayerControllers").GetComponent<IN_ShowIcon>().ShowIcon(0);
-			}
-			zoomed = true;
-			//Debug.Log ("test");
-		}
-		
-		
-
 		// we get the distance at which we need to position our camera.
-		//if (!Input.GetKey(KeyCode.Space) && Input.GetAxis("Y_1") < 0.1f && Input.GetAxis("Y_2") < 0.1f && Input.GetAxis("Y_3") < 0.1f && Time.time >= lastHoldTime + holdDeplayTime) {
-        if (!zoomed) { 
-			//Debug.Log ("test");
-            distance = Mathf.Max (minDistanceToTarget, Mathf.Min (distance, maxDistanceToTarget));
-			// we interpolate to the new desired positions.	
-			Vector3 currentCameraDirection = Quaternion.Euler (new Vector3 (orbitRotation.x, orbitRotation.y, orbitRotation.z)) * cameraDirection;
-			currentLookAt = Vector3.Lerp (currentLookAt, lookAt, targetInterpolationSpeed * Time.fixedDeltaTime);
-			posAt = Vector3.Lerp (posAt, currentLookAt + (currentCameraDirection * distance), positionInterpolationSpeed * Time.fixedDeltaTime);
+		#region Not Zoomed
+		if(!Zoomed)
+		{
+		distance = Mathf.Max( minDistanceToTarget, Mathf.Min(distance, maxDistanceToTarget));
+		
+		// we interpolate to the new desired positions.	
+		Vector3 currentCameraDirection = Quaternion.Euler(orbitRotation) * cameraDirection;
+		currentLookAt = Vector3.Lerp(currentLookAt, lookAt, targetInterpolationSpeed * Time.fixedDeltaTime);
+		posAt = Vector3.Lerp(posAt,currentLookAt +( currentCameraDirection * distance), positionInterpolationSpeed * Time.fixedDeltaTime);
 
-			if (c.orthographic) {
-				c.orthographicSize = boundsSizeSphere + (screenSafeArea / orthographicSafeAreaMulti);
-			}
+		if (c.orthographic)
+		{
+			c.orthographicSize = boundsSizeSphere + (screenSafeArea/orthographicSafeAreaMulti);
+		}
 
-			//c.transform.position = Vector3.Lerp (new Vector3(c.transform.position.x, c.transform.position.y - 0.2f, c.transform.position.z), posAt, 0.1f);
-			c.transform.position = Vector3.Lerp (new Vector3(c.transform.position.x - cameraDistance, c.transform.position.y, c.transform.position.z), posAt, 0.007f);
-
-			//c.transform.LookAt (currentLookAt);
-		} else {
-            //Debug.Log ("Zoom Out");
-			c.transform.position = Vector3.Lerp (c.transform.position, origin, 0.01f);
-			
-			
-            //if (Input.GetKey(KeyCode.Space) || Input.GetAxis("Y_1") > 0.1f || Input.GetAxis("Y_2") > 0.1f || Input.GetAxis("Y_3") > 0.1f)
-            //if (zoomed)
-            //{
-				//this.GetComponent<CameraControl> ().wait = false;
-				//this.GetComponent<CameraControl> ().StartCoroutine ("Work");
-
-               // lastHoldTime = Time.time;
-				
-            /*}
-            else
-			{
-				if (SceneManager.GetActiveScene ().name == "Tutorial Level") {
-					if (currentRoom == "Room1") {
-						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam1").transform.position, 0.009f);
-					} else if (currentRoom == "Room2") {
-						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam2").transform.position, 0.009f);
-					} else if (currentRoom == "Room3"){
-						c.transform.position = Vector3.Lerp (c.transform.position, GameObject.Find ("Cam3").transform.position, 0.01f);
-					}
-				} else {
-					c.transform.position = Vector3.Lerp (c.transform.position, origin, 0.009f);
-				}
-//				if (SceneManager.GetActiveScene ().name == "Tutorial Level") {
-//				} else {
-//					c.transform.position = Vector3.Lerp (c.transform.position, origin, 0.009f);
-//				}
-            }*/
-            //c.transform.rotation = Quaternion.Lerp (c.transform.rotation, originalRot, 0.05f);
-        }
+		c.transform.position = Vector3.Lerp(c.transform.position , posAt, 0.1f);			
+		c.transform.LookAt(currentLookAt);
+		}
+		else
+		{
+			c.transform.position = Vector3.Lerp(c.transform.position , OriginPos, 0.1f);
+			c.transform.rotation = Quaternion.Lerp(c.transform.rotation, OriginRot, 0.1f);
+		}
+		#endregion
 	}
 }
