@@ -41,7 +41,7 @@ public class CameraZoom : MonoBehaviour {
 		}
 
 		if (!zoomed) {
-			if ((Input.GetKey (KeyCode.Space)) && nextZoomTime == 0.0f) {
+			if ((Input.GetKey (KeyCode.Space) || Input.GetAxis("Y_1") > 0.0f || Input.GetAxis("Y_2") > 0.0f||Input.GetAxis("Y_3") > 0.0f) && nextZoomTime == 0.0f) {
 				zoomed = true;
 				if (CurrentRoom == "Room1") {
 					cmt.OriginPos = new Vector3 (Camera1.transform.position.x, Camera1.transform.position.y, Camera1.transform.position.z);
@@ -63,7 +63,7 @@ public class CameraZoom : MonoBehaviour {
 			}
 		}
 		if (zoomed) {
-			if ((Input.GetKey (KeyCode.Space)) && nextZoomTime == 0.0f) {
+			if ((Input.GetKey (KeyCode.Space) || Input.GetAxis("Y_1") > 0.0f || Input.GetAxis("Y_2") > 0.0f||Input.GetAxis("Y_3") > 0.0f) && nextZoomTime == 0.0f) {
 				zoomed = false;
 				cmt.Zoomed = false;
 				nextZoomTime = zoomTimeOut;

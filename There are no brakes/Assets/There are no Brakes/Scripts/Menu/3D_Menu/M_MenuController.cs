@@ -166,7 +166,8 @@ public class M_MenuController : MonoBehaviour {
     }
 
     public void gameStart() {
-        rightPanel.GetComponent<M_Panel>().disactive();
+		if (rightPanel!= null)
+       	 	rightPanel.GetComponent<M_Panel>().disactive();
         isStart = true;
     }
 }

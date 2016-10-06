@@ -9,49 +9,49 @@ public class CameraMultitarget : MonoBehaviour {
 	/// </summary>
 	[HideInInspector]
 	public List<GameObject> targetObjects = new List<GameObject>();
-	[HideInInspector]
-	public Vector3 orbitRotation;
+	//[HideInInspector]
+	private Vector3 orbitRotation;
 
 	/// <summary>
 	/// the closest the camera will be, from here the objects won't get framed.
 	/// </summary>	
-	[HideInInspector]
-	public float minDistanceToTarget = 10;
+	//[HideInInspector]
+	private float minDistanceToTarget = 0;
 	
 	/// <summary>
 	/// the maximum distance to focus objects. After this distance objects won't get framed.
 	/// </summary>	
-	[HideInInspector]
-	public float maxDistanceToTarget = 100;
+	//[HideInInspector]
+	private float maxDistanceToTarget = 80;
 	
 
 	/// <summary>
 	/// The screen safe area to keep your objects in, it's a percent of the fov.
 	/// </summary>	
-	[HideInInspector]
-	public float screenSafeArea = 200.0f;
+	//[HideInInspector]
+	private float screenSafeArea = 0.0f;
 	
 	/// <summary>
 	/// the easing function that will be used to interpolate positions.
 	/// </summary>
-	[HideInInspector]
-	public float positionInterpolationSpeed = 5f;
+//[HideInInspector]
+	private float positionInterpolationSpeed = 5f;
 	
 	/// <summary>
 	/// the speed it will interpolate to the look at point desired.
 	/// </summary>
-	[HideInInspector]
-	public float targetInterpolationSpeed = 2f;
+	//[HideInInspector]
+	private float targetInterpolationSpeed = 2f;
 
 	/// <summary>
 	/// The orthographic safe area multiplier to reduce the amount of safe area. More will result in 
 	/// less space when adjusting the safe area amount.
 	/// </summary>
-	[HideInInspector]
-	public float orthographicSafeAreaMulti = 4f;
+	//[HideInInspector]
+	private float orthographicSafeAreaMulti = 4f;
 
-	[HideInInspector]
-	public Vector3 camPosition;
+	//[HideInInspector]
+	private Vector3 camPosition;
 	[HideInInspector]
 	public Vector3 OriginPos;
 	[HideInInspector]

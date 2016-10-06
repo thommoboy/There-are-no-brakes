@@ -37,7 +37,7 @@ public class M_GraphicSlider : MonoBehaviour {
         switch (optionName)
         {
             case "FieldOfView":
-                cam.fieldOfView = Value * 100;
+                //cam.fieldOfView = Value * 100;
                 break;
             case "TextureQuality":
                 QualitySettings.masterTextureLimit = 3 - (int)Value;
@@ -56,7 +56,7 @@ public class M_GraphicSlider : MonoBehaviour {
                 QualitySettings.vSyncCount = (int)Value;
                 break;
             case "ShadowDistance":
-                QualitySettings.shadowDistance = (int)(Value * 100);
+                //QualitySettings.shadowDistance = (int)(Value * 100);
                 break;
             default:
                 break;
@@ -65,7 +65,7 @@ public class M_GraphicSlider : MonoBehaviour {
 
     private void setOption() {
         float Value = PlayerPrefs.GetFloat("FieldOfView");
-        cam.fieldOfView = Value * 100;
+        //cam.fieldOfView = Value * 100;
 
         Value  = PlayerPrefs.GetFloat("TextureQuality");
         QualitySettings.masterTextureLimit = 3 - (int)Value;
@@ -84,7 +84,7 @@ public class M_GraphicSlider : MonoBehaviour {
         QualitySettings.vSyncCount = (int)Value;
 
         Value = PlayerPrefs.GetFloat("ShadowDistance");
-        QualitySettings.shadowDistance = (int)(Value * 100);
+        //QualitySettings.shadowDistance = (int)(Value * 100);
     }
 
     private float lastChangeTime;
@@ -125,7 +125,7 @@ public class M_GraphicSlider : MonoBehaviour {
         switch (optionName)
         {
             case "FieldOfView":
-                PlayerPrefs.SetFloat("FieldOfView", this.GetComponent<Slider>().value);
+               // PlayerPrefs.SetFloat("FieldOfView", this.GetComponent<Slider>().value);
                 break;
             case "TextureQuality":
                 PlayerPrefs.SetFloat("TextureQuality", this.GetComponent<Slider>().value);
