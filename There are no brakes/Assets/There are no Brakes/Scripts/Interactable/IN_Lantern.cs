@@ -9,12 +9,17 @@ using System.Collections;
 
 public class IN_Lantern : MonoBehaviour{
 	public bool activated = false;
+	public bool isTutorial = false;
 	public GameObject lantern;
+	public GameObject platforms;
     private IN_TextTrigger_ConetentControl TextController;
 	
 	void Start(){
         TextController = GameObject.Find("TextObjects").GetComponent<IN_TextTrigger_ConetentControl>();
 		lantern.GetComponent<Light>().enabled = false;
+		if(isTutorial){
+			platforms.SetActive (false);
+		}
 	}
 	
 	void Update(){
@@ -38,6 +43,9 @@ public class IN_Lantern : MonoBehaviour{
 				lantern.GetComponent<Light> ().enabled = true;
 				activated = true;
 				TextController.display = false;
+				if(isTutorial){
+					platforms.SetActive (true);
+				}
 			}
 		}
 	}

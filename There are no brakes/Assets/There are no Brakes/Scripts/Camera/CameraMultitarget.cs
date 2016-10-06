@@ -16,13 +16,13 @@ public class CameraMultitarget : MonoBehaviour {
 	/// the closest the camera will be, from here the objects won't get framed.
 	/// </summary>	
 	//[HideInInspector]
-	private float minDistanceToTarget = 0;
+	private float minDistanceToTarget = 15;
 	
 	/// <summary>
 	/// the maximum distance to focus objects. After this distance objects won't get framed.
 	/// </summary>	
 	//[HideInInspector]
-	private float maxDistanceToTarget = 80;
+	private float maxDistanceToTarget = 100;
 	
 
 	/// <summary>

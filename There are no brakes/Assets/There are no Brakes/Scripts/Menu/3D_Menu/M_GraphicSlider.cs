@@ -64,10 +64,7 @@ public class M_GraphicSlider : MonoBehaviour {
     }
 
     private void setOption() {
-        float Value = PlayerPrefs.GetFloat("FieldOfView");
-        //cam.fieldOfView = Value * 100;
-
-        Value  = PlayerPrefs.GetFloat("TextureQuality");
+        float Value  = PlayerPrefs.GetFloat("TextureQuality", 3);
         QualitySettings.masterTextureLimit = 3 - (int)Value;
 
         Value = PlayerPrefs.GetFloat("AnisotropicFiltering");

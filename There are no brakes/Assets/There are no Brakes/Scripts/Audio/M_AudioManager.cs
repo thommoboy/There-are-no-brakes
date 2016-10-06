@@ -44,8 +44,11 @@ public class M_AudioManager : MonoBehaviour
 		}
 		if(isMenu || isTutorial){
 			MusicOutput.loop = true;
+			MusicOutput.clip = Music;
+			MusicOutput.Play();
+		} else {
+			MusicOutput.PlayOneShot (Music);
 		}
-		MusicOutput.PlayOneShot (Music);
 		HUDscript = GameObject.Find("HUDmanager");
 		MusicOutput.volume = 1 * PlayerPrefs.GetFloat("BGMVolume", 1.0f);
 		MusicOutput2.volume = 0 * PlayerPrefs.GetFloat("BGMVolume", 1.0f);
