@@ -23,7 +23,7 @@ public class IN_trigger_zoomout : MonoBehaviour {
 		if(checking && onactivate){
 			Activated = this.GetComponent<IN_Activation>().activated;
 			if(Activated){
-				//Camera.GetComponent<CameraMultitarget>().zoomout = true;
+				Camera.GetComponent<CameraZoom>().autoZoomout();
 				checking = false;
 			}
 		}
@@ -32,7 +32,7 @@ public class IN_trigger_zoomout : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 		if(checking && !onactivate){
 			if (other.tag == "Player"){
-				//Camera.GetComponent<CameraMultitarget>().zoomout = true;
+				Camera.GetComponent<CameraZoom>().autoZoomout();
 				checking = false;
 			}
 		}

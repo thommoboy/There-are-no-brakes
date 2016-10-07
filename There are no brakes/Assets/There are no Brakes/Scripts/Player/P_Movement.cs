@@ -70,8 +70,23 @@ public class P_Movement : MonoBehaviour
 //		grapplePoints = GameObject.FindGameObjectsWithTag("gp");
 	}
 
+	private bool zoomin = false;
+	private bool zoomcheck = false;
+	private float distance = 0;
+	private float maxZoomInDistance = 20;
     void FixedUpdate()
     {
+	// checks if players are close enough together to warrant camera zoom in, but wont prevent players from zooming camera out if they want
+		distance = 0;
+		if(Vector3.Distance(Player1.transform.position, Player2.transform.position) > distance){distance = Vector3.Distance(Player1.transform.position, Player2.transform.position);}
+		if(Vector3.Distance(Player1.transform.position, Player3.transform.position) > distance){distance = Vector3.Distance(Player1.transform.position, Player3.transform.position);}
+		if(Vector3.Distance(Player3.transform.position, Player2.transform.position) > distance){distance = Vector3.Distance(Player3.transform.position, Player2.transform.position);}
+		if(distance < maxZoomInDistance){zoomin = true;} else {zoomin = false;}
+		if(zoomin && !zoomcheck){
+			GameObject.Find ("Main Camera").GetComponent<CameraZoom>().autoZoomin();
+		}
+		zoomcheck = zoomin;	
+	
 		if (Player1)
 		{
 			//Cast a ray beneath the player and check that the distance from the player to the ground is less than 1, if so you can jump!!

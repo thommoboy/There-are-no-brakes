@@ -34,8 +34,8 @@ public class IN_Group_Checkpoint : MonoBehaviour {
 			GameObject.Find("Player2").transform.position = new Vector3(temp.x,temp.y,temp.z+teleportDistance);
 			temp = GameObject.Find("Player3").transform.position;
 			GameObject.Find("Player3").transform.position = new Vector3(temp.x,temp.y,temp.z+teleportDistance);
-			temp = GameObject.Find("Main Camera").transform.position;
-			GameObject.Find("Main Camera").transform.position = new Vector3(temp.x,temp.y,temp.z+(2*teleportDistance));
+			//temp = GameObject.Find("Main Camera").transform.position;
+			//GameObject.Find("Main Camera").transform.position = new Vector3(temp.x,temp.y,temp.z+(2f*teleportDistance));
             Door_Amime.Open_door(0);
             if (final && !complete) {
 				GameObject.Find("HUDmanager").GetComponent<P_HUD>().LevelCompleted();
