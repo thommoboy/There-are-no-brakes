@@ -28,6 +28,11 @@ public class IN_Group_Checkpoint : MonoBehaviour {
 	void Update () {
 		if(playernum == 3 && !switched){
 			switched = true;
+			//if it's the final room, don't teleport!
+			if (final) {
+				teleportDistance = 0.0f;
+			}
+
 			Vector3 temp = GameObject.Find("Player1").transform.position;
 			GameObject.Find("Player1").transform.position = new Vector3(temp.x,temp.y,temp.z+teleportDistance);
 			temp = GameObject.Find("Player2").transform.position;
