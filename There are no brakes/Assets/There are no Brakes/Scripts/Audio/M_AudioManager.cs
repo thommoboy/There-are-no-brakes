@@ -61,7 +61,7 @@ public class M_AudioManager : MonoBehaviour
 
 	private void Update(){
 		// play intro then go into the loops
-		if(!isTutorial && !MusicOutput.isPlaying && !musicIntroDone){
+		if(!isTutorial && !isMenu && !MusicOutput.isPlaying && !musicIntroDone){
 			MusicOutput.loop = true;
 			MusicOutput2.loop = true;
 			MusicOutput.clip = MusicNormalLoop;
@@ -70,7 +70,7 @@ public class M_AudioManager : MonoBehaviour
 			musicIntroDone = true;
 		}
 		// if running out of time music becomes more urgent, time remaining as a precentage of the HUD bar
-		if(!isTutorial && musicIntroDone && HUDscript.GetComponent<P_HUD> ().barDisplay2 < 0.35f){
+		if(!isTutorial && !isMenu && musicIntroDone && HUDscript.GetComponent<P_HUD> ().barDisplay2 < 0.35f){
 			if(volumeChange < 1){
 				volumeChange += 0.1f * Time.deltaTime;
 			}
