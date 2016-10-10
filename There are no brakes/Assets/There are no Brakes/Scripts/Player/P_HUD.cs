@@ -56,6 +56,8 @@ public class P_HUD : MonoBehaviour {
 			saveLevel1Time(0);
 			saveLevel2Time(0);
 			saveLevel3Time(0);
+			GameObject.Find("HUD Train").GetComponent<Renderer>().enabled = false;
+			GameObject.Find("HUDtrainIcon").GetComponent<Renderer>().enabled = false;
 		} else {
 			//barDisplay1 = remainingCloudTime();
 			barDisplay2 = remainingTrainTime();
