@@ -87,9 +87,11 @@ public class CameraZoom : MonoBehaviour {
 	}
 	
 	public void autoZoomin(){
-		zoomed = false;
-		cmt.Zoomed = false;
-		nextZoomTime = zoomTimeOut;
+		if(nextZoomTime == 0.0f){
+			zoomed = false;
+			cmt.Zoomed = false;
+			nextZoomTime = zoomTimeOut;
+		}
 	}
 	public void autoZoomout(){
 		zoomed = true;

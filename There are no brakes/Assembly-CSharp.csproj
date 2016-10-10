@@ -38,10 +38,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -143,9 +143,14 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Interactable\Train_Wheels.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_3DMenuButton.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_3D_OnMouseOver.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_Button.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_ContollerSwitch.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_GrahpicPanel.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_GraphicSlider.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_MenuController.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_MenuPaperBox.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_MoveForward.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\M_Panel.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\3D_Menu\Ms_3D_CreditsText.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\CM_ArrowSwitch.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Menu\CM_ChooseArrow.cs" />
@@ -179,6 +184,7 @@
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_FlickerLight.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_MoveArrow.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Scene\Tutorial_RoomChange.cs" />
+     <Compile Include="Assets\There are no Brakes\Scripts\VersionNumber.cs" />
      <Compile Include="Assets\uGUI\GConsoleSimpleToggle.cs" />
      <Compile Include="Assets\uGUI\GConsoleuGUI.cs" />
      <Compile Include="Assets\uGUI\GConsoleuGUIInput.cs" />
@@ -269,13 +275,13 @@
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
