@@ -20,55 +20,35 @@ public class M_GraphicSlider : MonoBehaviour {
             });
             lastChangeTime = Time.realtimeSinceStartup;
         }
-        else {
-            setOption();
-        }
-        
+
     }
 
     // Update is called once per frame
     void Update () {
 	
 	}
-
-    private void onValueChanged(string optionName) {
-        saveValue(optionName);
-        float Value = this.GetComponent<Slider>().value;
-        switch (optionName)
-        {
-            case "FieldOfView":
-                //cam.fieldOfView = Value * 100;
-                break;
-            case "TextureQuality":
-                QualitySettings.masterTextureLimit = 3 - (int)Value;
-                break;
-            case "AnisotropicFiltering":
-                if ((int)Value == 1)
-                {
-                    QualitySettings.anisotropicFiltering = AnisotropicFiltering.ForceEnable;
-                }
-                else
-                {
-                    QualitySettings.anisotropicFiltering = AnisotropicFiltering.Disable;
-                }
-                break;
-            case "Vsync":
-                QualitySettings.vSyncCount = (int)Value;
-                break;
-            case "ShadowDistance":
-                //QualitySettings.shadowDistance = (int)(Value * 100);
-                break;
-            default:
-                break;
-        }
+    
+    void setLight(float value) {
+        GameObject.Find("Directional Light").GetComponent<Light>().intensity = value;
+        PlayerPrefs.SetFloat("Light", value);
     }
 
-    private void setOption() {
-        float Value  = PlayerPrefs.GetFloat("TextureQuality", 3);
-        QualitySettings.masterTextureLimit = 3 - (int)Value;
+    float getLight() {
+        return PlayerPrefs.GetFloat("Light");
+    }
 
-        Value = PlayerPrefs.GetFloat("AnisotropicFiltering");
-        if ((int)Value == 1)
+    void setTextureQuality(int value) {
+        QualitySettings.masterTextureLimit = 3 - (int)value;
+        PlayerPrefs.SetInt("TextureQuality", value);
+    }
+
+    int getTextureQuality() {
+        return PlayerPrefs.GetInt("TextureQuality");
+    }
+
+    void setAnisotropicFiltering(int value)
+    {
+        if (value == 1)
         {
             QualitySettings.anisotropicFiltering = AnisotropicFiltering.ForceEnable;
         }
@@ -76,12 +56,46 @@ public class M_GraphicSlider : MonoBehaviour {
         {
             QualitySettings.anisotropicFiltering = AnisotropicFiltering.Disable;
         }
+        PlayerPrefs.SetInt("AnisotropicFiltering", value);
+    }
 
-        Value = PlayerPrefs.GetFloat("Vsync");
-        QualitySettings.vSyncCount = (int)Value;
+    int getAnisotropicFiltering()
+    {
+        return PlayerPrefs.GetInt("AnisotropicFiltering");
+    }
 
-        Value = PlayerPrefs.GetFloat("ShadowDistance");
-        //QualitySettings.shadowDistance = (int)(Value * 100);
+    void setVsync(int value)
+    {
+        QualitySettings.vSyncCount = value;
+        PlayerPrefs.SetFloat("Vsync", value);
+    }
+
+    int getVsync()
+    {
+        return PlayerPrefs.GetInt("Vsync");
+    }
+
+    
+    private void onValueChanged(string optionName) {
+        float Value = this.GetComponent<Slider>().value;
+        switch (optionName)
+        {
+            case "Light":
+                //cam.fieldOfView = Value * 100;
+                setLight(Value);
+                break;
+            case "TextureQuality":
+                setTextureQuality((int)Value);
+                break;
+            case "AnisotropicFiltering":
+                setAnisotropicFiltering((int)Value);
+                break;
+            case "Vsync":
+                setVsync((int)Value);
+                break;
+            default:
+                break;
+        }
     }
 
     private float lastChangeTime;
@@ -118,43 +132,19 @@ public class M_GraphicSlider : MonoBehaviour {
 
     }
 
-    private void saveValue(string optionName) {
-        switch (optionName)
-        {
-            case "FieldOfView":
-               // PlayerPrefs.SetFloat("FieldOfView", this.GetComponent<Slider>().value);
-                break;
-            case "TextureQuality":
-                PlayerPrefs.SetFloat("TextureQuality", this.GetComponent<Slider>().value);
-                break;
-            case "AnisotropicFiltering":
-                PlayerPrefs.SetFloat("AnisotropicFiltering", this.GetComponent<Slider>().value);
-                break;
-            case "Vsync":
-                PlayerPrefs.SetFloat("Vsync", this.GetComponent<Slider>().value);
-                break;
-            case "ShadowDistance":
-                PlayerPrefs.SetFloat("ShadowDistance", this.GetComponent<Slider>().value);
-                break;
-            default:
-                break;
-        }
-    }
-
     private void getValue(string optionName) {
         switch (optionName)
         {
-		/*
-            case "FieldOfView":
-                if (PlayerPrefs.HasKey("FieldOfView"))
-                    this.GetComponent<Slider>().value = PlayerPrefs.GetFloat("FieldOfView");
+            case "Light":
+                if (PlayerPrefs.HasKey("Light"))
+                    this.GetComponent<Slider>().value = getLight();
                 else
                     this.GetComponent<Slider>().value = cam.fieldOfView / 100f;
                 break;
-         */
+         
             case "TextureQuality":
                 if (PlayerPrefs.HasKey("TextureQuality"))
-                    this.GetComponent<Slider>().value = PlayerPrefs.GetFloat("TextureQuality");
+                    this.GetComponent<Slider>().value = PlayerPrefs.GetInt("TextureQuality");
                 else
                     this.GetComponent<Slider>().value = 3 - QualitySettings.masterTextureLimit;
                 break;
@@ -173,12 +163,6 @@ public class M_GraphicSlider : MonoBehaviour {
                     this.GetComponent<Slider>().value = PlayerPrefs.GetFloat("Vsync");
                 else
                     this.GetComponent<Slider>().value = QualitySettings.vSyncCount;
-                break;
-            case "ShadowDistance":
-                if (PlayerPrefs.HasKey("ShadowDistance"))
-                    this.GetComponent<Slider>().value = PlayerPrefs.GetFloat("ShadowDistance");
-                else
-                    this.GetComponent<Slider>().value = QualitySettings.shadowDistance / 100f;
                 break;
             default:
                 break;   
