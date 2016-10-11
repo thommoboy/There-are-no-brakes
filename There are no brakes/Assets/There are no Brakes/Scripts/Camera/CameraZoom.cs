@@ -15,7 +15,6 @@ public class CameraZoom : MonoBehaviour {
 	private float ZoomSpeed = 1.0f;
 	private float zoomTimeOut = 1.0f;
 	private float nextZoomTime = 0.0f;
-	[HideInInspector]
 	public bool zoomed = false;
 	// Use this for initialization
 	void Start () {

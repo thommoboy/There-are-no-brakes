@@ -144,12 +144,14 @@ public class M_GraphicSlider : MonoBehaviour {
     private void getValue(string optionName) {
         switch (optionName)
         {
+		/*
             case "FieldOfView":
                 if (PlayerPrefs.HasKey("FieldOfView"))
                     this.GetComponent<Slider>().value = PlayerPrefs.GetFloat("FieldOfView");
                 else
                     this.GetComponent<Slider>().value = cam.fieldOfView / 100f;
                 break;
+         */
             case "TextureQuality":
                 if (PlayerPrefs.HasKey("TextureQuality"))
                     this.GetComponent<Slider>().value = PlayerPrefs.GetFloat("TextureQuality");

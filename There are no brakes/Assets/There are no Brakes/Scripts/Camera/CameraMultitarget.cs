@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class CameraMultitarget : MonoBehaviour {
-	
+
 	/// <summary>
 	/// The target objects.
 	/// </summary>
-	[HideInInspector]
+	//[HideInInspector]
 	public List<GameObject> targetObjects = new List<GameObject>();
 	//[HideInInspector]
 	private Vector3 orbitRotation;
@@ -17,26 +17,26 @@ public class CameraMultitarget : MonoBehaviour {
 	/// </summary>	
 	//[HideInInspector]
 	private float minDistanceToTarget = 15;
-	
+
 	/// <summary>
 	/// the maximum distance to focus objects. After this distance objects won't get framed.
 	/// </summary>	
 	//[HideInInspector]
 	private float maxDistanceToTarget = 100;
-	
+
 
 	/// <summary>
 	/// The screen safe area to keep your objects in, it's a percent of the fov.
 	/// </summary>	
 	//[HideInInspector]
 	private float screenSafeArea = 0.0f;
-	
+
 	/// <summary>
 	/// the easing function that will be used to interpolate positions.
 	/// </summary>
-//[HideInInspector]
+	//[HideInInspector]
 	private float positionInterpolationSpeed = 5f;
-	
+
 	/// <summary>
 	/// the speed it will interpolate to the look at point desired.
 	/// </summary>
@@ -51,14 +51,14 @@ public class CameraMultitarget : MonoBehaviour {
 	private float orthographicSafeAreaMulti = 4f;
 
 	//[HideInInspector]
-	private Vector3 camPosition;
+	public Vector3 camPosition;
 	[HideInInspector]
 	public Vector3 OriginPos;
 	[HideInInspector]
 	public Quaternion OriginRot;
 	[HideInInspector]
 	public bool Zoomed = false;
-	
+
 	/// <summary>
 	/// Private variables for the script functionality.
 	/// </summary>
@@ -68,47 +68,47 @@ public class CameraMultitarget : MonoBehaviour {
 	private Vector3 posAt;
 	private Vector3 currentPosAt;
 	private Transform trtemp;
-	
+
 	private Vector3 scrMin = Vector3.zero;
 	private Vector3 scrMax = Vector3.zero;
 	private float extraSpeed = 1.0f;
-		
+
 	private Vector3 cameraDirection;
 	private Bounds currentBounds;
 	#endregion
-	
+
 	// Use this for initialization
 	void Start () {
 		camPosition = transform.position;
-	
+
 		// places the camera at the initial position, relative to the look at vector.
 		posAt = camPosition;
 		Bounds b = GetElementsBounds();
-		
-		
+
+
 		//cameraDirection = b.center - posAt;
 		cameraDirection = posAt - b.center;
 		cameraDirection = cameraDirection.normalized;
-		
+
 		lookAt = b.center;
 		currentPosAt = posAt;
 		currentLookAt = lookAt;
 
 		orbitRotation = Quaternion.identity.eulerAngles;
 
-		if(Application.loadedLevelName == "Tutorial Level")
-			orbitRotation = new Vector3 (orbitRotation.x, orbitRotation.y + 27.5f, orbitRotation.z);
-		else if(Application.loadedLevelName == "Adventurer Level")
-			orbitRotation = new Vector3 (orbitRotation.x, orbitRotation.y + 27.5f, orbitRotation.z);
-		else if(Application.loadedLevelName == "Industrial Level")
-			orbitRotation = new Vector3 (orbitRotation.x, orbitRotation.y + 27.5f, orbitRotation.z);
-		
+		//if(Application.loadedLevelName == "Tutorial Level")
+		//	orbitRotation = new Vector3 (orbitRotation.x, orbitRotation.y + 27.5f, orbitRotation.z);
+		//else if(Application.loadedLevelName == "Adventurer Level")
+		//	orbitRotation = new Vector3 (orbitRotation.x, orbitRotation.y + 27.5f, orbitRotation.z);
+		//else if(Application.loadedLevelName == "Industrial Level")
+		//	orbitRotation = new Vector3 (orbitRotation.x, orbitRotation.y + 27.5f, orbitRotation.z);
+
 	}
-	
+
 	private Bounds GetElementsBounds()
 	{
 		Bounds bounds = new Bounds(Vector3.zero, Vector3.one);
-	
+
 		if (targetObjects.Count > 0)
 		{						
 			bool inited = false;
@@ -119,7 +119,7 @@ public class CameraMultitarget : MonoBehaviour {
 				{
 					if (!inited)
 					{
-						bounds = new Bounds (tr.transform.position, tr.GetComponent<Renderer>().bounds.size);;
+						bounds = new Bounds (tr.transform.position, tr.GetComponent<Renderer>().bounds.size);
 						inited = true;
 					}else
 					{
@@ -128,58 +128,54 @@ public class CameraMultitarget : MonoBehaviour {
 				}				
 			}
 		}
-		
+
 		return bounds;		
 	}
-	
+
 	void OnDrawGizmos()
 	{
-		
+
 		// target debug info.
 		Gizmos.color = Color.red;
 		Gizmos.DrawSphere(currentLookAt, 0.5f);
-		
+
 		Gizmos.color = Color.blue;
 		Gizmos.DrawSphere(lookAt, 0.6f);
-				
+
 		Gizmos.DrawLine(currentLookAt, lookAt);
-		
+
 		// bounds debug info.
 		Gizmos.color = Color.green;
 		Gizmos.DrawWireCube(currentBounds.center, currentBounds.size);
 	}
-	
+
 	// Update is called once per frame
 	void FixedUpdate () {	
 		currentBounds = GetElementsBounds();
-		
+
 		// we stablish our lookAt point to the center of that bounds.
 		lookAt = currentBounds.center;
-		
+
 		float boundsSizeSphere = currentBounds.size.magnitude / 2;
 		Camera c = GetComponent<Camera>();
+
 		float hFov = Mathf.Atan(Mathf.Tan(c.fieldOfView * Mathf.Deg2Rad / 2f) * c.aspect) * Mathf.Rad2Deg;
 		float fov = Mathf.Min (c.fieldOfView, hFov) - ((screenSafeArea / 100) * c.fieldOfView);		
 		float distance = boundsSizeSphere / (Mathf.Sin(fov * Mathf.Deg2Rad/2));
-		
+
 		// we get the distance at which we need to position our camera.
 		#region Not Zoomed
 		if(!Zoomed)
 		{
-		distance = Mathf.Max( minDistanceToTarget, Mathf.Min(distance, maxDistanceToTarget));
-		
-		// we interpolate to the new desired positions.	
-		Vector3 currentCameraDirection = Quaternion.Euler(orbitRotation) * cameraDirection;
-		currentLookAt = Vector3.Lerp(currentLookAt, lookAt, targetInterpolationSpeed * Time.fixedDeltaTime);
-		posAt = Vector3.Lerp(posAt,currentLookAt +( currentCameraDirection * distance), positionInterpolationSpeed * Time.fixedDeltaTime);
+			distance = Mathf.Max( minDistanceToTarget, Mathf.Min(distance, maxDistanceToTarget));
 
-		if (c.orthographic)
-		{
-			c.orthographicSize = boundsSizeSphere + (screenSafeArea/orthographicSafeAreaMulti);
-		}
+			// we interpolate to the new desired positions.	
+			Vector3 currentCameraDirection = Quaternion.Euler(orbitRotation) * cameraDirection;
+			currentLookAt = Vector3.Lerp(currentLookAt, lookAt, targetInterpolationSpeed * Time.fixedDeltaTime);
+			posAt = Vector3.Lerp(posAt,currentLookAt + ( currentCameraDirection * distance), positionInterpolationSpeed * Time.fixedDeltaTime);
 
-		c.transform.position = Vector3.Lerp(c.transform.position , posAt, 0.1f);			
-		//c.transform.LookAt(currentLookAt);
+			c.transform.position = Vector3.Lerp(c.transform.position , posAt, 0.1f);
+			//c.transform.LookAt(currentLookAt);
 		}
 		else
 		{
