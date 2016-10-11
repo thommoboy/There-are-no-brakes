@@ -160,11 +160,11 @@ public class M_Pause : MonoBehaviour {
         {
             current_panel = "pause";
         }
-        if (buttonName == "GameOverMutton_Back")
+        if (buttonName == "GameOverMutton_Restart")
         {
             //Application.LoadLevel(0);
             Time.timeScale = 1;
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(Application.loadedLevel);
         }
     }
     private float changeTime;
