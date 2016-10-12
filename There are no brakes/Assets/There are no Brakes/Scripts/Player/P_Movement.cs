@@ -479,7 +479,7 @@ public class P_Movement : MonoBehaviour
 					if (horizontal < 0 || horizontal2 < 0)
 					{
 						//Player3.transform.rotation = Quaternion.Euler(0, 180, 0);
-						if(Player3.transform.rotation.eulerAngles.y < 180){
+						if(Player3.transform.rotation.eulerAngles.y < 180 || Player3.transform.rotation.eulerAngles.y > 350){
 							Player3.transform.Rotate(Vector3.up * Time.deltaTime * turningspeed, Space.World);	
 						}
 					if (hit.distance < 1.1){
@@ -492,7 +492,7 @@ public class P_Movement : MonoBehaviour
 				if (horizontal > 0|| horizontal2 > 0)
 					{
 						//Player3.transform.rotation = Quaternion.Euler(0, 0, 0);
-						if(Player3.transform.rotation.eulerAngles.y > 1){
+						if(Player3.transform.rotation.eulerAngles.y > 1 && Player3.transform.rotation.eulerAngles.y < 270){
 							Player3.transform.Rotate(Vector3.up * Time.deltaTime * -turningspeed, Space.World);	
 						}
 					if (hit.distance < 1.1){

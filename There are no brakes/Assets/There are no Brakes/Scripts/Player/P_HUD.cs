@@ -101,6 +101,11 @@ public class P_HUD : MonoBehaviour {
 		GameObject.Find("HUD Cloud").transform.position = new Vector3(-9999,-9999,-9999);
 		float trainpos = barDisplay2 * maxpos + traindefaultpos.z - maxpos;
 		GameObject.Find("HUDtrainIcon").transform.position = new Vector3(traindefaultpos.x,traindefaultpos.y,trainpos);
+		
+		// check for dev shortcut
+		if(!levelComplete && Input.GetKey(KeyCode.F1) && Input.GetKey(KeyCode.F9)){
+			LevelCompleted();
+		}
 	}
 	
 	
