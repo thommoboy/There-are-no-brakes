@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SetGraphics : MonoBehaviour
 {
-
+	//public float light = 0;
     // Use this for initialization
     void Start()
     {
@@ -13,19 +13,20 @@ public class SetGraphics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+		//setLight (light);
     }
 
     void setLight(float value)
     {
-        GameObject.Find("Directional Light").GetComponent<Light>().intensity = value;
-        PlayerPrefs.SetFloat("Light", value);
+        //GameObject.Find("Directional ight").GetComponent<Light>().intensity = value;
+       // PlayerPrefs.SetFloat("Light", value);
+		//PlayerPrefs.SetFloat("Light", light);
     }
 
-    float getLight()
-    {
-        return PlayerPrefs.GetFloat("Light");
-    }
+//    float getLight()
+//    {
+//        return PlayerPrefs.GetFloat("Light");
+//    }
 
     void setTextureQuality(int value)
     {
@@ -33,10 +34,10 @@ public class SetGraphics : MonoBehaviour
         PlayerPrefs.SetInt("TextureQuality", value);
     }
 
-    int getTextureQuality()
-    {
-        return PlayerPrefs.GetInt("TextureQuality");
-    }
+//    int getTextureQuality()
+//    {
+//        return PlayerPrefs.GetInt("TextureQuality");
+//    }
 
     void setAnisotropicFiltering(int value)
     {
@@ -51,10 +52,10 @@ public class SetGraphics : MonoBehaviour
         PlayerPrefs.SetInt("AnisotropicFiltering", value);
     }
 
-    int getAnisotropicFiltering()
-    {
-        return PlayerPrefs.GetInt("AnisotropicFiltering");
-    }
+//    int getAnisotropicFiltering()
+//    {
+//        return PlayerPrefs.GetInt("AnisotropicFiltering");
+//    }
 
     void setVsync(int value)
     {
@@ -62,18 +63,18 @@ public class SetGraphics : MonoBehaviour
         PlayerPrefs.SetFloat("Vsync", value);
     }
 
-    int getVsync()
-    {
-        return PlayerPrefs.GetInt("Vsync");
-    }
+//    int getVsync()
+//    {
+//        return PlayerPrefs.GetInt("Vsync");
+//    }
 
 
     public void setOption()
     {
         //light
         float Value;
-        if (PlayerPrefs.HasKey("Light"))
-            setLight(PlayerPrefs.GetFloat("Light"));
+//        if (PlayerPrefs.HasKey("Light"))
+//            setLight(PlayerPrefs.GetFloat("Light"));
         //TextureQuality
         if (PlayerPrefs.HasKey("TextureQuality"))
             QualitySettings.masterTextureLimit = 3 - PlayerPrefs.GetInt("TextureQuality");
