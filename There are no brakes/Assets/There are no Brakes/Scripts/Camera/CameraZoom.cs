@@ -73,7 +73,7 @@ public class CameraZoom : MonoBehaviour {
 				temp = Camera3.transform.position.x;
 			}
 			//Debug.Log (this.transform.position.x);
-			if(this.transform.position.x > temp * 0.7f && nextZoomTime == 0.0f){
+			if(this.transform.position.x > temp * 0.8f && nextZoomTime == 0.0f){
 				GameObject.Find ("PlayerControllers").GetComponent<IN_ShowIcon>().ShowIcon(0);
 				autoZoomout();
 			}

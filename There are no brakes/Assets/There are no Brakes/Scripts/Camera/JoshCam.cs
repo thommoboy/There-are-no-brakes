@@ -30,7 +30,7 @@ public class JoshCam : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//pPoss = new Vector3[3];
-		pDists = new float[4];
+		pDists = new float[3];
 		P1 = GameObject.Find ("Player1");
 		P2 = GameObject.Find ("Player2");
 		P3 = GameObject.Find ("Player3");
@@ -45,8 +45,8 @@ public class JoshCam : MonoBehaviour {
 		//distance p1 - p2 is the same as p2 - p1 so only these 4 distances are needed (I THINK)
 		pDists [0] = Vector3.Distance (p1,p2);
 		pDists [1] = Vector3.Distance (p1,p3);
-		pDists [2] = Vector3.Distance (p2,p1);
-		pDists [3] = Vector3.Distance (p2,p3);
+		//pDists [2] = Vector3.Distance (p2,p1);
+		pDists [2] = Vector3.Distance (p2,p3);
 		zoomDistance = pDists.Max() + trimScalar;
 
 		Vector3 newPos;
