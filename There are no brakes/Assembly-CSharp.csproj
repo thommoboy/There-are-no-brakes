@@ -38,21 +38,14 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\CameraMultitarget\Scripts\Demo\CharacterMovement.cs" />
-     <Compile Include="Assets\GConsole\Scripts\Commands\Demonstration\GConsoleSuggestionDemonstration.cs" />
-     <Compile Include="Assets\GConsole\Scripts\Commands\Demonstration\GConsoleUnityLoggingDemonstration.cs" />
-     <Compile Include="Assets\GConsole\Scripts\Commands\GConsoleLevelLoad.cs" />
-     <Compile Include="Assets\GConsole\Scripts\Commands\GConsoleQuit.cs" />
-     <Compile Include="Assets\GConsole\Scripts\Commands\GConsoleVolume.cs" />
-     <Compile Include="Assets\GConsole\Scripts\GConsole.cs" />
-     <Compile Include="Assets\GConsole\Scripts\GConsoleCommand.cs" />
      <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\Antialiasing.cs" />
      <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\Bloom.cs" />
      <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\BloomAndFlares.cs" />
@@ -89,6 +82,13 @@
      <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\Twirl.cs" />
      <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\VignetteAndChromaticAberration.cs" />
      <Compile Include="Assets\There are no Brakes\Effects\ImageEffects\Scripts\Vortex.cs" />
+     <Compile Include="Assets\There are no Brakes\GConsole\Scripts\Commands\Demonstration\GConsoleSuggestionDemonstration.cs" />
+     <Compile Include="Assets\There are no Brakes\GConsole\Scripts\Commands\Demonstration\GConsoleUnityLoggingDemonstration.cs" />
+     <Compile Include="Assets\There are no Brakes\GConsole\Scripts\Commands\GConsoleLevelLoad.cs" />
+     <Compile Include="Assets\There are no Brakes\GConsole\Scripts\Commands\GConsoleQuit.cs" />
+     <Compile Include="Assets\There are no Brakes\GConsole\Scripts\Commands\GConsoleVolume.cs" />
+     <Compile Include="Assets\There are no Brakes\GConsole\Scripts\GConsole.cs" />
+     <Compile Include="Assets\There are no Brakes\GConsole\Scripts\GConsoleCommand.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\AccessScript.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\Audio\M_AudioManager.cs" />
      <Compile Include="Assets\There are no Brakes\Scripts\AudioManager.cs" />
@@ -209,8 +209,9 @@
      <None Include="Assets\There are no Brakes\Effects\TessellationShaders\Shaders\BumpedSpecularSmooth.shader" />
      <None Include="Assets\There are no Brakes\Effects\Projectors\Guidelines.txt" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\MotionBlur.shader" />
-     <None Include="Assets\TSF\TOON SHADER FREE.txt" />
+     <None Include="Assets\There are no Brakes\Shaders\TOON SHADER FREE.txt" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBloom.shader" />
+     <None Include="Assets\There are no Brakes\Shaders\Outline.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\Contrast Stretch\MinMaxReduction.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_Antialiasing\SSAA.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\RadialBlur.shader" />
@@ -228,13 +229,13 @@
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\SSAOShader.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\ConvertDepth.shader" />
-     <None Include="Assets\TSF\Shaders\TSFOutline.shader" />
+     <None Include="Assets\Resources\Shaders\TSFOutline.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\ColorCorrectionCurvesSimple.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\NoiseEffectShaderYUV.shader" />
      <None Include="Assets\Resources\Sounds\FREE SOUND . ORG.txt" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\CreaseApply.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />
-     <None Include="Assets\TSF\Shaders\TSF.shader" />
+     <None Include="Assets\There are no Brakes\Shaders\TSF.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\There are no Brakes\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\Contrast Stretch\Luminance.shader" />
@@ -278,13 +279,13 @@
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿/***********************
+ * PatheticCamera.cs
+ * Originally Written by Joshua Garvey & Pierce Thompson
+ * Modified By:
+ ***********************/
+using UnityEngine;
 using System.Linq;
 using System.Collections;
-//using System.Collections.Generic;
 
 public class JoshCam : MonoBehaviour {
 	private GameObject P1, P2, P3;
