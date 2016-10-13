@@ -11,6 +11,7 @@ public class IN_Activation : MonoBehaviour{
 	public bool lever = false;
 	public bool pressureplate = false;
 	public bool lantern = false;
+	public bool goldlever = false;
 	private bool intrigger = false;
 	private float timeout = 0.4F;
 	private float nextInteract = 0.0F;
@@ -59,6 +60,28 @@ public class IN_Activation : MonoBehaviour{
 				}
 			}
 		}
+		if(goldlever){
+			if(other.tag == "Player" && !activated){
+				intrigger = true;
+				if(Time.time > nextInteract){
+					if (other.name == "Player1" && GameObject.Find("PlayerControllers").GetComponent<P_Movement>().P1OnGround){
+						if (Input.GetAxis("P1 Interact") > 0 || Input.GetAxis("B_1") > 0) {
+							changeState();
+						}
+					}
+					if (other.name == "Player2" && GameObject.Find("PlayerControllers").GetComponent<P_Movement>().P2OnGround){
+						if (Input.GetAxis("P2 Interact") > 0 || Input.GetAxis("B_2") > 0) {
+							changeState();
+						}
+					}
+					if (other.name == "Player3" && GameObject.Find("PlayerControllers").GetComponent<P_Movement>().P3OnGround){
+						if (Input.GetAxis("P3 Interact") > 0 || Input.GetAxis("B_3") > 0) {
+							changeState();
+						}
+					}
+				}
+			}
+		}
 		if(lantern && !activated){
 			if(other.tag == "Player"){
 				intrigger = true;
@@ -98,7 +121,7 @@ public class IN_Activation : MonoBehaviour{
 	void OnTriggerExit(Collider other) {
 		if(other.tag == "Player" || other.tag == "Weight"){
 			this.transform.GetChild(0).GetComponent<Renderer>().material.shader = Shader.Find("Standard");
-			if(lever){
+			if(lever || goldlever){
 				intrigger = false;
 				TextController.display = false;
 			}
@@ -115,7 +138,7 @@ public class IN_Activation : MonoBehaviour{
 	void changeState(){
 		activated = !activated;
 		nextInteract = Time.time + timeout;
-		if(lever){
+		if(lever || goldlever){
 			this.transform.Rotate(0, 180, 0);
 			M_AudioManager.PlayAudioSelf(Leversound);
 		}

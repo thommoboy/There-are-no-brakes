@@ -51,19 +51,22 @@ public class P_PickUp : MonoBehaviour {
 				}
 			}
 			if (other.tag == "Weight" && isAncientLevel) {
-				if (ThisPlayer.name == "Player1" && PlayerController.GetComponent<P_Movement> ().P1OnGround) {
-					if ((Input.GetAxis("P1 Interact") > 0 || Input.GetAxis("B_1") > 0) && Time.time > nextInteract) {
-						PickUp (other.gameObject);
+				// check that player isnt already carrying something 
+				if (!Carrying) {
+					if (ThisPlayer.name == "Player1" && PlayerController.GetComponent<P_Movement> ().P1OnGround) {
+						if ((Input.GetAxis("P1 Interact") > 0 || Input.GetAxis("B_1") > 0) && Time.time > nextInteract) {
+							PickUp (other.gameObject);
+						}
 					}
-				}
-				if (ThisPlayer.name == "Player2" && PlayerController.GetComponent<P_Movement> ().P2OnGround) {
-					if ((Input.GetAxis("P2 Interact") > 0 || Input.GetAxis("B_2") > 0) && Time.time > nextInteract) {
-						PickUp (other.gameObject);
+					if (ThisPlayer.name == "Player2" && PlayerController.GetComponent<P_Movement> ().P2OnGround) {
+						if ((Input.GetAxis("P2 Interact") > 0 || Input.GetAxis("B_2") > 0) && Time.time > nextInteract) {
+							PickUp (other.gameObject);
+						}
 					}
-				}
-				if (ThisPlayer.name == "Player3" && PlayerController.GetComponent<P_Movement> ().P3OnGround) {
-					if ((Input.GetAxis("P3 Interact") > 0 || Input.GetAxis("B_3") > 0) && Time.time > nextInteract) {
-						PickUp (other.gameObject);
+					if (ThisPlayer.name == "Player3" && PlayerController.GetComponent<P_Movement> ().P3OnGround) {
+						if ((Input.GetAxis("P3 Interact") > 0 || Input.GetAxis("B_3") > 0) && Time.time > nextInteract) {
+							PickUp (other.gameObject);
+						}
 					}
 				}
 			}
@@ -82,6 +85,10 @@ public class P_PickUp : MonoBehaviour {
 			if (isIndustrialLevel) {
 				carryHeight = 1.1f;
 				carryDistance = 0.6f;
+			}
+			if(isAncientLevel){
+				carryHeight = 1.0f;
+				carryDistance = 0.9f;
 			}
 			if(ThisPlayer.name == "Player1"){
 				// move carried object to either side if carrying player turns around, taking direction into account
