@@ -75,14 +75,25 @@ public class M_GraphicSlider : MonoBehaviour {
         return PlayerPrefs.GetInt("Vsync");
     }
 
-    
+    int getFullScreen() {
+        if (Screen.fullScreen)
+            return 1;
+        else
+            return 0;
+    }
+
+    void setFullScrren(bool value) {
+        Screen.fullScreen = true;
+    }
+
+
     private void onValueChanged(string optionName) {
         float Value = this.GetComponent<Slider>().value;
         switch (optionName)
         {
-            case "Light":
+            case "FullScreen":
                 //cam.fieldOfView = Value * 100;
-                setLight(Value);
+                setFullScrren((int)Value == 1);
                 break;
             case "TextureQuality":
                 setTextureQuality((int)Value);
@@ -135,11 +146,16 @@ public class M_GraphicSlider : MonoBehaviour {
     private void getValue(string optionName) {
         switch (optionName)
         {
-            case "Light":
-                if (PlayerPrefs.HasKey("Light"))
-                    this.GetComponent<Slider>().value = getLight();
+            case "FullScreen":
+                if (PlayerPrefs.HasKey("FullScreen"))
+                    this.GetComponent<Slider>().value = getFullScreen();
                 else
-                    this.GetComponent<Slider>().value = cam.fieldOfView / 100f;
+                {
+                    if (Screen.fullScreen)
+                        this.GetComponent<Slider>().value = 1;
+                    else
+                        this.GetComponent<Slider>().value = 0;
+                }
                 break;
          
             case "TextureQuality":

@@ -6,6 +6,7 @@ public class M_MenuController : MonoBehaviour {
     private bool isStart = false;
     float changeTime;
     private GameObject focusObject;
+    public bool isMenu;
     // Use this for initialization
     void Start () {
         Time.timeScale = 1.0f;
@@ -22,6 +23,8 @@ public class M_MenuController : MonoBehaviour {
         }
         
     }
+
+
     
     private void getContollerInput(){
         float temp = 0.7f;
@@ -34,7 +37,7 @@ public class M_MenuController : MonoBehaviour {
             {
                 switchFocus(focusObject.GetComponent<M_ContollerSwitch>().Down());
             }
-            else {
+            else if (isMenu){
                 switchFocus(GameObject.Find("MenuButton_Start"));
             }
             changeTime = Time.realtimeSinceStartup;
@@ -48,7 +51,7 @@ public class M_MenuController : MonoBehaviour {
             {
                 switchFocus(focusObject.GetComponent<M_ContollerSwitch>().Up());
             }
-            else
+            else if (isMenu)
             {
                 switchFocus(GameObject.Find("MenuButton_Exit"));
             }

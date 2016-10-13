@@ -19,6 +19,7 @@ public class M_Pause : MonoBehaviour {
     public GameObject optionPanel;
     public GameObject gameOverPanel;
 	public GameObject levelCompletePanel;
+    public GameObject graphicsPanel;
    //public GameObject gameOverText;
     public Camera GUIcamera;
     public GameObject[] buttonList;
@@ -77,6 +78,11 @@ public class M_Pause : MonoBehaviour {
 
 		if (current_panel == "levelComplete")
 			DownToScreen (levelCompletePanel);
+
+        if (current_panel == "GraphicsPanel")
+            DownToScreen(graphicsPanel);
+        //else
+            //UpToOffScreen(graphicsPanel);
 
         if (current_panel == "option")
             Option();
@@ -165,6 +171,10 @@ public class M_Pause : MonoBehaviour {
             //Application.LoadLevel(0);
             Time.timeScale = 1;
             UnityEngine.SceneManagement.SceneManager.LoadScene(Application.loadedLevel);
+        }
+        if (buttonName == "OptionsMutton_Graphics")
+        {
+            current_panel = "GraphicsPanel";
         }
     }
     private float changeTime;
