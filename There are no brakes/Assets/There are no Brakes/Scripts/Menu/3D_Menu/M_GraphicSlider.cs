@@ -31,22 +31,27 @@ public class M_GraphicSlider : MonoBehaviour {
         switch (value) {
             case 0:
                 Screen.SetResolution(1920, 1200, Screen.fullScreen);
+                GameObject.Find("ResolutionText").GetComponent<TextMesh>().text = "1920 X 1200";
                 Debug.Log("set resolution to 1920*1200");
                 break;
             case 1:
                 Screen.SetResolution(1680, 1050, Screen.fullScreen);
+                GameObject.Find("ResolutionText").GetComponent<TextMesh>().text = "1680 X 1050";
                 Debug.Log("set resolution to 1680*1050");
                 break;
             case 2:
                 Screen.SetResolution(1400, 900, Screen.fullScreen);
+                GameObject.Find("ResolutionText").GetComponent<TextMesh>().text = "1400 X 900";
                 Debug.Log("set resolution to 1400*900");
                 break;
             case 3:
                 Screen.SetResolution(1280, 800, Screen.fullScreen);
+                GameObject.Find("ResolutionText").GetComponent<TextMesh>().text = "1280 X 800";
                 Debug.Log("set resolution to 1280*800");
                 break;
             case 4:
                 Screen.SetResolution(1024, 576, Screen.fullScreen);
+                GameObject.Find("ResolutionText").GetComponent<TextMesh>().text = "1024 X 576";
                 Debug.Log("set resolution to 1024*576");
                 break;
             default:
@@ -182,8 +187,11 @@ public class M_GraphicSlider : MonoBehaviour {
         switch (optionName)
         {
             case "Resolution":
-                if (Screen.resolutions[0].width != 1920 && Screen.resolutions[0].height!= 1200)
+                if (Screen.resolutions[0].width != 1920 && Screen.resolutions[0].height != 1200) {
                     Screen.SetResolution(1920, 1200, Screen.fullScreen);
+                    GameObject.Find("ResolutionText").GetComponent<TextMesh>().text = "1920 X 1200";
+                }
+                    
                 break;
             case "FullScreen":
                 if (PlayerPrefs.HasKey("FullScreen"))

@@ -40,10 +40,20 @@ public class M_GrahpicPanel : MonoBehaviour {
         //GameObject list = this.gameObject.transform.GetChild(0).gameObject;
         //list = list.gameObject.transform.GetChild(0).gameObject;
         for (int i=0;i< GrahpicOptions.Length;i++) {
-            if ( (currentPage - 1) * optionsNumberPrePage <= i && i< currentPage * optionsNumberPrePage)
+            //show options
+            if ((currentPage - 1) * optionsNumberPrePage <= i && i < currentPage * optionsNumberPrePage)
+            {
                 GrahpicOptions[i].gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
-            else
+                if (GrahpicOptions[i].gameObject.name == "Resolution")
+                    GrahpicOptions[i].gameObject.transform.GetChild(1).GetComponent<MeshRenderer>().enabled = true;
+            }
+            //hide options
+            else {
                 GrahpicOptions[i].gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
+                if (GrahpicOptions[i].gameObject.name == "Resolution")
+                    GrahpicOptions[i].gameObject.transform.GetChild(1).GetComponent<MeshRenderer>().enabled = false;
+            }
+                
         }
 
         GameObject.Find("Graphcis_Pre").GetComponent<M_ContollerSwitch>().up = GrahpicOptions[currentPage * optionsNumberPrePage - 3].transform.GetChild(1).gameObject;
