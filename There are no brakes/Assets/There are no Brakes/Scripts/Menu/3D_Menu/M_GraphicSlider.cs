@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class M_GraphicSlider : MonoBehaviour {
     public bool hasGraphicSlider;
-    
     private Slider slider;
     protected Camera cam;
     // Use this for initialization
@@ -27,7 +26,40 @@ public class M_GraphicSlider : MonoBehaviour {
     void Update () {
 	
 	}
-    
+
+    void setResolution(int value) {
+        switch (value) {
+            case 0:
+                Screen.SetResolution(1920, 1200, Screen.fullScreen);
+                Debug.Log("set resolution to 1920*1200");
+                break;
+            case 1:
+                Screen.SetResolution(1680, 1050, Screen.fullScreen);
+                Debug.Log("set resolution to 1680*1050");
+                break;
+            case 2:
+                Screen.SetResolution(1400, 900, Screen.fullScreen);
+                Debug.Log("set resolution to 1400*900");
+                break;
+            case 3:
+                Screen.SetResolution(1280, 800, Screen.fullScreen);
+                Debug.Log("set resolution to 1280*800");
+                break;
+            case 4:
+                Screen.SetResolution(1024, 576, Screen.fullScreen);
+                Debug.Log("set resolution to 1024*576");
+                break;
+            default:
+                Debug.Log("this resolution is not in list");
+                break;  
+        }
+        PlayerPrefs.SetFloat("Resolution", value);
+    }
+
+    Resolution[] getResolution() {
+        return Screen.resolutions;
+    }
+
     void setLight(float value) {
         GameObject.Find("Directional Light").GetComponent<Light>().intensity = value;
         PlayerPrefs.SetFloat("Light", value);
@@ -91,6 +123,9 @@ public class M_GraphicSlider : MonoBehaviour {
         float Value = this.GetComponent<Slider>().value;
         switch (optionName)
         {
+            case "Resolution":
+                setResolution((int)Value);
+                break;
             case "FullScreen":
                 //cam.fieldOfView = Value * 100;
                 setFullScrren((int)Value == 1);
@@ -146,6 +181,10 @@ public class M_GraphicSlider : MonoBehaviour {
     private void getValue(string optionName) {
         switch (optionName)
         {
+            case "Resolution":
+                if (Screen.resolutions[0].width != 1920 && Screen.resolutions[0].height!= 1200)
+                    Screen.SetResolution(1920, 1200, Screen.fullScreen);
+                break;
             case "FullScreen":
                 if (PlayerPrefs.HasKey("FullScreen"))
                     this.GetComponent<Slider>().value = getFullScreen();
