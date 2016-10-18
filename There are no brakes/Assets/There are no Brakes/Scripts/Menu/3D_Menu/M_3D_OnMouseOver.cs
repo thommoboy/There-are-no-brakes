@@ -63,9 +63,9 @@ public class M_3D_OnMouseOver : MonoBehaviour {
         //print (Time.time);
         GameObject.Find("Main Camera").GetComponent<M_MoveForward>().startMove(3);
 		GameObject.Find ("MenuButtonManager").GetComponent<M_MenuController> ().gameStart();
-		yield return new WaitForSeconds (1);
-		GameObject.Find("Paper_box").GetComponent<M_MenuPaperBox>().animator.enabled = true;
-		yield return new WaitForSeconds (3);
+		yield return new WaitForSeconds (2);
+		//GameObject.Find("Paper_box").GetComponent<M_MenuPaperBox>().animator.enabled = true;
+		//yield return new WaitForSeconds (3);
 		ClickAsync (level);
 		//print (Time.time);
 	}
