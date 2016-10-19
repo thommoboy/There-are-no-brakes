@@ -3,16 +3,26 @@ There are no Brakes!
 
 
 
-Director/Designer: Joshua Garvey
+Director/Designer
+
+Joshua Garvey
 
 
-Artist/Modeller: Ashleigh Kelly
+Artist/Modeller
+
+Ashleigh Kelly
 
 
-Lead Programmer: Pierce Thompson
+Lead Programmer
+
+Pierce Thompson
 
 
-Level Designer: Nathan Brown
+Level Designer
+
+Nathan Brown
 
 
-GUI: Feng Xinyu
+GUI 
+
+Feng Xinyu

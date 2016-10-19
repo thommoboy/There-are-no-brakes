@@ -20,13 +20,14 @@ public class CM_ChooseArrow : MonoBehaviour {
 	void Update () {
         if (locked) {
             if (!isMainMenu)
-                this.transform.localPosition = new Vector3(this.transform.localPosition.x, ori_pos.y + amplitude * Mathf.Sin(floatingSpeed * Time.time), this.transform.localPosition.z) ;
+                this.transform.localPosition = new Vector3(this.transform.localPosition.x, ori_pos.y + 100* amplitude * Mathf.Sin(floatingSpeed * Time.time), this.transform.localPosition.z) ;
             if (isMainMenu)
                 this.transform.localPosition = new Vector3(ori_pos.x + amplitude *10 * Mathf.Sin(floatingSpeed * Time.time), this.transform.localPosition.y, this.transform.localPosition.z);
         }
 	}
 
     public void switchLockStatu() {
+        //Debug.Log(verticalPos);
         locked = !locked;
         if (locked && !isMainMenu) {
             ori_pos = this.transform.localPosition;

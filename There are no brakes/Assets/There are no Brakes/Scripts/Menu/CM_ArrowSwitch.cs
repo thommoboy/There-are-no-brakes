@@ -7,15 +7,15 @@ public class CM_ArrowSwitch : MonoBehaviour {
     private bool[] isPlayerChoosen;
     private int[] playerChoise;
     public GameObject[] players;
-    private float horizontalGap = 8.0f;
-    private float verticalGap = 3.0f;
+    private float horizontalGap = 1.8f;
+    private float verticalGap = 1.2f;
     private float minYPos;
     const int maxRow = 3;
 	// Use this for initialization
 	void Start () {
         isPlayerChoosen = new bool[maxRow];
         playerChoise = new int[maxRow];
-        horizontalGap = GameObject.Find("Player2").transform.position.x - GameObject.Find("Player1").transform.position.x + 0.2f;
+        horizontalGap = GameObject.Find("Player2").transform.position.x - GameObject.Find("Player1").transform.position.x + 0.0f;
         //Debug.Log(horizontalGap);
         minYPos = arrows[0].transform.position.y;
         arrowsMap = new ArrayList[maxRow] { new ArrayList(), new ArrayList(), new ArrayList()};

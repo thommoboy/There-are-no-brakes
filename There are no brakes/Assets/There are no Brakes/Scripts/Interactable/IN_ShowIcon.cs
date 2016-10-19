@@ -21,14 +21,29 @@ public class IN_ShowIcon : MonoBehaviour {
 	private Vector3 player2;
 	private Vector3 player3;
 	private GameObject PlayerController;
+    public bool isPlayerChanged;
 
 	void Start () {
-		Icon1 = GameObject.Find("Icon1");
-		Icon2 = GameObject.Find("Icon2");
-		Icon3 = GameObject.Find("Icon3");
-		highlight1 = GameObject.Find("highlight (1)");
-		highlight2 = GameObject.Find("highlight (2)");
-		highlight3 = GameObject.Find("highlight (3)");
+		
+        if (isPlayerChanged)
+        {
+            Icon1 = GameObject.Find("Icon" + PlayerPrefs.GetInt("player1choose"));
+            Icon2 = GameObject.Find("Icon" + PlayerPrefs.GetInt("player2choose"));
+            Icon3 = GameObject.Find("Icon" + PlayerPrefs.GetInt("player3choose"));
+            highlight1 = GameObject.Find("highlight ("+ PlayerPrefs.GetInt("player1choose") + ")");
+            highlight2 = GameObject.Find("highlight ("+ PlayerPrefs.GetInt("player2choose") + ")");
+            highlight3 = GameObject.Find("highlight ("+ PlayerPrefs.GetInt("player3choose") + ")");
+
+        }
+        else {
+            Icon1 = GameObject.Find("Icon1");
+            Icon2 = GameObject.Find("Icon2");
+            Icon3 = GameObject.Find("Icon3");
+            highlight1 = GameObject.Find("highlight (1)");
+            highlight2 = GameObject.Find("highlight (2)");
+            highlight3 = GameObject.Find("highlight (3)");
+        }
+		
 		player1 = GameObject.Find("Player1").transform.position;
 		player2 = GameObject.Find("Player2").transform.position;
 		player3 = GameObject.Find("Player3").transform.position;
@@ -39,18 +54,45 @@ public class IN_ShowIcon : MonoBehaviour {
 	}
 	
 	void Update () {
-		if(Input.GetAxis("X_1") > 0.1f){
-			ShowIcon(1);
-		}
-		if(Input.GetAxis("X_2") > 0.1f){
-			ShowIcon(2);
-		}
-		if(Input.GetAxis("X_3") > 0.1f){
-			ShowIcon(3);
-		}
-		if(Input.GetKey("b")){
-			ShowIcon(0);
-		}
+        if (isPlayerChanged)
+        {
+            if (Input.GetAxis("X_1") > 0.1f)
+            {
+                ShowIcon(PlayerPrefs.GetInt("player1choose"));
+            }
+            if (Input.GetAxis("X_2") > 0.1f)
+            {
+                ShowIcon(PlayerPrefs.GetInt("player2choose"));
+            }
+            if (Input.GetAxis("X_3") > 0.1f)
+            {
+                ShowIcon(PlayerPrefs.GetInt("player3choose"));
+            }
+            if (Input.GetKey("b"))
+            {
+                ShowIcon(0);
+            }
+        }
+        else {
+            if (Input.GetAxis("X_1") > 0.1f)
+            {
+                ShowIcon(1);
+            }
+            if (Input.GetAxis("X_2") > 0.1f)
+            {
+                ShowIcon(2);
+            }
+            if (Input.GetAxis("X_3") > 0.1f)
+            {
+                ShowIcon(3);
+            }
+            if (Input.GetKey("b"))
+            {
+                ShowIcon(0);
+            }
+
+        }
+            
 		
 		if(Time.time < timer1){
 			if(!Icon1.GetComponent<Renderer>().enabled){
