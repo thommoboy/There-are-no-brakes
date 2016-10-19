@@ -1,7 +1,7 @@
 ﻿/***********************
  * P_PickUp.cs
  * Originally Written by Nathan Brown
- * Modified By:
+ * Modified By: Pierce Thompson
  ***********************/
 using UnityEngine;
 using System.Collections;
@@ -17,10 +17,14 @@ public class P_PickUp : MonoBehaviour {
 	public bool isAncientLevel;
 	public bool isTutorialLevel;
 	public bool isIndustrialLevel;
+	public P_Movement Movement;
+	[HideInInspector]
+	public bool pickupLockout = false;
 
 	void Start(){
 		ThisPlayer = this.transform.parent.gameObject;
 		PlayerController = GameObject.Find ("PlayerControllers");
+		Movement = GameObject.FindGameObjectWithTag ("PlayerController").GetComponent<P_Movement>();
 	}
 		 
 	void OnTriggerStay(Collider other){
@@ -30,22 +34,26 @@ public class P_PickUp : MonoBehaviour {
 			if ((other.tag == "Player" || other.tag == "Weight") && !isAncientLevel) {
 				// check that player isnt already carrying something 
 				if (!Carrying) {
-					// check that player is on the ground
-					if (ThisPlayer.name == "Player1" && PlayerController.GetComponent<P_Movement> ().P1OnGround) {
-						// only looks for the interact key of the actual player (no pressing interact to make someone else interact)
-						// uses timeout to prevent player picking up someone right after dropping them
-						if ((Input.GetAxis("P1 Interact") > 0 || Input.GetAxis("B_1") > 0) && Time.time > nextInteract) {
-							PickUp (other.gameObject);
+					if (!pickupLockout) {
+						// check that player is on the ground
+						if (ThisPlayer.name == "Player1" && PlayerController.GetComponent<P_Movement> ().P1OnGround) {
+							// only looks for the interact key of the actual player (no pressing interact to make someone else interact)
+							// uses timeout to prevent player picking up someone right after dropping them
+							if ((Input.GetAxis ("P1 Interact") > 0 || Input.GetAxis ("B_1") > 0) && Time.time > nextInteract) {
+								Movement.PickupTimer1 = 1.0f;
+								Movement.Player1Anim.GetComponent<Animator> ().Play ("PlayerPickup");
+								PickUp (other.gameObject);
+							}
 						}
-					}
-					if (ThisPlayer.name == "Player2" && PlayerController.GetComponent<P_Movement> ().P2OnGround) {
-						if ((Input.GetAxis("P2 Interact") > 0 || Input.GetAxis("B_2") > 0) && Time.time > nextInteract) {
-							PickUp (other.gameObject);
+						if (ThisPlayer.name == "Player2" && PlayerController.GetComponent<P_Movement> ().P2OnGround) {
+							if ((Input.GetAxis ("P2 Interact") > 0 || Input.GetAxis ("B_2") > 0) && Time.time > nextInteract) {
+								PickUp (other.gameObject);
+							}
 						}
-					}
-					if (ThisPlayer.name == "Player3" && PlayerController.GetComponent<P_Movement> ().P3OnGround) {
-						if ((Input.GetAxis("P3 Interact") > 0 || Input.GetAxis("B_3") > 0) && Time.time > nextInteract) {
-							PickUp (other.gameObject);
+						if (ThisPlayer.name == "Player3" && PlayerController.GetComponent<P_Movement> ().P3OnGround) {
+							if ((Input.GetAxis ("P3 Interact") > 0 || Input.GetAxis ("B_3") > 0) && Time.time > nextInteract) {
+								PickUp (other.gameObject);
+							}
 						}
 					}
 				}
@@ -109,12 +117,16 @@ public class P_PickUp : MonoBehaviour {
 				// throw carried object
 				if((Input.GetAxis("P1 Jump") > 0 || Input.GetAxis("A_1") > 0) && Time.time > nextInteract){
 					if(carriedObject.tag != "Weight"){
+						Movement.PickupTimer1 = 1.0f;
+						Movement.Player1Anim.GetComponent<Animator> ().Play ("PlayerThrow");
 						ThrowAway();
 					}
 				}
 				// drop carried object
 				if((Input.GetAxis("P1 Interact") > 0 || Input.GetAxis("B_1") > 0) && Time.time > nextInteract){
 					if (PlayerController.GetComponent<P_Movement> ().P1OnGround) {
+						Movement.PickupTimer1 = 1.0f;
+						Movement.Player1Anim.GetComponent<Animator> ().Play ("PlayerDrop");
 						DropObject (false);
 					}
 				}
@@ -146,11 +158,15 @@ public class P_PickUp : MonoBehaviour {
 				}
 				if((Input.GetAxis("P2 Jump") > 0 || Input.GetAxis("A_2") > 0) && Time.time > nextInteract){
 					if(carriedObject.tag != "Weight"){
+						Movement.PickupTimer2 = 1.0f;
+						Movement.Player2Anim.GetComponent<Animator> ().Play ("PlayerThrow");
 						ThrowAway();
 					}
 				}
 				if((Input.GetAxis("P2 Interact") > 0 || Input.GetAxis("B_2") > 0) && Time.time > nextInteract){
 					if (PlayerController.GetComponent<P_Movement> ().P2OnGround) {
+						Movement.PickupTimer2 = 1.0f;
+						Movement.Player2Anim.GetComponent<Animator> ().Play ("PlayerDrop");
 						DropObject (false);
 					}
 				}
@@ -180,11 +196,15 @@ public class P_PickUp : MonoBehaviour {
 				}
 				if((Input.GetAxis("P3 Jump") > 0 || Input.GetAxis("A_3") > 0) && Time.time > nextInteract){
 					if(carriedObject.tag != "Weight"){
+						Movement.PickupTimer3 = 1.0f;
+						Movement.Player3Anim.GetComponent<Animator> ().Play ("PlayerThrow");
 						ThrowAway();
 					}
 				}
 				if((Input.GetAxis("P3 Interact") > 0 || Input.GetAxis("B_3") > 0) && Time.time > nextInteract){
 					if (PlayerController.GetComponent<P_Movement> ().P3OnGround) {
+						Movement.PickupTimer3 = 1.0f;
+						Movement.Player3Anim.GetComponent<Animator> ().Play ("PlayerDrop");
 						DropObject (false);
 					}
 				}

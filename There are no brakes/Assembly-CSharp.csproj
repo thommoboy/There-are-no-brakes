@@ -275,6 +275,7 @@
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\SimpleClear.shader" />
      <None Include="Assets\There are no Brakes\Effects\TessellationShaders\Shaders\BumpedSpecularDisplacement.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_Antialiasing\FXAA3Console.shader" />
+     <None Include="Assets\There are no Brakes\Textures\Menu\logo paper-tape.txt" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\There are no Brakes\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />

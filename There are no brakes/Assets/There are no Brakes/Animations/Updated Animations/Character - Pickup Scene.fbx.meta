@@ -152,7 +152,7 @@ ModelImporter:
     4300004: Character_L_Leg_2
     4300006: Character_R_Leg
     4300008: Character_R_Leg_2
-    7400000: Take 001
+    7400000: Player_Pickup
     9500000: //RootNode
     13700000: Character_Geo
     13700002: Character_L_Leg
@@ -179,7 +179,177 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Player_Pickup
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_Geo
+        weight: 1
+      - path: Character_Geo/Character_L_Leg
+        weight: 1
+      - path: Character_Geo/Character_L_Leg/Character_L_Leg_2
+        weight: 1
+      - path: Character_Geo/Character_R_Leg
+        weight: 1
+      - path: Character_Geo/Character_R_Leg/Character_R_Leg_2
+        weight: 1
+      - path: Hip_Control
+        weight: 1
+      - path: Hip_Control/Head_Control
+        weight: 1
+      - path: Hip_Control/Head_Control/Face_Flap
+        weight: 1
+      - path: Hip_Control/Head_Control/Face_Flap/Face_Flap_1
+        weight: 1
+      - path: Hip_Control/Head_Control/Face_Flap/Face_Flap_1/Face_Flap_2
+        weight: 1
+      - path: Hip_Control/Hip_Joint
+        weight: 1
+      - path: Hip_Control/Hip_Joint/B_Body_Flap
+        weight: 1
+      - path: Hip_Control/Hip_Joint/B_Body_Flap/B_Body_Flap_2
+        weight: 1
+      - path: Hip_Control/Hip_Joint/F_Body_Flap
+        weight: 1
+      - path: Hip_Control/Hip_Joint/F_Body_Flap/F_Body_Flap_2
+        weight: 1
+      - path: Hip_Control/Hip_Joint/joint21
+        weight: 1
+      - path: Hip_Control/Hip_Joint/L_Body_Flap
+        weight: 1
+      - path: Hip_Control/Hip_Joint/L_Body_Flap/L_Body_Flap_2
+        weight: 1
+      - path: Hip_Control/Hip_Joint/L_Leg_Hip_Joint
+        weight: 1
+      - path: Hip_Control/Hip_Joint/R_Body_Flap
+        weight: 1
+      - path: Hip_Control/Hip_Joint/R_Body_Flap/R_Body_Flap_2
+        weight: 1
+      - path: Hip_Control/Hip_Joint/R_Leg_Hip_Joint
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/F_Geo_Deformer_5
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/L_Geo_Deformer_5
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/R_Geo_Deformer_5
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/F_Geo_Deformer_4
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/L_Geo_Deformer_4
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/R_Geo_Deformer_4
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/F_Geo_Deformer_3
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/L_Geo_Deformer_3
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/R_Geo_Deformer_3
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/F_Geo_Deformer_2
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/L_Geo_Deformer_2
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/R_Geo_Deformer_2
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint/F_Geo_Deformer_1
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint/L_Geo_Deformer_1
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint/Neck_Joint
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint/Neck_Joint/Head_Joint
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint/Neck_Joint/Head_Joint/Head_Flap_1
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint/Neck_Joint/Head_Joint/Head_Flap_1/joint13
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint/Neck_Joint/L_Clavacle_Joint
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint/Neck_Joint/R_Clavacle_Joint
+        weight: 1
+      - path: Hip_Control/Hip_Joint/Spine_Joint_1/Spine_Joint_2/Spine_Joint_3/Spine_Joint_4/Shoulder_Joint/R_Geo_Deformer_1
+        weight: 1
+      - path: Hip_Control/L_Arm_Joint_1
+        weight: 1
+      - path: Hip_Control/L_Arm_Joint_1/L_Arm_Joint_2
+        weight: 1
+      - path: Hip_Control/L_Arm_Joint_1/L_Arm_Joint_2/L_Arm_Joint_3
+        weight: 1
+      - path: Hip_Control/L_Arm_Joint_1/L_Arm_Joint_2/L_Arm_Joint_3/L_Arm_Joint_4
+        weight: 1
+      - path: Hip_Control/L_Arm_Joint_1/L_Arm_Joint_2/L_Arm_Joint_3/L_Arm_Joint_4/L_Arm_Joint_5
+        weight: 1
+      - path: Hip_Control/L_Arm_Joint_1/L_Arm_Joint_2/L_Arm_Joint_3/L_Arm_Joint_4/L_Arm_Joint_5/L_Arm_Joint_6
+        weight: 1
+      - path: Hip_Control/R_Arm_Joint_1
+        weight: 1
+      - path: Hip_Control/R_Arm_Joint_1/R_Arm_Joint_2
+        weight: 1
+      - path: Hip_Control/R_Arm_Joint_1/R_Arm_Joint_2/R_Arm_Joint_3
+        weight: 1
+      - path: Hip_Control/R_Arm_Joint_1/R_Arm_Joint_2/R_Arm_Joint_3/R_Arm_Joint_4
+        weight: 1
+      - path: Hip_Control/R_Arm_Joint_1/R_Arm_Joint_2/R_Arm_Joint_3/R_Arm_Joint_4/R_Arm_Joint_5
+        weight: 1
+      - path: Hip_Control/R_Arm_Joint_1/R_Arm_Joint_2/R_Arm_Joint_3/R_Arm_Joint_4/R_Arm_Joint_5/R_Arm_Joint_6
+        weight: 1
+      - path: L_Leg_Control
+        weight: 1
+      - path: L_Leg_Control/transform1
+        weight: 1
+      - path: L_Leg_Control/transform1/L_Leg_1
+        weight: 1
+      - path: L_Leg_Control/transform1/L_Leg_1/L_Leg_2
+        weight: 1
+      - path: L_Leg_Control/transform1/L_Leg_1/L_Leg_2/L_Leg_3
+        weight: 1
+      - path: R_Leg_Control
+        weight: 1
+      - path: R_Leg_Control/transform2
+        weight: 1
+      - path: R_Leg_Control/transform2/R_Leg_1
+        weight: 1
+      - path: R_Leg_Control/transform2/R_Leg_1/R_Leg_2
+        weight: 1
+      - path: R_Leg_Control/transform2/R_Leg_1/R_Leg_2/R_Leg_3
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
