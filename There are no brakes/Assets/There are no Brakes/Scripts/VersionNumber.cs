@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Reflection;
 
-[assembly:AssemblyVersion ("0.1.*")]
+//[assembly:AssemblyVersion ("0.1.*")]
+[assembly:AssemblyVersion ("0.1.6.4")]
 public class VersionNumber : MonoBehaviour{
     private bool ShowVersionInformation = false;
 
@@ -18,11 +19,19 @@ public class VersionNumber : MonoBehaviour{
     }
 
     void Start (){
+        DontDestroyOnLoad (this);
 	    // Log current version in log file
         Debug.Log (string.Format ("Currently running version is {0}", Version));
 	    position.y = 1f;
         position.x = Screen.width - position.width - 10f;
 
+    }
+
+    void OnGUI (){
+        if (!ShowVersionInformation) return;
+    
+        GUI.contentColor = Color.white;
+        GUI.Box (position, string.Format ("v {0}", Version));
     }
 	
 	void Update(){
@@ -31,11 +40,4 @@ public class VersionNumber : MonoBehaviour{
 			ShowVersionInformation = !ShowVersionInformation;
 		}
 	}
-
-    void OnGUI (){
-        if (!ShowVersionInformation) return;
-    
-        GUI.contentColor = Color.white;
-        GUI.Box (position, string.Format ("v {0}", Version));
-    }
 }

@@ -211,9 +211,15 @@ public class M_AudioManager : MonoBehaviour
 	public static void StopAllSound()
 	{
 		//stop all sounds and music
+		GameObject.Find("MusicFX").GetComponent<AudioSource>().Stop();
+		GameObject.Find("MusicFX2").GetComponent<AudioSource>().Stop();
+		GameObject.Find("SoundFX").GetComponent<AudioSource>().Stop();
+		
 		foreach (Transform child in GameObject.Find("AudioManager").transform)
 		{
-			Destroy (child.gameObject, 0.0001f);
+			if(child.name != "MusicFX" && child.name != "MusicFX2" && child.name != "SoundFX"){
+				Destroy (child.gameObject, 0.0001f);
+			}
 		}
 	}
 }

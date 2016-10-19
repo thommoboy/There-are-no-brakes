@@ -1,31 +1,18 @@
-THERE IS NO BRAKES
-
-DEVELOPED BY 
-
-NAME1
-NAME2
-NAME3
-NAME4
-
-
-Art
+There are no Brakes!
 
 
 
-Sound
+
+Director/Designer: Joshua Garvey
 
 
-
-Script
-
+Artist/Modeller: Ashleigh Kelly
 
 
-Director
+Lead Programmer: Pierce Thompson
 
 
-
-Manager
-
+Level Designer: Nathan Brown
 
 
-Models
+GUI: Feng Xinyu

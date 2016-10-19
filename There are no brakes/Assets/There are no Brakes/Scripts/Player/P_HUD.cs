@@ -46,8 +46,8 @@ public class P_HUD : MonoBehaviour {
 
 	private bool levelComplete = false;
 	void Start(){
+		Fail = Resources.Load("Music/UDEnding") as AudioClip;
 		Win = Resources.Load("Sounds/LevelComplete") as AudioClip;
-		Fail = Resources.Load("Music/UD Ending") as AudioClip;
 		//levCompTextPos = text.transform.position;
 		if(firstLevel){
 			resetValues();
@@ -102,9 +102,18 @@ public class P_HUD : MonoBehaviour {
 		float trainpos = barDisplay2 * maxpos + traindefaultpos.z - maxpos;
 		GameObject.Find("HUDtrainIcon").transform.position = new Vector3(traindefaultpos.x,traindefaultpos.y,trainpos);
 		
-		// check for dev shortcut
+		// check for dev shortcuts
+		// win
 		if(!levelComplete && Input.GetKey(KeyCode.F1) && Input.GetKey(KeyCode.F9)){
 			LevelCompleted();
+		}
+		// lose
+		if(!levelComplete && Input.GetKey(KeyCode.F3) && Input.GetKey(KeyCode.F7)){
+			GameLost();
+		}
+		// running out of time
+		if(!levelComplete && Input.GetKey(KeyCode.F4) && Input.GetKey(KeyCode.F6)){
+			barDisplay2 = 0.3f;
 		}
 	}
 	
@@ -130,8 +139,8 @@ public class P_HUD : MonoBehaviour {
 		levelComplete = true;
         //Vector3 guiPos = GameObject.Find ("GUI Camera").transform.position;
 		M_AudioManager.StopAllSound();
-		M_AudioManager.PlayAudioSelf(Win);
 		GameObject.Find ("Pause").GetComponent<M_Pause> ().LevelComplete ();
+		M_AudioManager.PlayAudioSelf(Win);
 
         StartCoroutine(loadnextlevel(5));
 		if(!firstLevel){
