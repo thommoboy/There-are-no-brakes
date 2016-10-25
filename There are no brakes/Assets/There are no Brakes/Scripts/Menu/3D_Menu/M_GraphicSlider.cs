@@ -30,9 +30,9 @@ public class M_GraphicSlider : MonoBehaviour {
 	void setResolution(int value) {
 		switch (value) {
 		case 4:
-			Screen.SetResolution(1920, 1200, Screen.fullScreen);
-			GameObject.Find("ResolutionText").GetComponent<TextMesh>().text = "1920 X 1200";
-			Debug.Log("set resolution to 1920*1200");
+			Screen.SetResolution(2140, 1200, Screen.fullScreen);
+			GameObject.Find("ResolutionText").GetComponent<TextMesh>().text = "2140 X 1200";
+			Debug.Log("set resolution to 2140*1200");
 			break;
 		case 3:
 			Screen.SetResolution(1860, 1050, Screen.fullScreen);
